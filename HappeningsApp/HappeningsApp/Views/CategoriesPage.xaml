@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappeningsApp.Views.CategoriesPage">
+    <ContentPage.Content>
+        <ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategoryItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="White"   Text="{Binding Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                        </Grid>
+                       
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

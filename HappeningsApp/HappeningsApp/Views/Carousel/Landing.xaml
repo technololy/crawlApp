@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:f="clr-namespace:HappeningsApp.Views.Carousel"
+             x:Class="HappeningsApp.Views.Carousel.Landing">
+  
+
+        <cv:CarouselViewControl x:Name="CvPages" Orientation="Horizontal" InterPageSpacing="0" ShowIndicators="True"  IndicatorsShape="Circle" ItemsSource="{Binding CategoryItems}" >
+            <cv:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="FillAndExpand" Margin="0,0,0,0" VerticalOptions="FillAndExpand">
+
+                        <Image Grid.Row="0" Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Clicked="Button_Clicked_1" HorizontalOptions="Start" TextColor="WhiteSmoke" VerticalOptions="EndAndExpand" Text="Log In" BackgroundColor="Transparent" BorderColor="White" BorderWidth="2"/>
+                        <Button HorizontalOptions="End" TextColor="WhiteSmoke" VerticalOptions="EndAndExpand" Text="Skip" Clicked="Button_Clicked" BackgroundColor="Transparent" BorderColor="White" BorderWidth="2"/>
+                    </StackLayout>
+              
+
+                </Grid>
+
+                </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+
+
+        </cv:CarouselViewControl>
+
+     
+    
+     
+</ContentPage>

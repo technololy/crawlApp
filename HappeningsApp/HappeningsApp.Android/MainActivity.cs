@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using DLToolkit.Forms.Controls;
 
 namespace HappeningsApp.Droid
 {
@@ -20,6 +21,7 @@ namespace HappeningsApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            FlowListView.Init();
             LoadApplication(new App());
         }
     }

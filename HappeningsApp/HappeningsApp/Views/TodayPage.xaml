@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="HappeningsApp.Views.TodayPage">
+    <ContentPage.Content>
+        <flv:FlowListView  FlowColumnCount="2"  HasUnevenRows="False" HeightRequest="200" RowHeight="200" FlowItemsSource="{Binding TodaysItem}">
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="White" 
+                                
+                               Text="{Binding Name}" 
+                               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                    </Grid>
+                    <!--Text="{Binding Name, Converter={StaticResource caseConverter}, ConverterParameter=u}"-->
+                </DataTemplate>
+                
+            </flv:FlowListView.FlowColumnTemplate>
+            
+        </flv:FlowListView>
+    </ContentPage.Content>
+</ContentPage>

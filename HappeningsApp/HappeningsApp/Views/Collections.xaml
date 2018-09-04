@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="HappeningsApp.Views.Collections" Padding="30">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Entry Placeholder="Username" PlaceholderColor="#2196F3" TextColor="#2196F3" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Password" PlaceholderColor="#2196F3" HorizontalTextAlignment="Center" IsPassword="True" />
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Login" BorderWidth="1"  BackgroundColor="Transparent" TextColor="#2196F3" BorderColor="#2196F3" />
+
+
+                <Button Text="Sign Up"   BackgroundColor="#23e820" TextColor="White" BorderColor="Blue" />
+                <Button Text="Login with Facebook" BorderWidth="1"  BackgroundColor="#2196F3" TextColor="White" />
+                <Button Text="Login with google" BorderWidth="1"  BackgroundColor="#ed2146" TextColor="White"  />
+
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

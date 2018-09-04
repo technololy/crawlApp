@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappeningsApp.Views.AppLanding"
+            NavigationPage.HasNavigationBar="False"
+          
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="44" />
+        </Grid.RowDefinitions>
+        <ContentView x:Name="PlaceHolder" Grid.Row="0" />
+        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="1" />
+        <Grid Grid.Row="2" RowSpacing="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--tab items start here-->
+            <StackLayout Spacing="0" Grid.Column="0"  BackgroundColor="AliceBlue" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer  x:Name="Deals" Tapped="Deals_Tapped"/>
+                </StackLayout.GestureRecognizers>
+
+                <Label Text="Deals" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Spacing="0" Grid.Column="1"  BackgroundColor="AliceBlue" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
+                </StackLayout.GestureRecognizers>
+               
+                <Label Text="This Week"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="15"/>
+            </StackLayout>
+            <StackLayout Spacing="0" Grid.Column="2"  BackgroundColor="AliceBlue" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Label Text="Categories" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Spacing="0" Grid.Column="3"  BackgroundColor="AliceBlue" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Collections" Tapped="Collections_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Label Text="Collections" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
