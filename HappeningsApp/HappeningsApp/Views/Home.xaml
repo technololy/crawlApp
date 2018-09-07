@@ -4,7 +4,9 @@
              x:Class="HappeningsApp.Views.Home"
              BackgroundImage="magentawhite.png"
              >
-    <Grid>
-        
-    </Grid>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Test Me" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

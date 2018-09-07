@@ -13,12 +13,17 @@ namespace HappeningsApp.Views.AppViews
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Deals : ContentPage
 	{
-        TodaysViewModel todaysViewModel;
-
+        //TodaysViewModel todaysViewModel;
+        //DealsViewModel _DealsViewModel;
+        //NearByViewModel nearBy;
+        IntroPageViewModel introPageViewMod;
         public Deals ()
 		{
 			InitializeComponent ();
-            BindingContext = todaysViewModel = new TodaysViewModel();
+            //_DealsViewModel = new DealsViewModel();
+            introPageViewMod = new IntroPageViewModel();
+            //nearBy = new NearByViewModel();
+            BindingContext = introPageViewMod;
 
 		}
 	}

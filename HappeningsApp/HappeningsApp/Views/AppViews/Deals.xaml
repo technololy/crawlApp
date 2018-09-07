@@ -2,23 +2,145 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.AppViews.Deals"
-            
-             NavigationPage.HasNavigationBar="True"
+          BackgroundColor="#000015"
+             xmlns:customControl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList"
+             NavigationPage.HasNavigationBar="False"
+              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              >
-    <Grid>
-        <Image Aspect="AspectFill" Source="newmagentabluewhite.png" />
-        <ListView ItemsSource="{Binding TodaysItem}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame CornerRadius="10" HeightRequest="150">
-                            <Image Source="{Binding Image}" />
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    
-    </Grid>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  HeightRequest="40" Padding="30,10,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Grid.Column="0" >
+                        <Label Text="Premium Events" TextColor="White"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                    </StackLayout>
+                </Grid>
+                <Grid Row="1" Padding="30,0,10,10" >
+                    <customControl:HorizontalList  x:Name="DealsView"  ListOrientation="Horizontal" ItemsSource="{Binding dealsItems}" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+                        <customControl:HorizontalList.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="30">
+                                    <Grid>
+                                        <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                                                            </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </customControl:HorizontalList.ItemTemplate>
+                    </customControl:HorizontalList>
+                </Grid>
+                <Grid Grid.Row="2" BackgroundColor="#34495e" HeightRequest="70">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="40*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="30,0,0,0" Text="Create your own Events" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="15"  />
+                    <Button Margin="0,0,20,0" Text="Create" Grid.Column="2" VerticalOptions="CenterAndExpand" BackgroundColor="#3498db" TextColor="White" HeightRequest="40" WidthRequest="130" CornerRadius="20" HorizontalOptions="EndAndExpand" />
+
+                </Grid>
+                <Grid Grid.Row="3"  HeightRequest="40" Padding="30,10,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Grid.Column="0" >
+                        <Label Text="Nearby Events" TextColor="White"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                    </StackLayout>
+                </Grid>
+                <Grid Row="4" Padding="30,0,10,10" >
+                    <customControl:HorizontalList  x:Name="rerer"  ListOrientation="Horizontal" ItemsSource="{Binding nearbyItems}" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+                        <customControl:HorizontalList.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Frame Grid.Row="0" Padding="0" IsClippedToBounds="True" HeightRequest="140" WidthRequest="180" BackgroundColor="Transparent" CornerRadius="30">
+                                        <Image Source="{Binding Image}" Aspect="AspectFill" />
+
+                                    </Frame>
+                                    <Grid Grid.Row="1"  HeightRequest="50" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="27" FontAttributes="Bold" TextColor="#3498db" Grid.Row="0" VerticalOptions="CenterAndExpand" Grid.Column="0" />
+                                        <Label Text="JUN" Grid.Row="1" Grid.Column="0" VerticalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="Dance 2018" VerticalOptions="CenterAndExpand" Grid.Row="0" TextColor="White" Grid.Column="1" />
+                                        <Label Text="Lagos Island" VerticalOptions="CenterAndExpand" FontSize="10" TextColor="White" Grid.Row="1" Grid.Column="1" />
+                                    </Grid>
+
+                                </Grid>
+                                </DataTemplate>
+                        </customControl:HorizontalList.ItemTemplate>
+                    </customControl:HorizontalList>
+                </Grid>
+                <Grid Grid.Row="5"  HeightRequest="40" Padding="30,10,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Grid.Column="0" >
+                        <Label Text="Categories with Deals" TextColor="White"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                    </StackLayout>
+                </Grid>
+                <flv:FlowListView Grid.Row="6" HeightRequest="600"  FlowColumnCount="2"   HasUnevenRows="False"  FlowItemsSource="{Binding category}">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame Padding="0" IsClippedToBounds="True" CornerRadius="30"   >
+                                <Grid ColumnSpacing="10" RowSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />
+                                    <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Medium" TextColor="White" 
+                                
+                               Text="{Binding Name}" 
+                               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                                </Grid>
+                            </Frame>
+                          
+                            <!--Text="{Binding Name, Converter={StaticResource caseConverter}, ConverterParameter=u}"-->
+                        </DataTemplate>
+
+                    </flv:FlowListView.FlowColumnTemplate>
+
+                </flv:FlowListView>
+            </Grid>
+        </ScrollView>
+       
+         
+    </ContentPage.Content>
   
 </ContentPage>

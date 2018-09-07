@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using HappeningsApp.Views;
 using Xamarin.Forms.Xaml;
 using HappeningsApp.Views.Carousel;
+using HappeningsApp.Views.AppViews;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -15,8 +16,10 @@ namespace HappeningsApp
 			InitializeComponent();
 
 
-			MainPage = new NavigationPage(new AppLanding());
-		}
+			MainPage = new NavigationPage(new MainPage());
+			//MainPage = new NavigationPage(new AppLanding());
+            //MainPage = new NavigationPage(new Deals());
+        }
 
 		protected override void OnStart ()
 		{

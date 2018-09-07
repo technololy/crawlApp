@@ -2,25 +2,30 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:HappeningsApp.Views"
+            xmlns:views1="clr-namespace:HappeningsApp.Views.AppViews"
             NavigationPage.HasNavigationBar="False"
-            HeightRequest="10"
+            HeightRequest="70"
+          xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            BarTextColor="White"
+            BarBackgroundColor="#000015"
             x:Class="HappeningsApp.Views.MainPage">
     <TabbedPage.Children>
 
 
-        <NavigationPage Title=" CATEGORY">
-            <NavigationPage.Icon>
+        <NavigationPage Title="DEALS">
+            <!--<NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
                     <On Platform="Android" Value="tab_about.png"/>
                 </OnPlatform>
-            </NavigationPage.Icon>
+            </NavigationPage.Icon>-->
             <x:Arguments>
-                <views:CategoriesPage/>
+                <views1:Deals/>
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="THIS WEEK">
+        <!--<NavigationPage Title="THIS WEEK">
+           
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
@@ -30,16 +35,29 @@
             <x:Arguments>
                 <views:TodayPage />
             </x:Arguments>
+        </NavigationPage>-->
+        
+        <NavigationPage Title="CATEGORY">
+            <!--<NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="Android" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>-->
+            <x:Arguments>
+                <views:CategoriesPage/>
+            </x:Arguments>
         </NavigationPage>
 
-
         <NavigationPage Title="COLLECTIONS">
-            <NavigationPage.Icon>
+            
+            <!--<NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
+                    
                     <On Platform="iOS" Value="tab_feed.png"/>
                     <On Platform="Android"  Value="tab_feed.png"/>
                 </OnPlatform>
-            </NavigationPage.Icon>
+            </NavigationPage.Icon>-->
             <x:Arguments>
                 <views:Collections />
             </x:Arguments>

@@ -16,7 +16,7 @@ namespace HappeningsApp.Views
 		public AppLanding ()
 		{
 			InitializeComponent ();
-            Deals_Tapped(this, null);
+            //Deals_Tapped(this, null);
 		}
 
         private void Deals_Tapped(object sender, EventArgs e)
@@ -30,6 +30,8 @@ namespace HappeningsApp.Views
 
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
+            var page = new Home();
+            PlaceHolder.Content = page.Content;
 
         }
 
@@ -40,6 +42,8 @@ namespace HappeningsApp.Views
 
         private void Collections_Tapped(object sender, EventArgs e)
         {
+            var page = new Collections();
+            PlaceHolder.Content = page.Content;
 
         }
     }
