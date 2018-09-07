@@ -4,7 +4,16 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="HappeningsApp.Views.CategoriesPage">
     <ContentPage.Content>
-        <ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategoryItems}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
+        <!--<ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategoryItems}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -21,6 +30,6 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </ContentPage.Content>
 </ContentPage>

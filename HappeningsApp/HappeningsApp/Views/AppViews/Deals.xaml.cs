@@ -26,5 +26,11 @@ namespace HappeningsApp.Views.AppViews
             BindingContext = introPageViewMod;
 
 		}
-	}
+
+        private void DealsView_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+            Navigation.PushAsync(new DetailPage());
+        }
+    }
 }

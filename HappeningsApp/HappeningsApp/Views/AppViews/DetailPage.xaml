@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappeningsApp.Views.AppViews.DetailPage"
+       NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#182C61"
+             >
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            
+                
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Padding="0" HeightRequest="200" IsClippedToBounds="True">
+                <Image  Aspect="AspectFill"  Source="harvest.jpg" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame HasShadow="True" CornerRadius="30" Padding="0" Margin="15,0,15,0" TranslationY="-50" Grid.Row="1" HeightRequest="400" BackgroundColor="#182C61"  >
+                <Grid Margin="10,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />                   
+                        
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Margin="10" HeightRequest="100" >
+                        <Label Text="On the Floor - 2018" FontAttributes="Bold" FontSize="20" TextColor="White" />
+                        <Label Text="Lekki Phase 1" FontSize="12" TextColor="White" />
+                    </StackLayout>
+                    <Grid Grid.Row="1" Margin="-10,0,-10,0" BackgroundColor="#34495e" HeightRequest="70">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="12.5*" />
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="12.5*" />
+
+                            <ColumnDefinition Width="25*" />
+                        </Grid.ColumnDefinitions>
+                        <Label  Text="30 June 2018" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="15"  />
+                        <Label LineBreakMode="WordWrap"  Text="Starts:5:30pm" Grid.Column="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="15"  />
+                        <Label LineBreakMode="WordWrap"  Text="Ends:10:30pm" Grid.Column="4" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="15"  />
+                    </Grid>
+                    <Grid Grid.Row="2" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="Are you interested in coming?" TextColor="WhiteSmoke" />
+                            <Grid Grid.Row="1" Margin="10,2,5,10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                               
+                                <Button Text="Yes i am in" WidthRequest="100" HeightRequest="40" FontSize="10" BackgroundColor="Green" TextColor="White" CornerRadius="20" Grid.Column="0" />
+                                <Button FontSize="10"  Text="Maybe" BackgroundColor="Blue" TextColor="White" CornerRadius="20" Grid.Column="1"  WidthRequest="90" HeightRequest="20" />
+                                <Button Text="Pass" FontSize="10"  BackgroundColor="Red" TextColor="White" CornerRadius="20" Grid.Column="2"  WidthRequest="80" HeightRequest="20" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                </Frame>
+            
+            <Grid HeightRequest="100" Margin="30,0,0,0"  Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Label Text="Details"  TextColor="White" FontSize="15" />
+                    <BoxView Color="Gray" HeightRequest="0.3"  />
+                    <Label Text="Once the submit button clicked, the controller ActionResult will handle the post back values from FormCollection variable. When a form has multiple same name inputs, the value will become comma delimited value. Therefore we use the split function to parse the string into string array" FontSize="10" TextColor="White" />
+                </StackLayout>
+             
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

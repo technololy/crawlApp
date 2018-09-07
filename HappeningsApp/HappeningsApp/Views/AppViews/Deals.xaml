@@ -19,6 +19,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0"  HeightRequest="40" Padding="30,10,10,10">
                     <Grid.ColumnDefinitions>
@@ -33,7 +34,7 @@
                     </StackLayout>
                 </Grid>
                 <Grid Row="1" Padding="30,0,10,10" >
-                    <customControl:HorizontalList  x:Name="DealsView"  ListOrientation="Horizontal" ItemsSource="{Binding dealsItems}" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+                    <customControl:HorizontalList SelectedItemChanged="DealsView_SelectedItemChanged"  x:Name="DealsView"  ListOrientation="Horizontal" ItemsSource="{Binding dealsItems}" HorizontalOptions="FillAndExpand" RowSpacing="0" >
                         <customControl:HorizontalList.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="30">
@@ -93,7 +94,7 @@
                                         <Label Text="27" FontAttributes="Bold" TextColor="#3498db" Grid.Row="0" VerticalOptions="CenterAndExpand" Grid.Column="0" />
                                         <Label Text="JUN" Grid.Row="1" Grid.Column="0" VerticalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="Dance 2018" VerticalOptions="CenterAndExpand" Grid.Row="0" TextColor="White" Grid.Column="1" />
-                                        <Label Text="Lagos Island" VerticalOptions="CenterAndExpand" FontSize="10" TextColor="White" Grid.Row="1" Grid.Column="1" />
+                                        <Label Text="Lagos Island" VerticalOptions="CenterAndExpand" TextColor="White" Grid.Row="1" Grid.Column="1" />
                                     </Grid>
 
                                 </Grid>
@@ -113,30 +114,33 @@
                         <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
                     </StackLayout>
                 </Grid>
-                <flv:FlowListView Grid.Row="6" HeightRequest="600"  FlowColumnCount="2"   HasUnevenRows="False"  FlowItemsSource="{Binding category}">
-                    <flv:FlowListView.FlowColumnTemplate>
-                        <DataTemplate>
-                            <Frame Padding="0" IsClippedToBounds="True" CornerRadius="30"   >
-                                <Grid ColumnSpacing="10" RowSpacing="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                <Grid Grid.Row="6" HeightRequest="400" Padding="30,10,10,10" >
+                    <flv:FlowListView RowHeight="100"  FlowColumnCount="2"   HasUnevenRows="False"  FlowItemsSource="{Binding category}">
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <Frame Padding="0" Margin="5" IsClippedToBounds="True" CornerRadius="10"   >
+                                    <Grid ColumnSpacing="10" RowSpacing="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
 
-                                    <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />
-                                    <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Medium" TextColor="White" 
+                                        <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />
+                                        <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Medium" TextColor="White" 
                                 
                                Text="{Binding Name}" 
                                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-                                </Grid>
-                            </Frame>
-                          
-                            <!--Text="{Binding Name, Converter={StaticResource caseConverter}, ConverterParameter=u}"-->
-                        </DataTemplate>
+                                    </Grid>
+                                </Frame>
 
-                    </flv:FlowListView.FlowColumnTemplate>
+                                <!--Text="{Binding Name, Converter={StaticResource caseConverter}, ConverterParameter=u}"-->
+                            </DataTemplate>
 
-                </flv:FlowListView>
+                        </flv:FlowListView.FlowColumnTemplate>
+
+                    </flv:FlowListView>
+                </Grid>
+               
             </Grid>
         </ScrollView>
        

@@ -18,7 +18,7 @@ namespace HappeningsApp
 
 			MainPage = new NavigationPage(new MainPage());
 			//MainPage = new NavigationPage(new AppLanding());
-            //MainPage = new NavigationPage(new Deals());
+            //MainPage = new NavigationPage(new DetailPage());
         }
 
 		protected override void OnStart ()

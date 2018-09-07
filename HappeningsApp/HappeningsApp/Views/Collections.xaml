@@ -13,12 +13,12 @@
                 <Entry Placeholder="Password" PlaceholderColor="#2196F3" HorizontalTextAlignment="Center" IsPassword="True" />
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Login" BorderWidth="1"  BackgroundColor="Transparent" TextColor="#2196F3" BorderColor="#2196F3" />
+                <Button Text="Login" CornerRadius="30" BorderWidth="1"  BackgroundColor="Transparent" TextColor="#2196F3" BorderColor="#2196F3" />
 
 
-                <Button Text="Sign Up"   BackgroundColor="#23e820" TextColor="White" BorderColor="Blue" />
-                <Button Text="Login with Facebook" BorderWidth="1"  BackgroundColor="#2196F3" TextColor="White" />
-                <Button Text="Login with google" BorderWidth="1"  BackgroundColor="#ed2146" TextColor="White"  />
+                <Button Text="Sign Up" CornerRadius="30"   BackgroundColor="#23e820" TextColor="White" BorderColor="Blue" />
+                <Button Text="Login with Facebook" CornerRadius="30" BorderWidth="1"  BackgroundColor="#2196F3" TextColor="White" />
+                <Button Text="Login with google" BorderWidth="1"  CornerRadius="30" BackgroundColor="#ed2146" TextColor="White"  />
 
 
             </StackLayout>
