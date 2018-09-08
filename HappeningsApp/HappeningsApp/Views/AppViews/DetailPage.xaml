@@ -6,7 +6,8 @@
              BackgroundColor="#182C61"
              >
     <ContentPage.Content>
-        <Grid>
+        <ScrollView>
+              <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -90,5 +91,7 @@
              
             </Grid>
         </Grid>
+        </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>

@@ -29,6 +29,13 @@ namespace HappeningsApp.Views.AppViews
 
         private void DealsView_SelectedItemChanged(object sender, EventArgs e)
         {
+
+            if (DealsView.SelectedItem==null)
+            {
+                return;
+            }
+            //var select = introPageViewMod.dealsItems.ElementAt(DealsView.)
+
             Application.Current.MainPage.Navigation.PushAsync(new DetailPage());
            // Navigation.PushAsync(new DetailPage());
         }
