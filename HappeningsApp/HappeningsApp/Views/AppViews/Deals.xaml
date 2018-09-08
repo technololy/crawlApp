@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.AppViews.Deals"
@@ -30,14 +30,14 @@
                         <Label Text="Premium Events" TextColor="White"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
-                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="100" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
                     </StackLayout>
                 </Grid>
                 <Grid Row="1" Padding="30,0,10,10" >
                     <customControl:HorizontalList SelectedItemChanged="DealsView_SelectedItemChanged"  x:Name="DealsView"  ListOrientation="Horizontal" ItemsSource="{Binding dealsItems}" HorizontalOptions="FillAndExpand" RowSpacing="0" >
                         <customControl:HorizontalList.ItemTemplate>
                             <DataTemplate>
-                                <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="30">
+                                <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="0">
                                     <Grid>
                                         <Image Source="{Binding Image}" Aspect="AspectFill" />
                                                                             </Grid>
@@ -46,17 +46,7 @@
                         </customControl:HorizontalList.ItemTemplate>
                     </customControl:HorizontalList>
                 </Grid>
-                <Grid Grid.Row="2" BackgroundColor="#34495e" HeightRequest="70">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="55*" />
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="40*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Margin="30,0,0,0" Text="Create your own Events" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="15"  />
-                    <Button Margin="0,0,20,0" Text="Create" Grid.Column="2" VerticalOptions="CenterAndExpand" BackgroundColor="#3498db" TextColor="White" HeightRequest="40" WidthRequest="130" CornerRadius="20" HorizontalOptions="EndAndExpand" />
-
-                </Grid>
+       
                 <Grid Grid.Row="3"  HeightRequest="40" Padding="30,10,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="80*" />
@@ -66,7 +56,7 @@
                         <Label Text="Nearby Events" TextColor="White"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
-                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" WidthRequest="100" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
                     </StackLayout>
                 </Grid>
                 <Grid Row="4" Padding="30,0,10,10" >
@@ -78,7 +68,7 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <Frame Grid.Row="0" Padding="0" IsClippedToBounds="True" HeightRequest="140" WidthRequest="180" BackgroundColor="Transparent" CornerRadius="30">
+                                    <Frame Grid.Row="0" Padding="0" IsClippedToBounds="True" HeightRequest="140" WidthRequest="180" BackgroundColor="Transparent" CornerRadius="0">
                                         <Image Source="{Binding Image}" Aspect="AspectFill" />
 
                                     </Frame>
@@ -111,14 +101,14 @@
                         <Label Text="Categories with Deals" TextColor="White"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="1" >
-                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
+                        <Button Text="View All" TextColor="White" FontSize="8" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="100" BorderWidth="1" BorderColor="White" CornerRadius="15"/>
                     </StackLayout>
                 </Grid>
-                <Grid Grid.Row="6" HeightRequest="400" Padding="30,10,10,10" >
-                    <flv:FlowListView RowHeight="100"  FlowColumnCount="2"   HasUnevenRows="False"  FlowItemsSource="{Binding category}">
+                <Grid Grid.Row="6" HeightRequest="400" Padding="30,10,10,10" BackgroundColor="Transparent" >
+                    <flv:FlowListView RowHeight="100" BackgroundColor="Transparent"  FlowColumnCount="2"   HasUnevenRows="False"  FlowItemsSource="{Binding category}">
                         <flv:FlowListView.FlowColumnTemplate>
                             <DataTemplate>
-                                <Frame Padding="0" Margin="5" IsClippedToBounds="True" CornerRadius="10"   >
+                                <Frame Padding="0" Margin="5" IsClippedToBounds="True" CornerRadius="0"   >
                                     <Grid ColumnSpacing="10" RowSpacing="10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
