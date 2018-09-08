@@ -146,4 +146,70 @@
       <Name>HappeningsApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\assorted2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\assortedfood.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\buzz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drink.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EkoCourts.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\friedyam.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\greenfood.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\harvest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icecream.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lagosoilrig.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\negafood.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newmagentabluewhite2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nightlagos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quilox.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\restaurant.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\salahgrill.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bookmarkwhite%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bookmarkwhite%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bookmarkwhite%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sharewhite%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sharewhite%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sharewhite%403x.png" />
+  </ItemGroup>
 </Project>

@@ -29,8 +29,8 @@ namespace HappeningsApp.Views.AppViews
 
         private void DealsView_SelectedItemChanged(object sender, EventArgs e)
         {
-
-            Navigation.PushAsync(new DetailPage());
+            Application.Current.MainPage.Navigation.PushAsync(new DetailPage());
+           // Navigation.PushAsync(new DetailPage());
         }
     }
 }
