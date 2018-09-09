@@ -7,22 +7,22 @@
              >
     <ContentPage.Content>
      
-        <StackLayout>
-             <ListView ItemsSource="{Binding dealsItems}" HasUnevenRows="true">
+        
+             <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="0">
-                                    <Grid>
-                                        <Image Source="{Binding Image}" Aspect="AspectFill" />
-                                    </Grid>
+                            <Frame Padding="0" Margin="0,0,0,20" IsClippedToBounds="true" BackgroundColor="Transparent" HeightRequest="300" CornerRadius="0">
+                                  
+                                        <Image Source="{Binding Image}" Aspect="Fill" />
+                                    
                                 </Frame>
                         </ViewCell>
                        
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        </StackLayout>
+
    
         
     </ContentPage.Content>

@@ -6,8 +6,11 @@
             NavigationPage.HasNavigationBar="False"
             HeightRequest="70"
           xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            BarTextColor="White"
-            BarBackgroundColor="#000015"
+
+           
+
+
+
             x:Class="HappeningsApp.Views.MainPage">
     <TabbedPage.Children>
 
@@ -24,18 +27,18 @@
             </x:Arguments>
         </NavigationPage>
 
-        <!--<NavigationPage Title="THIS WEEK">
+      <NavigationPage Title="THIS WEEK">
            
-            <NavigationPage.Icon>
+           <!-- <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                     <On Platform="Android"  Value="tab_feed.png"/>
                 </OnPlatform>
-            </NavigationPage.Icon>
+            </NavigationPage.Icon>-->
             <x:Arguments>
                 <views:TodayPage />
             </x:Arguments>
-        </NavigationPage>-->
+        </NavigationPage>
         
         <NavigationPage Title="CATEGORY">
             <!--<NavigationPage.Icon>

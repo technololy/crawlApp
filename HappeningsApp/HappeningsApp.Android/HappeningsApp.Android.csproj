@@ -89,13 +89,15 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+    <AndroidResource Include="Resources\drawable\pinksharecirled.png" />
+    <AndroidResource Include="Resources\drawable\bkmkpinknobkg.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HappeningsApp\HappeningsApp.csproj">
-      <Project>{A0B8E680-1688-421E-BF9A-FDB34737DFD9}</Project>
+      <Project>{03DEBF6A-DE66-4524-B4E6-B77D437CAC4C}</Project>
       <Name>HappeningsApp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -7,6 +7,12 @@ namespace HappeningsApp.Views.AppViews
 {
     public partial class DealsList : ContentPage
     {
+        void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new DetailPage());
+
+        }
+
         IntroPageViewModel introPageViewMod;
 
         public DealsList()
