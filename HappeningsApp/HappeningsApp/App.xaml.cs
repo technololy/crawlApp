@@ -16,11 +16,20 @@ namespace HappeningsApp
 			InitializeComponent();
 
 
-			MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage());
+            //MainPage = GetMainPage();
+
 			//MainPage = new NavigationPage(new AppLanding());
-            //MainPage = new NavigationPage(new DetailPage());
+            //MainPage = new NavigationPage(new LoggedOn());
         }
 
+        public static Page GetMainPage()
+        {
+            var mainPage = new MainPage();
+            var navPage = new NavigationPage(mainPage);
+            navPage.BarBackgroundColor = Color.Green;
+            return navPage;
+        }
 		protected override void OnStart ()
 		{
 			// Handle when your app starts
