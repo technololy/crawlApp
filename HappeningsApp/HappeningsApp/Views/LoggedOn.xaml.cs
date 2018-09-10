@@ -10,8 +10,8 @@ namespace HappeningsApp.Views
         public LoggedOn()
         {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFFFFF");
-            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.OrangeRed;
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFFFFF");
+            //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Magenta;
             //this.NavigationController.NavigationBar.BarTintColor = UIColor.Yellow;
 
         }

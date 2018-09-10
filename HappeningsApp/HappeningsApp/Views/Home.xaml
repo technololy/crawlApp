@@ -1,12 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.Home"
              BackgroundImage="magentawhite.png"
              >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Test Me" />
-        </StackLayout>
+        <ScrollView>
+              <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" BackgroundColor="Green" >
+                <Image Source="assorted2.jpg" Aspect="Fill" />
+            </StackLayout>
+              <StackLayout Grid.Row="1" BackgroundColor="Maroon">
+                <Image Source="assortedfood.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+              <StackLayout Grid.Row="2" BackgroundColor="Olive">
+                <Image Source="assorted2.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+              <StackLayout Grid.Row="3" BackgroundColor="Fuchsia">
+                <Image Source="buzz.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+              <StackLayout Grid.Row="4" BackgroundColor="Teal">
+                <Image Source="drink.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+                  <StackLayout Grid.Row="5" BackgroundColor="Teal">
+                <Image Source="friedyam.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+                  <StackLayout Grid.Row="6" BackgroundColor="Teal">
+                <Image Source="buzz.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+                  <StackLayout Grid.Row="7" BackgroundColor="Teal">
+                <Image Source="drink.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+                  <StackLayout Grid.Row="8" BackgroundColor="Teal">
+                <Image Source="assortedfood.jpg" Aspect="Fill" />
+                
+            </StackLayout>
+        </Grid>
+     <!--        <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None"  BackgroundColor="Transparent" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" Margin="0,0,0,20" IsClippedToBounds="true" BackgroundColor="Transparent" HeightRequest="300" CornerRadius="0">
+                                  
+                                        <Image Source="{Binding Image}" Aspect="Fill" />
+                                    
+                                </Frame>
+                        </ViewCell>
+                       
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>

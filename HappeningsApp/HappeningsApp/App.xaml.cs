@@ -16,19 +16,28 @@ namespace HappeningsApp
 			InitializeComponent();
 
 
-            MainPage = new NavigationPage(new MainPage())
+            //MainPage = new NavigationPage(new MainPage())
 
 
-            {
-                BarBackgroundColor = Color.FromHex("#ff5300"),
-                BarTextColor = Color.White,
+            //{
+            //    BarBackgroundColor = Color.FromHex("#ff5300"),
+            //    BarTextColor = Color.White,
 
-            }
+            //}
                 ;
             //MainPage = GetMainPage();
 
-			//MainPage = new NavigationPage(new AppLanding());
-            //MainPage = new NavigationPage(new LoggedOn());
+            MainPage = new NavigationPage(new AppLanding());
+			//MainPage = new NavigationPage(new Deals());
+            //MainPage = new NavigationPage(new Collections())
+
+                //{
+                //    BarBackgroundColor = Color.FromHex("#ff5300"),
+                //    BarTextColor = Color.White,
+
+                //}
+
+                ;
         }
 
         public static Page GetMainPage()

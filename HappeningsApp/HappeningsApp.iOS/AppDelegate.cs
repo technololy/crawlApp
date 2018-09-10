@@ -26,6 +26,7 @@ namespace HappeningsApp.iOS
             global::Xamarin.Forms.Forms.Init();
 
             UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
+
             UINavigationBar.Appearance.BarTintColor = UIColor.Red;
             UINavigationBar.Appearance.TintColor = UIColor.Green;
             //UITabBar.Appearance.TintColor = new UIColor(90 / 255f, 36 / 255f, 191 / 255f, 1.0f);

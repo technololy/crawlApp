@@ -1,4 +1,5 @@
-﻿using HappeningsApp.Views.AppViews;
+﻿using HappeningsApp.ViewModels;
+using HappeningsApp.Views.AppViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,21 @@ namespace HappeningsApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AppLanding : ContentPage
 	{
+        IntroPageViewModel introPageViewMod;
+
 		public AppLanding ()
 		{
 			InitializeComponent ();
-            //Deals_Tapped(this, null);
+            Deals_Tapped(this, null);
+            introPageViewMod = new IntroPageViewModel();
+            //nearBy = new NearByViewModel();
+            BindingContext = introPageViewMod;
 		}
 
         private void Deals_Tapped(object sender, EventArgs e)
         {
             var page =new Deals();
-         
+            page.Content.BackgroundColor = Color.FromHex("#000015");
             PlaceHolder.Content = page.Content;
 
 
