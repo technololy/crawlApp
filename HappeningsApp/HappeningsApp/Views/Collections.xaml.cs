@@ -19,7 +19,8 @@ namespace HappeningsApp.Views
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new LoggedOn());
+            Application.Current.MainPage.Navigation.PushAsync(new LoggedOn());
+            //Navigation.PushAsync(new LoggedOn());
         }
 
 		public Collections ()

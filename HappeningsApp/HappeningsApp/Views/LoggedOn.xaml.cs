@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using UIKit;
+//using UIKit;
 using Xamarin.Forms;
 
 namespace HappeningsApp.Views
@@ -10,7 +10,7 @@ namespace HappeningsApp.Views
         public LoggedOn()
         {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFFFFF");
             ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.OrangeRed;
             //this.NavigationController.NavigationBar.BarTintColor = UIColor.Yellow;
 
