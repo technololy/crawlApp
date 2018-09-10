@@ -25,6 +25,8 @@ namespace HappeningsApp.Views
 		public Collections ()
 		{
 			InitializeComponent ();
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.GreenYellow;
+
 		}
 	}
 }
