@@ -4,18 +4,18 @@
              x:Class="HappeningsApp.Views.AppLanding"
             NavigationPage.HasNavigationBar="False"
              xmlns:customControl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList"
-
+             BackgroundColor="#000015"
               xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              >
-    <Grid>
+    <Grid RowSpacing="0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="1" />
-            <RowDefinition Height="44" />
+            <RowDefinition Height="0.3" />
+            <RowDefinition Height="45" />
         </Grid.RowDefinitions>
         <ContentView x:Name="PlaceHolder" Grid.Row="0" />
-        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="1" />
-        <Grid Grid.Row="2" RowSpacing="0" >
+        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="1" Opacity="0.5" />
+        <Grid Grid.Row="2" RowSpacing="0" BackgroundColor="Black" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -23,31 +23,31 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--tab items start here-->
-            <StackLayout Spacing="0" Grid.Column="0"  BackgroundColor="AliceBlue" >
+            <StackLayout Spacing="0" Grid.Column="0"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer  x:Name="Deals" Tapped="Deals_Tapped"/>
                 </StackLayout.GestureRecognizers>
 
-                <Label Text="Deals" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="Deals"  x:Name="lblDeals" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
             </StackLayout>
-            <StackLayout Spacing="0" Grid.Column="1"  BackgroundColor="AliceBlue" >
+            <StackLayout Spacing="0" Grid.Column="1"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
                 </StackLayout.GestureRecognizers>
                
-                <Label Text="This Week"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="15"/>
+                <Label Text="This Week" x:Name="lblThisWeek" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="15"/>
             </StackLayout>
-            <StackLayout Spacing="0" Grid.Column="2"  BackgroundColor="AliceBlue" >
+            <StackLayout Spacing="0" Grid.Column="2"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Label Text="Categories" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="Categories" x:Name="lblCategories" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
             </StackLayout>
-            <StackLayout Spacing="0" Grid.Column="3"  BackgroundColor="AliceBlue" >
+            <StackLayout Spacing="0" Grid.Column="3"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Collections" Tapped="Collections_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Label Text="Collections" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="Collections" x:Name="lblCollections" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
             </StackLayout>
         </Grid>
     </Grid>

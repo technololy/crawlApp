@@ -20,16 +20,21 @@ namespace HappeningsApp.Views
 		{
 			InitializeComponent ();
             Deals_Tapped(this, null);
-            introPageViewMod = new IntroPageViewModel();
-            //nearBy = new NearByViewModel();
-            BindingContext = introPageViewMod;
+          
 		}
 
         private void Deals_Tapped(object sender, EventArgs e)
         {
-            var page =new Deals();
+            var page =new DealsList();
+            introPageViewMod = new IntroPageViewModel();
+            //nearBy = new NearByViewModel();
+            BindingContext = introPageViewMod;
             page.Content.BackgroundColor = Color.FromHex("#000015");
             PlaceHolder.Content = page.Content;
+            lblDeals.TextColor = Color.Magenta;
+            lblThisWeek.TextColor = Color.White;
+            lblCategories.TextColor = Color.White;
+            lblCollections.TextColor = Color.White;
 
 
         }
@@ -38,18 +43,31 @@ namespace HappeningsApp.Views
         {
             var page = new Home();
             PlaceHolder.Content = page.Content;
+            lblDeals.TextColor = Color.White;
+            lblThisWeek.TextColor = Color.Magenta;
+            lblCategories.TextColor = Color.White;
+            lblCollections.TextColor = Color.White;
 
         }
 
         private void Categories_Tapped(object sender, EventArgs e)
         {
-
+            lblDeals.TextColor = Color.White;
+            lblThisWeek.TextColor = Color.White;
+            lblCategories.TextColor = Color.Magenta;
+            lblCollections.TextColor = Color.White;
         }
 
         private void Collections_Tapped(object sender, EventArgs e)
         {
             var page = new Collections();
+            page.Content.BackgroundColor = Color.FromHex("#000015");
+
             PlaceHolder.Content = page.Content;
+            lblDeals.TextColor = Color.White;
+            lblThisWeek.TextColor = Color.White;
+            lblCategories.TextColor = Color.White;
+            lblCollections.TextColor = Color.Magenta;
 
         }
     }

@@ -7,8 +7,15 @@
              >
     <ContentPage.Content>
      
-        
-             <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+        <Grid>
+
+        <Label Text="Show Adverts" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Tapped" />
+                </Label.GestureRecognizers>
+                </Label>
+            
+               <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>
@@ -21,7 +28,9 @@
                        
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView> 
+        </Grid>
+         
 
    
         

@@ -60,11 +60,16 @@
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2" />
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+    <Compile Include="Renderers\LineEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -91,6 +96,27 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable\pinksharecirled.png" />
     <AndroidResource Include="Resources\drawable\bkmkpinknobkg.png" />
+    <AndroidResource Include="Resources\drawable\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\drawable\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\fbCrawlBlkPk.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ggCrawlPkBlk.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />
@@ -274,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\sharewhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

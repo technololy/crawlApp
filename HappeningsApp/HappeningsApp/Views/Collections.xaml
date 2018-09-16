@@ -3,25 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
            NavigationPage.HasNavigationBar="False"
+     xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black"
+             
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  >
+        <Grid>
+            <StackLayout HorizontalOptions="CenterAndExpand" TranslationY="120" >
+                <Label Text="CRAWL" TextColor="White" FontSize="60" />
+            </StackLayout>
+             <StackLayout Spacing="20" VerticalOptions="CenterAndExpand" Padding="40"  >
             <StackLayout>
-                <Entry Placeholder="Username" PlaceholderColor="#2196F3" TextColor="#2196F3" HorizontalTextAlignment="Center" />
+           
+                <bdEntry:LineEntry Placeholder="Username"  
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" TextColor="#FF00A1" PlaceholderColor="White" 
+                                   BorderColor="#FF00A1" />
             </StackLayout>
             <StackLayout>
-                <Entry Placeholder="Password" PlaceholderColor="#2196F3" HorizontalTextAlignment="Center" IsPassword="True" />
+                <bdEntry:LineEntry Placeholder="Password" BorderColor="#FF00A1" 
+                                   PlaceholderColor="White" HorizontalTextAlignment="Start" 
+                                   IsPassword="True" />
             </StackLayout>
-            <StackLayout Padding="50,0,50,0" >
-                <Button Text="Login" x:Name="login" Clicked="Handle_Clicked" CornerRadius="30" BorderWidth="1" WidthRequest="5"   BackgroundColor="Transparent" TextColor="#2196F3" BorderColor="#2196F3" />
+            <StackLayout HorizontalOptions="End" >
+                <Label Text="Forgot Password?" TextColor="White" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <StackLayout >
+                <Button Text="Login" x:Name="login" Clicked="Handle_Clicked" CornerRadius="23" 
+                        BorderWidth="1"    BackgroundColor="#FF00A1" 
+                        TextColor="White" />
 
-
-                <Button Text="Sign Up" CornerRadius="30" WidthRequest="50"  BackgroundColor="#23e820" TextColor="White" BorderColor="Blue" />
-                <Button Text="Login with Facebook" Clicked="Handle_Clicked_1" CornerRadius="30" WidthRequest="50"  BorderWidth="1"  BackgroundColor="#2196F3" TextColor="White" />
-                <Button Text="Login with google" BorderWidth="1" WidthRequest="50"  CornerRadius="30" BackgroundColor="#ed2146" TextColor="White"  />
-
+                        <Label TranslationY="150" Text="Sign Up" TextColor="#FF00A1" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+               <!-- <Button Text="Sign Up" CornerRadius="23" WidthRequest="180"  BackgroundColor="#23e820" TextColor="White" BorderColor="Blue" />
+                <Button Text="Login with Facebook" Clicked="Handle_Clicked_1" CornerRadius="23" WidthRequest="50"  BorderWidth="1"  BackgroundColor="#2196F3" TextColor="White" />
+                <Button Text="Login with google" BorderWidth="1" WidthRequest="50"  CornerRadius="23" BackgroundColor="#ed2146" TextColor="White"  />
+-->
 
             </StackLayout>
-        </StackLayout>
+        </StackLayout> 
+        </Grid>
+      
     </ContentPage.Content>
 </ContentPage>
