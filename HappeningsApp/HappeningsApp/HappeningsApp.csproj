@@ -49,6 +49,7 @@
 
   <ItemGroup>
     <Folder Include="Custom\" />
+    <Folder Include="Views\LoginSignUp\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

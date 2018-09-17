@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using HappeningsApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Acr.UserDialogs;
+
 //using UIKit;
 using Xamarin.Forms;
 
@@ -10,19 +12,19 @@ namespace HappeningsApp.Views
 {
     public partial class LoggedOn : ContentPage
     {
-        //IUserDialogs UserDialogs ;
-        //readonly IUserDialogs Dialog = FreshIOC.Container.Resolve<IUserDialogs>();
 
-        void WbView_Navigated(object sender, WebNavigatedEventArgs e)
+        public string accessToken { get; set; }
+
+        async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             try
             {
                 var url = e.Url;
-
-                using(UserDialogs.Instance.ShowLoading("Please wait....."))
+                ExtractAccessToken(url);
+                using (UserDialogs.Instance.Loading("Please wait.........."))
                 {
 
-                    Task.Delay(5000);
+                   await Task.Delay(5000);
 
                 }
             }
@@ -32,6 +34,24 @@ namespace HappeningsApp.Views
             }
         }
 
+        private string ExtractAccessToken(string url)
+        {
+            if (url.Contains("access_token") && url.Contains("&expires_in="))
+            {
+                var at = url.Replace("https://www.facebook.com/connect/login_success.html#access_token=", "");
+
+                if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.UWP)
+                {
+                    at = url.Replace("http://www.facebook.com/connect/login_success.html#access_token=", "");
+                }
+
+                var accessToken = at.Remove(at.IndexOf("&expires_in="));
+
+                return accessToken;
+            }
+
+            return string.Empty;
+        }
 
         void Logon_Tapped(object sender, System.EventArgs e)
         {
@@ -39,11 +59,8 @@ namespace HappeningsApp.Views
 
         void Facebook_Tapped(object sender, System.EventArgs e)
         {
-            string ClientId = "1752084648235245";
-            var apiRequest =
-                "https://www.facebook.com/dialog/oauth?client_id="
-                + ClientId
-                + "&display=popup&response_type=token&redirect_uri=http://www.facebook.com/connect/login_success.html";
+          
+            var apiRequest =$"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}";
             var wbView = new WebView() 
             
             {

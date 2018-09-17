@@ -22,6 +22,7 @@ namespace HappeningsApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();
+            Acr.UserDialogs.UserDialogs.Init(this);
             LoadApplication(new App());
         }
     }
