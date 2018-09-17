@@ -44,7 +44,7 @@
                         BorderWidth="1"    BackgroundColor="#FF00A1" 
                         TextColor="White" />
                     <StackLayout Orientation="Horizontal" TranslationY="20">
-                        <Image Source="fbCrawlBlkPk.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand">
+                        <Image Source="fbCrawlBlkPk.png" WidthRequest="80" HeightRequest="30" HorizontalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Facebook_Tapped"  />
                             </Image.GestureRecognizers>

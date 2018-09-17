@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,43 +15,44 @@ namespace HappeningsApp.Views
     {
 
         public string accessToken { get; set; }
-
+        LoginViewModel _vm = new LoginViewModel();
         async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             try
             {
                 var url = e.Url;
                 ExtractAccessToken(url);
-                using (UserDialogs.Instance.Loading("Please wait.........."))
+                if (!string.IsNullOrEmpty(accessToken))
                 {
-
-                   await Task.Delay(5000);
-
+                   await _vm.SetFacebookUserProfileAsync(accessToken);
                 }
+              
             }
             catch (Exception ex)
             {
                 var log = ex;
+
             }
         }
 
-        private string ExtractAccessToken(string url)
+        private void ExtractAccessToken(string url)
         {
             if (url.Contains("access_token") && url.Contains("&expires_in="))
             {
-                var at = url.Replace("https://www.facebook.com/connect/login_success.html#access_token=", "");
+                //var at = url.Replace("https://www.facebook.com/connect/login_success.html#access_token=", "");
+                string[] sep =  { "access_token=", "&expires_in=" };
+                var urlSplit = url.Split(sep,StringSplitOptions.None);
 
-                if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.UWP)
-                {
-                    at = url.Replace("http://www.facebook.com/connect/login_success.html#access_token=", "");
-                }
-
-                var accessToken = at.Remove(at.IndexOf("&expires_in="));
-
-                return accessToken;
+                accessToken = urlSplit[1].ToString();
+                //return accessToken;
+            }
+            else
+            {
+               Application.Current.MainPage= (new LoggedOn());
+                accessToken = string.Empty;
             }
 
-            return string.Empty;
+            //return string.Empty;
         }
 
         void Logon_Tapped(object sender, System.EventArgs e)
@@ -59,18 +61,30 @@ namespace HappeningsApp.Views
 
         void Facebook_Tapped(object sender, System.EventArgs e)
         {
-          
-            var apiRequest =$"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}";
-            var wbView = new WebView() 
-            
+          try
             {
-                Source = apiRequest,
-                HeightRequest=1
-            
-            };
+                using (UserDialogs.Instance.Loading("Connecting to FaceBook.."))
+                {
 
-            wbView.Navigated += WbView_Navigated;
-            Content = wbView;
+                    var apiRequest = $"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}";
+                    var wbView = new WebView()
+
+                    {
+                        Source = apiRequest,
+                        HeightRequest = 1
+
+                    };
+
+                    wbView.Navigated += WbView_Navigated;
+                    Content = wbView;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+        
 
         }
 

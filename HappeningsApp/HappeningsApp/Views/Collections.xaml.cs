@@ -14,7 +14,7 @@ namespace HappeningsApp.Views
 	{
         void Handle_Clicked_1(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new facebooktestpage());
+            
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)
