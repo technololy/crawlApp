@@ -19,6 +19,11 @@ namespace HappeningsApp.ViewModels
             get;
             set;
         }
+        public bool IsSuccess
+        {
+            get;
+            set;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private FaceBookProfile _facebookProfile;
 
@@ -32,21 +37,26 @@ namespace HappeningsApp.ViewModels
             }
         }
 
+        internal async Task CallFaceBookGraphAPI(string accessToken)
+        {
+            FaceBookService faceBookService = new FaceBookService();
+            //var facebookServices = customerRestService.FacebookServices();
+
+            FacebookProfile = await faceBookService.GetFacebookProfileAsync(accessToken);
+        }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName=null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
 
-        public async Task SetFacebookUserProfileAsync(string accessToken)
+        public void SetFacebookUserProfileAsync()
         {
-            FaceBookService faceBookService = new FaceBookService();
-            //var facebookServices = customerRestService.FacebookServices();
-
-            FacebookProfile = await faceBookService.GetFacebookProfileAsync(accessToken);
+          
             if ((FacebookProfile!=null))
             {
-                var customerInfo = new UserInfo()
+                User = new UserInfo()
                 {
                     EmailAddress = FacebookProfile.Email,
                     Firstname = FacebookProfile.FirstName,
@@ -62,7 +72,7 @@ namespace HappeningsApp.ViewModels
             {
                 // .Alert("Facebook authentication did not pass", "Error", "ok");
                 UserDialogs.Instance.Alert("Facebook authentication did not pass", "Error", "ok");
-                return;
+
             }
         }
     }
