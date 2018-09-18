@@ -39,20 +39,20 @@ namespace HappeningsApp.Views
         {
             if (url.Contains("access_token") && url.Contains("&expires_in="))
             {
-                //var at = url.Replace("https://www.facebook.com/connect/login_success.html#access_token=", "");
+              
                 string[] sep =  { "access_token=", "&expires_in=" };
                 var urlSplit = url.Split(sep,StringSplitOptions.None);
 
                 accessToken = urlSplit[1].ToString();
-                //return accessToken;
+            
             }
             else
             {
-              // Application.Current.MainPage= (new LoggedOn());
+             
                 accessToken = string.Empty;
             }
 
-            //return string.Empty;
+      
         }
 
         void Logon_Tapped(object sender, System.EventArgs e)
