@@ -15,17 +15,31 @@ namespace HappeningsApp.Views
     {
 
         public string accessToken { get; set; }
-        LoginViewModel _vm = new LoginViewModel();
+        LoginViewModel lvm = new LoginViewModel();
         async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             try
             {
                 var url = e.Url;
-                ExtractAccessToken(url);
-                if (!string.IsNullOrEmpty(accessToken))
+                using (UserDialogs.Instance.Loading("Please wait..."))
                 {
-                   await _vm.SetFacebookUserProfileAsync(accessToken);
+                    lvm.ExtractAccessToken(url);
+                    if (!string.IsNullOrEmpty(lvm.accessToken))
+                    {
+                        await lvm.CallFaceBookGraphAPI(lvm.accessToken);
+                        if (lvm.IsSuccess)
+                        {
+                            using (UserDialogs.Instance.Loading("Facebook Authenticated.Now logging on.."))
+                            {
+                                lvm.SetFacebookUserProfileAsync();
+                                await lvm.CallProviderLoginAPI();
+                            }
+                        
+
+                        }
+                    }
                 }
+              
               
             }
             catch (Exception ex)
@@ -35,25 +49,7 @@ namespace HappeningsApp.Views
             }
         }
 
-        private void ExtractAccessToken(string url)
-        {
-            if (url.Contains("access_token") && url.Contains("&expires_in="))
-            {
-              
-                string[] sep =  { "access_token=", "&expires_in=" };
-                var urlSplit = url.Split(sep,StringSplitOptions.None);
-
-                accessToken = urlSplit[1].ToString();
-            
-            }
-            else
-            {
-             
-                accessToken = string.Empty;
-            }
-
-      
-        }
+ 
 
         void Logon_Tapped(object sender, System.EventArgs e)
         {
@@ -91,12 +87,20 @@ namespace HappeningsApp.Views
         public LoggedOn()
         {
             InitializeComponent();
+            #region commentedOut
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFFFFF");
             //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Magenta;
             //this.NavigationController.NavigationBar.BarTintColor = UIColor.Yellow;
             //var p = Application.Current.MainPage.Navigation.NavigationStack.Last().ToString();
-            //var f = Application.Current.MainPage.Navigation.NavigationStack.Last();
+            //var f = Application.Current.MainPage.Navigation.NavigationStack.Last(); 
+            #endregion
+            this.BindingContext = lvm;
 
+        }
+
+        private  void SignUpTap_Tapped(object sender, EventArgs e)
+        {
+             Navigation.PushModalAsync(new LoginSignUp.SignUp(),true);
         }
     }
 }

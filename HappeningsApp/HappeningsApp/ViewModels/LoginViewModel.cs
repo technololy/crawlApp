@@ -13,6 +13,7 @@ namespace HappeningsApp.ViewModels
     {
         public LoginViewModel()
         {
+            User = new UserInfo();
         }
         public UserInfo User
         {
@@ -24,7 +25,46 @@ namespace HappeningsApp.ViewModels
             get;
             set;
         }
+        public string accessToken { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        internal void Register()
+        {
+            using (UserDialogs.Instance.Loading("Registration you.."))
+            {
+                var reg = new Registeration()
+                {
+                    Email=User.EmailAddress,
+                    Password=User.Password,
+                    ConfirmPassword=User.ConfirmPin,
+                    UserName=User.Username
+                };
+            }
+        }
+
+        internal void ExtractAccessToken(string url)
+        {
+            if (url.Contains("access_token") && url.Contains("&expires_in="))
+            {
+
+                string[] sep = { "access_token=", "&expires_in=" };
+                var urlSplit = url.Split(sep, StringSplitOptions.None);
+
+                accessToken = urlSplit[1].ToString();
+
+            }
+            else
+            {
+
+                accessToken = string.Empty;
+            }
+        }
+
+        internal async Task CallProviderLoginAPI()
+        {
+            await Task.Delay(5000);
+        }
+
         private FaceBookProfile _facebookProfile;
 
         public FaceBookProfile FacebookProfile
@@ -39,10 +79,13 @@ namespace HappeningsApp.ViewModels
 
         internal async Task CallFaceBookGraphAPI(string accessToken)
         {
+            IsSuccess = false;
             FaceBookService faceBookService = new FaceBookService();
             //var facebookServices = customerRestService.FacebookServices();
 
             FacebookProfile = await faceBookService.GetFacebookProfileAsync(accessToken);
+            if (FacebookProfile != null)
+                IsSuccess = true;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName=null)

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              NavigationPage.HasBackButton="True"
+     xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+     xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black"
+             
+             x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Done" Activated="Done_Activated" Text="Done" Icon="tab_about.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="40" Spacing="30">
+            <StackLayout Spacing="0">
+                <c:BorderlessEntry Placeholder="Username"  
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Username}"  PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+            </StackLayout>
+            <StackLayout Spacing="0">
+                <c:BorderlessEntry Placeholder="Email"  
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" TextColor="White"  Text="{Binding User.EmailAddress}"  PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+            </StackLayout>
+            <StackLayout Spacing="0">
+                <c:BorderlessEntry Placeholder="Password"  
+                                   IsSpellCheckEnabled="false" IsPassword="True"
+                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Password}"   PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+            </StackLayout>
+            <StackLayout Spacing="0">
+                <c:BorderlessEntry Placeholder="Confirm Password"  
+                                   IsSpellCheckEnabled="false" IsPassword="True"
+                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Password}"   PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Sign Up" x:Name="signUp" Clicked="signUp_Clicked" CornerRadius="23" 
+                        BorderWidth="1"    BackgroundColor="#FF00A1" 
+                        TextColor="White" />
+            </StackLayout>
+            <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="goBack" Tapped="goBack_Tapped"/>
+                </StackLayout.GestureRecognizers>
+                <Label HorizontalOptions="CenterAndExpand"  Text="Dismiss" TextColor="#FF00A1"  FontAttributes="Bold" />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

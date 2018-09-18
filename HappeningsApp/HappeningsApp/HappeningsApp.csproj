@@ -43,6 +43,9 @@
     <EmbeddedResource Update="Views\Home.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginSignUp\SignUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\TodayPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -50,7 +53,6 @@
 
   <ItemGroup>
     <Folder Include="Custom\" />
-    <Folder Include="Views\LoginSignUp\" />
     <Folder Include="Services\FaceBook\" />
   </ItemGroup>
   <ItemGroup>
