@@ -14,7 +14,11 @@ namespace HappeningsApp.ViewModels
         public LoginViewModel()
         {
         }
-
+        public UserInfo User
+        {
+            get;
+            set;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private FaceBookProfile _facebookProfile;
 

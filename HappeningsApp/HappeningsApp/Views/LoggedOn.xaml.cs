@@ -48,7 +48,7 @@ namespace HappeningsApp.Views
             }
             else
             {
-               Application.Current.MainPage= (new LoggedOn());
+              // Application.Current.MainPage= (new LoggedOn());
                 accessToken = string.Empty;
             }
 
