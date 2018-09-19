@@ -226,7 +226,5 @@
   <ItemGroup>
     <BundleResource Include="Resources\sharewhite%403x.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Renderers\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

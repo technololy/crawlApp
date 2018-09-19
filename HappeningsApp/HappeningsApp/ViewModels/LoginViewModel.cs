@@ -6,6 +6,7 @@ using HappeningsApp.Models;
 using HappeningsApp.Services.FaceBook;
 using Xamarin.Forms;
 using Acr.UserDialogs;
+using HappeningsApp.Services;
 
 namespace HappeningsApp.ViewModels
 {
@@ -28,7 +29,7 @@ namespace HappeningsApp.ViewModels
         public string accessToken { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        internal void Register()
+        internal async void Register()
         {
             using (UserDialogs.Instance.Loading("Registration you.."))
             {
@@ -39,6 +40,18 @@ namespace HappeningsApp.ViewModels
                     ConfirmPassword=User.ConfirmPin,
                     UserName=User.Username
                 };
+
+                APIService api = new APIService();
+                var a = await api.Post<Registeration>(reg, "api/Account/register");
+                if (a.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result =await a.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    var result = await a.Content.ReadAsStringAsync();
+
+                }
             }
         }
 
@@ -77,7 +90,7 @@ namespace HappeningsApp.ViewModels
             }
         }
 
-        internal async Task CallFaceBookGraphAPI(string accessToken)
+        public async Task CallFaceBookGraphAPI(string accessToken)
         {
             IsSuccess = false;
             FaceBookService faceBookService = new FaceBookService();

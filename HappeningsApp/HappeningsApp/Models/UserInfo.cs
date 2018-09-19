@@ -25,5 +25,19 @@ namespace HappeningsApp.Models
         public string ConfirmPin { get; set; }
 
 
+
+        public class GetUserInfo
+        {
+            public string UserID { get; set; }
+            public string UserName { get; set; }
+            public string Email { get; set; }
+            public bool HasRegistered { get; set; }
+            public object LoginProvider { get; set; }
+        }
+
+
     }
+
+
+
 }
