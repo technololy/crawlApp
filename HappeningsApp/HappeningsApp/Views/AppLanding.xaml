@@ -5,7 +5,9 @@
             NavigationPage.HasNavigationBar="False"
              xmlns:customControl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList"
              BackgroundColor="#000015"
-              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea = "true"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              >
     <Grid RowSpacing="0" >
         <Grid.RowDefinitions>

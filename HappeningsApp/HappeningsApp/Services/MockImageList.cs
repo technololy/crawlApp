@@ -41,11 +41,6 @@ namespace HappeningsApp.Services
                 new ImageItems{Name="Sallah Deals",Image="salahgrill.jpg"},
                
            
-                     //new ImageItems{Name="Happeing at Lagos Cathedral",Image="lagoscathedral.jpg"},
-               
-               
-             
-                //new ImageItems{Name="Check out exciting homes",Image="onethousandandfour.jpg"},
             };
 
             foreach (var item in imageList)

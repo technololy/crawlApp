@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,8 +52,26 @@ namespace HappeningsApp.Views
 
  
 
-        void Logon_Tapped(object sender, System.EventArgs e)
+       async void Logon_Tapped(object sender, System.EventArgs e)
         {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                await DisplayAlert("Hi there", "It appears you have no internet access", "OK");
+                return;
+            }
+            using(UserDialogs.Instance.Loading())
+            {
+                var resp = await lvm.GetTokenFromAPI();
+                if (resp)
+                {
+                   await Navigation.PushAsync(new AppLanding());
+
+                }
+                else
+                {
+                   await DisplayAlert("Info", "Something is not right. Please try again", "OK");
+                }
+            }
         }
 
         void Facebook_Tapped(object sender, System.EventArgs e)

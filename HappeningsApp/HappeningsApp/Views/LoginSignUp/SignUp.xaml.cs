@@ -34,8 +34,9 @@ namespace HappeningsApp.Views.LoginSignUp
                     //navigate to sign in user
                 if (tkResponse)
                 {
-                    await Navigation.PopModalAsync(true);
-                    await Navigation.PushAsync(new AppLanding());
+                     Navigation.PopModalAsync(true);
+                    Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+
 
 
                 }
@@ -49,12 +50,13 @@ namespace HappeningsApp.Views.LoginSignUp
 
         private void Done_Activated(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void goBack_Tapped(object sender, EventArgs e)
+        private  void goBack_Tapped(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync(true);
+             Navigation.PopModalAsync();
+
         }
     }
 }

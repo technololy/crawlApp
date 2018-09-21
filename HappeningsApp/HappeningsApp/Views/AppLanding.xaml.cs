@@ -19,6 +19,8 @@ namespace HappeningsApp.Views
 		public AppLanding ()
 		{
 			InitializeComponent ();
+            introPageViewMod = new IntroPageViewModel();
+
             Deals_Tapped(this, null);
           
 		}
@@ -26,7 +28,6 @@ namespace HappeningsApp.Views
         private void Deals_Tapped(object sender, EventArgs e)
         {
             var page =new DealsList();
-            introPageViewMod = new IntroPageViewModel();
             //nearBy = new NearByViewModel();
             BindingContext = introPageViewMod;
             page.Content.BackgroundColor = Color.FromHex("#000015");
@@ -39,6 +40,11 @@ namespace HappeningsApp.Views
 
         }
 
+        protected override void OnAppearing()
+        {
+
+            base.OnAppearing(); 
+        }
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
             var page = new Home();

@@ -24,19 +24,31 @@
                 <StackLayout Spacing="0">
                     <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
-                                    HorizontalTextAlignment="Start" TextColor="White"  PlaceholderColor="White"  />
+                                    HorizontalTextAlignment="Start" 
+                                       TextColor="White" 
+                                       Text="{Binding User.Username}"
+                                       PlaceholderColor="White"  />
                     <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
                     <!--<bdEntry:LineEntry Placeholder="Password" IsValid="true"  BorderColor="#FF00A1" 
                                    PlaceholderColor="White" HorizontalTextAlignment="Start" 
                                    IsPassword="True" />-->
-                    <c:BorderlessEntry Placeholder="Password" IsPassword="True"  IsSpellCheckEnabled="false"
-                                    HorizontalTextAlignment="Start"   TextColor="White" PlaceholderColor="White"  />
+                    <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
+                                       IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start"  
+                                       TextColor="White" 
+                                       PlaceholderColor="White" 
+                                       Text="{Binding User.Password}"
+                                       />
                     <BoxView HeightRequest="2" BackgroundColor="#FF00A1"  />
                 </StackLayout>
                 <StackLayout HorizontalOptions="End" >
-                    <Label Text="Forgot Password?" TextColor="White" HorizontalOptions="EndAndExpand" />
+                    <Label Text="Forgot Password?" 
+                           TextColor="White" 
+                           HorizontalOptions="EndAndExpand" 
+
+                           />
                 </StackLayout>
                 <StackLayout >
                     <Button Text="Login" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 

@@ -76,6 +76,55 @@ namespace HappeningsApp.Services
             return res;
         }
 
+
+
+        internal async static Task<HttpResponseMessage> PostNew<T>(T model, string method)
+        {
+            //string response = "";
+            string json = "";
+            json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF8);
+            HttpResponseMessage res = new HttpResponseMessage();
+            string url = "";
+            url = Constants.CrawlAPI + method;
+          
+            using (var client = new HttpClient())
+            {
+                client.MaxResponseContentBufferSize = 256000;
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                                                        ("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+                
+                res = await client.PostAsync(url, content);
+
+            }
+
+            return res;
+        }
+
+        internal async static Task<HttpResponseMessage> Get( string method)
+        {
+
+            HttpResponseMessage res = new HttpResponseMessage();
+            string url = "";
+            url = Constants.CrawlAPI + method;
+
+            using (var client = new HttpClient())
+            {
+                client.MaxResponseContentBufferSize = 256000;
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                                                        ("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+
+                res = await client.GetAsync(url);
+
+            }
+
+            return res;
+        }
+
         internal async static Task<string> RegisterLocal(Registeration reg)
         {
             try

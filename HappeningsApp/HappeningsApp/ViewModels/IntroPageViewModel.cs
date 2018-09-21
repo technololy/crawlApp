@@ -12,13 +12,29 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<ImageItems> dealsItems { get; set; }
         public ObservableCollection<ImageItems> nearbyItems { get; set; }
         public ObservableCollection<ImageItems> category { get; set; }
+        public ObservableCollection<Deals> dealsfromAPI { get; set; }
+        //public IntroPageViewModel()
+        //{
+        //    MockImageList m = new MockImageList();
+        //    DealsService dealsService = new DealsService();
+        //    nearbyItems = m.NearBy();
+        //    dealsItems = m.GetDeals();
+        //    category = m.Category();
+        //}
+        
         public IntroPageViewModel()
         {
-            MockImageList m = new MockImageList();
-            nearbyItems = m.NearBy();
-            dealsItems = m.GetDeals();
-            category = m.Category();
+            
+            GetDeals();
+
         }
 
+        private async void GetDeals()
+        {
+            DealsService ds = new DealsService();
+
+            dealsfromAPI = await ds.GetDeals();
+
+        }
     }
 }
