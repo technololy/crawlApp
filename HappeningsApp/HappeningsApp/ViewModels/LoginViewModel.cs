@@ -7,6 +7,9 @@ using HappeningsApp.Services.FaceBook;
 using Xamarin.Forms;
 using Acr.UserDialogs;
 using HappeningsApp.Services;
+using HappeningsApp.Services.LoginSignUp;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace HappeningsApp.ViewModels
 {
@@ -27,10 +30,35 @@ namespace HappeningsApp.ViewModels
             set;
         }
         public string accessToken { get; set; }
+
+        internal async Task<bool> GetTokenFromAPI()
+        {
+            IsSuccess = false;
+            var tk = await APIService.GetToken(User);
+            if (tk.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var res = await tk.Content.ReadAsStringAsync();
+                var cont = JsonConvert.DeserializeObject<TokenResponse>(res);
+                GlobalStaticFields.Token = cont.access_token;
+                IsSuccess = true;
+                return IsSuccess;
+            
+            }
+            else
+            {
+                var res = tk.Content.ReadAsStringAsync();
+                return IsSuccess;
+
+
+
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        internal async void Register()
+        internal async Task<bool> Register()
         {
+            IsSuccess = false;
             using (UserDialogs.Instance.Loading("Registration you.."))
             {
                 var reg = new Registeration()
@@ -41,18 +69,40 @@ namespace HappeningsApp.ViewModels
                     UserName=User.Username
                 };
 
-                APIService api = new APIService();
-                var a = await api.Post<Registeration>(reg, "api/Account/register");
-                if (a.StatusCode == System.Net.HttpStatusCode.OK)
+                //APIService api = new APIService();
+                //var a = await APIService.Post<Registeration>(reg, "api/Account/register");
+                var aa = await LoginSignUp.RegisterLocal(reg);
+                //if (a.StatusCode == System.Net.HttpStatusCode.OK)
+                //{
+                //    var result =await a.Content.ReadAsStringAsync();
+                //}
+                //else
+                //{
+                //    var result = await a.Content.ReadAsStringAsync();
+                if (aa == null)
                 {
-                    var result =await a.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    var result = await a.Content.ReadAsStringAsync();
+                    UserDialogs.Instance.Alert("Info", "Error", "OK"); 
+                    return IsSuccess;
 
                 }
+                if (aa.ContainsKey(false))
+                {
+                    UserDialogs.Instance.Alert("Info", "Error during registration", "OK");
+                    return IsSuccess;
+
+                }
+                else if(aa.ContainsKey(true))
+                {
+                    //UserDialogs.Instance.Alert("Success", "Registration successful", "OK");
+                    IsSuccess = true;
+                    return IsSuccess;
+
+                }
+                //}
+                return IsSuccess;
             }
+
+
         }
 
         internal void ExtractAccessToken(string url)

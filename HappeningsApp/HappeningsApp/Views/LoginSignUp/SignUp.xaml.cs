@@ -1,4 +1,5 @@
 ﻿using HappeningsApp.ViewModels;
+using HappeningsApp.Views.AppViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,27 @@ namespace HappeningsApp.Views.LoginSignUp
            
 		}
 
-        private void signUp_Clicked(object sender, EventArgs e)
+        private async void signUp_Clicked(object sender, EventArgs e)
         {
-             lvm.Register();
+           var res = await lvm.Register();
+            if (res)
+            {
+             var tkResponse =  await lvm.GetTokenFromAPI();
+              
+                    //navigate to sign in user
+                if (tkResponse)
+                {
+                    await Navigation.PopModalAsync(true);
+                    await Navigation.PushAsync(new AppLanding());
+
+
+                }
+                else
+                {
+                   await DisplayAlert("Sorry", "Sign in not successful at this time", "OK");
+                }
+
+            }
         }
 
         private void Done_Activated(object sender, EventArgs e)

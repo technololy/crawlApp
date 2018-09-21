@@ -10,6 +10,6 @@ namespace HappeningsApp.Services
         public const string fbClientID = "1752084648235245";
         public const string redirectURI = "https://www.facebook.com/connect/login_success.html";
         public const string graphAPI = "https://graph.facebook.com/v3.0/me/?fields=name,picture,work,website,religion,location,age_range,email,first_name,last_name,gender,hometown";
-        public const string CrawlAPI = "http://crawl20180918044404.azurewebsites.net/";
+        public const string CrawlAPI = "http://crawlwebapi.azurewebsites.net/";
     }
 }

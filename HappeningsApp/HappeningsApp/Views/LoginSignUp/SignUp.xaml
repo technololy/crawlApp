@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               NavigationPage.HasBackButton="True"
@@ -33,7 +33,7 @@
             <StackLayout Spacing="0">
                 <c:BorderlessEntry Placeholder="Confirm Password"  
                                    IsSpellCheckEnabled="false" IsPassword="True"
-                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Password}"   PlaceholderColor="White"  />
+                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.ConfirmPin}"   PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
             </StackLayout>
             <StackLayout>

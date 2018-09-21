@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace HappeningsApp.Services
@@ -32,5 +33,16 @@ namespace HappeningsApp.Services
                 throw new NotSupportedException();
             }
         }
+
+
+        public bool CheckConnection()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+                return true;
+            else
+                return false;
+        }
+
+
     }
 }
