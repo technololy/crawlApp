@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using DLToolkit.Forms.Controls;
+using FFImageLoading.Forms.Droid;
 
 namespace HappeningsApp.Droid
 {
@@ -19,6 +20,8 @@ namespace HappeningsApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            //CachedImageRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();

@@ -118,7 +118,7 @@ namespace HappeningsApp.Services
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
-                res = await client.GetAsync(url);
+                res =  client.GetAsync(url).Result;
 
             }
 

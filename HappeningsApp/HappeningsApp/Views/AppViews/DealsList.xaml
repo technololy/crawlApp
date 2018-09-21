@@ -4,6 +4,7 @@
              x:Class="HappeningsApp.Views.AppViews.DealsList"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#000015"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              >
     <ContentPage.Content>
      
@@ -15,14 +16,17 @@
                 </Label.GestureRecognizers>
                 </Label>
             
-               <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+               <ListView ItemsSource="{Binding dealsfromAPI}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>
                             <Frame Padding="0" Margin="0,0,0,20" IsClippedToBounds="true" BackgroundColor="Transparent" HeightRequest="300" CornerRadius="0">
                                   
-                                        <Image Source="{Binding Image}" Aspect="Fill" />
-                                    
+<!--                                    <Image Source="{Binding ImagePath}" Aspect="AspectFit" />-->
+                                <ff:CachedImage Source="{Binding ImagePath}"/>
+ 
+                                    <Label Text="{Binding Name}" TextColor="White" />
+                                    <Label Text="{Binding Owner}" TextColor="White" />
                                 </Frame>
                         </ViewCell>
                        

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
 
@@ -25,19 +25,20 @@ namespace HappeningsApp.iOS
           
             global::Xamarin.Forms.Forms.Init();
 
-            UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
+            //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
 
-            UINavigationBar.Appearance.BarTintColor = UIColor.Red;
-            UINavigationBar.Appearance.TintColor = UIColor.Green;
+            //UINavigationBar.Appearance.BarTintColor = UIColor.Red;
+            //UINavigationBar.Appearance.TintColor = UIColor.Green;
             //UITabBar.Appearance.TintColor = new UIColor(90 / 255f, 36 / 255f, 191 / 255f, 1.0f);
             //UITabBar.Appearance.BarTintColor = new UIColor(245 / 255f, 246 / 255f, 247 / 255f, 1.0f);
             //UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             //{
             //    TextColor = new UIColor(112 / 255f, 112 / 255f, 112 / 255f, 1.0f)
             //});
+            CachedImageRenderer.Init();
             LoadApplication(new App());
-            UINavigationBar.Appearance.BarTintColor = UIColor.Red;
-            UINavigationBar.Appearance.TintColor = UIColor.Green;
+            //UINavigationBar.Appearance.BarTintColor = UIColor.Red;
+            //UINavigationBar.Appearance.TintColor = UIColor.Green;
            // UINavigationBar.Appearance.BarTintColor = new UIColor(245 / 255f, 246 / 255f, 247 / 255f, 1.0f);
            // UINavigationBar.Appearance.TintColor = new UIColor(90 / 255f, 36 / 255f, 191 / 255f, 1.0f);
             return base.FinishedLaunching(app, options);

@@ -28,8 +28,7 @@ namespace HappeningsApp.Views
         private void Deals_Tapped(object sender, EventArgs e)
         {
             var page =new DealsList();
-            //nearBy = new NearByViewModel();
-            BindingContext = introPageViewMod;
+
             page.Content.BackgroundColor = Color.FromHex("#000015");
             PlaceHolder.Content = page.Content;
             lblDeals.TextColor = Color.Magenta;
@@ -37,14 +36,11 @@ namespace HappeningsApp.Views
             lblCategories.TextColor = Color.White;
             lblCollections.TextColor = Color.White;
 
+            BindingContext = introPageViewMod;
 
         }
 
-        protected override void OnAppearing()
-        {
-
-            base.OnAppearing(); 
-        }
+     
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
             var page = new Home();
