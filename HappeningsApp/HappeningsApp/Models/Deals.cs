@@ -13,6 +13,11 @@ namespace HappeningsApp.Models
         public string Details { get; set; }
         public string Category { get; set; }
         public int Owner_Id { get; set; }
+        public string Owner_Location
+        {
+            get;
+            set;
+        }
         public string Owner { get; set; }
         public DateTime Expiration_Date { get; set; }
         public string ImagePath { get; set; }

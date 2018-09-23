@@ -92,8 +92,8 @@ namespace HappeningsApp.Views
             }
             using(UserDialogs.Instance.Loading(""))
             {
-                lvm.User.Username = "lolade7";
-                lvm.User.Password = "Qwe123!";
+                //lvm.User.Username = "lolade7";
+                //lvm.User.Password = "Qwe123!";
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
                 {

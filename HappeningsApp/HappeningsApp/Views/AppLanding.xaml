@@ -26,7 +26,7 @@
             <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start">
                 <Label Text="CRAWL" TextColor="White" HorizontalOptions="Center" FontSize="30"  />
             </StackLayout>
-            <Image Source="ic_search_white.png" HeightRequest="30" WidthRequest="30" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+            <Image Source="ic_search_white.png" HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                 
             </Image>
         </Grid>

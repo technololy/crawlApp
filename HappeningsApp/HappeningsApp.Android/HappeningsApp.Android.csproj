@@ -135,6 +135,7 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\fbCrawlBlkPk.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ggCrawlPkBlk.png" />
+    <AndroidResource Include="Resources\drawable\crawlicon120.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

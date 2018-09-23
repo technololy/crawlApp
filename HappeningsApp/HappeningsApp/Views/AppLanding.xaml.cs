@@ -63,6 +63,8 @@ namespace HappeningsApp.Views
         private void Categories_Tapped(object sender, EventArgs e)
         {
             var page = new CategoriesPage();
+            page.Content.BackgroundColor = Color.FromHex("#000015");
+
             PlaceHolder.Content = page.Content;
             //lblDeals.TextColor = Color.White;
             //lblThisWeek.TextColor = Color.White;

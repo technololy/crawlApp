@@ -8,23 +8,28 @@
          xmlns:b="clr-namespace:HappeningsApp.Custom"    
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding collections}">
+        <ListView ItemsSource="{Binding collections}" SeparatorVisibility="None" 
+                  HasUnevenRows="true" Footer="" RowHeight="150" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Padding="0" BackgroundColor="DarkGray" VerticalOptions="CenterAndExpand" HeightRequest="300">
-                            <Grid >
+                 <!--    <Frame Padding="0" BackgroundColor="Black" VerticalOptions="CenterAndExpand" 
+               HeightRequest="150" HasShadow="false" CornerRadius="0" Margin="10" >
+                            <Grid ColumnSpacing="0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <BoxView BackgroundColor="DarkKhaki" Grid.Column="0"  WidthRequest="50"/>
-                                <StackLayout Grid.Column="1">
-                                    <Label Text="{Binding Name}" TextColor="White" />
+                                <BoxView BackgroundColor="Silver" Grid.Column="0"  WidthRequest="120"/>
+                <Frame BackgroundColor="Gray" HasShadow="false" Padding="0" Grid.Column="1" CornerRadius="0" >
+                     <StackLayout >
+                                    <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand" TextColor="White" />
                                     
                                 </StackLayout>
+                </Frame>
+                               
                             </Grid> 
-                        </Frame>
+                        </Frame>-->
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
