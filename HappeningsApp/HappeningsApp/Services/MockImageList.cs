@@ -140,5 +140,11 @@ namespace HappeningsApp.Services
 
             return imageItems;
         }
+
+        //internal ObservableCollection<CollectionsRootObject> GetCollections()
+        //{
+        //    var collec = new CollectionsRootObject();
+        //    var co
+        //}
     }
 }

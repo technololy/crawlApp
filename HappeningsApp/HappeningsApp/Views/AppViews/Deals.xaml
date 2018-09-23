@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.AppViews.Deals"
           BackgroundColor="#000015"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:customControl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList"
              NavigationPage.HasNavigationBar="False"
               xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
@@ -39,7 +40,8 @@
                             <DataTemplate>
                                 <Frame Padding="0" IsClippedToBounds="True" HeightRequest="200" WidthRequest="300" BackgroundColor="Transparent" CornerRadius="0">
                                     <Grid>
-                                        <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                        <!--<Image Source="{Binding Image}" Aspect="AspectFill" />-->
+                                        <ff:CachedImage Source="{Binding Image}" Aspect="AspectFill" />
                                                                             </Grid>
                                 </Frame>
                             </DataTemplate>
@@ -69,8 +71,8 @@
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
                                     <Frame Grid.Row="0" Padding="0" IsClippedToBounds="True" HeightRequest="140" WidthRequest="180" BackgroundColor="Transparent" CornerRadius="0">
-                                        <Image Source="{Binding Image}" Aspect="AspectFill" />
-
+                                        <!--<Image Source="{Binding Image}" Aspect="AspectFill" />-->
+                                        <ff:CachedImage Source="{Binding Image}" Aspect="AspectFill" />
                                     </Frame>
                                     <Grid Grid.Row="1"  HeightRequest="50" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand">
                                         <Grid.RowDefinitions>
@@ -114,7 +116,8 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
 
-                                        <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />
+                                        <!--<Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />-->
+                                        <ff:CachedImage Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" />
                                         <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="Medium" TextColor="White" 
                                 
                                Text="{Binding Name}" 

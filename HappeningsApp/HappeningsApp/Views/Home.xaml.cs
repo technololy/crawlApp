@@ -17,7 +17,7 @@ namespace HappeningsApp.Views
 		public Home ()
 		{
 			InitializeComponent ();
-            introPageViewMod = new IntroPageViewModel();
+            //introPageViewMod = new IntroPageViewModel();
             //nearBy = new NearByViewModel();
             BindingContext = introPageViewMod;
 		}

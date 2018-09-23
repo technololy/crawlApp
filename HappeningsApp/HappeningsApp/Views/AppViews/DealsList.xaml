@@ -5,6 +5,8 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#000015"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             
              >
     <ContentPage.Content>
      
@@ -16,17 +18,31 @@
                 </Label.GestureRecognizers>
                 </Label>
             
-               <ListView ItemsSource="{Binding dealsfromAPI}" x:Name="dealsListview" SeparatorVisibility="None" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+               <ListView ItemsSource="{Binding dealsfromAPI}" x:Name="dealsListview" SeparatorVisibility="None" IsPullToRefreshEnabled="True"  ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" Margin="0,0,0,20" IsClippedToBounds="true" BackgroundColor="Transparent" HeightRequest="300" CornerRadius="0">
+                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="250" CornerRadius="0">
+                                <Grid HeightRequest="300">
+                                    
+                                        
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="10*" />-->
+
+                                        <RowDefinition Height="60*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="10*" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                    <forms:CachedImage HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
+                                    <Image Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0" />
+                                
+                                    
+                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Name}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
+                                </Grid>
+                            
                                   
-<!--                                    <Image Source="{Binding ImagePath}" Aspect="AspectFit" />-->
-                                <ff:CachedImage Source="{Binding ImagePath}"/>
- 
-                                    <Label Text="{Binding Name}" TextColor="White" />
-                                    <Label Text="{Binding Owner}" TextColor="White" />
                                 </Frame>
                         </ViewCell>
                        

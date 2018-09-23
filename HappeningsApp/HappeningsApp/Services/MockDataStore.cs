@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,6 +30,18 @@ namespace HappeningsApp.Services
             {
                 items.Add(item);
             }
+        }
+
+        internal ObservableCollection<Collections> GetCollections()
+        {
+            ObservableCollection<Collections> cc = new ObservableCollection<Collections>()
+            {
+                new Collections{ Name = "PLACES TO GO", Number = 0},
+                new Collections{ Name = "done and dusted", Number = 0},
+            };
+
+            return cc;
+
         }
 
         public async Task<bool> AddItemAsync(Item item)

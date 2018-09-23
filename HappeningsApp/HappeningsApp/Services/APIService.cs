@@ -118,7 +118,7 @@ namespace HappeningsApp.Services
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
-                res =  client.GetAsync(url).Result;
+                res = client.GetAsync(url).Result;
 
             }
 
@@ -139,15 +139,6 @@ namespace HappeningsApp.Services
                 var message = await client.PostAsync(url, stringContent).ConfigureAwait(true);
                 var resultt = await message.Content.ReadAsStringAsync();
 
-                //return resultt;
-
-
-
-                //Registeration r = new Registeration();
-
-                //r = reg;
-
-                //return Task.FromResult(r);
                 return resultt;
             }
             catch (Exception ex)
@@ -156,6 +147,40 @@ namespace HappeningsApp.Services
                 return String.Empty;
             }
      
+        }
+
+
+
+
+        internal async static Task<HttpResponseMessage> RegisterLocalNew(Registeration reg)
+        {
+            HttpResponseMessage responseMessage = new HttpResponseMessage();
+            try
+            {
+                string json = "";
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                //client.BaseAddress = new Uri(Constants.CrawlAPI);
+                string url = Constants.CrawlAPI + "api/account/register";
+                json = JsonConvert.SerializeObject(reg);
+                var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var client2 = new HttpClient())
+                {
+                    client2.MaxResponseContentBufferSize = 256000;
+
+                    client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    responseMessage = await client2.PostAsync(url, stringContent).ConfigureAwait(true);
+                    //var resultt = await responseMessage.Content.ReadAsStringAsync();
+
+                }
+
+                return responseMessage;
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                return new HttpResponseMessage();
+            }
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace HappeningsApp.Services.FaceBook
 
         public async Task<FaceBookProfile> GetFacebookProfileAsync(string accessToken)
         {
-            var requestUrl = $"{Constants.graphAPI}&access_token={accessToken}";
+            var requestUrl = $"{Constants.graphAPIs}&access_token={accessToken}";
             var httpClient = new HttpClient();
 
             var userJson = await httpClient.GetStringAsync(requestUrl);

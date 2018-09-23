@@ -157,7 +157,7 @@ namespace HappeningsApp.ViewModels
         }
 
 
-        public void SetFacebookUserProfileAsync()
+        public async void SetFacebookUserProfileAsync()
         {
           
             if ((FacebookProfile!=null))
@@ -167,11 +167,12 @@ namespace HappeningsApp.ViewModels
                     EmailAddress = FacebookProfile.Email,
                     Firstname = FacebookProfile.FirstName,
                     Lastname = FacebookProfile.LastName,
-                    Gender = FacebookProfile.Gender
-
+                    Password= "Qwe123!",
+                    ConfirmPin = "Qwe123!",
+                    Username =FacebookProfile.Id
+                    
                 };
-             
-
+              
 
             }
             else

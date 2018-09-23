@@ -11,13 +11,28 @@
              >
     <Grid RowSpacing="0" >
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+
             <RowDefinition Height="*" />
             <RowDefinition Height="0.3" />
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
-        <ContentView x:Name="PlaceHolder" Grid.Row="0" />
-        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="1" Opacity="0.5" />
-        <Grid Grid.Row="2" RowSpacing="0" BackgroundColor="Black" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start">
+                <Label Text="CRAWL" TextColor="White" HorizontalOptions="Center" FontSize="30"  />
+            </StackLayout>
+            <Image Source="ic_search_white.png" HeightRequest="30" WidthRequest="30" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                
+            </Image>
+        </Grid>
+        <ContentView x:Name="PlaceHolder" Grid.Row="2" />
+        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="3" Opacity="0.5" />
+        <Grid Grid.Row="4" RowSpacing="0" BackgroundColor="Black" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -30,26 +45,33 @@
                     <TapGestureRecognizer  x:Name="Deals" Tapped="Deals_Tapped"/>
                 </StackLayout.GestureRecognizers>
 
-                <Label Text="Deals"  x:Name="lblDeals" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="DEALS"  TextColor="White" x:Name="lblDeals" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="Black" x:Name="bxVwDeals" HeightRequest="4" />
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="1"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
                 </StackLayout.GestureRecognizers>
-               
-                <Label Text="This Week" x:Name="lblThisWeek" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="15"/>
+
+                <Label Text="THIS WEEK" LineBreakMode="NoWrap" x:Name="lblThisWeek" HorizontalOptions="Center" TextColor="White" VerticalOptions="CenterAndExpand" FontSize="12"/>
+                <BoxView BackgroundColor="Black" x:Name="bxVwthisWeek" HeightRequest="4" />
+
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="2"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Label Text="Categories" x:Name="lblCategories" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="CATEGORIES" x:Name="lblCategories" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="White" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="Black" x:Name="bxVwCat" HeightRequest="4" />
+
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="3"  BackgroundColor="Transparent" >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Collections" Tapped="Collections_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Label Text="Collections" x:Name="lblCollections" VerticalOptions="CenterAndExpand" FontSize="15" HorizontalOptions="Center"/>
+                <Label Text="COLLECTIONS" x:Name="lblCollections"  TextColor="White" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="Black" x:Name="bxVwCol" HeightRequest="4" />
+
             </StackLayout>
         </Grid>
     </Grid>

@@ -33,7 +33,38 @@ namespace HappeningsApp.Views
                             using (UserDialogs.Instance.Loading("Facebook Authenticated.Now logging on.."))
                             {
                                 lvm.SetFacebookUserProfileAsync();
-                                await lvm.CallProviderLoginAPI();
+                                var lg =await lvm.GetTokenFromAPI();
+                                if (lg)
+                                {
+                                    Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                                }
+
+                                else
+                                {
+                                    var res = await lvm.Register();
+                                    if (res)
+                                    {
+                                        var tkResponse = await lvm.GetTokenFromAPI();
+
+                                        //navigate to sign in user
+                                        if (tkResponse)
+                                        {
+                                            Navigation.PopModalAsync(true);
+                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+
+
+
+                                        }
+                                        else
+                                        {
+                                            await DisplayAlert("Sorry", "Sign in not successful at this time", "OK");
+                                        }
+
+                                    }
+                                }
+                               
+
+                                //await lvm.CallProviderLoginAPI();
                             }
                         
 
@@ -59,8 +90,10 @@ namespace HappeningsApp.Views
                 await DisplayAlert("Hi there", "It appears you have no internet access", "OK");
                 return;
             }
-            using(UserDialogs.Instance.Loading())
+            using(UserDialogs.Instance.Loading(""))
             {
+                lvm.User.Username = "lolade7";
+                lvm.User.Password = "Qwe123!";
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
                 {

@@ -17,7 +17,7 @@ namespace HappeningsApp.Views
         public CategoriesPage ()
 		{
 			InitializeComponent ();
-            BindingContext = categoryViewModel = new CategoryViewModel();
+            //BindingContext = categoryViewModel = new CategoryViewModel();
 
         }
 	}

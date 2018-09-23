@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="HappeningsApp.Views.CategoriesPage">
     <ContentPage.Content>
-        <Grid>
+        <!--<Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -12,8 +13,8 @@
             </Grid.ColumnDefinitions>
             
             
-        </Grid>
-        <!--<ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategoryItems}">
+        </Grid>-->
+        <ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategfromAPI}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -21,15 +22,15 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            
-                            <Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                            <Label Grid.Row="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="White"   Text="{Binding Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <ff:CachedImage Grid.Row="0" HeightRequest="300"  Aspect="Fill"  Source="{Binding ImagePath}" Margin="5,0,5,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                            <!--<Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
+                            <Label Grid.Row="0" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" TextColor="White"   Text="{Binding CategoryName}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
                         </Grid>
                        
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

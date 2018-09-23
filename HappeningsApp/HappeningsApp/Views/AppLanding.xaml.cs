@@ -31,10 +31,14 @@ namespace HappeningsApp.Views
 
             page.Content.BackgroundColor = Color.FromHex("#000015");
             PlaceHolder.Content = page.Content;
-            lblDeals.TextColor = Color.Magenta;
-            lblThisWeek.TextColor = Color.White;
-            lblCategories.TextColor = Color.White;
-            lblCollections.TextColor = Color.White;
+            //lblDeals.TextColor = Color.Magenta;
+            //lblThisWeek.TextColor = Color.White;
+            //lblCategories.TextColor = Color.White;
+            //lblCollections.TextColor = Color.White;
+            bxVwDeals.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwCat.BackgroundColor = Color.Black;
+            bxVwCol.BackgroundColor = Color.Black;
+            bxVwthisWeek.BackgroundColor = Color.Black;
 
             BindingContext = introPageViewMod;
 
@@ -43,21 +47,33 @@ namespace HappeningsApp.Views
      
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
-            var page = new Home();
+            var page = new Deals();
             PlaceHolder.Content = page.Content;
-            lblDeals.TextColor = Color.White;
-            lblThisWeek.TextColor = Color.Magenta;
-            lblCategories.TextColor = Color.White;
-            lblCollections.TextColor = Color.White;
-
+            bxVwthisWeek.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwCat.BackgroundColor = Color.Black;
+            bxVwCol.BackgroundColor = Color.Black;
+            bxVwDeals.BackgroundColor = Color.Black;
+            //lblDeals.TextColor = Color.White;
+            //lblThisWeek.TextColor = Color.Magenta;
+            //lblCategories.TextColor = Color.White;
+            //lblCollections.TextColor = Color.White;
+            BindingContext = introPageViewMod;
         }
 
         private void Categories_Tapped(object sender, EventArgs e)
         {
-            lblDeals.TextColor = Color.White;
-            lblThisWeek.TextColor = Color.White;
-            lblCategories.TextColor = Color.Magenta;
-            lblCollections.TextColor = Color.White;
+            var page = new CategoriesPage();
+            PlaceHolder.Content = page.Content;
+            //lblDeals.TextColor = Color.White;
+            //lblThisWeek.TextColor = Color.White;
+            //lblCategories.TextColor = Color.Magenta;
+            //lblCollections.TextColor = Color.White;
+            bxVwCat.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwDeals.BackgroundColor = Color.Black;
+            bxVwCol.BackgroundColor = Color.Black;
+            bxVwthisWeek.BackgroundColor = Color.Black;
+            BindingContext = introPageViewMod;
+
         }
 
         private void Collections_Tapped(object sender, EventArgs e)
@@ -66,10 +82,14 @@ namespace HappeningsApp.Views
             page.Content.BackgroundColor = Color.FromHex("#000015");
 
             PlaceHolder.Content = page.Content;
-            lblDeals.TextColor = Color.White;
-            lblThisWeek.TextColor = Color.White;
-            lblCategories.TextColor = Color.White;
-            lblCollections.TextColor = Color.Magenta;
+            bxVwCol.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwCat.BackgroundColor = Color.Black;
+            bxVwDeals.BackgroundColor = Color.Black;
+            bxVwthisWeek.BackgroundColor = Color.Black;
+            //lblDeals.TextColor = Color.White;
+            //lblThisWeek.TextColor = Color.White;
+            //lblCategories.TextColor = Color.White;
+            //lblCollections.TextColor = Color.Magenta;
 
         }
     }

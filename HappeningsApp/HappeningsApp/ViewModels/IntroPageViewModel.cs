@@ -13,6 +13,8 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<ImageItems> nearbyItems { get; set; }
         public ObservableCollection<ImageItems> category { get; set; }
         public ObservableCollection<Deals> dealsfromAPI { get; set; }
+        public ObservableCollection<Category> CategfromAPI { get; set; }
+        public ObservableCollection<Collections> collections { get; set; }
         public IntroPageViewModel(string test)
         {
             MockImageList m = new MockImageList();
@@ -26,7 +28,24 @@ namespace HappeningsApp.ViewModels
         {
             
             GetDeals();
+            GetCategories();
+            GetTestDeals();
+            GetTestCollections();
+        }
 
+        private void GetTestCollections()
+        {
+            MockDataStore m = new MockDataStore();
+            collections = m.GetCollections();
+        }
+
+        public void GetTestDeals()
+        {
+            MockImageList m = new MockImageList();
+
+            dealsItems = m.GetDeals();
+            nearbyItems = m.NearBy();
+            category = m.Category();
         }
 
         private async void GetDeals()
@@ -34,6 +53,15 @@ namespace HappeningsApp.ViewModels
             DealsService ds = new DealsService();
 
             dealsfromAPI = await ds.GetDeals();
+
+        }
+
+
+        private async void GetCategories()
+        {
+           HappeningsApp.Services.CategoriesService ds = new HappeningsApp.Services.CategoriesService();
+
+            CategfromAPI = await ds.GetCategories();
 
         }
     }

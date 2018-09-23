@@ -21,7 +21,7 @@ namespace HappeningsApp.Views.AppViews
 		{
 			InitializeComponent ();
             //_DealsViewModel = new DealsViewModel();
-            introPageViewMod = new IntroPageViewModel();
+            //introPageViewMod = new IntroPageViewModel();
             //nearBy = new NearByViewModel();
             BindingContext = introPageViewMod;
 

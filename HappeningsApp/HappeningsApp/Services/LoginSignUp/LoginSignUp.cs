@@ -20,6 +20,8 @@ namespace HappeningsApp.Services.LoginSignUp
             try
             {
                 result = await APIService.RegisterLocal(reg);
+               // var testresult = await APIService.RegisterLocalNew(reg);
+                //var testCont = await testresult.Content.ReadAsStringAsync();
                 //result = result.Replace("","Responses");
                 //var content = JsonConvert.DeserializeObject<RegisterationResponse.RootObject>(result);
                 var dict = new Dictionary<bool, string>() { };
