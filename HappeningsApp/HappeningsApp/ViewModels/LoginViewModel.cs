@@ -128,6 +128,9 @@ namespace HappeningsApp.ViewModels
             await Task.Delay(5000);
         }
 
+
+      
+
         private FaceBookProfile _facebookProfile;
 
         public FaceBookProfile FacebookProfile

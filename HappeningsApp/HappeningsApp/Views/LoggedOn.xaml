@@ -9,17 +9,20 @@
             
              x:Class="HappeningsApp.Views.LoggedOn">
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0" ColumnSpacing="0" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*" />
-                <RowDefinition Height="60*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                
             </Grid.RowDefinitions>
-            <StackLayout HorizontalOptions="CenterAndExpand" TranslationY="90" Grid.Row="0" >
-                <Label Text="CRAWL" TextColor="White" FontSize="60" />
+            <StackLayout HeightRequest="350" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Yellow" Grid.Row="0" >
+                <Image Source="Crawl_white_blue.png" />
+            
             </StackLayout>
-            <StackLayout Spacing="20" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40"  >
+            <StackLayout Spacing="60" HeightRequest="200"  VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
                 <StackLayout Spacing="0">
                     <c:BorderlessEntry Placeholder="Username"  
@@ -28,10 +31,10 @@
                                        TextColor="White" 
                                        Text="{Binding User.Username}"
                                        PlaceholderColor="White"  />
-                    <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                    <!--<bdEntry:LineEntry Placeholder="Password" IsValid="true"  BorderColor="#FF00A1" 
+                    <!--<bdEntry:LineEntry Placeholder="Password" IsValid="true"  BorderColor="{x:StaticResource CrawlColor}" 
                                    PlaceholderColor="White" HorizontalTextAlignment="Start" 
                                    IsPassword="True" />-->
                     <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
@@ -41,39 +44,44 @@
                                        PlaceholderColor="White" 
                                        Text="{Binding User.Password}"
                                        />
-                    <BoxView HeightRequest="2" BackgroundColor="#FF00A1"  />
-                </StackLayout>
-                <StackLayout HorizontalOptions="End" >
-                    <Label Text="Forgot Password?" 
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"  />
+                        <StackLayout Margin="0,5,0,0">
+                         <Label Text="Forgot Password?" 
                            TextColor="White" 
                            HorizontalOptions="EndAndExpand" 
 
                            />
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout >
-                    <Button Text="Login" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
-                        BorderWidth="1"    BackgroundColor="#FF00A1" 
+              
+            </StackLayout>
+      
+            <StackLayout Grid.Row="3" HeightRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+               
+              
+                    <Button Text="Login" WidthRequest="200" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
+                        BorderWidth="1"    BackgroundColor="{x:StaticResource CrawlColor}" 
                         TextColor="White" />
-                    <StackLayout Orientation="Horizontal" >
-                        <Image Source="fbCrawlBlkPk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
+                   
+    
+
+                </StackLayout>
+         <StackLayout Grid.Row="4" HeightRequest="100" >
+                 <StackLayout>
+                    <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                     <Image Source="fbCrawlBlkPk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Facebook_Tapped"  />
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Source="ggCrawlPkBlk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
-                    </StackLayout>
-    
-
+                 
                 </StackLayout>
+                          
             </StackLayout>
-
-            <StackLayout  HorizontalOptions="CenterAndExpand" Grid.Row="2" >
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="SignUpTap" Tapped="SignUpTap_Tapped"/>
-                </StackLayout.GestureRecognizers>
-                <Label  Text="Sign Up" TextColor="#FF00A1"  FontAttributes="Bold" />
-             
-            </StackLayout>
+        
         </Grid>
     </ContentPage.Content>
 </ContentPage>
