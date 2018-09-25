@@ -70,6 +70,7 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                  res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
+                var cont = await res.Content.ReadAsStringAsync();
 
             }
 

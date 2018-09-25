@@ -113,30 +113,15 @@
     <BundleResource Include="Resources\ggCrawlPkBlk.png" />
     <BundleResource Include="Resources\ggCrawlPkBlk%402x.png" />
     <BundleResource Include="Resources\ggCrawlPkBlk%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\crawlicon120 copy 2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <BundleResource Include="Resources\Crawl_white_blue.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120 copy.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

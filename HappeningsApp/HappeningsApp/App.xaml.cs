@@ -28,7 +28,7 @@ namespace HappeningsApp
             //MainPage = GetMainPage();
 
             //MainPage = new NavigationPage(new AppLanding());
-            MainPage = new NavigationPage(new LoggedOn());
+            MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
 			//MainPage = new NavigationPage(new Deals());
             //MainPage = new NavigationPage(new Collections())
 
