@@ -10,6 +10,7 @@ using HappeningsApp.Services;
 using HappeningsApp.Services.LoginSignUp;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace HappeningsApp.ViewModels
 {
@@ -29,6 +30,31 @@ namespace HappeningsApp.ViewModels
             get;
             set;
         }
+
+        internal bool IsRegisterationDetailsValid()
+        {
+            if (string.IsNullOrEmpty(User.EmailAddress)||string.IsNullOrEmpty( User.Firstname)||string.IsNullOrEmpty(User.Password)||string.IsNullOrEmpty(User.ConfirmPin))
+            {
+                RegisterationError = "Please make sure all fields have value";
+                return false;
+            }
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(User.EmailAddress.Trim());
+            if (!match.Success)
+            {
+                RegisterationError = "Email is invalid";
+                return false;
+            }
+            if (User.Password.Trim()!=User.ConfirmPin.Trim())
+            {
+                RegisterationError = "Passwords do not match";
+                return false;
+            }
+
+            return true;
+           
+        }
+
         public string accessToken { get; set; }
 
         internal async Task<bool> GetTokenFromAPI()
@@ -54,6 +80,18 @@ namespace HappeningsApp.ViewModels
             }
         }
 
+
+        public void PersistUserDetails()
+        {
+            Application.Current.Properties["IsUserLoggedOn"] = true;
+
+            Application.Current.Properties["username"] = User.Username;
+            Application.Current.Properties["password"] = User.Password;
+            Application.Current.SavePropertiesAsync();
+
+
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         internal async Task<bool> Register()
@@ -63,15 +101,16 @@ namespace HappeningsApp.ViewModels
             {
                 var reg = new Registeration()
                 {
-                    Email=User.EmailAddress,
-                    Password=User.Password,
-                    ConfirmPassword=User.ConfirmPin,
-                    UserName=User.Username
+                    Email = User.EmailAddress,
+                    Password = User.Password,
+                    ConfirmPassword = User.ConfirmPin,
+                    UserName = User.Username
                 };
 
                 //APIService api = new APIService();
                 //var a = await APIService.Post<Registeration>(reg, "api/Account/register");
-                var aa = await LoginSignUp.RegisterLocal(reg);
+                //var aa = await LoginSignUp.RegisterLocal(reg);
+                var regaa = await LoginSignUp.RegisterLoco(reg);
                 //if (a.StatusCode == System.Net.HttpStatusCode.OK)
                 //{
                 //    var result =await a.Content.ReadAsStringAsync();
@@ -79,25 +118,36 @@ namespace HappeningsApp.ViewModels
                 //else
                 //{
                 //    var result = await a.Content.ReadAsStringAsync();
-                if (aa == null)
+            if (regaa.Message.ToLower().Contains("success"))
                 {
-                    UserDialogs.Instance.Alert("Info", "Error", "OK"); 
-                    return IsSuccess;
-
-                }
-                if (aa.ContainsKey(false))
-                {
-                    UserDialogs.Instance.Alert("Info", "Error during registration", "OK");
-                    return IsSuccess;
-
-                }
-                else if(aa.ContainsKey(true))
-                {
-                    //UserDialogs.Instance.Alert("Success", "Registration successful", "OK");
                     IsSuccess = true;
-                    return IsSuccess;
 
                 }
+                else
+                {
+                    IsSuccess = false;
+                    RegisterationError = regaa.Message;
+                    return IsSuccess;
+                }
+                //if (aa == null)
+                //{
+                //    UserDialogs.Instance.Alert("Info", "Error", "OK"); 
+                //    return IsSuccess;
+
+                //}
+                //if (aa.ContainsKey(false))
+                //{
+                //    UserDialogs.Instance.Alert("Info", "Error during registration", "OK");
+                //    return IsSuccess;
+
+                //}
+                //else if(aa.ContainsKey(true))
+                //{
+                //    //UserDialogs.Instance.Alert("Success", "Registration successful", "OK");
+                //    IsSuccess = true;
+                //    return IsSuccess;
+
+                //}
                 //}
                 return IsSuccess;
             }
@@ -142,6 +192,8 @@ namespace HappeningsApp.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public string RegisterationError { get; set; }
 
         public async Task CallFaceBookGraphAPI(string accessToken)
         {

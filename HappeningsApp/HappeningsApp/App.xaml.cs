@@ -10,12 +10,36 @@ namespace HappeningsApp
 {
 	public partial class App : Application
 	{
-		
+		public string username
+        {
+            get;
+            set;
+        }
+
+        public string password
+        {
+            get;
+            set;
+        }
 		public App ()
 		{
 			InitializeComponent();
 
+            //CheckIfUserIsPersistent();
+            if (IsUserLoggedOn())
+            {
+                ViewModels.LoginViewModel lvmm = new ViewModels.LoginViewModel();
+                lvmm.User.Username = Current.Properties["username"].ToString();
+                lvmm.User.Password = Current.Properties["password"].ToString();
+               lvmm.GetTokenFromAPI();
+                MainPage = new NavigationPage(new Views.AppLanding());
 
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+
+            }
             //MainPage = new NavigationPage(new MainPage())
 
 
@@ -28,7 +52,7 @@ namespace HappeningsApp
             //MainPage = GetMainPage();
 
             //MainPage = new NavigationPage(new AppLanding());
-            MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+            //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
 			//MainPage = new NavigationPage(new Deals());
             //MainPage = new NavigationPage(new Collections())
 
@@ -39,6 +63,33 @@ namespace HappeningsApp
                 //}
 
                 ;
+        }
+
+        private bool IsUserLoggedOn()
+        {
+            bool log = false;
+            try
+            {
+                log = Convert.ToBoolean(Application.Current.Properties["IsUserLoggedOn"]);
+
+            }
+            catch (Exception ex)
+            {
+                var logg = ex;
+            }
+            return log;
+
+        }
+        public void PersistUsername()
+        {
+
+        }
+
+
+
+        private void CheckIfUserIsPersistent()
+        {
+            throw new NotImplementedException();
         }
 
         public static Page GetMainPage()

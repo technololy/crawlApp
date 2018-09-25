@@ -45,8 +45,14 @@
                                        Text="{Binding User.Password}"
                                        />
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"  />
-                        <StackLayout Margin="0,5,0,0">
-                         <Label Text="Forgot Password?" 
+                        <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                        <Label Text="Dismiss" TextColor="White">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Dismissed_tapped" 
+                                                      NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Forgot Password?" 
                            TextColor="White" 
                            HorizontalOptions="EndAndExpand" 
 
@@ -71,7 +77,7 @@
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                     <Image Source="fcebookcircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
+                     <Image Source="facebookcircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Facebook_Tapped"  />
                             </Image.GestureRecognizers>

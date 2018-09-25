@@ -44,5 +44,11 @@ namespace HappeningsApp.Services
         }
 
 
+        public void PersistUsername()
+        {
+            
+        }
+
+
     }
 }

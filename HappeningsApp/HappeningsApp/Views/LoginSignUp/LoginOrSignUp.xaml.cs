@@ -10,7 +10,7 @@ namespace HappeningsApp.Views.LoginSignUp
         void signup_click(object sender, System.EventArgs e)
         {
             //throw new NotImplementedException();
-            Navigation.PushAsync(new LoginOrSignUp());
+            Navigation.PushAsync(new SignUp());
 
         }
 

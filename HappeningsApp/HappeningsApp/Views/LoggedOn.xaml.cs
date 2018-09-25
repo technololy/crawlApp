@@ -97,12 +97,14 @@ namespace HappeningsApp.Views
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
                 {
+
+                   
                    await Navigation.PushAsync(new AppLanding());
 
                 }
                 else
                 {
-                   await DisplayAlert("Info", "Something is not right. Please try again", "OK");
+                   await DisplayAlert("Error", "Error logging in at this time. Please try again", "OK");
                 }
             }
         }
@@ -153,6 +155,11 @@ namespace HappeningsApp.Views
         private  void SignUpTap_Tapped(object sender, EventArgs e)
         {
              Navigation.PushModalAsync(new LoginSignUp.SignUp(),true);
+        }
+
+        private void Dismissed_tapped(object sender, EventArgs e)
+        {
+            Navigation.PopAsync(true);
         }
     }
 }

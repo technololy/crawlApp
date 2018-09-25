@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               NavigationPage.HasBackButton="True"
@@ -7,11 +7,19 @@
              BackgroundColor="Black"
              
              x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Done" Activated="Done_Activated" Text="Done" Icon="tab_about.png" />
-    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="40" Spacing="30">
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
+                <Button TextColor="White" Text="Sign Up With Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
+                <Button TextColor="White" Text="Sign Up With Google" CornerRadius="23" BackgroundColor="#c0392b" />
+                  <Label HorizontalOptions="CenterAndExpand" Text="OR" TextColor="White" />
+                <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />
+           
+            </StackLayout>
+            <StackLayout>
+               </StackLayout>
+             <StackLayout VerticalOptions="CenterAndExpand" Padding="40,-50,40,40" Spacing="30">
             <StackLayout Spacing="0">
                 <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
@@ -48,6 +56,8 @@
                 <Label HorizontalOptions="CenterAndExpand"  Text="Dismiss" TextColor="{x:StaticResource CrawlColor}"  FontAttributes="Bold" />
             </StackLayout>
             
+        </StackLayout> 
         </StackLayout>
+      
     </ContentPage.Content>
 </ContentPage>

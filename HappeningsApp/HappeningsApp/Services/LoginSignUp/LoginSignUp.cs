@@ -20,8 +20,8 @@ namespace HappeningsApp.Services.LoginSignUp
             try
             {
                 result = await APIService.RegisterLocal(reg);
-               // var testresult = await APIService.RegisterLocalNew(reg);
-                //var testCont = await testresult.Content.ReadAsStringAsync();
+               var testresult = await APIService.RegisterLocalNew(reg);
+                var testCont = await testresult.Content.ReadAsStringAsync();
                 //result = result.Replace("","Responses");
                 //var content = JsonConvert.DeserializeObject<RegisterationResponse.RootObject>(result);
                 var dict = new Dictionary<bool, string>() { };
@@ -53,6 +53,34 @@ namespace HappeningsApp.Services.LoginSignUp
             //return keyValuePairs;
         }
 
+
+
+        internal async static Task<Models.RegisterationResponse.RootObject> RegisterLoco(Registeration reg)
+        {
+            RegisterationResponse.RootObject registResp = new RegisterationResponse.RootObject();
+
+            try
+            {
+                var testresult = await APIService.RegisterLocalNew(reg);
+                var testCont = await testresult.Content.ReadAsStringAsync();
+                registResp = JsonConvert.DeserializeObject<RegisterationResponse.RootObject>(testCont);
+               
+
+               
+                return registResp;
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                return registResp ;
+
+            }
+
+
+
+
+        }
 
 
 

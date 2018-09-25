@@ -8,32 +8,26 @@
          xmlns:b="clr-namespace:HappeningsApp.Custom"    
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding collections}" SeparatorVisibility="None" 
-                  HasUnevenRows="true" Footer="" RowHeight="150" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                 <!--    <Frame Padding="0" BackgroundColor="Black" VerticalOptions="CenterAndExpand" 
-               HeightRequest="150" HasShadow="false" CornerRadius="0" Margin="10" >
-                            <Grid ColumnSpacing="0" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <BoxView BackgroundColor="Silver" Grid.Column="0"  WidthRequest="120"/>
-                <Frame BackgroundColor="Gray" HasShadow="false" Padding="0" Grid.Column="1" CornerRadius="0" >
-                     <StackLayout >
-                                    <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand" TextColor="White" />
-                                    
-                                </StackLayout>
-                </Frame>
-                               
-                            </Grid> 
-                        </Frame>-->
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        
+      <StackLayout>
+              <FlexLayout Margin="40,40,40,10">
+        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
+                
+            </Frame>
+             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
+                
+            </Frame>
+        </FlexLayout>
+             <FlexLayout Margin="40,40,40,10">
+        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
+                
+            </Frame>
+             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
+                
+            </Frame>
+        </FlexLayout>
+        </StackLayout>
+
 
       
     </ContentPage.Content>
