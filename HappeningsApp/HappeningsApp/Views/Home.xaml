@@ -2,74 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.Home"
-             BackgroundImage="magentawhite.png"
+                  NavigationPage.HasNavigationBar="False"
+     xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+     xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black"
              >
     <ContentPage.Content>
-        <ScrollView>
-              <Grid>
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="60*" />
                 <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="10*" />
+
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" BackgroundColor="Green" >
-                <Image Source="assorted2.jpg" Aspect="Fill" />
+            <StackLayout HorizontalOptions="CenterAndExpand" TranslationY="90" Grid.Row="0" >
+                <Label Text="CRAWL" TextColor="White" FontSize="60" />
             </StackLayout>
-              <StackLayout Grid.Row="1" BackgroundColor="Maroon">
-                <Image Source="assortedfood.jpg" Aspect="Fill" />
-                
+            <StackLayout Spacing="20" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40"  >
+
+                <StackLayout Spacing="0">
+                    <c:BorderlessEntry Placeholder="Username"  
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" 
+                                       TextColor="White" 
+                                       Text="{Binding User.Username}"
+                                       PlaceholderColor="White"  />
+                    <BoxView HeightRequest="2" BackgroundColor="#FF00A1"   />
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <!--<bdEntry:LineEntry Placeholder="Password" IsValid="true"  BorderColor="#FF00A1" 
+                                   PlaceholderColor="White" HorizontalTextAlignment="Start" 
+                                   IsPassword="True" />-->
+                    <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
+                                       IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start"  
+                                       TextColor="White" 
+                                       PlaceholderColor="White" 
+                                       Text="{Binding User.Password}"
+                                       />
+                    <BoxView HeightRequest="2" BackgroundColor="#FF00A1"  />
+                </StackLayout>
+                <StackLayout HorizontalOptions="End" >
+                    <Label Text="Forgot Password?" 
+                           TextColor="White" 
+                           HorizontalOptions="EndAndExpand" 
+
+                           />
+                </StackLayout>
+                <StackLayout >
+                    <Button Text="Login" x:Name="login"  CornerRadius="23" 
+                        BorderWidth="1"    BackgroundColor="#FF00A1" 
+                        TextColor="White" />
+                    <StackLayout Orientation="Horizontal" >
+                        <Image Source="fbCrawlBlkPk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
+                            </Image>
+                        <Image Source="ggCrawlPkBlk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+
+                </StackLayout>
             </StackLayout>
-              <StackLayout Grid.Row="2" BackgroundColor="Olive">
-                <Image Source="assorted2.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-              <StackLayout Grid.Row="3" BackgroundColor="Fuchsia">
-                <Image Source="buzz.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-              <StackLayout Grid.Row="4" BackgroundColor="Teal">
-                <Image Source="drink.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-                  <StackLayout Grid.Row="5" BackgroundColor="Teal">
-                <Image Source="friedyam.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-                  <StackLayout Grid.Row="6" BackgroundColor="Teal">
-                <Image Source="buzz.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-                  <StackLayout Grid.Row="7" BackgroundColor="Teal">
-                <Image Source="drink.jpg" Aspect="Fill" />
-                
-            </StackLayout>
-                  <StackLayout Grid.Row="8" BackgroundColor="Teal">
-                <Image Source="assortedfood.jpg" Aspect="Fill" />
-                
+
+            <StackLayout  HorizontalOptions="CenterAndExpand" Grid.Row="2" >
+               
+                <Label  Text="Sign Up" TextColor="#FF00A1"  FontAttributes="Bold" />
+
             </StackLayout>
         </Grid>
-     <!--        <ListView ItemsSource="{Binding dealsItems}" x:Name="dealsListview" SeparatorVisibility="None"  BackgroundColor="Transparent" HasUnevenRows="true">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                        <ViewCell>
-                            <Frame Padding="0" Margin="0,0,0,20" IsClippedToBounds="true" BackgroundColor="Transparent" HeightRequest="300" CornerRadius="0">
-                                  
-                                        <Image Source="{Binding Image}" Aspect="Fill" />
-                                    
-                                </Frame>
-                        </ViewCell>
-                       
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
-
-        </ScrollView>
-      
     </ContentPage.Content>
 </ContentPage>
