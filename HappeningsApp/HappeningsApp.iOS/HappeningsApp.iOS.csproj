@@ -114,14 +114,30 @@
     <BundleResource Include="Resources\ggCrawlPkBlk%402x.png" />
     <BundleResource Include="Resources\ggCrawlPkBlk%403x.png" />
     <BundleResource Include="Resources\Crawl_white_blue.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120 copy.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_white-blue120 copy.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -240,5 +256,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_search_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebookcircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\googlecircle.png" />
   </ItemGroup>
 </Project>

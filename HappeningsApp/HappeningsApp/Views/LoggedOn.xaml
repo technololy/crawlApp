@@ -71,12 +71,12 @@
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                     <Image Source="fbCrawlBlkPk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
+                     <Image Source="fcebookcircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Facebook_Tapped"  />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Source="ggCrawlPkBlk.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
+                        <Image Source="googlecircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
                  
                 </StackLayout>
                           
