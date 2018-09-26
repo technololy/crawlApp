@@ -18,13 +18,13 @@
                 <RowDefinition Height="auto" />
                
             </Grid.RowDefinitions>
-            <StackLayout HeightRequest="350" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Yellow" Grid.Row="0" >
-                <Image Source="Crawl_white_blue.png" />
+            <StackLayout HeightRequest="250" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
+                <Image Source="Crawl_white_blue.png" HeightRequest="250"  />
             
             </StackLayout>
             <StackLayout Spacing="60" HeightRequest="200"  VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
-                <StackLayout Spacing="0">
+                <StackLayout Spacing="-10">
                     <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
@@ -34,10 +34,8 @@
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                    <!--<bdEntry:LineEntry Placeholder="Password" IsValid="true"  BorderColor="{x:StaticResource CrawlColor}" 
-                                   PlaceholderColor="White" HorizontalTextAlignment="Start" 
-                                   IsPassword="True" />-->
-                    <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
+                <StackLayout Spacing="-13">
+                          <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
                                        IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start"  
                                        TextColor="White" 
@@ -45,7 +43,10 @@
                                        Text="{Binding User.Password}"
                                        />
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"  />
-                        <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                     
+                    </StackLayout>
+                    
+                     <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
                         <Label Text="Dismiss" TextColor="White">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Dismissed_tapped" 

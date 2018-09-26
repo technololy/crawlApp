@@ -5,7 +5,7 @@
      xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
      xmlns:c="clr-namespace:HappeningsApp.Custom"
              BackgroundColor="Black"
-             
+             NavigationPage.HasNavigationBar="False"
              x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
     
     <ContentPage.Content>
