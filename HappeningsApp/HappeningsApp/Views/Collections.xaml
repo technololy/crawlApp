@@ -10,7 +10,7 @@
     <ContentPage.Content>
         
       <StackLayout>
-              <FlexLayout Margin="40,40,40,10">
+              <FlexLayout Margin="40,40,40,10" >
         <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
                 
             </Frame>
@@ -26,6 +26,9 @@
                 
             </Frame>
         </FlexLayout>
+            <FlexLayout>
+                <Label Text="Log Out" TextColor="White" />
+            </FlexLayout>
         </StackLayout>
 
 
