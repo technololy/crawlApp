@@ -35,7 +35,7 @@ namespace HappeningsApp.ViewModels
         {
             if (string.IsNullOrEmpty(User.EmailAddress)||string.IsNullOrEmpty( User.Firstname)||string.IsNullOrEmpty(User.Password)||string.IsNullOrEmpty(User.ConfirmPin))
             {
-                RegisterationError = "Please make sure all fields have value";
+                RegisterationError = "Please make sure you enter each and every field";
                 return false;
             }
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
