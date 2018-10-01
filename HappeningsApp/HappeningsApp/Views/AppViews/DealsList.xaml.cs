@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
 
@@ -24,6 +25,7 @@ namespace HappeningsApp.Views.AppViews
         }
 
         IntroPageViewModel introPageViewMod;
+        private Category cat;
 
         public DealsList()
         {
@@ -32,6 +34,11 @@ namespace HappeningsApp.Views.AppViews
             //nearBy = new NearByViewModel();
             //BindingContext = introPageViewMod;
 
+        }
+
+        public DealsList(Category cat)
+        {
+            this.cat = cat;
         }
     }
 }

@@ -49,9 +49,9 @@ namespace HappeningsApp
             //    BarTextColor = Color.White,
 
             //}
-                ;
+              //  ;
             #endregion
-           // MainPage =new NavigationPage( new Views.Survey.SurveyThree());
+           // MainPage =new NavigationPage( new Views.test.MyPage());
 
         
           

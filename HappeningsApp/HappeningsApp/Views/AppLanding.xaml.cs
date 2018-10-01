@@ -22,8 +22,29 @@ namespace HappeningsApp.Views
             introPageViewMod = new IntroPageViewModel();
 
             Deals_Tapped(this, null);
+            ShowSurVey();
           
 		}
+
+        private async void ShowSurVey()
+        {
+            await Task.Delay(10000); 
+            try
+            {
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"])==true)
+                {
+
+                }
+                else
+                {
+                   await  Navigation.PushModalAsync(new Survey.SurveyOne());
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Properties["SurveyOne"] = false;
+            }
+        }
 
         private void Deals_Tapped(object sender, EventArgs e)
         {
@@ -81,14 +102,14 @@ namespace HappeningsApp.Views
 
         private void Collections_Tapped(object sender, EventArgs e)
         {
-            //var page = new Collections();
-            //page.Content.BackgroundColor = Color.FromHex("#000015");
+            var page = new Collections();
+            page.Content.BackgroundColor = Color.FromHex("#000015");
 
-            //PlaceHolder.Content = page.Content;
-            //bxVwCol.BackgroundColor = Color.FromHex("#FF00A1");
-            //bxVwCat.BackgroundColor = Color.Black;
-            //bxVwDeals.BackgroundColor = Color.Black;
-            //bxVwthisWeek.BackgroundColor = Color.Black;
+            PlaceHolder.Content = page.Content;
+            bxVwCol.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwCat.BackgroundColor = Color.Black;
+            bxVwDeals.BackgroundColor = Color.Black;
+            bxVwthisWeek.BackgroundColor = Color.Black;
             ////lblDeals.TextColor = Color.White;
             ////lblThisWeek.TextColor = Color.White;
             ////lblCategories.TextColor = Color.White;

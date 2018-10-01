@@ -15,7 +15,11 @@
             
             
         </Grid>-->
-        <ListView x:Name="ListCategories" HasUnevenRows="True"  ItemsSource="{Binding CategfromAPI}">
+        <ListView x:Name="ListCategories"
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding CategfromAPI}"
+                  ItemSelected="Handle_ItemSelected"
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HappeningsApp.Views.Survey
@@ -44,6 +44,18 @@ namespace HappeningsApp.Views.Survey
                "Wine", "Beer","Whisky"
 
             };
+        }
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
+            {
+                await Task.Delay(3000);
+            };
+            Application.Current.Properties["SurveyOne"] = true;
+
+            await Navigation.PopModalAsync(true);
+
         }
 
         void Location_SelectedIndexChanged(object sender, System.EventArgs e)

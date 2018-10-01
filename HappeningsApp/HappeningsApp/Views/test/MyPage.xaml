@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-           
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-              NavigationPage.HasNavigationBar="False"
-     xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
-     xmlns:c="clr-namespace:HappeningsApp.Custom"
+                  xmlns:c="clr-namespace:HappeningsApp.Custom"
              BackgroundColor="Black"
-            
-             x:Class="HappeningsApp.Views.LoggedOn">
+              NavigationPage.HasNavigationBar="False"
+             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Views.test.MyPage">
     <ContentPage.Content>
-        <ScrollView>
+         <ScrollView>
             
         <Grid RowSpacing="0" ColumnSpacing="0" >
             <Grid.RowDefinitions>
@@ -21,7 +19,7 @@
                 <RowDefinition Height="auto" />
                
             </Grid.RowDefinitions>
-            <StackLayout HeightRequest="250" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
+            <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
                 <Image Source="Crawl_white_blue.png" HeightRequest="250"  />
             
             </StackLayout>
@@ -52,7 +50,7 @@
                      <StackLayout Margin="0,15,0,0" Orientation="Horizontal">
                         <Label Text="Dismiss" TextColor="White">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Dismissed_tapped" 
+                                <TapGestureRecognizer 
                                                       NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
                         </Label>
@@ -66,29 +64,32 @@
               
             </StackLayout>
       
-            <StackLayout Grid.Row="3"  Margin="0,15,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Margin="0,15,0,0">
                
               
-                    <Button Text="Login" WidthRequest="300" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
+                    <Button Text="Login" WidthRequest="300" x:Name="login" CornerRadius="23" 
                         BorderWidth="1"    BackgroundColor="{x:StaticResource CrawlColor}" 
                         TextColor="White" />
                    
     
 
                 </StackLayout>
-         <StackLayout Grid.Row="4"  Margin="0,15,0,0" >
+         <StackLayout Grid.Row="4"  Margin="0,15,0,0">
                  <StackLayout>
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
-                      <Button TextColor="White" WidthRequest="300" Text="Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="Facebook_Tapped" />
-                <Button TextColor="White" Text=" Google" WidthRequest="300" CornerRadius="23" BackgroundColor="#c0392b" />
+                      <Button TextColor="White" WidthRequest="300" Text="Sign in with Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" />
+                <Button TextColor="White" Text="Sign in with Google" WidthRequest="300" CornerRadius="23" BackgroundColor="#c0392b" />
                 
                    
                 </StackLayout>
                           
             </StackLayout>
-     
+                <StackLayout Grid.Row="5" >
+                 
+                          
+            </StackLayout>
         </Grid>
             </ScrollView>
     </ContentPage.Content>

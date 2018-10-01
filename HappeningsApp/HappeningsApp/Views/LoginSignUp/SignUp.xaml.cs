@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using HappeningsApp.Models;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
@@ -120,31 +121,53 @@ namespace HappeningsApp.Views.LoginSignUp
 
         private async void signUp_Clicked(object sender, EventArgs e)
         {
-            if (!lvm.IsRegisterationDetailsValid())
+            //LogService.LogErrors("Testing logs");
+            try
             {
-               await DisplayAlert("Error", lvm.RegisterationError, "OK");
-                return;
-            }
-           var res = await lvm.Register();
-            if (res)
-            {
-             var tkResponse =  await lvm.GetTokenFromAPI();
-              
-                    //navigate to sign in user
-                if (tkResponse)
+                if (!lvm.IsRegisterationDetailsValid())
                 {
-                    lvm.PersistUserDetails();
-                   await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                    await DisplayAlert("Error", lvm.RegisterationError, "OK");
+                    return;
+                }
+                GlobalStaticFields.Username = lvm.User.Username;
+                var res = await lvm.Register();
+                if (res)
+                {
+                    var tkResponse = await lvm.GetTokenFromAPI();
+
+                    //navigate to sign in user
+                    if (tkResponse)
+                    {
+                        lvm.PersistUserDetails();
+                        await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
 
 
+
+                    }
+                    else
+                    {
+                        await DisplayAlert("Sorry", "Sign in not successful at this time", "OK");
+                    }
 
                 }
                 else
                 {
-                   await DisplayAlert("Sorry", "Sign in not successful at this time", "OK");
-                }
+                    await DisplayAlert("Sorry", lvm.RegisterationError, "OK");
 
+                }
             }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+           //     var logger = new LogModel()
+           //     {
+           //         User = GlobalStaticFields.Username,
+           //         Error = log.ToString()
+           //     };
+           //await APIService.PostNew<LogModel>(logger, "Error");
+            }
+          
         }
 
         private void Done_Activated(object sender, EventArgs e)

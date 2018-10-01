@@ -23,6 +23,7 @@ namespace HappeningsApp.Views.Survey
             {
                 await Task.Delay(3000);
             };
+            Application.Current.Properties["SurveyThree"] = true;
             await Navigation.PopModalAsync(true);
         }
 

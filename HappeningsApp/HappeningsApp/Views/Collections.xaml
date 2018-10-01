@@ -14,13 +14,27 @@
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <StackLayout>
-                 <Button Text="My Messages" 
-                      TextColor="White" 
-                      BackgroundColor="{DynamicResource CrawlColor}" />
+                 <Button Text="My Push Notifications" 
+                      TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="1"
+                         />
             
             </StackLayout>
             <StackLayout>
-               <Button Text="My Favorites" TextColor="White" BackgroundColor="{DynamicResource CrawlColor}" />
+               <Button Text="My Favorites"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="1"
+                       />
+               
+            </StackLayout>
+                <StackLayout>
+               <Button Text="Add New Favorites?"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="0"
+                       />
                
             </StackLayout>
         </FlexLayout>

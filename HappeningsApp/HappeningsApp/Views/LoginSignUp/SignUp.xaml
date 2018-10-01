@@ -17,10 +17,9 @@
                 <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />
            
             </StackLayout>
-            <StackLayout>
-               </StackLayout>
-             <StackLayout VerticalOptions="CenterAndExpand" Padding="40,-50,40,40" Spacing="30">
-            <StackLayout Spacing="0">
+          
+             <StackLayout VerticalOptions="CenterAndExpand" Padding="40,0,40,40" Spacing="30">
+            <StackLayout Spacing="0" IsVisible="false">
                 <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Username}"  PlaceholderColor="White"  />
