@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             BackgroundColor="Black"
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             x:Class="HappeningsApp.Views.Survey.SurveyOne">
+    <ContentPage.Content>
+        <ScrollView>
+            
+     
+        <FlexLayout Direction="Column" 
+                    AlignItems="Stretch" 
+                    JustifyContent="SpaceEvenly" 
+                    Margin="40" >
+            <Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />
+      
+            <StackLayout>
+                <c:ExtendedPicker Title="Where do you live" x:Name="Location" 
+                                  SelectedIndexChanged="Location_SelectedIndexChanged" />
+            </StackLayout>
+             <StackLayout>
+                <c:ExtendedPicker Title="Marital Status" x:Name="MaritalPicker" />
+            </StackLayout>
+             <StackLayout>
+                <c:ExtendedPicker Title="Dietary Choice" x:Name="DietPicker" />
+            </StackLayout>
+           
+            
+            <StackLayout>
+                <c:ExtendedPicker  Title="Smoker?" 
+                                   x:Name="SmokerPicker" SelectedIndexChanged="Smoke_SelectedIndexChanged" />
+            </StackLayout>
+             <StackLayout IsVisible="false" x:Name="MoreSmokingTypeStack" >
+                <c:MultiPicker Title="Select choices" 
+                                  x:Name="MoreSmokingChoice" />
+            </StackLayout>
+             <StackLayout>
+                <c:ExtendedPicker SelectedIndexChanged="Drink_SelectedIndexChanged" 
+                                  Title="Drinker?" 
+                                  x:Name="DrinkerPicker" />
+            </StackLayout>
+                <StackLayout IsVisible="false" x:Name="DrinkYesStack">
+                    <c:MultiPicker Title="Choose More Drinking Option"
+                                   x:Name="MoreDrinkOption" />
+                </StackLayout>
+            <StackLayout>
+                   
+                    
+                <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White"  />
+                <Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White"  />
+                <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+            </StackLayout>
+            
+        </FlexLayout>
+               </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

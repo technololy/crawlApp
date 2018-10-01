@@ -22,9 +22,9 @@ namespace HappeningsApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-          
-            global::Xamarin.Forms.Forms.Init();
+            Rg.Plugins.Popup.Popup.Init();
 
+            global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
 
             //UINavigationBar.Appearance.BarTintColor = UIColor.Red;

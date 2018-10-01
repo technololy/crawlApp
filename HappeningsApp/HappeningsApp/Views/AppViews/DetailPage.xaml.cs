@@ -18,6 +18,13 @@ namespace HappeningsApp.Views.AppViews
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
         }
 
+        public DetailPage(HappeningsApp.Models.Deals myDeals)
+        {
+            InitializeComponent();
+            BindingContext = myDeals;
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
+        }
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PopAsync();

@@ -154,7 +154,7 @@ namespace HappeningsApp.Views.LoginSignUp
 
         private  void goBack_Tapped(object sender, EventArgs e)
         {
-             Navigation.PopModalAsync();
+             Navigation.PopAsync(true);
 
         }
     }

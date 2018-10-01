@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Views.Survey.SurveyThree">
+    <ContentPage.Content>
+         <FlexLayout Direction="Column" 
+                    AlignItems="Stretch" 
+                    JustifyContent="Start" 
+                    Margin="40" >
+      
+            <StackLayout>
+                <c:MultiPicker Title="How did you hear about us" x:Name="HowDidYou" 
+                                   />
+            </StackLayout>
+             <StackLayout>
+                   
+                    
+                <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Submit_Clicked"  />
+                <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+            </StackLayout>
+            </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

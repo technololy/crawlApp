@@ -14,7 +14,12 @@ namespace HappeningsApp.Views.AppViews
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new DetailPage());
+            if (dealsListview.SelectedItem==null)
+            {
+                return;
+            }
+            var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
+           Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
 
         }
 

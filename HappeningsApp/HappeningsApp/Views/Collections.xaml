@@ -9,27 +9,21 @@
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
         
-      <StackLayout>
-              <FlexLayout Margin="40,40,40,10" >
-        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
-                
-            </Frame>
-             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
-                
-            </Frame>
+      <FlexLayout Direction="Column" 
+                    AlignItems="Stretch" 
+                    JustifyContent="SpaceEvenly" 
+                    Margin="40" >
+            <StackLayout>
+                 <Button Text="My Messages" 
+                      TextColor="White" 
+                      BackgroundColor="{DynamicResource CrawlColor}" />
+            
+            </StackLayout>
+            <StackLayout>
+               <Button Text="My Favorites" TextColor="White" BackgroundColor="{DynamicResource CrawlColor}" />
+               
+            </StackLayout>
         </FlexLayout>
-             <FlexLayout Margin="40,40,40,10">
-        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
-                
-            </Frame>
-             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
-                
-            </Frame>
-        </FlexLayout>
-            <FlexLayout>
-                <Label Text="Log Out" TextColor="White" />
-            </FlexLayout>
-        </StackLayout>
 
 
       

@@ -24,7 +24,7 @@
             </StackLayout>
             <StackLayout Spacing="60" HeightRequest="200"  VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
-                <StackLayout Spacing="-10">
+                <StackLayout Spacing="5">
                     <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
@@ -34,7 +34,7 @@
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                <StackLayout Spacing="-13">
+                <StackLayout Spacing="5">
                           <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
                                        IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start"  
@@ -66,7 +66,7 @@
             <StackLayout Grid.Row="3" HeightRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                
               
-                    <Button Text="Login" WidthRequest="200" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
+                    <Button Text="Login" WidthRequest="300" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
                         BorderWidth="1"    BackgroundColor="{x:StaticResource CrawlColor}" 
                         TextColor="White" />
                    
@@ -77,14 +77,11 @@
                  <StackLayout>
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                     <Image Source="facebookcircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Facebook_Tapped"  />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Image Source="googlecircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
-                 
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                      <Button TextColor="White" WidthRequest="300" Text="Sign in with Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="Facebook_Tapped" />
+                <Button TextColor="White" Text="Sign in with Google" WidthRequest="300" CornerRadius="23" BackgroundColor="#c0392b" />
+                
+                   
                 </StackLayout>
                           
             </StackLayout>
