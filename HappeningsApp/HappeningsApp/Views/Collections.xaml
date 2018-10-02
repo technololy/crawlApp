@@ -37,6 +37,14 @@
                        />
                
             </StackLayout>
+            <StackLayout>
+                <Button Text="LogOut" BackgroundColor="Transparent"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="0"
+                       />
+
+            </StackLayout>
         </FlexLayout>
 
 
