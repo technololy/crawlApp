@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.Content;
 using HappeningsApp.Custom;
 using HappeningsApp.Droid.Renderers;
 using Xamarin.Forms;
@@ -10,9 +11,12 @@ namespace HappeningsApp.Droid.Renderers
 {
     public class BorderlessEntryRenderer: EntryRenderer
     {
-        public BorderlessEntryRenderer()
+       
+
+        public BorderlessEntryRenderer(Context context) : base(context)
         {
         }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);

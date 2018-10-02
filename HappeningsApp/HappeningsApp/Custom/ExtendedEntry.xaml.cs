@@ -111,7 +111,7 @@ namespace HappeningsApp.Custom
             if (control != null)
             {
                 control.ReturnCommand = (ICommand)newValue;
-                //control.EmbeddedEntry.ReturnCommand = control.ReturnCommand;
+                control.EmbeddedEntry.ReturnCommand = control.ReturnCommand;
             }
         }
 
@@ -281,10 +281,10 @@ namespace HappeningsApp.Custom
 
         public ICommand ReturnCommand
         {
-            get; set;
+            //get; set;
 
-            //get => EmbeddedEntry.ReturnCommand;
-            // set => EmbeddedEntry.ReturnCommand = value;
+            get => EmbeddedEntry.ReturnCommand;
+             set => EmbeddedEntry.ReturnCommand = value;
         }
 
         private void SetKeyboard(bool value)
