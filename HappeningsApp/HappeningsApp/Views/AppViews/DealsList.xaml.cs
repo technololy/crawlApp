@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
 
@@ -14,11 +15,17 @@ namespace HappeningsApp.Views.AppViews
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new DetailPage());
+            if (dealsListview.SelectedItem==null)
+            {
+                return;
+            }
+            var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
+           Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
 
         }
 
         IntroPageViewModel introPageViewMod;
+        private Category cat;
 
         public DealsList()
         {
@@ -27,6 +34,11 @@ namespace HappeningsApp.Views.AppViews
             //nearBy = new NearByViewModel();
             //BindingContext = introPageViewMod;
 
+        }
+
+        public DealsList(Category cat)
+        {
+            this.cat = cat;
         }
     }
 }

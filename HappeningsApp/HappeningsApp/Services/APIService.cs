@@ -32,6 +32,7 @@ namespace HappeningsApp.Services
                var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
               var  message = await client.PostAsync(url, stringContent);
               var resultt = await message.Content.ReadAsStringAsync();
+                LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
 
                 return resultt;
           //  var resultt = await message.Content.ReadAsStringAsync();
@@ -71,6 +72,7 @@ namespace HappeningsApp.Services
                                                         ("application/json"));
                  res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
                 var cont = await res.Content.ReadAsStringAsync();
+                LogService.LogErrors($"Request json:\n{dict}, Response json\n{cont}");
 
             }
 
@@ -98,11 +100,47 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
                 
                 res = await client.PostAsync(url, content);
+                var resultt = await res.Content.ReadAsStringAsync();
+                LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+
 
             }
 
             return res;
         }
+
+
+
+
+        internal async static Task<HttpResponseMessage> LogClient<T>(T model, string method)
+        {
+            //string response = "";
+            string json = "";
+            json = JsonConvert.SerializeObject(model);
+            var content = new StringContent(json, Encoding.UTF32, "application/json");
+            HttpResponseMessage res = new HttpResponseMessage();
+            string url = "";
+            url = Constants.CrawlAPI + method;
+
+            using (var client = new HttpClient())
+            {
+                client.MaxResponseContentBufferSize = 256000;
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                                                        ("application/json"));
+               // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+
+                res = await client.PostAsync(url, content);
+                var resultt = await res.Content.ReadAsStringAsync();
+               // LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+
+
+            }
+
+            return res;
+        }
+
+
 
         internal async static Task<HttpResponseMessage> Get( string method)
         {
@@ -120,6 +158,8 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
                 res = client.GetAsync(url).Result;
+                LogService.LogErrors($"Request and response json:\n{url}");
+
 
             }
 
@@ -170,7 +210,8 @@ namespace HappeningsApp.Services
 
                     client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     responseMessage = await client2.PostAsync(url, stringContent).ConfigureAwait(true);
-                    //var resultt = await responseMessage.Content.ReadAsStringAsync();
+                    var resultt = await responseMessage.Content.ReadAsStringAsync();
+                    LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
 
                 }
 

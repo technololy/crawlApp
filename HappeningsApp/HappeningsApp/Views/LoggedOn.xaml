@@ -9,8 +9,11 @@
             
              x:Class="HappeningsApp.Views.LoggedOn">
     <ContentPage.Content>
+        <ScrollView>
+            
         <Grid RowSpacing="0" ColumnSpacing="0" >
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -22,9 +25,9 @@
                 <Image Source="Crawl_white_blue.png" HeightRequest="250"  />
             
             </StackLayout>
-            <StackLayout Spacing="60" HeightRequest="200"  VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
+            <StackLayout Spacing="60"   VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
-                <StackLayout Spacing="-13">
+                <StackLayout Spacing="5">
                     <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
@@ -34,7 +37,7 @@
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                <StackLayout Spacing="-13">
+                <StackLayout Spacing="5">
                           <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
                                        IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start"  
@@ -46,7 +49,7 @@
                      
                     </StackLayout>
                     
-                     <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                     <StackLayout Margin="0,15,0,0" Orientation="Horizontal">
                         <Label Text="Dismiss" TextColor="White">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Dismissed_tapped" 
@@ -63,32 +66,30 @@
               
             </StackLayout>
       
-            <StackLayout Grid.Row="3" HeightRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout Grid.Row="3"  Margin="0,15,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                
               
-                    <Button Text="Login" WidthRequest="200" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
+                    <Button Text="Login" WidthRequest="300" x:Name="login" Clicked="Logon_Tapped" CornerRadius="23" 
                         BorderWidth="1"    BackgroundColor="{x:StaticResource CrawlColor}" 
                         TextColor="White" />
                    
     
 
                 </StackLayout>
-         <StackLayout Grid.Row="4" HeightRequest="100" >
+         <StackLayout Grid.Row="4"  Margin="0,15,0,0" >
                  <StackLayout>
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                     <Image Source="facebookcircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Facebook_Tapped"  />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Image Source="googlecircle.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="CenterAndExpand" />
-                 
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                      <Button TextColor="White" WidthRequest="300" Text="Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="Facebook_Tapped" />
+                <Button TextColor="White" Text=" Google" WidthRequest="300" CornerRadius="23" BackgroundColor="#c0392b" />
+                
+                   
                 </StackLayout>
                           
             </StackLayout>
-        
+     
         </Grid>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

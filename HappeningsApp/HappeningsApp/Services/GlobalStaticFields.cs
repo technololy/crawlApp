@@ -10,5 +10,11 @@ namespace HappeningsApp.Services
             get;
             set;
         }
+
+        public static string Username
+        {
+            get;
+            set;
+        }
     }
 }

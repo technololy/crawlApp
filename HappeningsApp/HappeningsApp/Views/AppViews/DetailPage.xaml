@@ -2,7 +2,7 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  x:Class="HappeningsApp.Views.AppViews.DetailPage"
-           NavigationPage.HasNavigationBar="False"
+           
                  BackgroundColor="Black"
                  >
         <ContentPage.Content>
@@ -16,7 +16,7 @@
                     
                 </Grid.RowDefinitions>
                 <Frame Grid.Row="0" Padding="0" HeightRequest="200" IsClippedToBounds="True">
-                    <Image  Aspect="Fill"  Source="harvest.jpg" />
+                    <Image  Aspect="Fill"  Source="{Binding ImagePath}" />
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
@@ -32,12 +32,12 @@
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="0" Margin="10"  >
                             <StackLayout HorizontalOptions="Start">
-                                <Label Text="On the Floor - 2018" FontAttributes="Bold" FontSize="20" TextColor="Black" />
-                                <Label Text="Lekki Phase 1" FontSize="12" TextColor="Black" Opacity="0.7" />
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="20" TextColor="Black" />
+                                <Label Text="{Binding Owner_Location}" FontSize="12" TextColor="Black" Opacity="0.7" />
                             </StackLayout>
                            
-                                <Label Text="This promise is currently only delivered if the ListView/TableView's Cell height is set to a known fixed value when the ListView/TableView is configured. 
-                                I hardly ever have any ListView/TableView objects like that. So I'm quite happy to tolerate the slow runtime calculation and layout of each Cell's elements to derive its  height as it is required. I know nothing about how to do this in Android, but it's almost trivial with iOS" Opacity="0.9" />
+                                <Label Text="{Binding Details}" 
+                                       Opacity="0.9" />
                         </StackLayout>
             
                         <Grid Grid.Row="2" >
@@ -52,17 +52,17 @@
                                             <Image Source="bkmkpinknobkg.png" WidthRequest="30" HeightRequest="30"  />
                                 <Image Source="pinkshare.png" WidthRequest="30" HeightRequest="30" />
                            
-                                              <Button Text="Book" FontSize="10" HorizontalOptions="EndAndExpand" BackgroundColor="Fuchsia" TextColor="White" CornerRadius="15" Grid.Column="2"  WidthRequest="80" HeightRequest="20" />
+                                              <Button Text="Book" FontSize="10"  HorizontalOptions="EndAndExpand" BackgroundColor="{DynamicResource CrawlRedColor}" TextColor="White" CornerRadius="15" Grid.Column="2"  WidthRequest="80" HeightRequest="20" />
                               
                                         </StackLayout>
-                                      <Frame HasShadow="false" HeightRequest="60">
+                                      <Frame HasShadow="false" HeightRequest="60" >
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
                                                     
                                                 </Frame>
                                                 <StackLayout>
-                                                    <Label Text="Tap to get an uber" />
-                                                    <Label Text="Get 15% off your first deal with Crawl" Opacity="0.6" />
+                                                    <Label Text="Tap to get an uber" TextColor="Black" />
+                                                    <Label Text="Get 15% off your first deal with Crawl" TextColor="Black" Opacity="0.6" />
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>

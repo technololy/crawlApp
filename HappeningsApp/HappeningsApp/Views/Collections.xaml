@@ -9,27 +9,43 @@
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
         
-      <StackLayout>
-              <FlexLayout Margin="40,40,40,10" >
-        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
-                
-            </Frame>
-             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
-                
-            </Frame>
+      <FlexLayout Direction="Column" 
+                    AlignItems="Stretch" 
+                    JustifyContent="SpaceEvenly" 
+                    Margin="40" >
+            <StackLayout>
+                 <Button Text="My Push Notifications" BackgroundColor="Transparent"
+                      TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="1"
+                         />
+            
+            </StackLayout>
+            <StackLayout>
+               <Button Text="My Favorites" BackgroundColor="Transparent"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="1"
+                       />
+               
+            </StackLayout>
+                <StackLayout>
+               <Button Text="Add New Favorites?" BackgroundColor="Transparent"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="0"
+                       />
+               
+            </StackLayout>
+            <StackLayout>
+                <Button Text="LogOut" BackgroundColor="Transparent"
+                         TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="0"
+                       />
+
+            </StackLayout>
         </FlexLayout>
-             <FlexLayout Margin="40,40,40,10">
-        <Frame HeightRequest="100" BackgroundColor="Gray" WidthRequest="150" HasShadow="false" CornerRadius="0">
-                
-            </Frame>
-             <Frame HeightRequest="100" WidthRequest="200" CornerRadius="0">
-                
-            </Frame>
-        </FlexLayout>
-            <FlexLayout>
-                <Label Text="Log Out" TextColor="White" />
-            </FlexLayout>
-        </StackLayout>
 
 
       

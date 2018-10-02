@@ -12,10 +12,11 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.561731" />  
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />  
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,10 +62,23 @@
     <Folder Include="Custom\" />
     <Folder Include="Services\FaceBook\" />
     <Folder Include="Services\LoginSignUp\" />
+    <Folder Include="Views\Survey\" />
+    <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\Current\lib\mono\Xamarin.iOS\Xamarin.iOS.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Custom\MultiSelectPopUp.xaml.cs">
+      <DependentUpon>MultiSelectPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Custom\MultiPicker.xaml.cs">
+      <DependentUpon>MultiPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Survey\SurveyTwo.xaml.cs">
+      <DependentUpon>SurveyTwo.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

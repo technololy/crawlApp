@@ -58,12 +58,21 @@ namespace HappeningsApp.Services.LoginSignUp
         internal async static Task<Models.RegisterationResponse.RootObject> RegisterLoco(Registeration reg)
         {
             RegisterationResponse.RootObject registResp = new RegisterationResponse.RootObject();
-
+            string content = "";
             try
             {
                 var testresult = await APIService.RegisterLocalNew(reg);
-                var testCont = await testresult.Content.ReadAsStringAsync();
-                registResp = JsonConvert.DeserializeObject<RegisterationResponse.RootObject>(testCont);
+                content = await testresult.Content.ReadAsStringAsync();
+                if (content.ToLower().Contains("success"))
+                {
+                    registResp.Message = "success";
+                }
+                else
+                {
+                    registResp = JsonConvert.DeserializeObject<RegisterationResponse.RootObject>
+                                       (content);
+                }
+               
                
 
                

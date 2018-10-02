@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black"
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             
+             x:Class="HappeningsApp.Views.Survey.SurveyTwo">
+    <ContentPage.Content>
+          <ScrollView>
+            
+     
+        <FlexLayout Direction="Column" 
+                    AlignItems="Stretch" 
+                    JustifyContent="SpaceEvenly" 
+                    Margin="40" >
+            <Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />
+      
+            <StackLayout>
+                <c:MultiPicker Title="Favourite Sport" x:Name="SportPicker" 
+                                   />
+            </StackLayout>
+            
+               <StackLayout>
+                <c:MultiPicker Title="Other Interests" x:Name="OtherInterests" 
+                                   />
+            </StackLayout>
+            
+            
+            
+           
+            <StackLayout>
+                   
+                    
+                <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked" />
+                <Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White" Clicked="Handle_Clicked_1"  />
+                <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+            </StackLayout>
+            
+        </FlexLayout>
+               </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

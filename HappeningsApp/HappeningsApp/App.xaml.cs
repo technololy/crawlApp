@@ -25,7 +25,7 @@ namespace HappeningsApp
 		{
 			InitializeComponent();
 
-            //CheckIfUserIsPersistent();
+
             if (IsUserLoggedOn())
             {
                 ViewModels.LoginViewModel lvmm = new ViewModels.LoginViewModel();
@@ -40,6 +40,7 @@ namespace HappeningsApp
                 MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
 
             }
+            #region comment
             //MainPage = new NavigationPage(new MainPage())
 
 
@@ -48,21 +49,12 @@ namespace HappeningsApp
             //    BarTextColor = Color.White,
 
             //}
-                ;
-            //MainPage = GetMainPage();
+              //  ;
+            #endregion
+           // MainPage =new NavigationPage( new Views.test.MyPage());
 
-            //MainPage = new NavigationPage(new AppLanding());
-            //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-			//MainPage = new NavigationPage(new Deals());
-            //MainPage = new NavigationPage(new Collections())
-
-                //{
-                //    BarBackgroundColor = Color.FromHex("#ff5300"),
-                //    BarTextColor = Color.White,
-
-                //}
-
-                ;
+        
+          
         }
 
         private bool IsUserLoggedOn()

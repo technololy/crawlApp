@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              NavigationPage.HasNavigationBar="False"
+             
+     xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+             
+             x:Class="HappeningsApp.Custom.LabelAndEntry">
+    <ContentView.Content>
+        <StackLayout Spacing="-5">
+                    <bdEntry:BorderlessEntry x:Name="lblText" 
+                                             Placeholder="{Binding PlaceHolderName}"  
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" 
+                                       TextColor="White" 
+                                       Text="{Binding TextName}"
+                                       PlaceholderColor="White"  />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
+                </StackLayout>
+        
+    </ContentView.Content>
+</ContentView>

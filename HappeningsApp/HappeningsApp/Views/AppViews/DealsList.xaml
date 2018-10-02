@@ -18,7 +18,13 @@
                 </Label.GestureRecognizers>
                 </Label>
             
-               <ListView ItemsSource="{Binding dealsfromAPI}" x:Name="dealsListview" SeparatorVisibility="None" IsPullToRefreshEnabled="True"  ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+               <ListView ItemsSource="{Binding dealsfromAPI}" 
+                         x:Name="dealsListview" 
+                         SeparatorVisibility="None" 
+                         IsPullToRefreshEnabled="True"  
+                         ItemTapped="dealsListview_ItemTapped" 
+                         BackgroundColor="Transparent" 
+                         HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>

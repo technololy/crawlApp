@@ -8,14 +8,14 @@
             <StackLayout VerticalOptions="End" HorizontalOptions="CenterAndExpand">
                 <Button Text="Sign Up" CornerRadius="23" x:Name="signupbtn" Clicked="signup_click" WidthRequest="250" TextColor="White" BackgroundColor="{x:StaticResource CrawlColor}" />
             </StackLayout>
+            
             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
-                <Label Text="Already have an account?" TextColor="White"  />
-            </StackLayout>
-            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="Already have an account?" HorizontalTextAlignment="Center" TextColor="White"  />
+               
                 <Button Text="Log In" CornerRadius="23" WidthRequest="250" x:Name="loginbtn" Clicked="logon_click" TextColor="{x:StaticResource CrawlColor}" BackgroundColor="White" />
             </StackLayout>
             <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
-                <Label HorizontalTextAlignment="Center" Text="By signing up, you agree to the terms and                 conditions of CRAWL" TextColor="White" />
+                <Label HorizontalTextAlignment="Center" Text="By signing up, you agree to the terms and conditions of CRAWL" TextColor="White" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

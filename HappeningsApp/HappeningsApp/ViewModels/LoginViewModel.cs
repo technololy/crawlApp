@@ -33,6 +33,7 @@ namespace HappeningsApp.ViewModels
 
         internal bool IsRegisterationDetailsValid()
         {
+            User.Firstname= User.Username = User.EmailAddress;
             if (string.IsNullOrEmpty(User.EmailAddress)||string.IsNullOrEmpty( User.Firstname)||string.IsNullOrEmpty(User.Password)||string.IsNullOrEmpty(User.ConfirmPin))
             {
                 RegisterationError = "Please make sure you enter each and every field";
@@ -118,7 +119,7 @@ namespace HappeningsApp.ViewModels
                 //else
                 //{
                 //    var result = await a.Content.ReadAsStringAsync();
-            if (regaa.Message.ToLower().Contains("success"))
+                if (regaa.Message.ToLower().Contains("success"))
                 {
                     IsSuccess = true;
 
