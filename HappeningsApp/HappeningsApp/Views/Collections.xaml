@@ -14,7 +14,7 @@
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <StackLayout>
-                 <Button Text="My Push Notifications" 
+                 <Button Text="My Push Notifications" BackgroundColor="Transparent"
                       TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="1"
@@ -22,7 +22,7 @@
             
             </StackLayout>
             <StackLayout>
-               <Button Text="My Favorites"
+               <Button Text="My Favorites" BackgroundColor="Transparent"
                          TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="1"
@@ -30,7 +30,7 @@
                
             </StackLayout>
                 <StackLayout>
-               <Button Text="Add New Favorites?"
+               <Button Text="Add New Favorites?" BackgroundColor="Transparent"
                          TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="0"

@@ -106,7 +106,7 @@ namespace HappeningsApp.Views
             page.Content.BackgroundColor = Color.FromHex("#000015");
 
             PlaceHolder.Content = page.Content;
-            bxVwCol.BackgroundColor = Color.FromHex("#FF00A1");
+            bxVwCol.BackgroundColor = Color.FromHex("#3498db");
             bxVwCat.BackgroundColor = Color.Black;
             bxVwDeals.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
