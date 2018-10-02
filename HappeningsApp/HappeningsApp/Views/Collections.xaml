@@ -38,7 +38,7 @@
                
             </StackLayout>
             <StackLayout>
-                <Button Text="LogOut" BackgroundColor="Transparent"
+                <Button Text="LogOut" Clicked="Handle_Clicked_2" BackgroundColor="Transparent"
                          TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="0"
