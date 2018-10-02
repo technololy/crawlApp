@@ -24,7 +24,7 @@
             </StackLayout>
             <StackLayout Spacing="60" HeightRequest="200"  VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
-                <StackLayout Spacing="-10">
+                <StackLayout Spacing="-13">
                     <c:BorderlessEntry Placeholder="Username"  
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
