@@ -10,6 +10,7 @@ namespace HappeningsApp.Views.test
         public MyPage()
         {
             InitializeComponent();
+         
         }
     }
 }
