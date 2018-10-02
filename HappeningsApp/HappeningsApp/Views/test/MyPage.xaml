@@ -8,8 +8,8 @@
              x:Class="HappeningsApp.Views.test.MyPage">
     <ContentPage.Content>
         <ScrollView>
+            <Entry ReturnType="Next" />
 
-         
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
