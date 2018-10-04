@@ -1,4 +1,5 @@
-﻿using HappeningsApp.ViewModels;
+﻿using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
 using System;
 using System.Collections.Generic;
@@ -20,30 +21,112 @@ namespace HappeningsApp.Views
 		{
 			InitializeComponent ();
             introPageViewMod = new IntroPageViewModel();
+            //if (GlobalStaticFields.IntroModel.dealsfromAPI!=null && GlobalStaticFields.IntroModel.dealsfromAPI.Count>0)
+            //{
+            //    introPageViewMod = GlobalStaticFields.IntroModel;
+            //}
+            //else
+            //{
+            //    introPageViewMod = new IntroPageViewModel();
+            //}
+
+            //introPageViewMod = GlobalStaticFields.IntroModel != null && GlobalStaticFields.IntroModel.dealsfromAPI.Count > 0
+            //? GlobalStaticFields.IntroModel
+            //: new IntroPageViewModel();
+            //introPageViewMod = GlobalStaticFields.IntroModel ?? new IntroPageViewModel();
+            //introPageViewMod = GlobalStaticFields.IntroModel != null ? GlobalStaticFields.IntroModel : new IntroPageViewModel();
 
             Deals_Tapped(this, null);
-            ShowSurVey();
+            ShowSurVeyOne();
+           // ShowSurVeyTwo();
+            //ShowSurVeyThree();
           
 		}
 
-        private async void ShowSurVey()
+    
+
+        private async Task ShowSurVeyTwo()
         {
-            await Task.Delay(10000); 
+           await Task.Delay(30000);
+            NowShowTwo();
+
+        }
+
+        private async Task NowShowTwo()
+        {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"])==true)
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
                 {
 
                 }
                 else
                 {
-                   await  Navigation.PushModalAsync(new Survey.SurveyOne());
+                    await Navigation.PushModalAsync(new Survey.SurveyTwo());
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Properties["SurveyTwo"] = false;
+            }
+        }
+
+        private async Task ShowSurVeyOne()
+        {
+          await Task.Delay(30000);
+           await NowShowOne();
+        }
+
+        private async Task NowShowOne()
+        {
+            try
+            {
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) == true)
+                {
+
+                }
+                else
+                {
+                    await Navigation.PushModalAsync(new Survey.SurveyOne());
                 }
             }
             catch (Exception ex)
             {
                 Application.Current.Properties["SurveyOne"] = false;
             }
+        }
+
+        private async Task ShowSurVeyThree()
+        {
+         
+
+
+           
+
+
+            await Task.Delay(30000);
+            NowShowThree();
+
+        }
+
+        private async Task NowShowThree()
+        {
+            try
+            {
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyThree"]) == true)
+                {
+
+                }
+                else
+                {
+                    await Navigation.PushModalAsync(new Survey.SurveyThree());
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Properties["SurveyThree"] = false;
+            }
+
         }
 
         private void Deals_Tapped(object sender, EventArgs e)
@@ -61,7 +144,10 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-
+            //BindingContext = GlobalStaticFields.IntroModel.dealsfromAPI != null
+                //&& GlobalStaticFields.IntroModel.dealsfromAPI.Count > 0
+                //? GlobalStaticFields.IntroModel.dealsfromAPI
+                //: (object)new IntroPageViewModel().GetDeals();
             BindingContext = introPageViewMod;
 
         }
@@ -110,11 +196,19 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwDeals.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
+            BindingContext = introPageViewMod;
             ////lblDeals.TextColor = Color.White;
             ////lblThisWeek.TextColor = Color.White;
             ////lblCategories.TextColor = Color.White;
             ////lblCollections.TextColor = Color.Magenta;
 
         }
+
+        protected  override  bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
+        
     }
 }

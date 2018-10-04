@@ -55,9 +55,33 @@ namespace HappeningsApp.Views.Survey
             Application.Current.Properties["SurveyOne"] = true;
 
             await Navigation.PopModalAsync(true);
+            ShowSurVeyTwo();
 
         }
+        private async Task ShowSurVeyTwo()
+        {
+            await Task.Delay(30000);
+            NowShowTwo();
 
+        }
+        private async Task NowShowTwo()
+        {
+            try
+            {
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
+                {
+
+                }
+                else
+                {
+                    await Navigation.PushModalAsync(new Survey.SurveyTwo());
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Properties["SurveyTwo"] = false;
+            }
+        }
         void Location_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (Location.SelectedIndex==0)
@@ -68,6 +92,8 @@ namespace HappeningsApp.Views.Survey
         void  Dismiss_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PopModalAsync(true);
+            ShowSurVeyTwo();
+
         }
 
         void Smoke_SelectedIndexChanged(object sender, System.EventArgs e)

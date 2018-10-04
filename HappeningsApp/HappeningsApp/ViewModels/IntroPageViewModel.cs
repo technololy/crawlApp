@@ -3,17 +3,20 @@ using HappeningsApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HappeningsApp.ViewModels
 {
-    public class IntroPageViewModel
+    public class IntroPageViewModel//: //INotifyPropertyChanged
     {
         public ObservableCollection<ImageItems> dealsItems { get; set; }
         public ObservableCollection<ImageItems> nearbyItems { get; set; }
         public ObservableCollection<ImageItems> category { get; set; }
         public ObservableCollection<Deals> dealsfromAPI { get; set; }
         public ObservableCollection<Category> CategfromAPI { get; set; }
+        public ObservableCollection<FavoriteModel> Favs { get; set; }
         public ObservableCollection<Collections> collections { get; set; }
         public IntroPageViewModel(string test)
         {
@@ -31,9 +34,20 @@ namespace HappeningsApp.ViewModels
             GetCategories();
             GetTestDeals();
             GetTestCollections();
+            GetFavs();
         }
 
-        private void GetTestCollections()
+        public async Task<ObservableCollection<FavoriteModel>> GetFavs()
+        {
+            FavService fs = new FavService();
+           Favs= await fs.GetFavsTest();
+
+            //GlobalStaticFields.AllService.Add(Favs);
+            GlobalStaticFields.Favs = Favs;
+            return Favs;
+        }
+
+        public void GetTestCollections()
         {
             MockDataStore m = new MockDataStore();
             collections = m.GetCollections();
@@ -48,20 +62,24 @@ namespace HappeningsApp.ViewModels
             category = m.Category();
         }
 
-        private async void GetDeals()
+        public async Task<ObservableCollection<Deals>> GetDeals()
         {
             DealsService ds = new DealsService();
 
             dealsfromAPI = await ds.GetDeals();
+            GlobalStaticFields.dealsfromAPI = dealsfromAPI;
+            return dealsfromAPI;
 
         }
 
 
-        private async void GetCategories()
+        private async Task GetCategories()
         {
-           HappeningsApp.Services.CategoriesService ds = new HappeningsApp.Services.CategoriesService();
+           CategoriesService ds = new CategoriesService();
 
             CategfromAPI = await ds.GetCategories();
+            GlobalStaticFields.CategoriesFromAPI = CategfromAPI;
+
 
         }
     }

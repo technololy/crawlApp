@@ -12,46 +12,46 @@ namespace HappeningsApp.Services
 {
     public class APIService
     {
-       // HttpClient client;
+        // HttpClient client;
         public APIService()
         {
             //client = new HttpClient();
         }
-        public async static Task<string> Post<T>(T model,string method)
+        public async static Task<string> Post<T>(T model, string method)
         {
             //HttpResponseMessage message = new HttpResponseMessage();
             string json = string.Empty;
             string url = $"{Constants.CrawlAPI}{method}";
             using (var client = new HttpClient())
             {
-               // var client = new HttpClient();
+                // var client = new HttpClient();
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                 //client.BaseAddress = new Uri(Constants.CrawlAPI);
-                
+
                 json = JsonConvert.SerializeObject(model);
-               var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-              var  message = await client.PostAsync(url, stringContent);
-              var resultt = await message.Content.ReadAsStringAsync();
+                var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var message = await client.PostAsync(url, stringContent);
+                var resultt = await message.Content.ReadAsStringAsync();
                 LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
 
                 return resultt;
-          //  var resultt = await message.Content.ReadAsStringAsync();
+                //  var resultt = await message.Content.ReadAsStringAsync();
 
-            //if (message.StatusCode== HttpStatusCode.OK)
-            //{
-            //    var result = await message.Content.ReadAsStringAsync();
-            //    var deserilize = JsonConvert.DeserializeObject<T>(result);
-            //}
-            //else
-            //{
-            //    var result = await message.Content.ReadAsStringAsync();
-            //    var deserilize = JsonConvert.DeserializeObject<T>(result);
-            //}
+                //if (message.StatusCode== HttpStatusCode.OK)
+                //{
+                //    var result = await message.Content.ReadAsStringAsync();
+                //    var deserilize = JsonConvert.DeserializeObject<T>(result);
+                //}
+                //else
+                //{
+                //    var result = await message.Content.ReadAsStringAsync();
+                //    var deserilize = JsonConvert.DeserializeObject<T>(result);
+                //}
 
-            //    return message;
+                //    return message;
             }
 
-            
+
         }
 
         internal async static Task<HttpResponseMessage> GetToken(UserInfo user)
@@ -64,13 +64,13 @@ namespace HappeningsApp.Services
             dict.Add("grant_type", "password");
             dict.Add("password", user.Password);
             dict.Add("username", user.Username);
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 client.MaxResponseContentBufferSize = 256000;
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
-                 res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
+                res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
                 var cont = await res.Content.ReadAsStringAsync();
                 LogService.LogErrors($"Request json:\n{dict}, Response json\n{cont}");
 
@@ -90,7 +90,7 @@ namespace HappeningsApp.Services
             HttpResponseMessage res = new HttpResponseMessage();
             string url = "";
             url = Constants.CrawlAPI + method;
-          
+
             using (var client = new HttpClient())
             {
                 client.MaxResponseContentBufferSize = 256000;
@@ -98,7 +98,7 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-                
+
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
                 LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
@@ -128,11 +128,11 @@ namespace HappeningsApp.Services
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
-               // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+                // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
-               // LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+                // LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
 
 
             }
@@ -142,7 +142,7 @@ namespace HappeningsApp.Services
 
 
 
-        internal async static Task<HttpResponseMessage> Get( string method)
+        internal async static Task<HttpResponseMessage> Get(string method)
         {
 
             HttpResponseMessage res = new HttpResponseMessage();
@@ -158,12 +158,14 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
                 res = client.GetAsync(url).Result;
+                var content = await res.Content.ReadAsStringAsync();
+
                 LogService.LogErrors($"Request and response json:\n{url}");
+                return res;
 
 
             }
 
-            return res;
         }
 
         internal async static Task<string> RegisterLocal(Registeration reg)
@@ -187,7 +189,7 @@ namespace HappeningsApp.Services
                 var log = ex;
                 return String.Empty;
             }
-     
+
         }
 
 
@@ -224,5 +226,27 @@ namespace HappeningsApp.Services
             }
 
         }
+
+
+        public async static Task<HttpResponseMessage> LogAsync(string json)
+        {
+            var user = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username);
+            var jsonRequest = "{'user': '"+user+"','Error': '"+json+"'}}";
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri(Constants.CrawlAPI);
+                //serialize your json using newtonsoft json serializer then add it to the StringContent
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+                //method address would be like api/callUber:SomePort for example
+                var result = await client.PostAsync("/api/Error", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+                return result;
+            }
+
+
+
+        }
     }
-}
+
+    }

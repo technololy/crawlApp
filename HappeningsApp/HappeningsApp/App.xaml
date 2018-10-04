@@ -17,8 +17,8 @@
             </Style>
             <Style TargetType="Button">
                 <Setter Property="CornerRadius" Value="23"/>
-               
-                
+               <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

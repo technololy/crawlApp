@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="My Favorites" BackgroundColor="Black" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.AppViews.Favourites">
+    <ContentPage.Content>
+        <Grid>
+           <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions> 
+                   <ListView BackgroundColor="Transparent" SeparatorVisibility="None" Grid.Row="0" ItemsSource="{Binding .}" HasUnevenRows="true" ScrollToRequested="Handle_ScrollToRequested" x:Name="MyFavList" Footer="">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                      
+                        <StackLayout Margin="20,40,20,0">
+                            <Frame HeightRequest="50" HasShadow="false">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
+                                        <Label Text="{Binding Details}" Opacity="0.7" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Spacing="-15" HorizontalOptions="End" VerticalOptions="Center">
+                                      
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+         <StackLayout Grid.Row="1" Margin="20,20,20,20">
+                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
+                <Button HeightRequest="44"  Text="View More" TextColor="{StaticResource CrawlColor}" WidthRequest="100" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button  HeightRequest="44"  WidthRequest="100" Text="Add it here" TextColor="{StaticResource CrawlColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button HeightRequest="44"  Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
+            </StackLayout>                
+            </StackLayout>   
+        </Grid>
+ 
+    </ContentPage.Content>
+</ContentPage>

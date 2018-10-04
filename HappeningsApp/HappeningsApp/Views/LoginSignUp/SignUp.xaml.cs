@@ -139,6 +139,8 @@ namespace HappeningsApp.Views.LoginSignUp
                     if (tkResponse)
                     {
                         lvm.PersistUserDetails();
+                       // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+
                         await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
 
 
@@ -170,10 +172,22 @@ namespace HappeningsApp.Views.LoginSignUp
           
         }
 
-        private void Done_Activated(object sender, EventArgs e)
+        void Handle_Completed(object sender, System.EventArgs e)
         {
-            
+            txtPassword.Focus();
         }
+        void Password_Completed(object sender, System.EventArgs e)
+        {
+            txtConfirmPassword.Focus();
+        }
+
+
+        void ConfirmPassword_Completed(object sender, System.EventArgs e)
+        {
+            signUp_Clicked(this, new EventArgs());
+        }
+
+     
 
         private  void goBack_Tapped(object sender, EventArgs e)
         {

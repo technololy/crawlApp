@@ -19,6 +19,7 @@
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
                   ItemSelected="Handle_ItemSelected"
+                  Footer=""
                   >
             <ListView.ItemTemplate>
                 <DataTemplate>

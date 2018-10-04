@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
@@ -24,7 +25,7 @@ namespace HappeningsApp.Views.AppViews
 
         }
 
-        IntroPageViewModel introPageViewMod;
+        //IntroPageViewModel introPageViewMod;
         private Category cat;
 
         public DealsList()
@@ -38,7 +39,27 @@ namespace HappeningsApp.Views.AppViews
 
         public DealsList(Category cat)
         {
-            this.cat = cat;
+            try
+            {
+                this.cat = cat;
+                Services.DealsService ds = new Services.DealsService();
+                using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
+                {
+                    Task.Delay(3000);
+                    var resp = ds.GetAllByCategoryID(cat.CategoryID).Result;
+                    var rr = resp;
+                    if (resp != null)
+                    {
+                        var r = resp;
+                    }
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+          
         }
     }
 }

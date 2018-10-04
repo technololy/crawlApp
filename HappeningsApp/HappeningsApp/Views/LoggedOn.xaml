@@ -21,27 +21,33 @@
                 <RowDefinition Height="auto" />
                
             </Grid.RowDefinitions>
-            <StackLayout HeightRequest="250" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
+            <StackLayout HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
                 <Image Source="Crawl_white_blue.png" HeightRequest="250"  />
             
             </StackLayout>
-            <StackLayout Spacing="60"   VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
+            <StackLayout Spacing="50"   VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
                 <StackLayout Spacing="5">
-                    <c:BorderlessEntry Placeholder="Username"  
+                    <c:BorderlessEntry Placeholder="Username" 
+                                       x:Name="txtUsername"
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
-                                       TextColor="White" 
+                                       Completed="Handle_Completed"
+                                       TextColor="White" ReturnType="Next" 
                                        Text="{Binding User.Username}"
                                        PlaceholderColor="White"  />
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
                 <StackLayout Spacing="5">
-                          <c:BorderlessEntry Placeholder="Password" IsPassword="True"  
+                          <c:BorderlessEntry Placeholder="Password" 
+                                             x:Name="txtPassword"
+                                             IsPassword="True"  
                                        IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start"  
                                        TextColor="White" 
+                                             Completed="Handle_Completed_1"
+                                             ReturnType="Send"
                                        PlaceholderColor="White" 
                                        Text="{Binding User.Password}"
                                        />

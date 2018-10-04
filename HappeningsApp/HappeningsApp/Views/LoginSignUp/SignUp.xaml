@@ -20,26 +20,38 @@
           
              <StackLayout VerticalOptions="CenterAndExpand" Padding="40,0,40,40" Spacing="30">
             <StackLayout Spacing="0" IsVisible="false">
-                <c:BorderlessEntry Placeholder="Username"  
+                <c:BorderlessEntry Placeholder="Username" 
+                                
                                    IsSpellCheckEnabled="false"
-                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Username}"  PlaceholderColor="White"  />
+                                    HorizontalTextAlignment="Start" 
+                                   TextColor="White" Text="{Binding User.Username}"  PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout Spacing="0">
                 <c:BorderlessEntry Placeholder="Email"  
                                    IsSpellCheckEnabled="false"
+                                      x:Name="txtUsername"
+                                   ReturnType="Next"
+                                   Completed="Handle_Completed"
                                     HorizontalTextAlignment="Start" TextColor="White"  Text="{Binding User.EmailAddress}"  PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout Spacing="0">
-                <c:BorderlessEntry Placeholder="Password"  
+                <c:BorderlessEntry Placeholder="Password" 
+                                      x:Name="txtPassword"
+                                   ReturnType="Next"
+                                   Completed="Password_Completed"
                                    IsSpellCheckEnabled="false" IsPassword="True"
                                     HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Password}"   PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout Spacing="0">
                 <c:BorderlessEntry Placeholder="Confirm Password"  
-                                   IsSpellCheckEnabled="false" IsPassword="True"
+                                   IsSpellCheckEnabled="false"
+                                      x:Name="txtConfirmPassword"
+                                   ReturnType="Done"
+                                   Completed="ConfirmPassword_Completed"
+                                   IsPassword="True"
                                     HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.ConfirmPin}"   PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>

@@ -150,6 +150,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_clear_blue.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_clear_blue.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_clear_blue.png" />
+    <AndroidResource Include="Resources\drawable\ic_bookmark_border_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_bookmark_border_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

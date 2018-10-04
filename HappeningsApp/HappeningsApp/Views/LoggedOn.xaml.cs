@@ -97,9 +97,10 @@ namespace HappeningsApp.Views
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
                 {
+                   // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
 
-                   
-                   await Navigation.PushAsync(new AppLanding());
+
+                    await Navigation.PushAsync(new AppLanding());
 
                 }
                 else
@@ -107,6 +108,16 @@ namespace HappeningsApp.Views
                    await DisplayAlert("Error", "Error logging in at this time. Please try again", "OK");
                 }
             }
+        }
+
+        void Handle_Completed(object sender, System.EventArgs e)
+        {
+            txtPassword.Focus();
+        }
+
+        void Handle_Completed_1(object sender, System.EventArgs e)
+        {
+            Logon_Tapped(this, new EventArgs());
         }
 
         void Facebook_Tapped(object sender, System.EventArgs e)

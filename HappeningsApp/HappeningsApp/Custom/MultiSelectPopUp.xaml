@@ -46,7 +46,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <FlexLayout Direction="Row" HorizontalOptions="FillAndExpand" Padding="20,15" BackgroundColor="White">
-                                   <Switch x:Name="SwitchMultiItem" IsToggled="{Binding SelectedSwitch}"  />
+                                   <Switch  OnColor="{StaticResource CrawlColor}" x:Name="SwitchMultiItem" IsToggled="{Binding SelectedSwitch}"  />
                                     <Label Text="{Binding DisplayText}" VerticalOptions="CenterAndExpand" TextColor="Black" HorizontalOptions="FillAndExpand"/>
                                 </FlexLayout>
                             </ViewCell>

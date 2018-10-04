@@ -147,6 +147,7 @@
       <Visible>false</Visible>
     </ImageAsset>
     <BundleResource Include="Resources\ic_clear_blue.png" />
+    <BundleResource Include="Resources\ic_bookmark_border_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

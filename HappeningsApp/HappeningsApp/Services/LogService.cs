@@ -11,12 +11,14 @@ namespace HappeningsApp.Services
 
         public async static void LogErrors(string error)
         {
-            var logger = new LogModel()
-            {
-                User = GlobalStaticFields.Username,
-                Error = error
-            };
-            await APIService.LogClient<LogModel>(logger, "api/Error");
+            //var logger = new LogModel()
+            //{
+            //    User = GlobalStaticFields.Username,
+            //    Error = error
+            //};
+           // await APIService.LogClient<LogModel>(logger, "api/Error");
+        var l=    await APIService.LogAsync(error);
+            var cont = await l.Content.ReadAsStringAsync();
         }
     }
 }

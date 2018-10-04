@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-                  xmlns:c="clr-namespace:HappeningsApp.Custom"
-             BackgroundColor="Black"
-              NavigationPage.HasNavigationBar="False"
-             
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Views.test.MyPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage">
     <ContentPage.Content>
-        <ScrollView>
-            
-
-        </ScrollView>
+        <StackLayout Margin="20,40,20,0">
+            <Frame HeightRequest="90">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Museums that curate" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Art is life. if you know you know" Opacity="0.7" TextColor="Black" />
+                    </StackLayout>
+                    <StackLayout Spacing="-15">
+                        <Button Text="View" TextColor="Green" WidthRequest="90" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+                        
+                        <Button Text="Delete" TextColor="{StaticResource CrawlRedColor}" WidthRequest="50" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+                        <Button Text="Add here" TextColor="Green" WidthRequest="90" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame HeightRequest="80">
+                <StackLayout>
+                    <Label Text="Done and dusted" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Places I have visited" Opacity="0.7" TextColor="Black" />
+                </StackLayout>
+            </Frame>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
+                <Button Text="View More" WidthRequest="100" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button WidthRequest="100" Text="Add here" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

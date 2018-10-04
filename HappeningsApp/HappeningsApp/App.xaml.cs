@@ -4,6 +4,9 @@ using HappeningsApp.Views;
 using Xamarin.Forms.Xaml;
 using HappeningsApp.Views.Carousel;
 using HappeningsApp.Views.AppViews;
+using System.Threading.Tasks;
+using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -28,10 +31,12 @@ namespace HappeningsApp
 
             if (IsUserLoggedOn())
             {
-                ViewModels.LoginViewModel lvmm = new ViewModels.LoginViewModel();
+                LoginViewModel lvmm = new LoginViewModel();
                 lvmm.User.Username = Current.Properties["username"].ToString();
                 lvmm.User.Password = Current.Properties["password"].ToString();
-               lvmm.GetTokenFromAPI();
+                lvmm.GetTokenFromAPI();
+                //Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+
                 MainPage = new NavigationPage(new Views.AppLanding());
 
             }

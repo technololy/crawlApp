@@ -8,7 +8,7 @@
          xmlns:b="clr-namespace:HappeningsApp.Custom"    
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
-        
+        <ScrollView>
       <FlexLayout Direction="Column" 
                     AlignItems="Stretch" 
                     JustifyContent="SpaceEvenly" 
@@ -22,7 +22,8 @@
             
             </StackLayout>
             <StackLayout>
-               <Button Text="My Favorites" BackgroundColor="Transparent"
+               <Button Text="My Favorites" Clicked="Handle_Clicked_3"
+                       BackgroundColor="Transparent"
                          TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="1"
@@ -30,16 +31,19 @@
                
             </StackLayout>
                 <StackLayout>
-               <Button Text="Add New Favorites?" BackgroundColor="Transparent"
+               <Button Text="Add New Favorites?" 
+                       BackgroundColor="Transparent"
                          TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="0"
                        />
                
             </StackLayout>
-            <StackLayout>
-                <Button Text="LogOut" Clicked="Handle_Clicked_2" BackgroundColor="Transparent"
-                         TextColor="{DynamicResource CrawlColor}" 
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Text="Log Out" 
+                        Clicked="LogOut_Clicked" 
+                        BackgroundColor="Transparent"
+                         TextColor="{DynamicResource CrawlRedColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="0"
                        />
@@ -47,7 +51,7 @@
             </StackLayout>
         </FlexLayout>
 
-
+        </ScrollView>
       
     </ContentPage.Content>
 </ContentPage>

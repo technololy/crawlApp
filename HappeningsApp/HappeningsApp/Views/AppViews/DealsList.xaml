@@ -12,11 +12,6 @@
      
         <Grid>
 
-        <Label Text="Show Adverts" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Handle_Tapped" />
-                </Label.GestureRecognizers>
-                </Label>
             
                <ListView ItemsSource="{Binding dealsfromAPI}" 
                          x:Name="dealsListview" 
