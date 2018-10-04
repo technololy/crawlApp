@@ -29,11 +29,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-         <StackLayout Grid.Row="1" Margin="20,20,20,20">
+         <StackLayout  Grid.Row="1" Margin="20,20,20,20">
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
-                <Button HeightRequest="44"  Text="View More" TextColor="{StaticResource CrawlColor}" WidthRequest="100" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button  HeightRequest="44"  WidthRequest="100" Text="Add it here" TextColor="{StaticResource CrawlColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button HeightRequest="44"  Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
+                <Button  Text="View More" TextColor="{StaticResource CrawlColor}" WidthRequest="100" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button WidthRequest="100" Text="Add it here" TextColor="{StaticResource CrawlColor}" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
+                <Button Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
             </StackLayout>
             <StackLayout>
                 <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />

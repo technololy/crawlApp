@@ -17,15 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23" ambiguous="YES">
-                                <rect key="frame" x="270" y="270" width="60" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Crawl_white_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                                <rect key="frame" x="62" y="105" width="293" height="295"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luxuroius Social Experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="243" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="101" y="470" width="214" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedWhite" white="0" alpha="1"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
+                            <constraint id="245" firstItem="23" firstAttribute="centerX" secondItem="243" secondAttribute="centerX"/>
+                            <constraint id="246" firstItem="243" firstAttribute="centerX" secondItem="23" secondAttribute="centerX"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -34,4 +42,7 @@
             <point key="canvasLocation" x="349" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Crawl_white_blue.png" width="1000" height="1000"/>
+    </resources>
 </document>

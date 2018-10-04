@@ -45,32 +45,7 @@ namespace HappeningsApp.Views
 
     
 
-        private async Task ShowSurVeyTwo()
-        {
-           await Task.Delay(30000);
-            NowShowTwo();
-
-        }
-
-        private async Task NowShowTwo()
-        {
-            try
-            {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
-                {
-
-                }
-                else
-                {
-                    await Navigation.PushModalAsync(new Survey.SurveyTwo());
-                }
-            }
-            catch (Exception ex)
-            {
-                Application.Current.Properties["SurveyTwo"] = false;
-            }
-        }
-
+       
         private async Task ShowSurVeyOne()
         {
           await Task.Delay(30000);
@@ -92,42 +67,12 @@ namespace HappeningsApp.Views
             }
             catch (Exception ex)
             {
+                var lg = ex;
                 Application.Current.Properties["SurveyOne"] = false;
             }
         }
 
-        private async Task ShowSurVeyThree()
-        {
-         
-
-
-           
-
-
-            await Task.Delay(30000);
-            NowShowThree();
-
-        }
-
-        private async Task NowShowThree()
-        {
-            try
-            {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyThree"]) == true)
-                {
-
-                }
-                else
-                {
-                    await Navigation.PushModalAsync(new Survey.SurveyThree());
-                }
-            }
-            catch (Exception ex)
-            {
-                Application.Current.Properties["SurveyThree"] = false;
-            }
-
-        }
+      
 
         private void Deals_Tapped(object sender, EventArgs e)
         {
@@ -149,6 +94,7 @@ namespace HappeningsApp.Views
                 //? GlobalStaticFields.IntroModel.dealsfromAPI
                 //: (object)new IntroPageViewModel().GetDeals();
             BindingContext = introPageViewMod;
+            
 
         }
 

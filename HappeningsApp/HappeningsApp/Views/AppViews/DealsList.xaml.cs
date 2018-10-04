@@ -47,11 +47,11 @@ namespace HappeningsApp.Views.AppViews
                 {
                     Task.Delay(3000);
                     var resp = ds.GetAllByCategoryID(cat.CategoryID).Result;
-                    var rr = resp;
-                    if (resp != null)
+                    if (resp?.Count>0)
                     {
-                        var r = resp;
+                        BindingContext = resp;
                     }
+
                 }
                
             }
