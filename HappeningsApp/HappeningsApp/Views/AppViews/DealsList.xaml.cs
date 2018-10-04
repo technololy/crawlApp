@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
@@ -9,6 +10,8 @@ namespace HappeningsApp.Views.AppViews
 {
     public partial class DealsList : ContentPage
     {
+
+        public ObservableCollection<Activity> Activity;
         void Handle_Tapped(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new Deals());
@@ -66,15 +69,17 @@ namespace HappeningsApp.Views.AppViews
 
         private async void GetCategoryByID(Category cat)
         {
+            Activity = new ObservableCollection<Activity>();
             Services.DealsService ds = new Services.DealsService();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
+
+                Activity = await ds.GetAllByCategoryID(cat.CategoryID);
+            }
                 
-                var resp = await ds.GetAllByCategoryID(cat.CategoryID);
-                var rr = resp;
-                if (resp?.Count > 0)
+                if (Activity?.Count > 0)
                 {
-                    this.BindingContext = resp;
+                    this.BindingContext = Activity;
                     //this.dealsListview.ItemsSource = resp;
                 }
                 else
@@ -86,4 +91,4 @@ namespace HappeningsApp.Views.AppViews
             }
         }
     }
-}
+

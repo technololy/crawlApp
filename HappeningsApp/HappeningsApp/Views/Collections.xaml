@@ -8,13 +8,21 @@
          xmlns:b="clr-namespace:HappeningsApp.Custom"    
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
       <FlexLayout Direction="Column" 
                     AlignItems="Stretch" 
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <StackLayout>
-                 <Button Text="My Push Notifications" BackgroundColor="Transparent"
+                 <Button Text="My Messages" BackgroundColor="Transparent"
+                      TextColor="{DynamicResource CrawlColor}" 
+                     BorderColor="{DynamicResource CrawlColor}"
+                         BorderWidth="1"
+                         />
+            
+            </StackLayout>
+                    <StackLayout>
+                 <Button Text="My Groups" BackgroundColor="Transparent"
                       TextColor="{DynamicResource CrawlColor}" 
                      BorderColor="{DynamicResource CrawlColor}"
                          BorderWidth="1"

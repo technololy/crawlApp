@@ -8,9 +8,9 @@
     <ContentPage.Content>
         <Grid>
            <Grid.RowDefinitions>
-                <RowDefinition Height="80*"/>
+                <RowDefinition Height="70*"/>
                 
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions> 
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
