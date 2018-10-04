@@ -16,6 +16,7 @@ namespace HappeningsApp.Custom
         public MultiSelectPopUp()
         {
             InitializeComponent();
+            
         }
 
 
@@ -154,6 +155,17 @@ namespace HappeningsApp.Custom
             {
                 var log = ex;
             }
+
+            try
+            {
+                var control = sender as Switch;
+                var item = control.BindingContext as MultiPickerItems;
+            }
+            catch (Exception ex)
+            {
+
+                var lg = ex;
+            }
             Navigation.PopPopupAsync();
 
         }
@@ -178,8 +190,8 @@ namespace HappeningsApp.Custom
         {
            try
             {
-                var control = sender as MultiSelectPopUp ;
-                var item = (MultiPickerItems)PickerList.SelectedItem;
+                var control = sender as Switch ;
+                var item = control.BindingContext as MultiPickerItems ;
 
 
             }

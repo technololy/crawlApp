@@ -29,22 +29,22 @@ namespace HappeningsApp
 			InitializeComponent();
 
 
-            if (IsUserLoggedOn())
-            {
-                LoginViewModel lvmm = new LoginViewModel();
-                lvmm.User.Username = Current.Properties["username"].ToString();
-                lvmm.User.Password = Current.Properties["password"].ToString();
-                lvmm.GetTokenFromAPI();
-                //Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+            //if (IsUserLoggedOn())
+            //{
+            //    LoginViewModel lvmm = new LoginViewModel();
+            //    lvmm.User.Username = Current.Properties["username"].ToString();
+            //    lvmm.User.Password = Current.Properties["password"].ToString();
+            //    lvmm.GetTokenFromAPI();
+            //    //Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
 
-                MainPage = new NavigationPage(new Views.AppLanding());
+            //    MainPage = new NavigationPage(new Views.AppLanding());
 
-            }
-            else
-            {
-                MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
 
-            }
+            //}
             #region comment
             //MainPage = new NavigationPage(new MainPage())
 
@@ -56,7 +56,7 @@ namespace HappeningsApp
             //}
               //  ;
             #endregion
-           // MainPage =new NavigationPage( new Views.test.MyPage());
+            MainPage =new NavigationPage( new Views.Survey.SurveyOne());
 
         
           
