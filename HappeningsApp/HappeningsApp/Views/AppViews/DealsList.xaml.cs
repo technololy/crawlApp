@@ -21,7 +21,17 @@ namespace HappeningsApp.Views.AppViews
                 return;
             }
             var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
-           Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+            if (selected!=null)
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+
+            }
+            else
+            {
+                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+
+            }
 
         }
 
@@ -39,20 +49,12 @@ namespace HappeningsApp.Views.AppViews
 
         public DealsList(Category cat)
         {
+            InitializeComponent();
             try
             {
                 this.cat = cat;
-                Services.DealsService ds = new Services.DealsService();
-                using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
-                {
-                    Task.Delay(3000);
-                    var resp = ds.GetAllByCategoryID(cat.CategoryID).Result;
-                    if (resp?.Count>0)
-                    {
-                        BindingContext = resp;
-                    }
-
-                }
+                GetCategoryByID(this.cat);
+               
                
             }
             catch (Exception ex)
@@ -60,6 +62,28 @@ namespace HappeningsApp.Views.AppViews
                 var log = ex;
             }
           
+        }
+
+        private async void GetCategoryByID(Category cat)
+        {
+            Services.DealsService ds = new Services.DealsService();
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
+            {
+                
+                var resp = await ds.GetAllByCategoryID(cat.CategoryID);
+                var rr = resp;
+                if (resp?.Count > 0)
+                {
+                    this.BindingContext = resp;
+                    //this.dealsListview.ItemsSource = resp;
+                }
+                else
+                {
+                   await DisplayAlert("", "No Content", "Ok");
+                   await Application.Current.MainPage.Navigation.PopAsync(true);
+                    return;
+                }
+            }
         }
     }
 }

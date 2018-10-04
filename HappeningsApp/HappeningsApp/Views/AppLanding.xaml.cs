@@ -38,14 +38,14 @@ namespace HappeningsApp.Views
 
             Deals_Tapped(this, null);
             ShowSurVeyOne();
-           // ShowSurVeyTwo();
-            //ShowSurVeyThree();
+         
           
 		}
 
     
 
-       
+   
+
         private async Task ShowSurVeyOne()
         {
           await Task.Delay(30000);
@@ -67,12 +67,11 @@ namespace HappeningsApp.Views
             }
             catch (Exception ex)
             {
-                var lg = ex;
                 Application.Current.Properties["SurveyOne"] = false;
             }
         }
 
-      
+  
 
         private void Deals_Tapped(object sender, EventArgs e)
         {
@@ -93,8 +92,7 @@ namespace HappeningsApp.Views
                 //&& GlobalStaticFields.IntroModel.dealsfromAPI.Count > 0
                 //? GlobalStaticFields.IntroModel.dealsfromAPI
                 //: (object)new IntroPageViewModel().GetDeals();
-            BindingContext = introPageViewMod;
-            
+            BindingContext = GlobalStaticFields.dealsfromAPI ;
 
         }
 

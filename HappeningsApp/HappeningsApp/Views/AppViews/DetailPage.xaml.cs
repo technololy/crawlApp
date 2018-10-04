@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using HappeningsApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +13,8 @@ namespace HappeningsApp.Views.AppViews
 	public partial class DetailPage : ContentPage
 	{
         Models.Deals dealz;
+        private Activity selected2;
+
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
             if (await DisplayAlert("Info","Wanna add to a collection?","Yes","No"))
@@ -35,6 +37,15 @@ namespace HappeningsApp.Views.AppViews
             BindingContext = myDeals;
           // ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Transparent;
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
+        }
+
+        public DetailPage(Activity selected2)
+        {
+            InitializeComponent();
+
+            this.selected2 = selected2;
+            BindingContext = selected2;
+
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
