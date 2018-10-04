@@ -59,7 +59,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Custom\" />
     <Folder Include="Services\FaceBook\" />
     <Folder Include="Services\LoginSignUp\" />
     <Folder Include="Views\Survey\" />
