@@ -20,7 +20,8 @@
         <ListView x:Name="ListCategories"
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
-                  ItemSelected="Handle_ItemSelected"
+                  
+                  ItemTapped="Handle_ItemTapped"
                   Footer=""
                   >
             <ListView.ItemTemplate>
