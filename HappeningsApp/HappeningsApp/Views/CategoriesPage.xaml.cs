@@ -31,5 +31,16 @@ namespace HappeningsApp.Views
             var cat = ListCategories.SelectedItem as Category;
             Application.Current.MainPage.Navigation.PushAsync(new HappeningsApp.Views.AppViews.DealsList(cat));
         }
-	}
+
+        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            if (ListCategories.SelectedItem == null)
+            {
+                return;
+            }
+            var cat = ListCategories.SelectedItem as Category;
+            Application.Current.MainPage.Navigation.PushAsync(new HappeningsApp.Views.AppViews.DealsList(cat));
+
+        }
+    }
 }
