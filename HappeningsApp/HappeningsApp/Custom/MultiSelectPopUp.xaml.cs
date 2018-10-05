@@ -16,7 +16,7 @@ namespace HappeningsApp.Custom
         public MultiSelectPopUp()
         {
             InitializeComponent();
-            
+            BindingContext = new MMultiSelectPopUpViewModel();
         }
 
 

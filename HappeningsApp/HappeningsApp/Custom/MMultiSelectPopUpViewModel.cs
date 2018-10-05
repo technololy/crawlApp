@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace HappeningsApp.Custom
 {
@@ -25,5 +26,19 @@ namespace HappeningsApp.Custom
             }
         }
 
+
+        public Command DoneCommand
+        {
+            get
+            {
+              return new Command(()=>DoDone())  ;
+            }
+            
+        }
+
+        private void DoDone()
+        {
+            string a = "ff";
+        }
     }
 }

@@ -122,15 +122,33 @@
     <BundleResource Include="Resources\Crawl_white_blue.png" />
     <BundleResource Include="Resources\ic_clear_blue.png" />
     <BundleResource Include="Resources\ic_bookmark_border_blue.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
