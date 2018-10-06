@@ -98,7 +98,7 @@ namespace HappeningsApp.Views.LoginSignUp
                 using (UserDialogs.Instance.Loading("Connecting to FaceBook.."))
                 {
 
-                    var apiRequest = $"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}";
+                    var apiRequest = $"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}&scope=email";
                     var wbView = new WebView()
 
                     {
