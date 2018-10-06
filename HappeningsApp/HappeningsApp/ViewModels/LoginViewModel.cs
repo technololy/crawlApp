@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace HappeningsApp.ViewModels
 {
-    public class LoginViewModel: INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public LoginViewModel()
         {
@@ -33,8 +33,8 @@ namespace HappeningsApp.ViewModels
 
         internal bool IsRegisterationDetailsValid()
         {
-            User.Firstname= User.Username = User.EmailAddress;
-            if (string.IsNullOrEmpty(User.EmailAddress)||string.IsNullOrEmpty( User.Firstname)||string.IsNullOrEmpty(User.Password)||string.IsNullOrEmpty(User.ConfirmPin))
+            User.Firstname = User.Username = User.EmailAddress;
+            if (string.IsNullOrEmpty(User.EmailAddress) || string.IsNullOrEmpty(User.Firstname) || string.IsNullOrEmpty(User.Password) || string.IsNullOrEmpty(User.ConfirmPin))
             {
                 RegisterationError = "Please make sure you enter each and every field";
                 return false;
@@ -46,14 +46,14 @@ namespace HappeningsApp.ViewModels
                 RegisterationError = "Email is invalid";
                 return false;
             }
-            if (User.Password.Trim()!=User.ConfirmPin.Trim())
+            if (User.Password.Trim() != User.ConfirmPin.Trim())
             {
                 RegisterationError = "Passwords do not match";
                 return false;
             }
 
             return true;
-           
+
         }
 
         public string accessToken { get; set; }
@@ -69,7 +69,7 @@ namespace HappeningsApp.ViewModels
                 GlobalStaticFields.Token = cont.access_token;
                 IsSuccess = true;
                 return IsSuccess;
-            
+
             }
             else
             {
@@ -119,17 +119,22 @@ namespace HappeningsApp.ViewModels
                 //else
                 //{
                 //    var result = await a.Content.ReadAsStringAsync();
-                if (regaa.Message.ToLower().Contains("success"))
+                
+                if (regaa.Message != null)
                 {
-                    IsSuccess = true;
+                    if (regaa.Message.ToLower().Contains("success"))
+                    {
+                        IsSuccess = true;
 
+                    }
+                    else
+                    {
+                        IsSuccess = false;
+                        RegisterationError = regaa.Message;
+                        return IsSuccess;
+                    }
                 }
-                else
-                {
-                    IsSuccess = false;
-                    RegisterationError = regaa.Message;
-                    return IsSuccess;
-                }
+
                 //if (aa == null)
                 //{
                 //    UserDialogs.Instance.Alert("Info", "Error", "OK"); 
@@ -180,7 +185,7 @@ namespace HappeningsApp.ViewModels
         }
 
 
-      
+
 
         private FaceBookProfile _facebookProfile;
 
@@ -207,7 +212,7 @@ namespace HappeningsApp.ViewModels
                 IsSuccess = true;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName=null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -215,20 +220,20 @@ namespace HappeningsApp.ViewModels
 
         public async void SetFacebookUserProfileAsync()
         {
-          
-            if ((FacebookProfile!=null))
+
+            if ((FacebookProfile != null))
             {
                 User = new UserInfo()
                 {
                     EmailAddress = FacebookProfile.Email,
                     Firstname = FacebookProfile.FirstName,
                     Lastname = FacebookProfile.LastName,
-                    Password= "Qwe123!",
+                    Password = "Qwe123!",
                     ConfirmPin = "Qwe123!",
-                    Username =FacebookProfile.Id
-                    
+                    Username = FacebookProfile.Id
+
                 };
-              
+
 
             }
             else

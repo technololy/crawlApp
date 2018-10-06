@@ -49,8 +49,8 @@ namespace HappeningsApp.Views
                                         //navigate to sign in user
                                         if (tkResponse)
                                         {
-                                            Navigation.PopModalAsync(true);
-                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                                            //Navigation.PopModalAsync(true);
+                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding(),true);
 
 
 
@@ -127,7 +127,7 @@ namespace HappeningsApp.Views
                 using (UserDialogs.Instance.Loading("Connecting to FaceBook.."))
                 {
 
-                    var apiRequest = $"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}";
+                    var apiRequest = $"{Constants.FacebookOAuthURL}?client_id={Constants.fbClientID}&display=popup&response_type=token&redirect_uri={Constants.redirectURI}&scope=email";
                     var wbView = new WebView()
 
                     {
