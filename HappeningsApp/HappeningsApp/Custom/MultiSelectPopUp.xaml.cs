@@ -147,26 +147,8 @@ namespace HappeningsApp.Custom
 
         private void Cancel(object sender, EventArgs e)
         {
-            try
-            {
-                var selectables = GetNewData();
-
-            }
-            catch (Exception ex)
-            {
-                var log = ex;
-            }
-
-            try
-            {
-                var control = sender as Switch;
-                var item = control.BindingContext as MultiPickerItems;
-            }
-            catch (Exception ex)
-            {
-
-                var lg = ex;
-            }
+           
+           
             Navigation.PopPopupAsync();
 
         }

@@ -287,7 +287,7 @@ namespace HappeningsApp.Custom
 
             multipickerPopUp.SetBinding(MultiSelectListPopUp.ItemsSourceProperty, "ItemsSource");
             multipickerPopUp.SelectedIndexChanged += MultipickerPopUp_SelectedIndexChanged;
-            Navigation.PushModalAsync(multipickerPopUp, true);
+            Navigation.PushPopupAsync(multipickerPopUp, true);
 
 
         }

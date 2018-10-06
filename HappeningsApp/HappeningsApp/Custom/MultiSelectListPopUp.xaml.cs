@@ -1,4 +1,6 @@
 ﻿using HappeningsApp.Models;
+using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,8 @@ using Xamarin.Forms.Xaml;
 namespace HappeningsApp.Custom
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MultiSelectListPopUp : ContentPage
-	{
+	public partial class MultiSelectListPopUp : PopupPage
+    {
        public static List<SelectableData<MultiPickerListItems>> AllSelectedData = new List<SelectableData<MultiPickerListItems>>();
         public event EventHandler<List<SelectableData<MultiPickerListItems>>> SelectedIndexChanged;
 
@@ -65,10 +67,13 @@ namespace HappeningsApp.Custom
         private void Finished_Clicked(object sender, EventArgs e)
         {
             var select = GetNewData();
-            Navigation.PopModalAsync();
+            Navigation.PopPopupAsync();
             SelectedIndexChanged?.Invoke(this, select);
         }
-
+        private void Cancel(object sender, EventArgs e)
+        {
+            Navigation.PopPopupAsync();
+        }
         public List<SelectableData<MultiPickerListItems>> GetNewData()
         {
             var list = new List<SelectableData<MultiPickerListItems>>();
