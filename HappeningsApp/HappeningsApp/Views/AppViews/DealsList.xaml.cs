@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using HappeningsApp.Models;
+using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
 
@@ -63,8 +64,10 @@ namespace HappeningsApp.Views.AppViews
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
+
             }
-          
+
         }
 
         private async void GetCategoryByID(Category cat)

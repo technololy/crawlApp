@@ -35,11 +35,12 @@ namespace HappeningsApp.Views.AppViews
             }
             catch (Exception ex)
             {
+                LogService.LogErrors(ex.ToString());
 
             }
 
 
-          var select = MyFavList.SelectedItem;
+            var select = MyFavList.SelectedItem;
         }
 
         private void GetFavList()

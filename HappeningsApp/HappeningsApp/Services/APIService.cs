@@ -222,6 +222,8 @@ namespace HappeningsApp.Services
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
+
                 return new HttpResponseMessage();
             }
 

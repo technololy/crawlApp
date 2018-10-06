@@ -86,6 +86,7 @@ namespace HappeningsApp.Views.LoginSignUp
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
 
             }
         }
@@ -115,6 +116,7 @@ namespace HappeningsApp.Views.LoginSignUp
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
             }
         
         }

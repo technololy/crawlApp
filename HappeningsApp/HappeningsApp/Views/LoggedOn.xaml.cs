@@ -77,6 +77,7 @@ namespace HappeningsApp.Views
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
 
             }
         }
@@ -144,8 +145,10 @@ namespace HappeningsApp.Views
             catch (Exception ex)
             {
                 var log = ex;
+                LogService.LogErrors(log.ToString());
+
             }
-        
+
 
         }
 

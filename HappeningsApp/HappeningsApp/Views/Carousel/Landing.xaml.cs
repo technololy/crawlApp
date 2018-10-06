@@ -1,4 +1,5 @@
-﻿using HappeningsApp.ViewModels;
+﻿using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace HappeningsApp.Views.Carousel
             catch (Exception ex)
             {
                 string log = ex.ToString();
+                LogService.LogErrors(log.ToString());
+
             }
         }
 

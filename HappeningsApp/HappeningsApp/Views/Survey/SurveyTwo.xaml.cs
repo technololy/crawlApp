@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HappeningsApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -58,6 +59,8 @@ namespace HappeningsApp.Views.Survey
             catch (Exception ex)
             {
                 Application.Current.Properties["SurveyThree"] = false;
+                LogService.LogErrors(ex.ToString());
+
             }
 
         }
