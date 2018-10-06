@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappeningsApp.Custom.MultiSelectListPopUp">
+    <ContentPage.Content>
+        <ListView x:Name="ListViewControl" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout VerticalOptions="CenterAndExpand">
+                                <Label TextColor="White" Text="{Binding Data.DisplayText}"  />
+                               
+                            </StackLayout>
+                            <Switch IsToggled="{Binding Selected}" Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <!--<Button Text="Finished" Command="{Binding FinishCommand}" />-->
+                <Button Text="Finished" x:Name="Finished" Clicked="Finished_Clicked" />
+            </ListView.Footer>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

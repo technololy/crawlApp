@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
+using HappeningsApp.Models;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 
@@ -12,7 +14,8 @@ namespace HappeningsApp.Custom
         public MultiPicker()
         {
             InitializeComponent();
-            SetTap();
+            //SetTap();
+            SetMultiTap();
 
             if (string.IsNullOrWhiteSpace(this.Placeholder))
             {
@@ -252,6 +255,7 @@ namespace HappeningsApp.Custom
 
                 pickerPop.SelectedIndexChanged += (p, t) =>
                 {
+                  
                     this.SelectedIndex = t.SelectedIndex;
                     this.SelectedItem = t.DisplayText;
                     //SelectedTxt.TextColor = this.TextColor;
@@ -264,6 +268,45 @@ namespace HappeningsApp.Custom
             };
 
             this.GestureRecognizers.Add(tgr);
+        }
+
+        private void SetMultiTap()
+        {
+            TapGestureRecognizer tgr = new TapGestureRecognizer();
+            tgr.NumberOfTapsRequired = 1;
+            tgr.Tapped += Tgr_Tapped;
+            this.GestureRecognizers.Add(tgr);
+
+        }
+
+        private void Tgr_Tapped(object sender, EventArgs e)
+        {
+
+            var multipickerPopUp = new MultiSelectListPopUp();
+            multipickerPopUp.BindingContext = this;
+
+            multipickerPopUp.SetBinding(MultiSelectListPopUp.ItemsSourceProperty, "ItemsSource");
+            multipickerPopUp.SelectedIndexChanged += MultipickerPopUp_SelectedIndexChanged;
+            Navigation.PushModalAsync(multipickerPopUp, true);
+
+
+        }
+
+        private void MultipickerPopUp_SelectedIndexChanged(object sender, List<Models.SelectableData<Models.MultiPickerListItems>> e)
+        {
+            SelectedItem = string.Empty;
+            var args = e as List<SelectableData<MultiPickerListItems>>;
+            var IsSelectable = args?.Where(c => c.Selected).ToList();
+            foreach (var item in IsSelectable)
+            {
+                SelectedItem += item.Data.DisplayText +";";
+            }
+
+            SelectedItem = SelectedItem.TrimEnd(';');
+
+
+            
+
         }
     }
 }

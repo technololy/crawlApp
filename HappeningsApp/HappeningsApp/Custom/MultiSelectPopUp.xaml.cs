@@ -16,7 +16,7 @@ namespace HappeningsApp.Custom
         public MultiSelectPopUp()
         {
             InitializeComponent();
-            BindingContext = new MMultiSelectPopUpViewModel();
+            
         }
 
 
@@ -86,6 +86,7 @@ namespace HappeningsApp.Custom
         private static void ItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (MultiSelectPopUp)bindable;
+
 
             var items = control.ItemsSource;
 
