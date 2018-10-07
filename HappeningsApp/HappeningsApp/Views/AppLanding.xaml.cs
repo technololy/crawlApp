@@ -120,7 +120,7 @@ namespace HappeningsApp.Views
         {
             var grp = from h in introPageViewMod.dealsfromAPI
                     orderby h.Expiration_Date
-                    group h by h.Expiration_Date.Date.ToString() into ThisWeeksGroup
+                    group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                     select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);
 
             foreach (var g in grp)
