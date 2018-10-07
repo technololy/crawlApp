@@ -58,7 +58,7 @@ namespace HappeningsApp.Views.LoginSignUp
                                         //navigate to sign in user
                                         if (tkResponse)
                                         {
-                                            Navigation.PopModalAsync(true);
+                                           // Navigation.PopModalAsync(true);
                                             Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
 
 

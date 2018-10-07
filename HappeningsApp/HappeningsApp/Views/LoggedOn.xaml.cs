@@ -93,7 +93,7 @@ namespace HappeningsApp.Views
             }
             using(UserDialogs.Instance.Loading(""))
             {
-                //lvm.User.Username = "lolade7";
+                GlobalStaticFields.Username= lvm.User.Username;
                 //lvm.User.Password = "Qwe123!";
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
