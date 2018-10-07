@@ -1,8 +1,10 @@
 ﻿using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
+using MvvmHelpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +18,8 @@ namespace HappeningsApp.Views
 	public partial class AppLanding : ContentPage
 	{
         IntroPageViewModel introPageViewMod;
-
-		public AppLanding ()
+        public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
+       public AppLanding ()
 		{
 			InitializeComponent ();
             introPageViewMod = new IntroPageViewModel();
@@ -99,17 +101,33 @@ namespace HappeningsApp.Views
      
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
-            //var page = new Deals();
-            //PlaceHolder.Content = page.Content;
-            //bxVwthisWeek.BackgroundColor = Color.FromHex("#FF00A1");
-            //bxVwCat.BackgroundColor = Color.Black;
-            //bxVwCol.BackgroundColor = Color.Black;
-            //bxVwDeals.BackgroundColor = Color.Black;
+            var page = new ThisWeek();
+            PlaceHolder.Content = page.Content;
+            bxVwthisWeek.BackgroundColor = Color.FromHex("#3498db");
+            bxVwCat.BackgroundColor = Color.Black;
+            bxVwCol.BackgroundColor = Color.Black;
+            bxVwDeals.BackgroundColor = Color.Black;
             ////lblDeals.TextColor = Color.White;
             ////lblThisWeek.TextColor = Color.Magenta;
             ////lblCategories.TextColor = Color.White;
             ////lblCollections.TextColor = Color.White;
-            //BindingContext = introPageViewMod;
+            ///
+            var groupByDate = GroupListByDate();
+            BindingContext = groupByDate;
+        }
+
+        private ObservableCollection<Grouping<string, Models.Deals>> GroupListByDate()
+        {
+            var grp = from h in introPageViewMod.dealsfromAPI
+                    orderby h.Expiration_Date
+                    group h by h.Expiration_Date.Date.ToString() into ThisWeeksGroup
+                    select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);
+
+            foreach (var g in grp)
+            {
+                GroupedDeals.Add(g);
+            }
+            return GroupedDeals;
         }
 
         private void Categories_Tapped(object sender, EventArgs e)

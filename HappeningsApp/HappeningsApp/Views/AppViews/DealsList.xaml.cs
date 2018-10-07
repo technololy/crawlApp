@@ -92,6 +92,11 @@ namespace HappeningsApp.Views.AppViews
                     return;
                 }
             }
+
+        private void TapPlus_Tapped(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 
