@@ -230,7 +230,7 @@ namespace HappeningsApp.ViewModels
                     Lastname = FacebookProfile.LastName,
                     Password = "Qwe123!",
                     ConfirmPin = "Qwe123!",
-                    Username = FacebookProfile.Id
+                    Username = FacebookProfile.Email
 
                 };
 

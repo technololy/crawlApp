@@ -11,8 +11,8 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
-                <Button TextColor="White" Text="Sign Up With Facebook" CornerRadius="23" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
-                <Button TextColor="White" Text="Sign Up With Google" CornerRadius="23" BackgroundColor="#c0392b" />
+                <Button TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
+                <Button TextColor="White" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
                   <Label HorizontalOptions="CenterAndExpand" Text="OR" TextColor="White" />
                 <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />
            
@@ -56,7 +56,7 @@
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout>
-                <Button Text="Sign Up" x:Name="signUp" Clicked="signUp_Clicked" CornerRadius="23" 
+                <Button Text="Sign Up" x:Name="signUp" Clicked="signUp_Clicked" 
                         BorderWidth="1"    BackgroundColor="{x:StaticResource CrawlColor}" 
                         TextColor="White" />
             </StackLayout>

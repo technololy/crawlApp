@@ -22,16 +22,14 @@
                 <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
 
-                            <StackLayout Margin="20,40,20,0">
+                            <StackLayout Margin="20,5,20,0">
                             <Frame HeightRequest="50" HasShadow="false">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
                                         <Label Text="{Binding Details}" Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
-                                    <StackLayout Spacing="-15" HorizontalOptions="End" VerticalOptions="Center">
-                                      
-                                    </StackLayout>
+                                  
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -41,10 +39,7 @@
         </ListView>
          <StackLayout  Grid.Row="1" Margin="20,20,20,20">
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
-                <Button  Text="View More" TextColor="{StaticResource CrawlColor}" WidthRequest="100" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button WidthRequest="100" Text="Add it here" TextColor="{StaticResource CrawlColor}" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="0" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-            </StackLayout>
+                 </StackLayout>
             <StackLayout>
                 <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
             </StackLayout>                

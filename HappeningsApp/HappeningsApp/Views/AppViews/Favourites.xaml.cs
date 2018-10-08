@@ -45,6 +45,11 @@ namespace HappeningsApp.Views.AppViews
 
         private void GetFavList()
         {
+            if ( GlobalStaticFields.Favs?.Count>0)
+            {
+                BindingContext = GlobalStaticFields.Favs;
+
+            }
 
         }
 
@@ -53,5 +58,13 @@ namespace HappeningsApp.Views.AppViews
             InitializeComponent();
             GetFavList();
         }
+
+        public Favourites(Models.Deals deals)
+        {
+            InitializeComponent();
+            
+        }
+
+        
     }
 }

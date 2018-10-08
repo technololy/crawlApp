@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
+using HappeningsApp.Views.LoginSignUp;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,16 @@ namespace HappeningsApp.Views
                                         }
 
                                     }
+                                    else
+                                    {
+                                        if(await DisplayAlert("Error", lvm.RegisterationError, "OK", "Back to login"))
+                                            Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
+                                        else
+                                            Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
+
+
+                                    }
+
                                 }
                                
 

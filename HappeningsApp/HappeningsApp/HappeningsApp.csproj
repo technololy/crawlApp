@@ -77,6 +77,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Custom\SegmentedControlSample.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Custom\MultiSelectPopUp.xaml.cs">
       <DependentUpon>MultiSelectPopUp.xaml</DependentUpon>
     </Compile>

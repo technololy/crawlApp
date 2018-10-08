@@ -18,6 +18,7 @@ namespace HappeningsApp.Services.FaceBook
             var httpClient = new HttpClient();
 
             var userJson = await httpClient.GetStringAsync(requestUrl);
+            LogService.LogErrors(userJson);
 
             var facebookProfile = JsonConvert.DeserializeObject<FaceBookProfile>(userJson);
 

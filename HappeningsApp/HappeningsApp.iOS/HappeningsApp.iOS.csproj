@@ -80,6 +80,7 @@
     <Compile Include="Renderers\ExtendedViewCellRenderer.cs" />
     <Compile Include="Renderers\LineEntryRenderer.cs" />
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
+    <Compile Include="Renderers\ScrollViewWithNotBarRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -146,6 +147,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Crawl_LetterA_BOX_BLACK copy180.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\Crawl_logo_header.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -70,7 +70,7 @@ namespace HappeningsApp.Views.AppViews
 
         }
 
-        private async void GetCategoryByID(Category cat)
+        private async Task GetCategoryByID(Category cat)
         {
             Activity = new ObservableCollection<Activity>();
             Services.DealsService ds = new Services.DealsService();
@@ -95,7 +95,16 @@ namespace HappeningsApp.Views.AppViews
 
         private void TapPlus_Tapped(object sender, EventArgs e)
         {
-
+            try
+            {
+                var img = sender as Image;
+                var item = img.BindingContext as Models.Deals;
+                Navigation.PushAsync(new Favourites(item),true);
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
         }
     }
     }

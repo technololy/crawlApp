@@ -15,7 +15,9 @@ namespace HappeningsApp.Views.AppViews
 		public ThisWeek ()
 		{
 			InitializeComponent ();
-		}
+            var days = new List<string>() { "Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun", "All" };
+            segment.Children = days;
+        }
 
         private void TapPlus_Tapped(object sender, EventArgs e)
         {
@@ -45,6 +47,10 @@ namespace HappeningsApp.Views.AppViews
 
             }
 
+        }
+        void Handle_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            //ItemSelectedText.Text = $"{e.SelectedItem}";
         }
 
     }
