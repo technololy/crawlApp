@@ -66,5 +66,21 @@ namespace HappeningsApp.Views.AppViews
         }
 
         
+        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            try
+            {
+                if (e.Item == null)
+                {
+                    return;
+                }
+                var selectedItem = e.Item as Models.FavoriteModel;
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+          
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace HappeningsApp.Views
                                 var lg =await lvm.GetTokenFromAPI();
                                 if (lg)
                                 {
+                                    lvm.PersistUserDetails();
                                     Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
                                 }
 
@@ -50,6 +51,8 @@ namespace HappeningsApp.Views
                                         //navigate to sign in user
                                         if (tkResponse)
                                         {
+                                            lvm.PersistUserDetails();
+
                                             //Navigation.PopModalAsync(true);
                                             Application.Current.MainPage.Navigation.PushAsync(new AppLanding(),true);
 
@@ -109,9 +112,9 @@ namespace HappeningsApp.Views
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
                 {
-                   // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+                    // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
 
-
+                    lvm.PersistUserDetails();
                     await Navigation.PushAsync(new AppLanding());
 
                 }

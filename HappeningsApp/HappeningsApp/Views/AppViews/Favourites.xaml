@@ -4,18 +4,20 @@
              BackgroundColor="Black"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
              
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.AppViews.Favourites">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Views.AppViews.Favourites">
     <ContentPage.Content>
         <Grid>
            <Grid.RowDefinitions>
-                <RowDefinition Height="70*"/>
+                <RowDefinition Height="95*"/>
                 
-                <RowDefinition Height="30*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions> 
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
                              Grid.Row="0" ItemsSource="{Binding .}" 
-                             HasUnevenRows="true" 
+                             HasUnevenRows="true"
+                             ItemTapped="Handle_ItemTapped"
                              ScrollToRequested="Handle_ScrollToRequested" 
                              x:Name="MyFavList" Footer="">
             <ListView.ItemTemplate>
@@ -37,7 +39,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-         <StackLayout  Grid.Row="1" Margin="20,20,20,20">
+         <StackLayout  Grid.Row="1">
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
                  </StackLayout>
             <StackLayout>

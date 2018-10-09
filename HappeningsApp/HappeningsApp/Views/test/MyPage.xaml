@@ -2,20 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage">
     <ContentPage.Content>
         <StackLayout Margin="20,40,20,0">
-            <Frame HeightRequest="90">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout>
-                        <Label Text="Museums that curate" FontAttributes="Bold" TextColor="Black" />
-                        <Label Text="Art is life. if you know you know" Opacity="0.7" TextColor="Black" />
-                    </StackLayout>
-                    <StackLayout Spacing="-15">
-                        <Button Text="View" TextColor="Green" WidthRequest="90" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-                        
-                        <Button Text="Delete" TextColor="{StaticResource CrawlRedColor}" WidthRequest="50" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-                        <Button Text="Add here" TextColor="Green" WidthRequest="90" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+            <StackLayout Orientation="Horizontal" HeightRequest="100" Spacing="0" WidthRequest="20">
+                <Frame BackgroundColor="Silver" 
+                     WidthRequest="40"
+                       CornerRadius="0"  
+                       HasShadow="false"
+                       
+                     MinimumWidthRequest="20">
+                    
+                
+            </Frame> 
+            
+                <Frame BackgroundColor="White" 
+                      WidthRequest="390"
+                       Padding="0"
+                       CornerRadius="0"
+                       HasShadow="false"
+                     >
+                <Label Text="My Messages"
+                       VerticalOptions="CenterAndExpand"
+                       TextColor="Black" 
+                       HorizontalOptions="CenterAndExpand"/>
+            </Frame> 
+            </StackLayout>
+           
             <Frame HeightRequest="80">
                 <StackLayout>
                     <Label Text="Done and dusted" FontAttributes="Bold" TextColor="Black" />

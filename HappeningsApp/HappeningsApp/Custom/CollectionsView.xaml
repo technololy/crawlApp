@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             BackgroundColor="Black"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Custom.CollectionsView">
+    <ContentView.Content>
+            <StackLayout Margin="20,5,20,0" 
+                         Orientation="Horizontal" 
+                         HeightRequest="100" Spacing="0"
+                         WidthRequest="20">
+                <Frame BackgroundColor="Silver" 
+                     WidthRequest="40"
+                       CornerRadius="0"  
+                       HasShadow="false"
+                       x:Name="imgPlaceHolder"
+                     MinimumWidthRequest="20">
+                    
+                
+            </Frame> 
+            
+                <Frame BackgroundColor="White" 
+                      WidthRequest="390"
+                       Padding="0"
+                       x:Name="contentplaceholder"
+                       CornerRadius="0"
+                       HasShadow="false"
+                     >
+                <Label 
+                       VerticalOptions="CenterAndExpand"
+                       TextColor="Black" 
+                    FontAttributes="Bold"
+                    FontSize="15"
+                       x:Name="txtHeader"
+                       HorizontalOptions="CenterAndExpand"/>
+            </Frame> 
+            </StackLayout>
+    </ContentView.Content>
+</ContentView>

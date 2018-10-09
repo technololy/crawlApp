@@ -12,21 +12,14 @@ namespace HappeningsApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Collections : ContentPage
 	{
-        void Handle_Clicked_3(object sender, System.EventArgs e)
+        void Favourites_Clicked_3(object sender, System.EventArgs e)
         {
            Application.Current.MainPage.Navigation.PushAsync(new AppViews.Favourites(),true);
         }
 
-        void Handle_Clicked_1(object sender, System.EventArgs e)
-        {
-            
-        }
+      
 
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new LoggedOn());
-            //Navigation.PushAsync(new LoggedOn());
-        }
+     
 
         public Collections ()
 		{

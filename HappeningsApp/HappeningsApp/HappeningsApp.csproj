@@ -89,5 +89,8 @@
     <Compile Update="Views\Survey\SurveyTwo.xaml.cs">
       <DependentUpon>SurveyTwo.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Custom\CollectionsView.xaml.cs">
+      <DependentUpon>CollectionsView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

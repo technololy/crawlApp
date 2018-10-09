@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
            NavigationPage.HasNavigationBar="False"
      xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
              BackgroundColor="Black"
@@ -9,7 +9,21 @@
              x:Class="HappeningsApp.Views.Collections" >
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
-      <FlexLayout Direction="Column" 
+            <StackLayout Spacing="2">
+                
+                <c:CollectionsView HeaderText="My Messages">
+                  
+                </c:CollectionsView>
+                <c:CollectionsView HeaderText="My Groups"/>
+                <c:CollectionsView HeaderText="My Favorites">
+                      <c:CollectionsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Favourites_Clicked_3" />
+                    </c:CollectionsView.GestureRecognizers>
+                    </c:CollectionsView>
+                
+                
+            </StackLayout>
+     <!-- <FlexLayout Direction="Column" 
                     AlignItems="Stretch" 
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
@@ -57,7 +71,7 @@
                        />
 
             </StackLayout>
-        </FlexLayout>
+        </FlexLayout>-->
 
         </ScrollView>
       

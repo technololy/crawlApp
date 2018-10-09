@@ -29,6 +29,10 @@ namespace HappeningsApp.Services
                 {
                     listofFavs = fav.FavoriteList;
                 }
+                else
+                {
+
+                }
 
 
 

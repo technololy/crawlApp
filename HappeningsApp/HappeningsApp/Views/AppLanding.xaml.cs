@@ -172,9 +172,9 @@ namespace HappeningsApp.Views
         }
 
         
-void settings_Tapped(object sender, System.EventArgs e)
+        void settings_Tapped(object sender, System.EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
