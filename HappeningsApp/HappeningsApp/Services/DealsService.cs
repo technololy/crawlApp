@@ -48,7 +48,7 @@ namespace HappeningsApp.Services
             ObservableCollection<Activity> actvList = new ObservableCollection<Activity>();
             ObservableCollection<Activity_RootObject> ActvRootList = new ObservableCollection<Activity_RootObject>();
 
-            var respo =  APIService.Get($"api/all/getallbycategoryid?id={id}").Result;
+            var respo = await APIService.Get($"api/all/getallbycategoryid?id={id}");
             if (respo.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var content = await respo.Content.ReadAsStringAsync();

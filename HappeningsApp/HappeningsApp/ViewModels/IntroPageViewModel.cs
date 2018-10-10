@@ -16,13 +16,13 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<Category> CategfromAPI { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }
         public ObservableCollection<Collections> collections { get; set; }
-     
-        
+        public ObservableCollection<GetAll2.Deal> getAll { get; set; }
+
         public IntroPageViewModel()
         {
             
-            GetDeals();
-            GetCategories();
+            //GetDeals();
+            //GetCategories();
            
         }
         
@@ -40,7 +40,7 @@ namespace HappeningsApp.ViewModels
         }
 
 
-        private async Task GetCategories()
+        public async Task GetCategories()
         {
            CategoriesService ds = new CategoriesService();
 
@@ -48,6 +48,16 @@ namespace HappeningsApp.ViewModels
             GlobalStaticFields.CategoriesFromAPI = CategfromAPI;
 
 
+        }
+
+        public async Task GetAll()
+        {
+            GetAllService ds = new GetAllService();
+
+            var all = await ds.GetAll2();
+            getAll = new ObservableCollection<GetAll2.Deal>(all);
+            GlobalStaticFields.GetAll = getAll;
+        
         }
     }
 }

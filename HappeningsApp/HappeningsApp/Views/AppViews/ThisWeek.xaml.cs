@@ -30,7 +30,7 @@ namespace HappeningsApp.Views.AppViews
         }
         void Handle_Tapped(object sender, System.EventArgs e)
         {
-            Navigation.PushModalAsync(new Deals());
+            //Navigation.PushModalAsync(new Deals());
         }
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)

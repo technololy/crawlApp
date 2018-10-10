@@ -22,15 +22,7 @@ namespace HappeningsApp.Views
 
         }
 
-        void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
-        {
-           if (ListCategories.SelectedItem==null)
-            {
-                return;
-            }
-            var cat = ListCategories.SelectedItem as Category;
-            Application.Current.MainPage.Navigation.PushAsync(new HappeningsApp.Views.AppViews.DealsList(cat));
-        }
+ 
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
@@ -39,6 +31,7 @@ namespace HappeningsApp.Views
                 return;
             }
             var cat = ListCategories.SelectedItem as Category;
+            var category = ListCategories.SelectedItem as Models.Deals;
             Application.Current.MainPage.Navigation.PushAsync(new HappeningsApp.Views.AppViews.DealsList(cat));
 
         }

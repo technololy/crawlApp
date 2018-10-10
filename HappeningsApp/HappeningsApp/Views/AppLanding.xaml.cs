@@ -1,4 +1,5 @@
-﻿using HappeningsApp.Services;
+﻿using HappeningsApp.Models;
+using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
 using MvvmHelpers;
@@ -17,13 +18,16 @@ namespace HappeningsApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AppLanding : ContentPage
 	{
-        IntroPageViewModel introPageViewMod;
+        IntroPageViewModel ivm;
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
+        public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
        public AppLanding ()
 		{
 			InitializeComponent ();
-            introPageViewMod = new IntroPageViewModel();
-            
+            ivm = new IntroPageViewModel();
+            ivm.GetDeals();
+            ivm.GetCategories();
+            ivm.GetAll();
             Deals_Tapped(this, null);
             ShowSurVeyOne();
          
@@ -55,6 +59,7 @@ namespace HappeningsApp.Views
             }
             catch (Exception ex)
             {
+                var log = ex;
                 Application.Current.Properties["SurveyOne"] = false;
             }
         }
@@ -90,22 +95,33 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwDeals.BackgroundColor = Color.Black;
-            ////lblDeals.TextColor = Color.White;
-            ////lblThisWeek.TextColor = Color.Magenta;
-            ////lblCategories.TextColor = Color.White;
-            ////lblCollections.TextColor = Color.White;
-            ///
+        
             var groupByDate = GroupListByDate();
-            GlobalStaticFields.thisweekGrouping = groupByDate;
+            GlobalStaticFields.GetAllGrouping = groupByDate;
             BindingContext = groupByDate;
         }
 
-        private ObservableCollection<Grouping<string, Models.Deals>> GroupListByDate()
+        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
         {
-            var grp = from h in introPageViewMod.dealsfromAPI
+            var grp = from h in ivm.getAll
                     orderby h.Expiration_Date
                     group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
-                    select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                    select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+
+            foreach (var g in grp)
+            {
+                GetAllGrouped.Add(g);
+            }
+            return GetAllGrouped;
+        }
+
+
+        private ObservableCollection<Grouping<string, Models.Deals>> GroupListByDateBkUp()
+        {
+            var grp = from h in ivm.dealsfromAPI
+                      orderby h.Expiration_Date
+                      group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                      select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);
 
             foreach (var g in grp)
             {
@@ -113,22 +129,18 @@ namespace HappeningsApp.Views
             }
             return GroupedDeals;
         }
-
         private void Categories_Tapped(object sender, EventArgs e)
         {
             var page = new CategoriesPage();
             page.Content.BackgroundColor = Color.FromHex("#000015");
 
             PlaceHolder.Content = page.Content;
-            //lblDeals.TextColor = Color.White;
-            //lblThisWeek.TextColor = Color.White;
-            //lblCategories.TextColor = Color.Magenta;
-            //lblCollections.TextColor = Color.White;
+       
             bxVwCat.BackgroundColor = Color.FromHex("#3498db");
             bxVwDeals.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-            BindingContext = introPageViewMod;
+            BindingContext = ivm;
 
         }
 
@@ -142,11 +154,8 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwDeals.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-            BindingContext = introPageViewMod;
-            ////lblDeals.TextColor = Color.White;
-            ////lblThisWeek.TextColor = Color.White;
-            ////lblCategories.TextColor = Color.White;
-            ////lblCollections.TextColor = Color.Magenta;
+            BindingContext = ivm;
+          
 
         }
 

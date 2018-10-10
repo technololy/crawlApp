@@ -4,7 +4,7 @@
              x:Class="HappeningsApp.Views.AppViews.DealsList"
              
              BackgroundColor="#000015"
-             Padding="10,40,10,40"
+             Padding="5,10,5,40"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -13,9 +13,9 @@
     <ContentPage.Content>
      
         <Grid>
+            <Image IsVisible="False" x:Name="ProxyImage" />
 
-            
-               <ListView ItemsSource="{Binding .}" 
+            <ListView ItemsSource="{Binding .}" 
                          x:Name="dealsListview" 
                          SeparatorVisibility="None" 
                          IsPullToRefreshEnabled="True"  
@@ -25,7 +25,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="250" CornerRadius="0">
+                            <Frame Padding="0" Margin="10,0,10,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="250" CornerRadius="0">
                                 <Grid HeightRequest="300">
                                     
                                         
@@ -38,7 +38,7 @@
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
                                     <forms:CachedImage HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
-                                    <Image Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <Image IsVisible="{Binding Path=IsVisible}" BindingContext="{x:Reference Name=ProxyImage}" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
                                         </Image.GestureRecognizers>

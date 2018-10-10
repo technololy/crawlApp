@@ -31,9 +31,6 @@
     <EmbeddedResource Update="Views\AppLanding.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AppViews\Deals.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\AppViews\DetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -88,6 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Custom\SegmentedControlSample.cs" />
+    <Compile Remove="Views\AppViews\Deals.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\AppViews\Deals.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Custom\MultiSelectPopUp.xaml.cs">

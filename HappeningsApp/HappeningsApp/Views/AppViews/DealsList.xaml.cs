@@ -15,7 +15,7 @@ namespace HappeningsApp.Views.AppViews
         public ObservableCollection<Activity> Activity;
         void Handle_Tapped(object sender, System.EventArgs e)
         {
-            Navigation.PushModalAsync(new Deals());
+            //Navigation.PushModalAsync(new Deals());
         }
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
@@ -27,27 +27,27 @@ namespace HappeningsApp.Views.AppViews
             var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
             if (selected!=null)
             {
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+               // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+                Navigation.PushAsync(new DetailPage(selected));
 
             }
             else
             {
                 var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                //Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+               Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
         }
 
-        //IntroPageViewModel introPageViewMod;
+       
         private Category cat;
 
         public DealsList()
         {
             InitializeComponent();
-            //introPageViewMod = new IntroPageViewModel();
-            //nearBy = new NearByViewModel();
-            //BindingContext = introPageViewMod;
+          
 
         }
 
@@ -57,8 +57,9 @@ namespace HappeningsApp.Views.AppViews
             try
             {
                 this.cat = cat;
+                
                 GetCategoryByID(this.cat);
-               
+                ProxyImage.IsVisible = true;
                
             }
             catch (Exception ex)
@@ -98,7 +99,8 @@ namespace HappeningsApp.Views.AppViews
             try
             {
                 var img = sender as Image;
-                var item = img.BindingContext as Models.Deals;
+                var item = img.BindingContext as Deals;
+                var item2 = img.BindingContext as Category;
                 Navigation.PushAsync(new Favourites(item),true);
             }
             catch (Exception ex)
