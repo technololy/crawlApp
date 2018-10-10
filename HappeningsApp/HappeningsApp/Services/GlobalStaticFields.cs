@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
+using MvvmHelpers;
 
 namespace HappeningsApp.Services
 {
     public static class GlobalStaticFields
     {
-      
+        public static ObservableCollection<Grouping<string, Deals>> thisweekGrouping;
 
         public static string Token
         {
@@ -32,6 +33,7 @@ namespace HappeningsApp.Services
         public static ObservableCollection<FavoriteModel> Favs { get;  set; }
         public static IntroPageViewModel IntroModel { get;  set; }
         public static ObservableCollection<Deals> dealsfromAPI { get;  set; }
+        public static CollectionsModelResp AllCollections { get;  set; }
         //public static List<> AllService { get; internal set; }
     }
 }

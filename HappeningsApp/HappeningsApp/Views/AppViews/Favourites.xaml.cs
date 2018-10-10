@@ -19,7 +19,7 @@ namespace HappeningsApp.Views.AppViews
         {
             InitializeComponent();
             favViewModel = new FavViewModel();
-            BindingContext = GlobalStaticFields.Favs;
+            BindingContext = GlobalStaticFields.AllCollections;
            //BindingContext = GlobalStaticFields.IntroModel.Favs != null&& GlobalStaticFields.IntroModel.Favs?.Count > 0 ?GlobalStaticFields.IntroModel.Favs :  new FavService().GetFavsTest().Result;
             GetFavList();
         }
@@ -47,7 +47,7 @@ namespace HappeningsApp.Views.AppViews
         {
             if ( GlobalStaticFields.Favs?.Count>0)
             {
-                BindingContext = GlobalStaticFields.Favs;
+                BindingContext = GlobalStaticFields.AllCollections;
 
             }
 

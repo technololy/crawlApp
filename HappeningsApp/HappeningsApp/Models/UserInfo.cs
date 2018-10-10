@@ -23,6 +23,8 @@ namespace HappeningsApp.Models
         public string RefferedBy { get; set; }
         public string Pin { get; set; }
         public string ConfirmPin { get; set; }
+        public string NewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
 
 
 

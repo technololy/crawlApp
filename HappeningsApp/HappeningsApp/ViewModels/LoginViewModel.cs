@@ -81,6 +81,17 @@ namespace HappeningsApp.ViewModels
             }
         }
 
+        internal async Task<bool> ChangePassword()
+        {
+            var chgPaswd = new ChangePassword()
+            {
+                OldPassword=User.Password,
+                NewPassword=User.NewPassword,
+                ConfirmPassword=User.ConfirmNewPassword
+            };
+            var resp =await LoginSignUp.ChangePassword(chgPaswd);
+            return resp;
+        }
 
         public void PersistUserDetails()
         {

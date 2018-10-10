@@ -26,6 +26,7 @@
                       Grid.Row="1"
                          x:Name="dealsListview" 
                       IsGroupingEnabled="True"
+                      
                       GroupDisplayBinding="{Binding Key}"
                          SeparatorVisibility="None" 
                          IsPullToRefreshEnabled="True"  

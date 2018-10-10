@@ -91,6 +91,41 @@ namespace HappeningsApp.Services.LoginSignUp
 
         }
 
+        internal async static Task<bool> ChangePassword(ChangePassword reg)
+        {
+            RegisterationResponse.RootObject registResp = new RegisterationResponse.RootObject();
+            string content = "";
+            try
+            {
+
+                var testresult = await APIService.PostNew<ChangePassword>(reg,"");
+                content = await testresult.Content.ReadAsStringAsync();
+                if (content.ToLower().Contains("success"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+
+
+               // return registResp;
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                return false;
+
+            }
+
+
+
+
+        }
 
 
     }

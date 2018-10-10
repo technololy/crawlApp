@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
+using Plugin.GoogleAnalytics;
 
 namespace HappeningsApp.Droid
 {
@@ -27,6 +28,12 @@ namespace HappeningsApp.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();
             Acr.UserDialogs.UserDialogs.Init(this);
+            //google analytics
+            GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
+            GoogleAnalytics.Current.Config.AppId = "GASample";
+            GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
+            GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
+            GoogleAnalytics.Current.InitTracker();
             LoadApplication(new App());
         }
     }

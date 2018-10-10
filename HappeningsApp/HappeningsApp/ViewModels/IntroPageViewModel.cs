@@ -34,13 +34,15 @@ namespace HappeningsApp.ViewModels
             GetCategories();
             GetTestDeals();
             GetTestCollections();
-            GetFavs();
+            //GetFavs();
         }
 
         public async Task<ObservableCollection<FavoriteModel>> GetFavs()
         {
             FavService fs = new FavService();
-           Favs= await fs.GetFavsTest();
+            CollectionService cs = new CollectionService();
+           //Favs= await fs.GetFavsTest();
+            Favs = await cs.GetUserFavs();
 
             //GlobalStaticFields.AllService.Add(Favs);
             GlobalStaticFields.Favs = Favs;

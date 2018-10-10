@@ -113,6 +113,7 @@ namespace HappeningsApp.Views
             ////lblCollections.TextColor = Color.White;
             ///
             var groupByDate = GroupListByDate();
+            GlobalStaticFields.thisweekGrouping = groupByDate;
             BindingContext = groupByDate;
         }
 
@@ -174,7 +175,7 @@ namespace HappeningsApp.Views
         
         void settings_Tapped(object sender, System.EventArgs e)
         {
-
+            Navigation.PushAsync(new Settings.SettingsPage(),true);
         }
     }
 }

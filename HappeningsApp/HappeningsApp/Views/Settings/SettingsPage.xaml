@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black"
+             Title="Settings"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappeningsApp.Views.Settings.SettingsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <c:ExtendedLabel Text="About Crawl" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Found a bug?" ItemTapped="ExtendedLabel_ItemTapped"  />
+                <c:ExtendedLabel Text="Found a place?" ItemTapped="ExtendedLabel_ItemTapped"  />
+                <c:ExtendedLabel Text="Change Password"  ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Log Out" ItemTapped="ExtendedLabel_ItemTapped"  />
+
+            </StackLayout>
+        </ScrollView>
+      
+    </ContentPage.Content>
+</ContentPage>
