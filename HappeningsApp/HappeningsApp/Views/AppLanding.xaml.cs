@@ -23,21 +23,7 @@ namespace HappeningsApp.Views
 		{
 			InitializeComponent ();
             introPageViewMod = new IntroPageViewModel();
-            //if (GlobalStaticFields.IntroModel.dealsfromAPI!=null && GlobalStaticFields.IntroModel.dealsfromAPI.Count>0)
-            //{
-            //    introPageViewMod = GlobalStaticFields.IntroModel;
-            //}
-            //else
-            //{
-            //    introPageViewMod = new IntroPageViewModel();
-            //}
-
-            //introPageViewMod = GlobalStaticFields.IntroModel != null && GlobalStaticFields.IntroModel.dealsfromAPI.Count > 0
-            //? GlobalStaticFields.IntroModel
-            //: new IntroPageViewModel();
-            //introPageViewMod = GlobalStaticFields.IntroModel ?? new IntroPageViewModel();
-            //introPageViewMod = GlobalStaticFields.IntroModel != null ? GlobalStaticFields.IntroModel : new IntroPageViewModel();
-
+            
             Deals_Tapped(this, null);
             ShowSurVeyOne();
          
@@ -90,10 +76,7 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-            //BindingContext = GlobalStaticFields.IntroModel.dealsfromAPI != null
-                //&& GlobalStaticFields.IntroModel.dealsfromAPI.Count > 0
-                //? GlobalStaticFields.IntroModel.dealsfromAPI
-                //: (object)new IntroPageViewModel().GetDeals();
+     
             BindingContext = GlobalStaticFields.dealsfromAPI ;
 
         }

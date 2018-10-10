@@ -29,7 +29,6 @@ namespace HappeningsApp.Views
         public Collections ()
 		{
 			InitializeComponent ();
-            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.GreenYellow;
             GetFavs();
         }
         public async Task<ObservableCollection<FavoriteModel>> GetFavs()
@@ -40,8 +39,7 @@ namespace HappeningsApp.Views
             //Favs = await cs.GetUserFavs();
             Collectionz = await cs.GetUserFavsNew();
 
-            //GlobalStaticFields.AllService.Add(Favs);
-            //GlobalStaticFields.Favs = Favs;
+
             GlobalStaticFields.AllCollections = Collectionz;
             return Favs;
         }
