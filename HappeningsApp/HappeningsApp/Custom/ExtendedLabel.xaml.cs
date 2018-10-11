@@ -68,7 +68,7 @@ namespace HappeningsApp.Custom
 
 
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(ExtendedLabel),
-            defaultValue: Color.FromHex("#545454"),
+            defaultValue: Color.FromHex("#FFFFFF"),
             defaultBindingMode: BindingMode.TwoWay,
             propertyChanged: OnTextColorChanged);
 
