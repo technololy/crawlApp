@@ -1,33 +1,36 @@
-﻿using System;
+﻿using HappeningsApp.Models;
+using HappeningsApp.Services;
+using HappeningsApp.Views.AppViews;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using HappeningsApp.Models;
-using HappeningsApp.Services;
-using HappeningsApp.ViewModels;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace HappeningsApp.Views.AppViews
+namespace HappeningsApp.Views.CategoryPages
 {
-    public partial class DealsList : ContentPage
-    {
-
-        public ObservableCollection<Activity> Activity;
-        void Handle_Tapped(object sender, System.EventArgs e)
-        {
-            //Navigation.PushModalAsync(new Deals());
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class CategoryDetails : ContentPage
+	{
+		public CategoryDetails ()
+		{
+			InitializeComponent ();
+		}
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            if (dealsListview.SelectedItem==null)
+            if (dealsListview.SelectedItem == null)
             {
                 return;
             }
             var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
-            if (selected!=null)
+            if (selected != null)
             {
-               // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+                // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
                 Navigation.PushAsync(new DetailPage(selected));
 
             }
@@ -35,32 +38,22 @@ namespace HappeningsApp.Views.AppViews
             {
                 var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
                 //Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
-               Navigation.PushAsync(new DetailPage(selected2));
+                Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
         }
 
-       
-        private Category cat;
-
-        public DealsList()
-        {
-            InitializeComponent();
-          
-
-        }
-
-        public DealsList(Category cat)
+        public CategoryDetails(Category cat)
         {
             InitializeComponent();
             try
             {
-                this.cat = cat;
                 
-                GetCategoryByID(this.cat);
-               
-               
+
+                GetCategoryByID(cat);
+
+
             }
             catch (Exception ex)
             {
@@ -73,7 +66,7 @@ namespace HappeningsApp.Views.AppViews
 
         private async Task GetCategoryByID(Category cat)
         {
-            Activity = new ObservableCollection<Activity>();
+            
             Services.DealsService ds = new Services.DealsService();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
@@ -94,9 +87,9 @@ namespace HappeningsApp.Views.AppViews
                     return;
                 }
             }
-                
-               
-            }
+
+
+        }
 
         private void TapPlus_Tapped(object sender, EventArgs e)
         {
@@ -105,7 +98,7 @@ namespace HappeningsApp.Views.AppViews
                 var img = sender as Image;
                 var item = img.BindingContext as Deals;
                 //var item2 = img.BindingContext as Category;
-                Navigation.PushAsync(new Favourites(item),true);
+                Navigation.PushAsync(new Favourites(item), true);
             }
             catch (Exception ex)
             {
@@ -113,5 +106,4 @@ namespace HappeningsApp.Views.AppViews
             }
         }
     }
-    }
-
+}

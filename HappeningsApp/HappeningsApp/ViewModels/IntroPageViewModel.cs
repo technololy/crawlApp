@@ -11,7 +11,7 @@ namespace HappeningsApp.ViewModels
 {
     public class IntroPageViewModel//: //INotifyPropertyChanged
     {
-      
+        public bool IsEnabled { get; set; } = true;
         public ObservableCollection<Deals> dealsfromAPI { get; set; }
         public ObservableCollection<Category> CategfromAPI { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }

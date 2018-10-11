@@ -73,5 +73,36 @@ namespace HappeningsApp.Services
             return actvList;
         }
 
+
+        public async Task<ObservableCollection<Deals>> GetAllByCategoryID2(int id = 0)
+        {
+            ObservableCollection<Deals> deals = new ObservableCollection<Deals>();
+            DealRootObject dealRootObject = new DealRootObject();
+             var respo = await APIService.Get($"api/all/getallbycategoryid2?id={id}");
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+                dealRootObject = JsonConvert.DeserializeObject<DealRootObject>(content);
+                if (dealRootObject.Message.Contains("Success"))
+                {
+                    //ActvRootList = JsonConvert.DeserializeObject<ObservableCollection<Activity_RootObject>>(content);
+
+                    deals = dealRootObject.Deals;
+                }
+
+
+
+
+            }
+            else
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+            }
+            return deals;
+        }
+
+
     }
 }

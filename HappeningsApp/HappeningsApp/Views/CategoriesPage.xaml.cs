@@ -32,7 +32,7 @@ namespace HappeningsApp.Views
             }
             var cat = ListCategories.SelectedItem as Category;
             var category = ListCategories.SelectedItem as Models.Deals;
-            Application.Current.MainPage.Navigation.PushAsync(new HappeningsApp.Views.AppViews.DealsList(cat));
+            Application.Current.MainPage.Navigation.PushAsync(new CategoryPages.CategoryDetails(cat));
 
         }
     }
