@@ -13,6 +13,7 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<Models.FavoriteModel> MyFavs { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }
         public CollectionsModelResp Collectionz { get; set; }
+        public bool IsEnabled { get; set; }
         public FavViewModel()
         {
         }

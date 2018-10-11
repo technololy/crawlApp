@@ -43,7 +43,7 @@
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
                  </StackLayout>
             <StackLayout>
-                <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
+                <Button Text="Create a new collection" WidthRequest="100" Clicked="Button_Clicked"  BorderColor="{StaticResource CrawlColor}" />
             </StackLayout>                
             </StackLayout>   
         </Grid>

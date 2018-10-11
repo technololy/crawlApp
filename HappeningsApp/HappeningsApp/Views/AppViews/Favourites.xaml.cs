@@ -82,5 +82,10 @@ namespace HappeningsApp.Views.AppViews
             }
           
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+          Application.Current.MainPage.Navigation.PushModalAsync(new Views.Favourites.AddNewFavourite());
+        }
     }
 }

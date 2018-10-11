@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             Padding="20,20,20,0"
+             x:Class="HappeningsApp.Views.Favourites.AddNewFavourite">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Spacing="5">
+                <c:BorderlessEntry Placeholder="Name of favourite" 
+                                       x:Name="txtName"
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" 
+                                       Completed="txtName_Completed"
+                                       TextColor="White" ReturnType="Next" 
+                                      
+                                       PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
+            </StackLayout>
+            <StackLayout Spacing="5">
+                <c:BorderlessEntry Placeholder="Description" 
+                                       x:Name="txtDescription"
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" 
+                                       Completed="txtDescription_Completed"
+                                       TextColor="White" ReturnType="Go" 
+                                      
+                                       PlaceholderColor="White"/>
+                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                <Button TextColor="White" WidthRequest="300" x:Name="CreateFav" Text="Submit" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="txtDescription_Completed" />
+                <Button TextColor="White" Text="Cancel" Clicked="txtCancel_Clicked" x:Name="txtCancel" WidthRequest="300" BackgroundColor="#c0392b" />
+
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
