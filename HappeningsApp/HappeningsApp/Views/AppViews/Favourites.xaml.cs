@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
@@ -8,48 +10,47 @@ namespace HappeningsApp.Views.AppViews
 {
     public partial class Favourites : ContentPage
     {
-        FavViewModel favViewModel;
-        void Handle_ScrollToRequested(object sender, Xamarin.Forms.ScrollToRequestedEventArgs e)
-        {
-            string p = "g";
+       public FavViewModel fvvm { get; set; } = new FavViewModel();
+        
 
-        }
-
-        public  Favourites()
+        public  Favourites()//from collections
         {
             InitializeComponent();
-            favViewModel = new FavViewModel();
-            BindingContext = GlobalStaticFields.AllCollections;
-           //BindingContext = GlobalStaticFields.IntroModel.Favs != null&& GlobalStaticFields.IntroModel.Favs?.Count > 0 ?GlobalStaticFields.IntroModel.Favs :  new FavService().GetFavsTest().Result;
+           // favViewModel = new FavViewModel();
+            //BindingContext = GlobalStaticFields.AllCollections;
+     
             GetFavList();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        
+
+        private async Task GetFavList()
         {
-
-            try
+            //favViewModel = new FavViewModel();
+            await fvvm.GetFavs();
+            if (fvvm.Collectionz?.Collections?.Count>0)
             {
-                Button button = (Button)sender;
-                StackLayout layout = (StackLayout)button.Parent;
-                Label label = (Label)layout.Children[0];    
-            }
-            catch (Exception ex)
-            {
-                LogService.LogErrors(ex.ToString());
+                BindingContext = fvvm;
 
             }
-
-
-            var select = MyFavList.SelectedItem;
-        }
-
-        private void GetFavList()
-        {
-            if ( GlobalStaticFields.Favs?.Count>0)
+            else
             {
-                BindingContext = GlobalStaticFields.AllCollections;
-
+                UserDialogs.Instance.ShowLoading("A lil", Acr.UserDialogs.MaskType.None);
+                await Task.Delay(5000);
+                BindingContext = fvvm;
+                UserDialogs.Instance.HideLoading();
             }
+          
+            //if ( GlobalStaticFields.AllCollections!=null)
+            //{
+            //    BindingContext = GlobalStaticFields.AllCollections;
+
+            //}
+            //else
+            //{
+            //    favViewModel = new FavViewModel();
+            //    BindingContext = favViewModel;
+            //}
 
         }
 
@@ -59,13 +60,15 @@ namespace HappeningsApp.Views.AppViews
             GetFavList();
         }
 
-        public Favourites(Models.Deals deals)
+        public Favourites(Models.Deals deals)// from categories
         {
             InitializeComponent();
-            
+            fvvm.IsEnabled = true;
+            GetFavList();
+
         }
 
-        
+
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             try
@@ -82,10 +85,19 @@ namespace HappeningsApp.Views.AppViews
             }
           
         }
+        void Handle_ScrollToRequested(object sender, Xamarin.Forms.ScrollToRequestedEventArgs e)
+        {
 
+
+        }
         private void Button_Clicked(object sender, EventArgs e)
         {
           Application.Current.MainPage.Navigation.PushModalAsync(new Views.Favourites.AddNewFavourite());
+        }
+
+        private void AddToFav_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

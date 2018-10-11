@@ -1,4 +1,5 @@
-﻿using HappeningsApp.Models;
+﻿using Acr.UserDialogs;
+using HappeningsApp.Models;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
@@ -66,7 +67,7 @@ namespace HappeningsApp.Views
 
   
 
-        private void Deals_Tapped(object sender, EventArgs e)
+        private async void Deals_Tapped(object sender, EventArgs e)
         {
             var page =new DealsList();
 
@@ -81,8 +82,21 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-     
-            BindingContext = GlobalStaticFields.dealsfromAPI ;
+            //var dealsTriggered = new ObservableCollection<Deals>(ivm?.dealsfromAPI);
+            // BindingContext = GlobalStaticFields.dealsfromAPI ;
+            if (ivm?.DealsfromAPI?.Count>0)
+            {
+                BindingContext = ivm?.DealsfromAPI;
+
+            }
+            else
+            {
+                UserDialogs.Instance.ShowLoading("Hi there", Acr.UserDialogs.MaskType.Black);
+                await Task.Delay(7000);
+                BindingContext = ivm?.DealsfromAPI;
+                UserDialogs.Instance.HideLoading();
+
+            }
 
         }
 
@@ -103,9 +117,9 @@ namespace HappeningsApp.Views
 
         private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
         {
-            var grp = from h in ivm.getAll
-                    orderby h.Expiration_Date
-                    group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+            var grp = from h in ivm?.GgetAll
+                    orderby h?.Expiration_Date
+                    group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                     select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
 
             foreach (var g in grp)
@@ -118,7 +132,7 @@ namespace HappeningsApp.Views
 
         private ObservableCollection<Grouping<string, Models.Deals>> GroupListByDateBkUp()
         {
-            var grp = from h in ivm.dealsfromAPI
+            var grp = from h in ivm.DealsfromAPI
                       orderby h.Expiration_Date
                       group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                       select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);

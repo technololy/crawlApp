@@ -3,7 +3,7 @@
              Title="My Favorites" 
              BackgroundColor="Black"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
-             
+             x:Name="myPage"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Views.AppViews.Favourites">
     <ContentPage.Content>
@@ -15,7 +15,7 @@
             </Grid.RowDefinitions> 
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
-                             Grid.Row="0" ItemsSource="{Binding Collections}" 
+                             Grid.Row="0" ItemsSource="{Binding Collectionz.Collections}" 
                              HasUnevenRows="true"
                              ItemTapped="Handle_ItemTapped"
                              ScrollToRequested="Handle_ScrollToRequested" 
@@ -26,13 +26,24 @@
 
                             <StackLayout Margin="20,5,20,0">
                             <Frame HeightRequest="50" HasShadow="false">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
                                         <Label Text="{Binding NickName}" Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
-                                  
+                                        <StackLayout>
+                                            <Label Text="Add Fav" TextColor="Black" IsVisible="{Binding Path=BindingContext.IsEnabled,Source={x:Reference myPage}}">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Tapped="AddToFav_Tapped"
+                                                        Command="{Binding Path=BindingContext.GetFavCommand, Source={x:Reference myPage}}"
+                                                        CommandParameter="{Binding .}"
+                                                        x:Name="AddToFav"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </StackLayout>
                                 </StackLayout>
+                                
                             </Frame>
                         </StackLayout>
                         </c:ExtendedViewCell>
