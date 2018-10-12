@@ -160,6 +160,9 @@
     <PackageReference Include="Xamarin.Auth">
       <Version>1.6.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Auth.XamarinForms">
+      <Version>1.6.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading">
       <Version>2.4.3.840</Version>
     </PackageReference>

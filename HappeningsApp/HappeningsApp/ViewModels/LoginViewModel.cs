@@ -11,14 +11,24 @@ using HappeningsApp.Services.LoginSignUp;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using Xamarin.Auth;
+using System.Diagnostics;
+using HappeningsApp.OAuth;
+using System.Linq;
 
 namespace HappeningsApp.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
+        Account account;
+        AccountStore store;
+        public Command OnGoogleButtonCommand;
         public LoginViewModel()
         {
             User = new UserInfo();
+            store = AccountStore.Create();
+            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            OnGoogleButtonCommand = new Command(OnGoogleButtonClick);
         }
         public UserInfo User
         {
@@ -254,5 +264,92 @@ namespace HappeningsApp.ViewModels
 
             }
         }
+
+
+
+        void OnGoogleButtonClick()
+        {
+            string clientId = null;
+            string redirectUri = null;
+
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.iOS:
+                    clientId = Constants.iOSClientId;
+                    redirectUri = Constants.iOSRedirectUrl;
+                    break;
+
+                case Xamarin.Forms.Device.Android:
+                    clientId = Constants.AndroidClientId;
+                    redirectUri = Constants.AndroidRedirectUrl;
+                    break;
+            }
+
+            var authenticator = new OAuth2Authenticator(
+                clientId,
+                null,
+                Constants.Scope,
+                new Uri(Constants.AuthorizeUrl),
+                new Uri(redirectUri),
+                new Uri(Constants.AccessTokenUrl),
+                null,
+                true);
+
+            authenticator.Completed += OnAuthCompleted;
+            authenticator.Error += OnAuthError;
+
+            AuthenticationState.Authenticator = authenticator;
+
+            var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+            presenter.Login(authenticator);
+        }
+
+        async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
+        {
+            var authenticator = sender as OAuth2Authenticator;
+            if (authenticator != null)
+            {
+                authenticator.Completed -= OnAuthCompleted;
+                authenticator.Error -= OnAuthError;
+            }
+
+            User user = null;
+            if (e.IsAuthenticated)
+            {
+                // If the user is authenticated, request their basic user data from Google
+                // UserInfoUrl = https://www.googleapis.com/oauth2/v2/userinfo
+                var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
+                var response = await request.GetResponseAsync();
+                if (response != null)
+                {
+                    // Deserialize the data and store it in the account store
+                    // The users email address will be used to identify data in SimpleDB
+                    string userJson = await response.GetResponseTextAsync();
+                    user = JsonConvert.DeserializeObject<User>(userJson);
+                }
+
+                if (account != null)
+                {
+                    store.Delete(account, Constants.AppName);
+                }
+
+                await store.SaveAsync(account = e.Account, Constants.AppName);
+                 UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
+            }
+        }
+
+        void OnAuthError(object sender, AuthenticatorErrorEventArgs e)
+        {
+            var authenticator = sender as OAuth2Authenticator;
+            if (authenticator != null)
+            {
+                authenticator.Completed -= OnAuthCompleted;
+                authenticator.Error -= OnAuthError;
+            }
+
+            Debug.WriteLine("Authentication error: " + e.Message);
+        }
+
+
     }
 }

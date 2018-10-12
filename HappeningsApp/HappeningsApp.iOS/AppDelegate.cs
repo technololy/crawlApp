@@ -24,7 +24,7 @@ namespace HappeningsApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
-
+            global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
 

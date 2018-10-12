@@ -88,7 +88,7 @@
                 </StackLayout>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
                       <Button TextColor="White" WidthRequest="300" Text="Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="Facebook_Tapped" />
-                <Button TextColor="White" Text=" Google" WidthRequest="300" BackgroundColor="#c0392b" />
+                        <Button TextColor="White" Text="Google" Command="{Binding OnGoogleButtonCommand}" WidthRequest="300" BackgroundColor="#c0392b" />
                 
                    
                 </StackLayout>
