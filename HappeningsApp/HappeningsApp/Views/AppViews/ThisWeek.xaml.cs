@@ -60,7 +60,7 @@ namespace HappeningsApp.Views.AppViews
                 var select = e.SelectedItem as string;
                 string fulldayName = GetFullDay(select);
                 var listViewDatax = dealsListview.ItemsSource;          
-                var dealsList = GlobalStaticFields.dealsfromAPI.Where(d=>d.Expiration_Date.
+                var dealsList = GlobalStaticFields.GetAll.Where(d=>d.Expiration_Date.
                 DayOfWeek.ToString().ToLower()==fulldayName.ToLower()).FirstOrDefault();
                 dealsListview.ScrollTo(dealsList, ScrollToPosition.Start, true);
             
