@@ -67,8 +67,8 @@ namespace HappeningsApp.Views.AppViews
             }
             catch (Exception ex)
             {
-
                 var log = ex;
+                LogService.LogErrors(log.ToString());
             }
 
         }
