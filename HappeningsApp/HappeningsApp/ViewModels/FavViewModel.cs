@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using HappeningsApp.Models;
 using HappeningsApp.Services;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace HappeningsApp.ViewModels
     public class FavViewModel : INotifyPropertyChanged
     {
         private CollectionsModelResp _collectionz;
+        private ObservableCollection<CollectionsResp> _collectionsList;
 
         public ObservableCollection<Models.FavoriteModel> MyFavs { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }
@@ -28,15 +30,63 @@ namespace HappeningsApp.ViewModels
                     OnPropertyChanged(nameof(Collectionz));
                 }
 
-            } 
+            }
+        }
+
+        public ObservableCollection<CollectionsResp> CollectionsList
+        {
+            get => _collectionsList;
+            set 
+            {
+                if(_collectionsList != value)
+                {
+                    _collectionsList = value;
+                    OnPropertyChanged();
+
+                }
+            }
         }
         public bool IsEnabled { get; set; }
         public Command GetFavCommand { get; set; }
+        public Command AddNewCollectionCommand { get; set; }
+        public string NewCollectionName
+        {
+            get;
+            set;
+        }
 
-
+        public string NewCollectionNick
+        {
+            get;
+            set;
+        }
         public FavViewModel()
         {
             GetFavCommand = new Command(GetSelectedFav);
+            AddNewCollectionCommand = new Command(AddNewCollection);
+        }
+
+        public async void AddNewCollection()
+        {
+            using (UserDialogs.Instance.Loading(""))
+            {
+                CollectionService cs = new CollectionService();
+                string result = await cs.CreateNewCollection(NewCollectionName, NewCollectionNick);
+                if (result.ToLower().Contains("success"))
+                {
+                    //refresh list
+                    await GetFavs();
+                }
+                else
+                {
+                    var toastConfig = new ToastConfig("Not configured yet...");
+                    toastConfig.SetDuration(5000);
+                    toastConfig.SetPosition(ToastPosition.Top);
+                    toastConfig.SetBackgroundColor(Color.OrangeRed);
+                    UserDialogs.Instance.Toast(toastConfig);
+                }
+            }
+        
         }
 
         private void GetSelectedFav(object obj)
@@ -67,6 +117,20 @@ namespace HappeningsApp.ViewModels
 
             GlobalStaticFields.AllCollections = Collectionz;
             return Collectionz;
+        }
+
+
+
+        public async Task<ObservableCollection<CollectionsResp>> GetListCollection()
+        {
+            FavService fs = new FavService();
+            CollectionService cs = new CollectionService();
+
+            CollectionsList = await cs.GetUserListCollection();
+
+
+            GlobalStaticFields.AllCollections = Collectionz;
+            return CollectionsList;
         }
 
 

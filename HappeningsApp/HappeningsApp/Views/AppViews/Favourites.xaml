@@ -26,13 +26,16 @@
 
                             <StackLayout Margin="20,5,20,0">
                             <Frame HeightRequest="50" HasShadow="false">
-                                <StackLayout Orientation="Vertical">
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
                                         <Label Text="{Binding NickName}" Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
-                                        <StackLayout>
-                                            <Label Text="Add Fav" TextColor="Black" IsVisible="{Binding Path=BindingContext.IsEnabled,Source={x:Reference myPage}}">
+                                        <StackLayout HorizontalOptions="EndAndExpand">
+                                            <Label Text="Tap here to add" 
+                                                   TextColor="Green" 
+                                                   FontAttributes="Bold"
+                                                   IsVisible="{Binding Path=BindingContext.IsEnabled,Source={x:Reference myPage}}">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer
                                                         Tapped="AddToFav_Tapped"

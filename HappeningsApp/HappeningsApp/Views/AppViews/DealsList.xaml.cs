@@ -18,24 +18,23 @@ namespace HappeningsApp.Views.AppViews
             //Navigation.PushModalAsync(new Deals());
         }
 
-        void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (dealsListview.SelectedItem==null)
             {
                 return;
             }
-            var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
-            if (selected!=null)
+            if (dealsListview.SelectedItem is HappeningsApp.Models.Deals selected)
             {
-               // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
-                Navigation.PushAsync(new DetailPage(selected));
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+                //Navigation.PushAsync(new DetailPage(selected));
 
             }
             else
             {
                 var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-                //Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
-               Navigation.PushAsync(new DetailPage(selected2));
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                //Navigation.PushAsync(new DetailPage(selected2));
 
             }
 

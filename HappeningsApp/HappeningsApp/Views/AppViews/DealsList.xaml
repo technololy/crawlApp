@@ -15,7 +15,7 @@
         <Grid x:Name="mainLayout">
 
 
-            <ListView ItemsSource="{Binding .}" 
+            <ListView ItemsSource="{Binding DealsfromAPI}" 
                          x:Name="dealsListview" 
                          SeparatorVisibility="None" 
                          IsPullToRefreshEnabled="True"  

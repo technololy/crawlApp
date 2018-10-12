@@ -24,13 +24,13 @@ namespace HappeningsApp.Views
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
        public AppLanding ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
             ivm = new IntroPageViewModel();
             ivm.GetDeals();
             ivm.GetCategories();
             ivm.GetAll();
             Deals_Tapped(this, null);
-            ShowSurVeyOne();
+            //ShowSurVeyOne();
          
           
 		}
@@ -82,25 +82,27 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-            //var dealsTriggered = new ObservableCollection<Deals>(ivm?.dealsfromAPI);
-            // BindingContext = GlobalStaticFields.dealsfromAPI ;
-            if (ivm?.DealsfromAPI?.Count>0)
-            {
-                BindingContext = ivm?.DealsfromAPI;
+            //IntroPageViewModel intro = new IntroPageViewModel();
+            //intro.GetDeals();
+            BindingContext =ivm;
 
-            }
-            else
-            {
-                UserDialogs.Instance.ShowLoading("Hi there", Acr.UserDialogs.MaskType.Black);
-                await Task.Delay(7000);
-                BindingContext = ivm?.DealsfromAPI;
-                UserDialogs.Instance.HideLoading();
+            //if (ivm?.DealsfromAPI?.Count>0)
+            //{
+            //    BindingContext = ivm?.DealsfromAPI;
 
-            }
+            //}
+            //else
+            //{
+            //    UserDialogs.Instance.ShowLoading("Hi there", Acr.UserDialogs.MaskType.Black);
+            //    await Task.Delay(7000);
+            //    BindingContext = ivm?.DealsfromAPI;
+            //    UserDialogs.Instance.HideLoading();
+
+            //}
 
         }
 
-     
+
         private void ThisWeek_Tapped(object sender, EventArgs e)
         {
             var page = new ThisWeek();

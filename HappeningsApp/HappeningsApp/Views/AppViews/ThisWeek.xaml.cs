@@ -39,7 +39,7 @@ namespace HappeningsApp.Views.AppViews
             {
                 return;
             }
-            var selected = dealsListview.SelectedItem as HappeningsApp.Models.Deals;
+            var selected = dealsListview.SelectedItem as HappeningsApp.Models.GetAll2.Deal;
             if (selected != null)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));

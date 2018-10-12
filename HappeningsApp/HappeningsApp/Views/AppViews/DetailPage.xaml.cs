@@ -35,10 +35,16 @@ namespace HappeningsApp.Views.AppViews
             dealz = new Models.Deals();
             dealz = myDeals;
             BindingContext = myDeals;
-          // ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Transparent;
-            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
+      
         }
 
+        public DetailPage(HappeningsApp.Models.GetAll2.Deal myDeals)
+        {
+            InitializeComponent();
+          
+            BindingContext = myDeals;
+         
+        }
         public DetailPage(Activity selected2)
         {
             InitializeComponent();

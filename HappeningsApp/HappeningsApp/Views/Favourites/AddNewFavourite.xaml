@@ -1,13 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
              Padding="20,20,20,0"
+             BackgroundColor="Black"
              x:Class="HappeningsApp.Views.Favourites.AddNewFavourite">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Spacing="5">
-                <c:BorderlessEntry Placeholder="Name of favourite" 
+                <c:BorderlessEntry Placeholder="Name" 
+                                   Text="{Binding NewCollectionName}"
                                        x:Name="txtName"
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
@@ -18,7 +20,9 @@
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout Spacing="5">
-                <c:BorderlessEntry Placeholder="Description" 
+                <c:BorderlessEntry Placeholder="Nickname" 
+                                   Text="{Binding NewCollectionNick}"
+                                   
                                        x:Name="txtDescription"
                                    IsSpellCheckEnabled="false"
                                     HorizontalTextAlignment="Start" 
@@ -29,7 +33,13 @@
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
-                <Button TextColor="White" WidthRequest="300" x:Name="CreateFav" Text="Submit" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="txtDescription_Completed" />
+                <Button TextColor="White" 
+                        WidthRequest="300" 
+                        x:Name="CreateFav" 
+                        Text="Submit"
+                        Command="{Binding AddNewCollection}"
+                        BackgroundColor="{x:StaticResource CrawlColor}" 
+                        Clicked="txtDescription_Completed" />
                 <Button TextColor="White" Text="Cancel" Clicked="txtCancel_Clicked" x:Name="txtCancel" WidthRequest="300" BackgroundColor="#c0392b" />
 
 

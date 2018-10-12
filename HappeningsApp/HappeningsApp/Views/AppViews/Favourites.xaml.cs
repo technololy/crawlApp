@@ -28,19 +28,22 @@ namespace HappeningsApp.Views.AppViews
         {
             //favViewModel = new FavViewModel();
             await fvvm.GetFavs();
-            if (fvvm.Collectionz?.Collections?.Count>0)
-            {
-                BindingContext = fvvm;
+               BindingContext = fvvm;
 
-            }
-            else
-            {
-                UserDialogs.Instance.ShowLoading("A lil", Acr.UserDialogs.MaskType.None);
-                await Task.Delay(5000);
-                BindingContext = fvvm;
-                UserDialogs.Instance.HideLoading();
-            }
-          
+            #region comm
+            //if (fvvm.Collectionz?.Collections?.Count>0)
+            //{
+            //    BindingContext = fvvm;
+
+            //}
+            //else
+            //{
+            //    UserDialogs.Instance.ShowLoading("A lil", Acr.UserDialogs.MaskType.None);
+            //    await Task.Delay(5000);
+            //    BindingContext = fvvm;
+            //    UserDialogs.Instance.HideLoading();
+            //}
+
             //if ( GlobalStaticFields.AllCollections!=null)
             //{
             //    BindingContext = GlobalStaticFields.AllCollections;
@@ -51,6 +54,7 @@ namespace HappeningsApp.Views.AppViews
             //    favViewModel = new FavViewModel();
             //    BindingContext = favViewModel;
             //}
+            #endregion
 
         }
 
@@ -92,7 +96,7 @@ namespace HappeningsApp.Views.AppViews
         }
         private void Button_Clicked(object sender, EventArgs e)
         {
-          Application.Current.MainPage.Navigation.PushModalAsync(new Views.Favourites.AddNewFavourite());
+          Navigation.PushModalAsync(new Views.Favourites.AddNewFavourite());
         }
 
         private void AddToFav_Tapped(object sender, EventArgs e)

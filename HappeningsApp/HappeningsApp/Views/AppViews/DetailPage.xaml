@@ -22,7 +22,7 @@
                 <Frame Grid.Row="0"
                        BackgroundColor="Transparent"
                        Padding="0" 
-                       HeightRequest="200" 
+                       HeightRequest="150" 
                        IsClippedToBounds="True">
                   <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
@@ -68,7 +68,11 @@
                                     <StackLayout Grid.Row="0" Spacing="15">
                                       
                                         <StackLayout Orientation="Horizontal">
-                                            <Image Source="ic_bookmark_border_blue.png" WidthRequest="30" HeightRequest="30"  />
+                                            <Image Source="ic_bookmark_border_blue.png"
+                                                   WidthRequest="30" 
+                                                   HeightRequest="30" 
+                                                   IsVisible="false"
+                                                   />
                                 <Image Source="pinkshare.png" 
                                        IsVisible="false"
                                        WidthRequest="30" 
@@ -79,14 +83,16 @@
                                         </Image>
                            
                                               <Button Text="Book" 
+                                                      
                                                       FontSize="10"  
                                                       HorizontalOptions="EndAndExpand"
-                                                      BackgroundColor="{DynamicResource CrawlRedColor}" 
-                                                      TextColor="White" 
-                                                      CornerRadius="15" 
+                                                      BackgroundColor="Transparent" 
+                                                      TextColor="{ynamicResource CrawlColor}" 
+                                                      BorderColor="{DynamicResource CrawlColor}"
+                                                      BorderWidth="1"
                                                       Grid.Column="2" 
                                                       WidthRequest="80" 
-                                                      HeightRequest="20" />
+                                                       />
                               
                                         </StackLayout>
                                       <Frame HasShadow="false" HeightRequest="60" >
