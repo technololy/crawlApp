@@ -32,7 +32,7 @@ namespace HappeningsApp.Views.Favourites
 
         private void txtCancel_Clicked(object sender, EventArgs e)
         {
-
+            Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
     }
 }

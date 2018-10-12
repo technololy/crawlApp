@@ -44,6 +44,10 @@ namespace HappeningsApp.Views.Settings
 
         private async void txtConfirmNewPassword_Completed(object sender, EventArgs e)
         {
+            try
+            {
+
+           
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
 
@@ -81,6 +85,12 @@ namespace HappeningsApp.Views.Settings
                 {
                     await DisplayAlert("Info", MessageToUser, "OK");
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+               await DisplayAlert("Error", "Error occured", "OK");
             }
         }
 
