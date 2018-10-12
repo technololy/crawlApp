@@ -87,7 +87,7 @@
                                                       FontSize="10"  
                                                       HorizontalOptions="EndAndExpand"
                                                       BackgroundColor="Transparent" 
-                                                      TextColor="{ynamicResource CrawlColor}" 
+                                                      TextColor="{DynamicResource CrawlColor}" 
                                                       BorderColor="{DynamicResource CrawlColor}"
                                                       BorderWidth="1"
                                                       Grid.Column="2" 
