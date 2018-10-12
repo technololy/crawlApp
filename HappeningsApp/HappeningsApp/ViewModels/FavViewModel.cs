@@ -71,15 +71,16 @@ namespace HappeningsApp.ViewModels
             using (UserDialogs.Instance.Loading(""))
             {
                 CollectionService cs = new CollectionService();
-                string result = await cs.CreateNewCollection(NewCollectionName, NewCollectionNick);
-                if (result.ToLower().Contains("success"))
+                bool result = await cs.CreateNewCollection(NewCollectionName, NewCollectionNick);
+                if (result)
                 {
                     //refresh list
+                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.Green,"Successful..."));
                     await GetFavs();
                 }
                 else
                 {
-                    var toastConfig = new ToastConfig("Not configured yet...");
+                    var toastConfig = new ToastConfig("Not successful...");
                     toastConfig.SetDuration(5000);
                     toastConfig.SetPosition(ToastPosition.Top);
                     toastConfig.SetBackgroundColor(Color.OrangeRed);

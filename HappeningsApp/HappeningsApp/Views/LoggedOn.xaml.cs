@@ -34,7 +34,7 @@ namespace HappeningsApp.Views
                             using (UserDialogs.Instance.Loading("Facebook Authenticated.Now logging on.."))
                             {
                                 lvm.SetFacebookUserProfileAsync();
-                                var lg =await lvm.GetTokenFromAPI();
+                                var lg = await lvm.GetTokenFromAPI();
                                 if (lg)
                                 {
                                     lvm.PersistUserDetails();
@@ -54,7 +54,7 @@ namespace HappeningsApp.Views
                                             lvm.PersistUserDetails();
 
                                             //Navigation.PopModalAsync(true);
-                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding(),true);
+                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding(), true);
 
 
 
@@ -67,7 +67,7 @@ namespace HappeningsApp.Views
                                     }
                                     else
                                     {
-                                        if(await DisplayAlert("Error", lvm.RegisterationError, "OK", "Back to login"))
+                                        if (await DisplayAlert("Error", lvm.RegisterationError, "OK", "Back to login"))
                                             Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
                                         else
                                             Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
@@ -76,17 +76,17 @@ namespace HappeningsApp.Views
                                     }
 
                                 }
-                               
+
 
                                 //await lvm.CallProviderLoginAPI();
                             }
-                        
+
 
                         }
                     }
                 }
-              
-              
+
+
             }
             catch (Exception ex)
             {
@@ -96,18 +96,18 @@ namespace HappeningsApp.Views
             }
         }
 
- 
 
-       async void Logon_Tapped(object sender, System.EventArgs e)
+
+        async void Logon_Tapped(object sender, System.EventArgs e)
         {
             if (!CrossConnectivity.Current.IsConnected)
             {
                 await DisplayAlert("Hi there", "It appears you have no internet access", "OK");
                 return;
             }
-            using(UserDialogs.Instance.Loading(""))
+            using (UserDialogs.Instance.Loading(""))
             {
-                GlobalStaticFields.Username= lvm.User.Username;
+                GlobalStaticFields.Username = lvm.User.Username;
                 //lvm.User.Password = "Qwe123!";
                 var resp = await lvm.GetTokenFromAPI();
                 if (resp)
@@ -120,7 +120,7 @@ namespace HappeningsApp.Views
                 }
                 else
                 {
-                   await DisplayAlert("Error", "Error logging in at this time. Please try again", "OK");
+                    await DisplayAlert("Error", "Error logging in at this time. Please try again", "OK");
                 }
             }
         }
@@ -137,7 +137,7 @@ namespace HappeningsApp.Views
 
         void Facebook_Tapped(object sender, System.EventArgs e)
         {
-          try
+            try
             {
                 using (UserDialogs.Instance.Loading("Connecting to FaceBook.."))
                 {
@@ -180,14 +180,53 @@ namespace HappeningsApp.Views
 
         }
 
-        private  void SignUpTap_Tapped(object sender, EventArgs e)
+        private void SignUpTap_Tapped(object sender, EventArgs e)
         {
-             Navigation.PushModalAsync(new LoginSignUp.SignUp(),true);
+            Navigation.PushModalAsync(new LoginSignUp.SignUp(), true);
         }
 
         private void Dismissed_tapped(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
+        }
+
+        private async void googleSignIn_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                using (UserDialogs.Instance.Loading(""))
+                {
+                    var d = lvm.OnGoogleButtonClick();
+                    if (d)
+                    {
+                        lvm.GetTokenFromAPI();
+                        if (lvm.IsSuccess)
+                        {
+                            await Navigation.PushAsync(new AppLanding(), true);
+                        }
+                        else
+                        {
+                            lvm.Register();
+                            if (lvm.IsSuccess)
+                            {
+                                await Navigation.PushAsync(new AppLanding(), true);
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+            }
+
         }
     }
 }

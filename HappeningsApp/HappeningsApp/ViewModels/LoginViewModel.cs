@@ -22,13 +22,13 @@ namespace HappeningsApp.ViewModels
     {
         Account account;
         AccountStore store;
-        public Command OnGoogleButtonCommand;
+        public Command OnGoogleButtonCommand { get; set; }
         public LoginViewModel()
         {
             User = new UserInfo();
             store = AccountStore.Create();
             account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
-            OnGoogleButtonCommand = new Command(OnGoogleButtonClick);
+            //OnGoogleButtonCommand = new Command(OnGoogleButtonClick);
         }
         public UserInfo User
         {
@@ -267,7 +267,7 @@ namespace HappeningsApp.ViewModels
 
 
 
-        void OnGoogleButtonClick()
+       public bool OnGoogleButtonClick()
         {
             string clientId = null;
             string redirectUri = null;
@@ -302,6 +302,7 @@ namespace HappeningsApp.ViewModels
 
             var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
             presenter.Login(authenticator);
+            return true;
         }
 
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
@@ -334,7 +335,17 @@ namespace HappeningsApp.ViewModels
                 }
 
                 await store.SaveAsync(account = e.Account, Constants.AppName);
-                 UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
+                //UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
+                MyToast t = new MyToast();
+                UserDialogs.Instance.Toast(t.ShowMyToast(Color.Green,"Successful google login"));
+                User.Username = user.Email;
+                User.Password = user.Email;
+            
+            }
+            else
+            {
+                MyToast t = new MyToast();
+                UserDialogs.Instance.Toast(t.ShowMyToast(Color.PaleVioletRed, "Unsuccessful google login"));
             }
         }
 

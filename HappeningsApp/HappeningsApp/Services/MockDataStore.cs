@@ -36,8 +36,8 @@ namespace HappeningsApp.Services
         {
             ObservableCollection<Collections> cc = new ObservableCollection<Collections>()
             {
-                new Collections{ Name = "PLACES TO GO", Number = 0},
-                new Collections{ Name = "done and dusted", Number = 0},
+                //new Collections{ Name = "PLACES TO GO", Number = 0},
+                //new Collections{ Name = "done and dusted", Number = 0},
             };
 
             return cc;

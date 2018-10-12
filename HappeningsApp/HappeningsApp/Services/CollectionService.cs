@@ -57,17 +57,36 @@ namespace HappeningsApp.Services
             }
         }
 
-        internal async Task<string> CreateNewCollection(string newCollectionName, string newCollectionNick)
+        internal async Task<bool> CreateNewCollection(string newCollectionName, string newCollectionNick)
         {
-           await Task.Delay(5000);
-            return "";
+            var newCollection = new Collections
+            {
+                User_id=GlobalStaticFields.Username,
+                Name = newCollectionName,
+                NickName = newCollectionNick
+            };
+          var resp =await  APIService.PostNew<Collections>(newCollection, "api/Collections");
+            if (resp.StatusCode== System.Net.HttpStatusCode.OK)
+            {
+                var cont =await resp.Content.ReadAsStringAsync();
+                if (cont.Contains("Record Added Successfully"))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+
+            }
+
         }
 
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
-            string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
-            //string endpoint = "api/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            string endpoint = "GetByUserID?User_id=" + testuser;
+            //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+            string endpoint = "api/GetByUserID?User_id=" + GlobalStaticFields.Username;
+            //string endpoint = "GetByUserID?User_id=" + testuser;
             var response = await APIService.Get(endpoint);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {

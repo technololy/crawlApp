@@ -196,5 +196,40 @@ namespace HappeningsApp.Views.LoginSignUp
              Navigation.PopAsync(true);
 
         }
+
+        private void googleBtn_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                using (UserDialogs.Instance.Loading(""))
+                {
+                    lvm.OnGoogleButtonClick();
+                    lvm.GetTokenFromAPI();
+                    if (lvm.IsSuccess)
+                    {
+                        Navigation.PushAsync(new AppLanding(), true);
+                    }
+                    else
+                    {
+                        lvm.Register();
+                        if (lvm.IsSuccess)
+                        {
+                            Navigation.PushAsync(new AppLanding(), true);
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+            }
+
+        }
     }
 }

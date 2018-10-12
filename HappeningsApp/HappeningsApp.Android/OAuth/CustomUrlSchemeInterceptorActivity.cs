@@ -25,17 +25,38 @@ namespace HappeningsApp.Droid.OAuth
 
     public class CustomUrlSchemeInterceptorActivity: Activity
     {
+        //protected override void OnCreate(Bundle savedInstanceState)
+        //{
+        //    base.OnCreate(savedInstanceState);
+
+        //    // Convert Android.Net.Url to Uri
+        //    var uri = new Uri(Intent.Data.ToString());
+
+        //    // Load redirectUrl page
+        //    AuthenticationState.Authenticator.OnPageLoading(uri);
+
+        //    Finish();
+        //}
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Convert Android.Net.Url to Uri
-            var uri = new Uri(Intent.Data.ToString());
+            global::Android.Net.Uri uri_android = Intent.Data;
 
-            // Load redirectUrl page
-            AuthenticationState.Authenticator.OnPageLoading(uri);
+            Uri uri_netfx = new Uri(uri_android.ToString());
 
-            Finish();
+            // load redirect_url Page
+            AuthenticationState.Authenticator.OnPageLoading(uri_netfx);
+
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.SetFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
+            StartActivity(intent);
+
+            this.Finish();
+
+            return;
         }
+
     }
 }

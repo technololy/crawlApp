@@ -12,17 +12,17 @@ namespace HappeningsApp.Models
 
     public class Collections
     {
-        public string ID { get; set; }
+        public string User_id { get; set; }
         public string Name { get; set; }
-        public int Number { get; set; }
-        public List<Details> details { get; set; }
+        public string NickName { get; set; }
+        public List<Details> Details { get; set; }
     }
 
 
 
     public class Details
     {
-        public string id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }

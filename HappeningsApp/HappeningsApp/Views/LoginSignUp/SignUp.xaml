@@ -12,7 +12,7 @@
         <StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
                 <Button TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
-                <Button TextColor="White" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
+                <Button TextColor="White" x:Name="googleBtn" Clicked="googleBtn_Clicked" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
                   <Label HorizontalOptions="CenterAndExpand" Text="OR" TextColor="White" />
                 <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />
            
