@@ -71,7 +71,7 @@ namespace HappeningsApp.ViewModels
         internal async Task<bool> GetTokenFromAPI()
         {
             IsSuccess = false;
-            var tk = await APIService.GetToken(User);
+            var tk = await APIService.GetToken(User).ConfigureAwait(false);
             if (tk.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var res = await tk.Content.ReadAsStringAsync();
@@ -241,7 +241,7 @@ namespace HappeningsApp.ViewModels
 
         public async void SetFacebookUserProfileAsync()
         {
-
+            await Task.Delay(1);
             if ((FacebookProfile != null))
             {
                 User = new UserInfo()
@@ -297,7 +297,7 @@ namespace HappeningsApp.ViewModels
 
             authenticator.Completed += OnAuthCompleted;
             authenticator.Error += OnAuthError;
-
+            
             AuthenticationState.Authenticator = authenticator;
 
             var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();

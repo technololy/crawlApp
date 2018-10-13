@@ -66,13 +66,23 @@ namespace HappeningsApp.Services
             dict.Add("username", user.Username);
             using (var client = new HttpClient())
             {
-                client.MaxResponseContentBufferSize = 256000;
 
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
-                                                        ("application/json"));
-                res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
-                var cont = await res.Content.ReadAsStringAsync();
-                LogService.LogErrors($"Request json:\n{dict}, Response json\n{cont}");
+
+                client.BaseAddress = new Uri(Constants.CrawlAPI);
+                //serialize your json using newtonsoft json serializer then add it to the StringContent
+                //var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+                //method address would be like api/callUber:SomePort for example
+                res = await client.PostAsync("/token",new FormUrlEncodedContent(dict));
+                string cont = await res.Content.ReadAsStringAsync();
+                //return result;
+
+                //client.MaxResponseContentBufferSize = 256000;
+
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                //                                        ("application/json"));
+                //res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
+                //var cont = await res.Content.ReadAsStringAsync();
+                LogService.LogErrors($"Endpoint is {client.BaseAddress.ToString()}/token. Response json\n{cont}");
 
             }
 
@@ -101,7 +111,7 @@ namespace HappeningsApp.Services
 
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
-                LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+                LogService.LogErrors($"Endpoint is {url}. Request json:\n{json}, Response json\n{resultt}");
 
 
             }
