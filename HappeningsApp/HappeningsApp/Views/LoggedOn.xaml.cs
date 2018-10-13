@@ -22,7 +22,7 @@ namespace HappeningsApp.Views
         Account account;
         AccountStore store;
         public string accessToken { get; set; }
-        
+
         LoginViewModel lvm = new LoginViewModel();
         async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
         {
@@ -247,74 +247,78 @@ namespace HappeningsApp.Views
 
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
         {
-            var authenticator = sender as OAuth2Authenticator;
-            if (authenticator != null)
+            using (UserDialogs.Instance.Loading(""))
             {
-                authenticator.Completed -= OnAuthCompleted;
-                authenticator.Error -= OnAuthError;
-            }
-
-            User user = null;
-            if (e.IsAuthenticated)
-            {
-                // If the user is authenticated, request their basic user data from Google
-                // UserInfoUrl = https://www.googleapis.com/oauth2/v2/userinfo
-                var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
-                var response = await request.GetResponseAsync();
-                if (response != null)
+                var authenticator = sender as OAuth2Authenticator;
+                if (authenticator != null)
                 {
-                    // Deserialize the data and store it in the account store
-                    // The users email address will be used to identify data in SimpleDB
-                    string userJson = await response.GetResponseTextAsync();
-                    user = JsonConvert.DeserializeObject<User>(userJson);
+                    authenticator.Completed -= OnAuthCompleted;
+                    authenticator.Error -= OnAuthError;
                 }
 
-                if (account != null)
+                User user = null;
+                if (e.IsAuthenticated)
                 {
-                    store.Delete(account, Constants.AppName);
-                }
-
-                await store.SaveAsync(account = e.Account, Constants.AppName);
-                //UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
-                MyToast t = new MyToast();
-                UserDialogs.Instance.Toast(t.ShowMyToast(Color.Green, "Successful google login"));
-                lvm.User.Username = user.Email;
-                lvm.User.Password = user.Email;
-                lvm.User.EmailAddress = user.Email;
-                lvm.User.ConfirmPin = user.Email;
-             var tk=  await lvm.GetTokenFromAPI().ConfigureAwait(false);
-         
-                if ( tk)
-                {
-                   await Navigation.PushAsync(new AppLanding());
-                }
-                else
-                {
-                   var reg = await lvm.Register().ConfigureAwait(false);
-                 
-                    if (reg)
+                    // If the user is authenticated, request their basic user data from Google
+                    // UserInfoUrl = https://www.googleapis.com/oauth2/v2/userinfo
+                    var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
+                    var response = await request.GetResponseAsync();
+                    if (response != null)
                     {
-                        Device.BeginInvokeOnMainThread
-                              (
-                            async() => await Navigation.PushAsync(new AppLanding())
-                                 );  
+                        // Deserialize the data and store it in the account store
+                        // The users email address will be used to identify data in SimpleDB
+                        string userJson = await response.GetResponseTextAsync();
+                        user = JsonConvert.DeserializeObject<User>(userJson);
+                    }
 
+                    if (account != null)
+                    {
+                        store.Delete(account, Constants.AppName);
+                    }
+
+                    await store.SaveAsync(account = e.Account, Constants.AppName);
+                    //UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
+                    MyToast t = new MyToast();
+                    UserDialogs.Instance.Toast(t.ShowMyToast(Color.Green, "Successful google login"));
+                    lvm.User.Username = user.Email;
+                    lvm.User.Password = user.Email;
+                    lvm.User.EmailAddress = user.Email;
+                    lvm.User.ConfirmPin = user.Email;
+                    var tk = await lvm.GetTokenFromAPI().ConfigureAwait(false);
+
+                    if (tk)
+                    {
+                        Navigation.PushAsync(new AppLanding());
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread
-                              (() =>
-                               UserDialogs.Instance.Toast(t.ShowMyToast(Color.OrangeRed, "Unsuccessfu google login"))); 
+                        var reg = await lvm.Register().ConfigureAwait(false);
 
+                        if (reg)
+                        {
+                            Device.BeginInvokeOnMainThread
+                                  (
+                                async () => Navigation.PushAsync(new AppLanding())
+                                     );
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread
+                                  (() =>
+                                   UserDialogs.Instance.Toast(t.ShowMyToast(Color.OrangeRed, $"Unsuccessful. {lvm.RegisterationError} ")));
+
+                        }
                     }
-                }
 
+                }
+                else
+                {
+                    MyToast t = new MyToast();
+                    UserDialogs.Instance.Toast(t.ShowMyToast(Color.PaleVioletRed, "Unsuccessful google login"));
+                }
             }
-            else
-            {
-                MyToast t = new MyToast();
-                UserDialogs.Instance.Toast(t.ShowMyToast(Color.PaleVioletRed, "Unsuccessful google login"));
-            }
+
         }
 
         void OnAuthError(object sender, AuthenticatorErrorEventArgs e)

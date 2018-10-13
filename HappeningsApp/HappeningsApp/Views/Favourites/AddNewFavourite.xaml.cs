@@ -25,9 +25,14 @@ namespace HappeningsApp.Views.Favourites
             txtDescription.Focus();
         }
 
-        private void txtDescription_Completed(object sender, EventArgs e)
+        private async void txtDescription_Completed(object sender, EventArgs e)
         {
-            fvm.AddNewCollection();
+           var b = await fvm.AddNewCollection().ConfigureAwait(false);
+
+            if (b)
+            {
+                Navigation.PopModalAsync(true);
+            }
         }
 
         private void txtCancel_Clicked(object sender, EventArgs e)

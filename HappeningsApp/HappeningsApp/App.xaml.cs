@@ -33,7 +33,9 @@ namespace HappeningsApp
             {
                 LoginViewModel lvmm = new LoginViewModel();
                 lvmm.User.Username = Current.Properties["username"].ToString();
+                lvmm.User.EmailAddress = lvmm.User.Username;
                 lvmm.User.Password = Current.Properties["password"].ToString();
+                GlobalStaticFields.Username = lvmm.User.EmailAddress;
                 lvmm.GetTokenFromAPI();
                 //Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
 

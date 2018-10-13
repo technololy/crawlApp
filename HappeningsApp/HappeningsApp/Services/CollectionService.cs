@@ -36,9 +36,9 @@ namespace HappeningsApp.Services
 
         public async Task<Models.CollectionsModelResp> GetUserFavsNew()
         {
-            string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
-            //string endpoint = "api/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            string endpoint = "GetByUserID?User_id=" + testuser;
+            //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+            string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
+            //string endpoint = "GetByUserID?User_id=" + testuser;
             var response = await APIService.Get(endpoint);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {

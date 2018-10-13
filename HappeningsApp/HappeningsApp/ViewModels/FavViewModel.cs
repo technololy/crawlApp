@@ -19,6 +19,7 @@ namespace HappeningsApp.ViewModels
 
         public ObservableCollection<Models.FavoriteModel> MyFavs { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }
+        public bool WasNewFavAddedOk { get; set; } = false;
         public CollectionsModelResp Collectionz
         {
             get => _collectionz;
@@ -63,11 +64,13 @@ namespace HappeningsApp.ViewModels
         public FavViewModel()
         {
             GetFavCommand = new Command(GetSelectedFav);
-            AddNewCollectionCommand = new Command(AddNewCollection);
+            //AddNewCollectionCommand = new Command(AddNewCollection);
         }
 
-        public async void AddNewCollection()
+        public async Task<bool> AddNewCollection()
         {
+            WasNewFavAddedOk = false;
+
             using (UserDialogs.Instance.Loading(""))
             {
                 CollectionService cs = new CollectionService();
@@ -75,16 +78,18 @@ namespace HappeningsApp.ViewModels
                 if (result)
                 {
                     //refresh list
+
                     UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.Green,"Successful..."));
                     await GetFavs();
+                    return WasNewFavAddedOk = true;
+
                 }
                 else
                 {
-                    var toastConfig = new ToastConfig("Not successful...");
-                    toastConfig.SetDuration(5000);
-                    toastConfig.SetPosition(ToastPosition.Top);
-                    toastConfig.SetBackgroundColor(Color.OrangeRed);
-                    UserDialogs.Instance.Toast(toastConfig);
+                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.OrangeRed, "Not Successful..."));
+                    return WasNewFavAddedOk = false;
+
+            
                 }
             }
         

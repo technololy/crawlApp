@@ -83,11 +83,9 @@ namespace HappeningsApp.ViewModels
             }
             else
             {
-                var res = tk.Content.ReadAsStringAsync();
+                var res =await tk.Content.ReadAsStringAsync();
+                RegisterationError = res;
                 return IsSuccess;
-
-
-
             }
         }
 

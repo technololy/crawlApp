@@ -96,7 +96,7 @@ namespace HappeningsApp.Services
             //string response = "";
             string json = "";
             json = JsonConvert.SerializeObject(model);
-            var content = new StringContent(json, Encoding.UTF8);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage res = new HttpResponseMessage();
             string url = "";
             url = Constants.CrawlAPI + method;
@@ -170,7 +170,7 @@ namespace HappeningsApp.Services
                 res =await client.GetAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
 
-                LogService.LogErrors($"Request and response json:\n{url}");
+                LogService.LogErrors($"Request {url} and response:\n{content}");
                 return res;
 
 
@@ -223,7 +223,7 @@ namespace HappeningsApp.Services
                     client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     responseMessage = await client2.PostAsync(url, stringContent).ConfigureAwait(true);
                     var resultt = await responseMessage.Content.ReadAsStringAsync();
-                    LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+                    LogService.LogErrors($"End point: {url}. Request json:\n{json}, Response json\n{resultt}");
 
                 }
 
