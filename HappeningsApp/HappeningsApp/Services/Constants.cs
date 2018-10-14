@@ -31,7 +31,7 @@ namespace HappeningsApp.Services
         public static string UserInfoUrl = "https://www.googleapis.com/oauth2/v2/userinfo";
 
         // Set these to reversed iOS/Android client ids, with :/oauth2redirect appended
-        public static string iOSRedirectUrl = "<insert IOS redirect URL here>:/oauth2redirect";
+        public static string iOSRedirectUrl = "com.googleusercontent.apps.34982577863-toktu2f2edt4hva673f1n1jce6mlt207:/oauth2redirect";
         //public static string AndroidRedirectUrl = "<insert Android redirect URL here>:/oauth2redirect";
         public static string AndroidRedirectUrl = "com.googleusercontent.apps.34982577863-i5gcivpseeomlnksdcpnglfc0g20v7v8:/oauth2redirect";
         //34982577863-i5gcivpseeomlnksdcpnglfc0g20v7v8.apps.googleusercontent.com
