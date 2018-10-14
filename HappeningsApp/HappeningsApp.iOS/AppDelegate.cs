@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using HappeningsApp.OAuth;
 using Plugin.GoogleAnalytics;
 using UIKit;
 
@@ -40,6 +41,18 @@ namespace HappeningsApp.iOS
 
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
+        }
+
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            // Convert NSUrl to Uri
+            var uri = new Uri(url.AbsoluteString);
+
+            // Load redirectUrl page
+            AuthenticationState.Authenticator.OnPageLoading(uri);
+
+            return true;
         }
     }
 }
