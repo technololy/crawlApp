@@ -27,34 +27,11 @@ namespace HappeningsApp.Views.AppViews
         private async Task GetFavList()
         {
             //favViewModel = new FavViewModel();
-            await fvvm.GetFavs();
+            //await fvvm.GetFavs();
+            await fvvm.GetListCollection();
+            MyFavList.ItemsSource = fvvm.CollectionsList;
                BindingContext = fvvm;
 
-            #region comm
-            //if (fvvm.Collectionz?.Collections?.Count>0)
-            //{
-            //    BindingContext = fvvm;
-
-            //}
-            //else
-            //{
-            //    UserDialogs.Instance.ShowLoading("A lil", Acr.UserDialogs.MaskType.None);
-            //    await Task.Delay(5000);
-            //    BindingContext = fvvm;
-            //    UserDialogs.Instance.HideLoading();
-            //}
-
-            //if ( GlobalStaticFields.AllCollections!=null)
-            //{
-            //    BindingContext = GlobalStaticFields.AllCollections;
-
-            //}
-            //else
-            //{
-            //    favViewModel = new FavViewModel();
-            //    BindingContext = favViewModel;
-            //}
-            #endregion
 
         }
 

@@ -15,7 +15,7 @@
             </Grid.RowDefinitions> 
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
-                             Grid.Row="0" ItemsSource="{Binding Collectionz.Collections}" 
+                             Grid.Row="0" ItemsSource="{Binding CollectionsList}" 
                              HasUnevenRows="true"
                              ItemTapped="Handle_ItemTapped"
                              ScrollToRequested="Handle_ScrollToRequested" 

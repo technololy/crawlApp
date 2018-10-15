@@ -31,7 +31,9 @@ namespace HappeningsApp.Views.Favourites
 
             if (b)
             {
+                await fvm.GetListCollection();
                 Navigation.PopModalAsync(true);
+                
             }
         }
 

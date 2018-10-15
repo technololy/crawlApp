@@ -1,4 +1,5 @@
 ﻿using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace HappeningsApp.Views.Survey
         public SurveyOne()
         {
             InitializeComponent();
-           
+            BindingContext = new SurveyViewModel();
 
             Location.ItemsSource = new List<string>()
             {
@@ -52,6 +53,7 @@ namespace HappeningsApp.Views.Survey
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
+                
             };
             Application.Current.Properties["SurveyOne"] = true;
 
