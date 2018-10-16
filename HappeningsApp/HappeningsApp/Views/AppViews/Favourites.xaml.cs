@@ -78,7 +78,7 @@ namespace HappeningsApp.Views.AppViews
 
         private void AddToFav_Tapped(object sender, EventArgs e)
         {
-
+            fvvm.AddNewTest();
         }
     }
 }

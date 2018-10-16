@@ -36,20 +36,21 @@ namespace HappeningsApp.ViewModels
 
         public ObservableCollection<CollectionsResp> CollectionsList
         {
-            get 
-            {
-                return _collectionsList;
-            } 
-            set 
-            {
-                if(_collectionsList != value)
-                {
-                    _collectionsList = value;
-                    OnPropertyChanged(nameof(CollectionsList));
+            //get
+            //{
+            //    return _collectionsList;
+            //}
+            //set
+            //{
+            //    if (_collectionsList != value)
+            //    {
+            //        _collectionsList = value;
+            //        OnPropertyChanged(nameof(CollectionsList));
 
-                }
-            }
-        }
+            //    }
+            //}
+            get;set;
+        } = new ObservableCollection<CollectionsResp>();
         public bool IsEnabled { get; set; }
         public Command GetFavCommand { get; set; }
         public Command AddNewCollectionCommand { get; set; }
@@ -68,6 +69,11 @@ namespace HappeningsApp.ViewModels
         {
             GetFavCommand = new Command(GetSelectedFav);
             //AddNewCollectionCommand = new Command(AddNewCollection);
+        }
+
+        internal void AddNewTest()
+        {
+            CollectionsList.Add(new CollectionsResp{Name=Guid.NewGuid().ToString(),NickName=Guid.NewGuid().ToString()});
         }
 
         public async Task<bool> AddNewCollection()
