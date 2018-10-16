@@ -9,17 +9,19 @@ namespace HappeningsApp.Views.Survey
 {
     public partial class SurveyOne : ContentPage
     {
-      
 
+        SurveyViewModel svm;
         public SurveyOne()
         {
             InitializeComponent();
-            BindingContext = new SurveyViewModel();
-
-            Location.ItemsSource = new List<string>()
-            {
-                "Lagos","Port Harcourt","Abuja","Kaduna"
-            };
+            svm = new SurveyViewModel();
+           // BindingContext = new SurveyViewModel();
+            BindingContext = svm;
+            Location.ItemsSource = svm.Location;
+            //Location.ItemsSource = new List<string>()
+            //{
+            //    "Lagos","Port Harcourt","Abuja","Kaduna"
+            //};
             MaritalPicker.ItemsSource = new List<string>()
             {
                "Single", "Married","Divorced"
@@ -50,6 +52,9 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
+           svm.SelectedLocation= Location.SelectedItem;
+            
+            svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
@@ -58,13 +63,13 @@ namespace HappeningsApp.Views.Survey
             Application.Current.Properties["SurveyOne"] = true;
 
             await Navigation.PopModalAsync(true);
-            ShowSurVeyTwo();
+           await ShowSurVeyTwo();
 
         }
         private async Task ShowSurVeyTwo()
         {
             await Task.Delay(30000);
-            NowShowTwo();
+         await  NowShowTwo();
 
         }
         private async Task NowShowTwo()

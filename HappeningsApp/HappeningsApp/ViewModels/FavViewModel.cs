@@ -141,19 +141,22 @@ namespace HappeningsApp.ViewModels
             FavService fs = new FavService();
             CollectionService cs = new CollectionService();
 
-            var fav = await cs.GetUserFavsNew();
-            if (fav.Collections?.Count>0)
-            {
-               
-                ObservableCollection<CollectionsResp> ff  = new ObservableCollection<CollectionsResp>(fav.Collections);
-                foreach (var item in ff)
-                {
-                    CollectionsList.Add(item);
+            //var fav = await cs.GetUserFavsNew();
+            CollectionsList =await cs.GetUserListCollection();
 
-                }
-               //OnPropertyChanged(nameof(CollectionsList));
+            //CollectionsList = fav.Collections;
+            //if (fav.Collections?.Count>0)
+            //{
                
-            }
+            //    ObservableCollection<CollectionsResp> ff  = new ObservableCollection<CollectionsResp>(fav.Collections);
+            //    foreach (var item in ff)
+            //    {
+            //        CollectionsList.Add(item);
+
+            //    }
+            //   //OnPropertyChanged(nameof(CollectionsList));
+               
+            //}
 
             GlobalStaticFields.CollectionList = CollectionsList;
             return CollectionsList;

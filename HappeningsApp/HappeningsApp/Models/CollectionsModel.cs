@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace HappeningsApp.Models
@@ -18,7 +19,7 @@ namespace HappeningsApp.Models
     public class CollectionsModelResp
     {
         public string Message { get; set; }
-        public List<CollectionsResp> Collections { get; set; }
+        public ObservableCollection<CollectionsResp> Collections { get; set; }
     }
     public class CollectionsResp
     {

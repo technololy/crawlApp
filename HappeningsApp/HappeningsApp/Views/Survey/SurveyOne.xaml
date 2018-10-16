@@ -13,13 +13,17 @@
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />
-      
+ 
             <StackLayout>
-                <c:ExtendedPicker Title="Where do you live" x:Name="Location" 
-                                  SelectedIndexChanged="Location_SelectedIndexChanged" />
+                <c:ExtendedPicker Title="Where do you live" 
+                                  x:Name="Location" 
+                                  ItemsSource="{Binding Location}"
+                                  SelectedIndexChanged="Location_SelectedIndexChanged" 
+                                  SelectedItem="{Binding SelectedLocation}" />
             </StackLayout>
              <StackLayout>
-                <c:ExtendedPicker Title="Marital Status" x:Name="MaritalPicker" />
+                <c:ExtendedPicker Title="Marital Status" 
+                                  x:Name="MaritalPicker" />
             </StackLayout>
              <StackLayout>
                 <c:ExtendedPicker Title="Dietary Choice" x:Name="DietPicker" />

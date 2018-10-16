@@ -21,7 +21,7 @@ namespace HappeningsApp.Views.AppViews
         private async Task GetFavList()
         {          
             await fvvm.GetListCollection();
-            MyFavList.ItemsSource = fvvm.CollectionsList;//newly added to test if it would work
+            //MyFavList.ItemsSource = fvvm.CollectionsList;//newly added to test if it would work
                BindingContext = fvvm;
         }
 

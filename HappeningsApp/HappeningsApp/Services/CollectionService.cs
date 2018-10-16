@@ -84,16 +84,19 @@ namespace HappeningsApp.Services
 
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
-            //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+            ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();
             string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            //string endpoint = "GetByUserID?User_id=" + testuser;
             var response = await APIService.Get(endpoint);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<ObservableCollection<CollectionsResp>>(content);
+                var model = JsonConvert.DeserializeObject<CollectionsModelResp>(content);
+               if (model.Message.ToLower().Contains("success"))
+                {
+                    Col = model.Collections;
+                }
                 //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
-                return model;
+                return Col;
             }
 
             else

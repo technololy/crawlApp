@@ -30,7 +30,7 @@ namespace HappeningsApp.Views
             ivm.GetCategories();
             ivm.GetAll();
             Deals_Tapped(this, null);
-            //ShowSurVeyOne();
+            ShowSurVeyOne();
          
           
 		}
@@ -41,7 +41,7 @@ namespace HappeningsApp.Views
 
         private async Task ShowSurVeyOne()
         {
-          await Task.Delay(30000);
+          await Task.Delay(5000);
            await NowShowOne();
         }
 
