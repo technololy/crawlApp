@@ -13,7 +13,7 @@
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />
- 
+ <Label HorizontalTextAlignment="Center" Text="1/3" />
             <StackLayout>
                 <c:ExtendedPicker Title="Where do you live" 
                                   x:Name="Location" 
@@ -51,7 +51,7 @@
                    
                     
                 <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked"  />
-                <Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White"  />
+                <!--<Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White"  />-->
                 <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
             </StackLayout>
             

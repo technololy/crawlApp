@@ -53,7 +53,8 @@ namespace HappeningsApp.Views.Survey
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
            svm.SelectedLocation= Location.SelectedItem;
-            
+            svm.MaritalStatus = MaritalPicker.SelectedItem;
+
             svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {

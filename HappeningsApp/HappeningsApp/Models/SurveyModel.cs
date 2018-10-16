@@ -17,6 +17,40 @@ namespace HappeningsApp.Models
             public string Other_Interests { get; set; }
             public string How_Did_You_hear { get; set; }
             public DateTime Created { get; set; }
-
+        public string SelectedLocation
+        {
+            get;
+            set;
+        }
+        public string MaritalStatus
+        {
+            get;
+            set;
+        }
+        public string DietaryChoice
+        {
+            get;
+            set;
+        }
+        //public bool Smoker
+        //{
+        //    get;
+        //    set;
+        //}
+        public string SmokingChoice
+        {
+            get;
+            set;
+        }
+        public bool Drinkers
+        {
+            get;
+            set;
+        }
+        public string DrinkingChoice
+        {
+            get;
+            set;
+        }
     }
 }
