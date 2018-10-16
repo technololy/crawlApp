@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using HappeningsApp.Models;
+using HappeningsApp.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Acr.UserDialogs;
-using HappeningsApp.Models;
-using HappeningsApp.Services;
 using Xamarin.Forms;
 
 namespace HappeningsApp.ViewModels
@@ -14,8 +13,9 @@ namespace HappeningsApp.ViewModels
 
     public class FavViewModel : INotifyPropertyChanged
     {
+
         private CollectionsModelResp _collectionz;
-        private ObservableCollection<CollectionsResp> _collectionsList = new ObservableCollection<CollectionsResp>();
+        //  private ObservableCollection<CollectionsResp> _collectionsList = new ObservableCollection<CollectionsResp>();
 
         public ObservableCollection<Models.FavoriteModel> MyFavs { get; set; }
         public ObservableCollection<FavoriteModel> Favs { get; set; }
@@ -33,23 +33,24 @@ namespace HappeningsApp.ViewModels
 
             }
         }
+        public ObservableCollection<CollectionsResp> CollectionsList { get; set; }
 
-        public ObservableCollection<CollectionsResp> CollectionsList
-        {
-            get 
-            {
-                return _collectionsList;
-            } 
-            set 
-            {
-                if(_collectionsList != value)
-                {
-                    _collectionsList = value;
-                    OnPropertyChanged(nameof(CollectionsList));
+        //public ObservableCollection<CollectionsResp> CollectionsList
+        //{
+        //    get 
+        //    {
+        //        return _collectionsList;
+        //    } 
+        //    set 
+        //    {
+        //        if(_collectionsList != value)
+        //        {
+        //            _collectionsList = value;
+        //            OnPropertyChanged(nameof(CollectionsList));
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
         public bool IsEnabled { get; set; }
         public Command GetFavCommand { get; set; }
         public Command AddNewCollectionCommand { get; set; }
@@ -67,6 +68,7 @@ namespace HappeningsApp.ViewModels
         public FavViewModel()
         {
             GetFavCommand = new Command(GetSelectedFav);
+            CollectionsList = new ObservableCollection<CollectionsResp>();
             //AddNewCollectionCommand = new Command(AddNewCollection);
         }
 
@@ -82,7 +84,7 @@ namespace HappeningsApp.ViewModels
                 {
                     //refresh list
 
-                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.Green,"Successful..."));
+                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.Green, "Successful..."));
                     //await GetFavs();
                     return WasNewFavAddedOk = true;
 
@@ -92,10 +94,10 @@ namespace HappeningsApp.ViewModels
                     UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.OrangeRed, "Not Successful..."));
                     return WasNewFavAddedOk = false;
 
-            
+
                 }
             }
-        
+
         }
 
         private void GetSelectedFav(object obj)
@@ -136,17 +138,21 @@ namespace HappeningsApp.ViewModels
             CollectionService cs = new CollectionService();
 
             var fav = await cs.GetUserFavsNew();
-            if (fav.Collections?.Count>0)
+            if (fav.Collections?.Count > 0)
             {
-               
-                ObservableCollection<CollectionsResp> ff  = new ObservableCollection<CollectionsResp>(fav.Collections);
-                foreach (var item in ff)
+                CollectionsList.Clear();
+                foreach (var item in fav.Collections)
                 {
                     CollectionsList.Add(item);
-
                 }
-               //OnPropertyChanged(nameof(CollectionsList));
-               
+                //ObservableCollection<CollectionsResp> ff  = new ObservableCollection<CollectionsResp>(fav.Collections);
+                //foreach (var item in ff)
+                //{
+
+
+                //}
+                //OnPropertyChanged(nameof(CollectionsList));
+
             }
 
             GlobalStaticFields.CollectionList = CollectionsList;
