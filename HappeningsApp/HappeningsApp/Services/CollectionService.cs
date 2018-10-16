@@ -107,6 +107,12 @@ namespace HappeningsApp.Services
                 return empty;
             }
         }
+
+        internal async Task UpdateCollectionWithDetails(CollectionsResp ctl)
+        {
+            string endpoint = $"api/Collections??User_Id={ctl.User_id}&collection_id={ctl.Id}";
+           await APIService.Put<CollectionsResp>(ctl, endpoint);
+        }
     }
 
  

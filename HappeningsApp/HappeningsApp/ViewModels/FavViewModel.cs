@@ -15,6 +15,9 @@ namespace HappeningsApp.ViewModels
     public class FavViewModel : INotifyPropertyChanged
     {
         private CollectionsModelResp _collectionz;
+
+        public Deals CurrentlySelectedFav { get; set; }
+
         private ObservableCollection<CollectionsResp> _collectionsList = new ObservableCollection<CollectionsResp>();
 
         public ObservableCollection<Models.FavoriteModel> MyFavs { get; set; }
@@ -104,9 +107,19 @@ namespace HappeningsApp.ViewModels
         
         }
 
-        private void GetSelectedFav(object obj)
+        private  void GetSelectedFav(object obj)
         {
             CollectionsResp ctl = obj as CollectionsResp;
+            UpdateCollections(ctl);
+           
+        }
+
+        private async void UpdateCollections(CollectionsResp ctl)
+        {
+            var cs = this.CurrentlySelectedFav;
+            ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id });
+            CollectionService cserv = new CollectionService();
+            await cserv.UpdateCollectionWithDetails(ctl);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

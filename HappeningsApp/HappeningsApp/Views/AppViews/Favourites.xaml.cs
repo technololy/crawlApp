@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using HappeningsApp.Models;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
@@ -10,7 +11,8 @@ namespace HappeningsApp.Views.AppViews
 {
     public partial class Favourites : ContentPage
     {
-       public FavViewModel fvvm { get; set; } = new FavViewModel();       
+       public FavViewModel fvvm { get; set; } = new FavViewModel();
+        Deals Dealss = new Deals();
 
         public  Favourites()//from collections
         {
@@ -31,10 +33,12 @@ namespace HappeningsApp.Views.AppViews
             GetFavList();
         }
 
-        public Favourites(Models.Deals deals)// from categories
+        public Favourites(Deals deals)// from categories
         {
             InitializeComponent();
             fvvm.IsEnabled = true;
+            Dealss = deals;
+            fvvm.CurrentlySelectedFav = Dealss;
             GetFavList();
 
         }
@@ -68,7 +72,7 @@ namespace HappeningsApp.Views.AppViews
 
         private void AddToFav_Tapped(object sender, EventArgs e)
         {
-            fvvm.AddNewTest();
+           // fvvm.AddNewTest();//this works. went tru hell getting it to work via viewmodel, never knowing this would wwork but o think it worked cos of command parameter added
         }
 
         protected async override void OnAppearing()

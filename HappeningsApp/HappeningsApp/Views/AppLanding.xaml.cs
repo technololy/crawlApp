@@ -49,13 +49,13 @@ namespace HappeningsApp.Views
         {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) == true)
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) && Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) && Convert.ToBoolean(Application.Current.Properties["SurveyThree"]) == true)
                 {
 
                 }
                 else
                 {
-                    await Navigation.PushModalAsync(new Survey.SurveyOne());
+                    await Navigation.PushModalAsync(new Survey.SurveyOne(),true);
                 }
             }
             catch (Exception ex)

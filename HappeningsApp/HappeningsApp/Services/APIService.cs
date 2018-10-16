@@ -119,8 +119,43 @@ namespace HappeningsApp.Services
             return res;
         }
 
+        internal async static Task<HttpResponseMessage> Put<T>(T model, string endpoint)
+        {
+            try
+            {
+                string json = "";
+                json = JsonConvert.SerializeObject(model);
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(Constants.CrawlAPI);
+                    //serialize your json using newtonsoft json serializer then add it to the StringContent
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+                    //method address would be like api/callUber:SomePort for example
+                    var result = await client.PutAsync(endpoint, content);
+                    var response = await result.Content.ReadAsStringAsync();
+                    try
+                    {
+                        var t = JsonConvert.DeserializeObject<T>(response);
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        var log = e;
 
 
+                    }
+                    LogService.LogErrors($"url is {endpoint}, Request {json} and response:\n{response}");
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+            }
+        }
 
         internal async static Task<HttpResponseMessage> LogClient<T>(T model, string method)
         {
@@ -149,8 +184,6 @@ namespace HappeningsApp.Services
 
             return res;
         }
-
-
 
         internal async static Task<HttpResponseMessage> Get(string method)
         {
@@ -202,9 +235,6 @@ namespace HappeningsApp.Services
 
         }
 
-
-
-
         internal async static Task<HttpResponseMessage> RegisterLocalNew(Registeration reg)
         {
             HttpResponseMessage responseMessage = new HttpResponseMessage();
@@ -238,7 +268,6 @@ namespace HappeningsApp.Services
             }
 
         }
-
 
         public async static Task<HttpResponseMessage> LogAsync(string json)
         {

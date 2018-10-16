@@ -37,7 +37,7 @@
             </Grid>
             <Grid Grid.Row="1">
 
-                <ListView x:Name="ListViewControl" Margin="20">
+                <ListView x:Name="ListViewControl" Margin="20" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

@@ -10,73 +10,58 @@ namespace HappeningsApp.Views.Survey
     public partial class SurveyOne : ContentPage
     {
 
-        SurveyViewModel svm = new SurveyViewModel();
+        SurveyViewModel svm ;
         public SurveyOne()
         {
             InitializeComponent();
-            //svm = new SurveyViewModel();
+
+            svm = new SurveyViewModel();
            // BindingContext = new SurveyViewModel();
             this.BindingContext = this.svm;
-            Location.ItemsSource = svm.Location;
+            Location.ItemsSource = svm.LocationDS;
+            MaritalPicker.ItemsSource = svm.MaritalDS;
+            DietPicker.ItemsSource = svm.DietDS;
+            SmokerPicker.ItemsSource = svm.SmokerDS;
+            MoreSmokingChoice.ItemsSource = svm.MoreSmokingDS;
+            DrinkerPicker.ItemsSource = svm.DrinkerDS;
+            MoreDrinkOption.ItemsSource = svm.MoreDrinkDS;
             //Location.ItemsSource = new List<string>()
             //{
             //    "Lagos","Port Harcourt","Abuja","Kaduna"
             //};
-            MaritalPicker.ItemsSource = new List<string>()
-            {
-               "Single", "Married","Divorced"
-            };
-            DietPicker.ItemsSource = new List<string>()
-            {
-                "Vegetarian","Non-vegetarian"
-            };
-            SmokerPicker.ItemsSource = new List<string>()
-            {
-                "Yes","No"
-            };
-            DrinkerPicker.ItemsSource = new List<string>()
-            {
-                "Yes","No"
-            };
-            MoreSmokingChoice.ItemsSource = new List<string>()
-            {
-               "Cigar", "Shisha","Vape"
-
-            };
-            MoreDrinkOption.ItemsSource = new List<string>()
-            {
-               "Wine", "Beer","Whisky"
-
-            };
+            
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
            //svm.SelectedLocation= Location.SelectedItem;
-            svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
-            svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
-            svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
-            svm.surveyModel.User_Id = GlobalStaticFields.Username;
-            svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
-            svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
-            svm.surveyModel.City = Location.SelectedItem;
-            svm.surveyModel.
+          
 
-            svm.SubmitSurveyOne();
+            //svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
-                
+                svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
+                svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+                svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
+                svm.surveyModel.User_Id = GlobalStaticFields.Username;
+                svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
+                svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
+                svm.surveyModel.City = Location.SelectedItem;
+                svm.surveyModel.SelectedLocation = Location.SelectedItem;
+
             };
             Application.Current.Properties["SurveyOne"] = true;
 
             await Navigation.PopModalAsync(true);
-           await ShowSurVeyTwo();
+            await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm),true);
+
+            await ShowSurVeyTwo();
 
         }
         private async Task ShowSurVeyTwo()
         {
-            await Task.Delay(30000);
+            //await Task.Delay(30000);
          await  NowShowTwo();
 
         }
@@ -84,14 +69,16 @@ namespace HappeningsApp.Views.Survey
         {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
-                {
+                await Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
 
-                }
-                else
-                {
-                    await Navigation.PushModalAsync(new Survey.SurveyTwo());
-                }
+                //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
+                //{
+
+                //}
+                //else
+                //{
+                //    await Navigation.PushModalAsync(new Survey.SurveyTwo());
+                //}
             }
             catch (Exception ex)
             {
