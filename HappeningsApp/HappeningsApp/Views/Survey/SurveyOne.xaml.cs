@@ -10,13 +10,13 @@ namespace HappeningsApp.Views.Survey
     public partial class SurveyOne : ContentPage
     {
 
-        SurveyViewModel svm;
+        SurveyViewModel svm = new SurveyViewModel();
         public SurveyOne()
         {
             InitializeComponent();
-            svm = new SurveyViewModel();
+            //svm = new SurveyViewModel();
            // BindingContext = new SurveyViewModel();
-            BindingContext = svm;
+            this.BindingContext = this.svm;
             Location.ItemsSource = svm.Location;
             //Location.ItemsSource = new List<string>()
             //{
@@ -52,8 +52,16 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-           svm.SelectedLocation= Location.SelectedItem;
-            
+           //svm.SelectedLocation= Location.SelectedItem;
+            svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
+            svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+            svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
+            svm.surveyModel.User_Id = GlobalStaticFields.Username;
+            svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
+            svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
+            svm.surveyModel.City = Location.SelectedItem;
+            svm.surveyModel.
+
             svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
