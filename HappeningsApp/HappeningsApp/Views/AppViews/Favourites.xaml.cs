@@ -10,29 +10,19 @@ namespace HappeningsApp.Views.AppViews
 {
     public partial class Favourites : ContentPage
     {
-       public FavViewModel fvvm { get; set; } = new FavViewModel();
-        
+       public FavViewModel fvvm { get; set; } = new FavViewModel();       
 
         public  Favourites()//from collections
         {
             InitializeComponent();
-           // favViewModel = new FavViewModel();
-            //BindingContext = GlobalStaticFields.AllCollections;
-     
             GetFavList();
         }
 
-        
-
         private async Task GetFavList()
-        {
-            //favViewModel = new FavViewModel();
-            //await fvvm.GetFavs();
+        {          
             await fvvm.GetListCollection();
-            MyFavList.ItemsSource = fvvm.CollectionsList;
+            MyFavList.ItemsSource = fvvm.CollectionsList;//newly added to test if it would work
                BindingContext = fvvm;
-
-
         }
 
         public Favourites(string fav)
@@ -79,6 +69,21 @@ namespace HappeningsApp.Views.AppViews
         private void AddToFav_Tapped(object sender, EventArgs e)
         {
             fvvm.AddNewTest();
+        }
+
+        protected async override void OnAppearing()
+        {
+            if (GlobalStaticFields.CollectionList == null || GlobalStaticFields.CollectionList.Count == 0)
+                await GetFavList();
+            else
+            {
+                fvvm.CollectionsList.Clear();
+                foreach (var item in GlobalStaticFields.CollectionList)
+                {
+                    fvvm.CollectionsList.Add(item);
+                }
+            }
+            base.OnAppearing();
         }
     }
 }
