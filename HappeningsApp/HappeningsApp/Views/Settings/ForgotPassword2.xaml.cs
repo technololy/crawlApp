@@ -43,7 +43,19 @@ namespace HappeningsApp.Views.Settings
                     var result = await HappeningsApp.Services.LoginSignUp.LoginSignUp.ResetPassword(GlobalStaticFields.Username, txtcode.Text.Trim(), txtPassword.Text.Trim(), txtConfirmPassword.Text.Trim());
                     if (result)
                     {
+                        try
+                        {
+                            var existingPages = Navigation.NavigationStack.ToList();
+                            foreach (var page in existingPages)
+                            {
+                                Navigation.RemovePage(page);
+                            }
+                        }
+                        catch ( Exception e) 
+                        {
 
+                            LogService.LogErrors(e.ToString());
+                        }
                         await Navigation.PushAsync(new LoggedOn(), true);
                     }
 
