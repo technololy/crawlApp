@@ -50,8 +50,5 @@ namespace HappeningsApp.Models
         public int Min { get; set; }
     }
 
-    public class Device
-    {
-        public string Os { get; set; }
-    }
+   
 }

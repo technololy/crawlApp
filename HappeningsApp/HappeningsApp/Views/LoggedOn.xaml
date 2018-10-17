@@ -62,12 +62,16 @@
                                                       NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Text="Forgot Password?" 
+                            <Label Text="Forgot Password?" 
                            TextColor="White" 
                            HorizontalOptions="EndAndExpand" 
 
-                           />
-                    </StackLayout>
+                           >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
                 </StackLayout>
               
             </StackLayout>

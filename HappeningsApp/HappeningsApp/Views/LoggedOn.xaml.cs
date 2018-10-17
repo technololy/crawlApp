@@ -3,6 +3,7 @@ using HappeningsApp.OAuth;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.LoginSignUp;
+using HappeningsApp.Views.Settings;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -333,5 +334,9 @@ namespace HappeningsApp.Views
             Debug.WriteLine("Authentication error: " + e.Message);
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ForgotPassword1(),true);
+        }
     }
 }

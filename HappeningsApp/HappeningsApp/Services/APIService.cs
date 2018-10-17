@@ -89,8 +89,6 @@ namespace HappeningsApp.Services
             return res;
         }
 
-
-
         internal async static Task<HttpResponseMessage> PostNew<T>(T model, string method)
         {
             //string response = "";
@@ -154,6 +152,7 @@ namespace HappeningsApp.Services
 
                 var log = ex;
                 LogService.LogErrors(log.ToString());
+                return new HttpResponseMessage();
             }
         }
 

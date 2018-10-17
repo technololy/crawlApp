@@ -303,6 +303,44 @@ namespace HappeningsApp.ViewModels
             return true;
         }
 
+        public bool OnGoogleButtonClickShared()
+        {
+            string clientId = null;
+            string redirectUri = null;
+
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.iOS:
+                    clientId = Constants.iOSClientId;
+                    redirectUri = Constants.iOSRedirectUrl;
+                    break;
+
+                case Xamarin.Forms.Device.Android:
+                    clientId = Constants.AndroidClientId;
+                    redirectUri = Constants.AndroidRedirectUrl;
+                    break;
+            }
+
+            var authenticator = new OAuth2Authenticator(
+                clientId,
+                null,
+                Constants.Scope,
+                new Uri(Constants.AuthorizeUrl),
+                new Uri(redirectUri),
+                new Uri(Constants.AccessTokenUrl),
+                null,
+                true);
+
+            authenticator.Completed += OnAuthCompletedShared;
+            authenticator.Error += OnAuthError;
+
+            AuthenticationState.Authenticator = authenticator;
+
+            var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+            presenter.Login(authenticator);
+            return true;
+        }
+
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
         {
             var authenticator = sender as OAuth2Authenticator;
@@ -339,6 +377,50 @@ namespace HappeningsApp.ViewModels
                 User.Username = user.Email;
                 User.Password = user.Email;
             
+            }
+            else
+            {
+                MyToast t = new MyToast();
+                UserDialogs.Instance.Toast(t.ShowMyToast(Color.PaleVioletRed, "Unsuccessful google login"));
+            }
+        }
+
+        async void OnAuthCompletedShared(object sender, AuthenticatorCompletedEventArgs e)
+        {
+            var authenticator = sender as OAuth2Authenticator;
+            if (authenticator != null)
+            {
+                authenticator.Completed -= OnAuthCompletedShared;
+                authenticator.Error -= OnAuthError;
+            }
+
+            User user = null;
+            if (e.IsAuthenticated)
+            {
+                // If the user is authenticated, request their basic user data from Google
+                // UserInfoUrl = https://www.googleapis.com/oauth2/v2/userinfo
+                var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
+                var response = await request.GetResponseAsync();
+                if (response != null)
+                {
+                    // Deserialize the data and store it in the account store
+                    // The users email address will be used to identify data in SimpleDB
+                    string userJson = await response.GetResponseTextAsync();
+                    user = JsonConvert.DeserializeObject<User>(userJson);
+                }
+
+                if (account != null)
+                {
+                    store.Delete(account, Constants.AppName);
+                }
+
+                await store.SaveAsync(account = e.Account, Constants.AppName);
+                //UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
+                MyToast t = new MyToast();
+                UserDialogs.Instance.Toast(t.ShowMyToast(Color.Green, "Successful google login"));
+                User.Username = user.Email;
+                User.Password = user.Email;
+
             }
             else
             {
