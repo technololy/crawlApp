@@ -7,6 +7,10 @@ using HappeningsApp.Views.AppViews;
 using System.Threading.Tasks;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -100,8 +104,10 @@ namespace HappeningsApp
         }
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts
+            AppCenter.Start("ios=13747af2-67c5-4d4a-9db1-5f8a7149fc78;" + "android=0fb17a8c-75bc-4fe7-8d26-8aa2aab9a66a;", typeof(Analytics), typeof(Crashes),typeof(Push));
+
+        }
 
 		protected override void OnSleep ()
 		{
