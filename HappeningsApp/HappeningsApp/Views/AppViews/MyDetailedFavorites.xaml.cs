@@ -10,8 +10,12 @@ namespace HappeningsApp.Views.AppViews
         public MyDetailedFavorites(CollectionsResp favs)
         {
             InitializeComponent();
+            if (favs.Details.Count==0)
+            {
+                favs.Name = "Nothing here yet";
+            }
             this.BindingContext = favs;
-            this.Title = "Favorites in " + favs.Name;
+            this.Title = "Saved in " + favs.Name;
 
         }
 
