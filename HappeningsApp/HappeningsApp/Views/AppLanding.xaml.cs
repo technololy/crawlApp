@@ -123,7 +123,7 @@ namespace HappeningsApp.Views
                     orderby h?.Expiration_Date
                     group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                     select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
-
+            GetAllGrouped.Clear();
             foreach (var g in grp)
             {
                 GetAllGrouped.Add(g);
