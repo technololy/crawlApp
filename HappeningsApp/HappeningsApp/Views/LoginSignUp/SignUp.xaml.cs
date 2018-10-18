@@ -48,9 +48,10 @@ namespace HappeningsApp.Views.LoginSignUp
                             using (UserDialogs.Instance.Loading("Facebook Authenticated.Now logging on.."))
                             {
                                 lvm.SetFacebookUserProfileAsync();
-                                var lg =await lvm.GetTokenFromAPI();
+                                var lg = await lvm.GetTokenFromAPI();
                                 if (lg)
                                 {
+                                    lvm.PersistUserDetails();
                                     Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
                                 }
 
@@ -64,8 +65,10 @@ namespace HappeningsApp.Views.LoginSignUp
                                         //navigate to sign in user
                                         if (tkResponse)
                                         {
-                                           // Navigation.PopModalAsync(true);
-                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                                            lvm.PersistUserDetails();
+
+                                            //Navigation.PopModalAsync(true);
+                                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding(), true);
 
 
 
@@ -76,18 +79,28 @@ namespace HappeningsApp.Views.LoginSignUp
                                         }
 
                                     }
+                                    else
+                                    {
+                                        if (await DisplayAlert("Sorry", lvm.RegisterationError, "OK", "Back to login"))
+                                            Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
+                                        else
+                                            Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
+
+
+                                    }
+
                                 }
-                               
+
 
                                 //await lvm.CallProviderLoginAPI();
                             }
-                        
+
 
                         }
                     }
                 }
-              
-              
+
+
             }
             catch (Exception ex)
             {
@@ -97,7 +110,7 @@ namespace HappeningsApp.Views.LoginSignUp
             }
         }
 
- 
+
         private  void facebook_clicked(object sender, EventArgs e)
         {
             try
