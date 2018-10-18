@@ -116,10 +116,32 @@ namespace HappeningsApp.ViewModels
 
         private async void UpdateCollections(CollectionsResp ctl)
         {
-            var cs = this.CurrentlySelectedFav;
-            ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id });
-            CollectionService cserv = new CollectionService();
-            await cserv.UpdateCollectionWithDetails(ctl);
+            try
+            {
+                using (UserDialogs.Instance.Loading("Adding to "+ctl.Name))
+                {
+                    var cs = this.CurrentlySelectedFav;
+                    ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id });
+                    CollectionService cserv = new CollectionService();
+                    var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
+                    if (isCollAdded)
+                    {
+                        UserDialogs.Instance.Alert("Great!! Added to " + ctl.Name, "Info", "OK");
+                    }
+
+                    else
+                    {
+                        UserDialogs.Instance.Alert("Unsuccessfull", "Error", "OK");
+
+                    }
+                }
+             
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
+         
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

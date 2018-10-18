@@ -52,7 +52,8 @@ namespace HappeningsApp.Views.AppViews
                 {
                     return;
                 }
-                var selectedItem = e.Item as Models.FavoriteModel;
+                var selectedItem = e.Item as CollectionsResp;
+                Navigation.PushAsync(new MyDetailedFavorites(selectedItem));
             }
             catch (Exception ex)
             {

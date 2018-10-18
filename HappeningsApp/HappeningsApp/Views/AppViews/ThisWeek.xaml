@@ -53,8 +53,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="250" CornerRadius="0">
-                                <Grid HeightRequest="300">
+                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="150" CornerRadius="0">
+                                <Grid HeightRequest="150">
 
 
                                     <Grid.RowDefinitions>
@@ -65,7 +65,7 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
+                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
                                     <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
