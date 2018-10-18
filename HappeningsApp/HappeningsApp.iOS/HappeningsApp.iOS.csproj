@@ -149,6 +149,7 @@
     </ImageAsset>
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\Crawl_logo_header.png" />
+    <BundleResource Include="Resources\ic_settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

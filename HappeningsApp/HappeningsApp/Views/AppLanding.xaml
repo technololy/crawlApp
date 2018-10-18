@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="15*" />
             </Grid.ColumnDefinitions>
-            <Image Source="settings.png" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="15" Scale="1" Margin="10,0,0,0" WidthRequest="15" Grid.Column="0" >
+            <Image Source="ic_settings.png" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start"  Scale="1" Margin="10,0,0,0"  Grid.Column="0" >
                <Image.GestureRecognizers>
                     <TapGestureRecognizer x:Name="settingsTapped" Tapped="settings_Tapped" />
                 </Image.GestureRecognizers> 
@@ -34,7 +34,7 @@
                <Image Source="Crawl_logo_header.png" Scale="0.8" HeightRequest="30" />
                 <!-- <Label Text="CRAWL" TextColor="White" HorizontalOptions="Center" FontSize="30"  />-->
             </StackLayout>
-            <Image Source="ic_search_white.png"  HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+            <Image Source="ic_search_white.png" IsVisible="false"  HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                 
             </Image>
         </Grid>

@@ -4,6 +4,7 @@ using HappeningsApp.OAuth;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,11 +21,14 @@ namespace HappeningsApp.Views.LoginSignUp
 	public partial class SignUp : ContentPage
 	{
         LoginViewModel lvm;
-		public SignUp ()
+        Account account;
+        AccountStore store;
+        public SignUp ()
 		{
 			InitializeComponent ();
             lvm = new LoginViewModel();
-            
+            store = AccountStore.Create();
+            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             this.BindingContext = lvm;
            
 		}

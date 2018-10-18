@@ -51,10 +51,10 @@ namespace HappeningsApp.Views.Settings
                                 Navigation.RemovePage(page);
                             }
                         }
-                        catch ( Exception e) 
+                        catch ( Exception eh) 
                         {
 
-                            LogService.LogErrors(e.ToString());
+                            LogService.LogErrors(eh.ToString());
                         }
                         await Navigation.PushAsync(new LoggedOn(), true);
                     }

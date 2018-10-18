@@ -17,7 +17,7 @@ namespace HappeningsApp.Models
         public Cover Cover { get; set; }
         [JsonProperty("age_range")]
         public AgeRange AgeRange { get; set; }
-        public Device[] Devices { get; set; }
+        //public Device[] Devices { get; set; }
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
