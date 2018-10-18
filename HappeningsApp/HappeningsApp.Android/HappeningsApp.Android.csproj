@@ -181,6 +181,8 @@
     <AndroidResource Include="Resources\drawable\Crawl_logo_header.png" />
     <AndroidResource Include="Resources\drawable\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable\favorites.jpg" />
+    <AndroidResource Include="Resources\drawable\messages.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

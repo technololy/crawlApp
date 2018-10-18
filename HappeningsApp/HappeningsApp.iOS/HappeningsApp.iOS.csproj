@@ -150,6 +150,8 @@
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\Crawl_logo_header.png" />
     <BundleResource Include="Resources\ic_settings.png" />
+    <BundleResource Include="Resources\favorites.jpg" />
+    <BundleResource Include="Resources\messages.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

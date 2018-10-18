@@ -20,7 +20,7 @@
         <ListView x:Name="ListCategories"
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
-                  
+                  BackgroundColor="Black"
                   ItemTapped="Handle_ItemTapped"
                   Footer=""
                   >
