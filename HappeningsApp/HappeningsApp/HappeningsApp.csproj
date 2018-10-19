@@ -97,6 +97,8 @@
     <Folder Include="Services\LoginSignUp\" />
     <Folder Include="Views\Survey\" />
     <Folder Include="Views\test\" />
+    <Folder Include="Views\Search\" />
+    <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
@@ -122,6 +124,12 @@
     </Compile>
     <Compile Update="Custom\CollectionsView.xaml.cs">
       <DependentUpon>CollectionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Search\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Messages\MessagesLanding.xaml.cs">
+      <DependentUpon>MessagesLanding.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

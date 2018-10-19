@@ -11,6 +11,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
+using Plugin.Connectivity;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -32,7 +33,12 @@ namespace HappeningsApp
 		{
 			InitializeComponent();
 
+            //if (!CrossConnectivity.Current.IsConnected)
+            //{
+            //    Acr.UserDialogs.UserDialogs.Instance.Alert("No Internet", "Info", "OK");
 
+            //    return;
+            //}
             if (IsUserLoggedOn())
             {
                 LoginViewModel lvmm = new LoginViewModel();
@@ -62,7 +68,7 @@ namespace HappeningsApp
             //}
             //  ;
             #endregion
-            // MainPage =new NavigationPage( new Views.Survey.SurveyOne());
+            // MainPage =new NavigationPage( new Views.test.MyPage());
 
 
 

@@ -49,5 +49,11 @@ namespace HappeningsApp.Views
         {
             Application.Current.MainPage.Navigation.PushAsync(new AppViews.Favourites(), true);
         }
+
+        void Messages_Tapped(object sender, System.EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.Messages.MessagesLanding(), true);
+
+        }
     }
 }

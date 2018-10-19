@@ -12,9 +12,13 @@
             <StackLayout Spacing="2">
                 
                 <c:CollectionsView HeaderText="My Messages"  ImageSource="messages.jpg">
-                  
+                        <c:CollectionsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Messages_Tapped" />
+                    </c:CollectionsView.GestureRecognizers> 
                 </c:CollectionsView>
-                <c:CollectionsView HeaderText="My Groups" ImageSource="ic_settings.png"/>
+                <c:CollectionsView HeaderText="My Groups" IsVisible="false" ImageSource="ic_settings.png">
+                
+                </c:CollectionsView>
                 <c:CollectionsView HeaderText="My Favorites"  ImageSource="favorites.jpg">
                       <c:CollectionsView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Favourites_Clicked_3" />

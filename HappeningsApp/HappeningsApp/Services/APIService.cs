@@ -143,7 +143,7 @@ namespace HappeningsApp.Services
 
 
                     }
-                    LogService.LogErrors($"url is {endpoint}, Request {json} and response:\n{response}");
+                    LogService.LogErrors($"PUT url is {endpoint}, Request {json} and response:\n{response}");
                     return result;
                 }
             }
@@ -272,6 +272,27 @@ namespace HappeningsApp.Services
         {
             var user = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username);
             var jsonRequest = "{'user': '"+user+"','Error': '"+json+"'}}";
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri(Constants.CrawlAPI);
+                //serialize your json using newtonsoft json serializer then add it to the StringContent
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+                //method address would be like api/callUber:SomePort for example
+                var result = await client.PostAsync("/api/Error", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+                return result;
+            }
+
+
+
+        }
+
+        public async static Task<HttpResponseMessage> LogNewAsync(Errors err)
+        {
+            //var user = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username);
+            //var jsonRequest = "{'user': '" + user + "','Error': '" + json + "'}}";
+            var jsonRequest = JsonConvert.SerializeObject(err);
             using (var client = new HttpClient())
             {
 

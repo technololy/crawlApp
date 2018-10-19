@@ -34,8 +34,10 @@
                <Image Source="Crawl_logo_header.png" Scale="0.8" HeightRequest="30" />
                 <!-- <Label Text="CRAWL" TextColor="White" HorizontalOptions="Center" FontSize="30"  />-->
             </StackLayout>
-            <Image Source="ic_search_white.png" IsVisible="false"  HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                
+            <Image Source="ic_search_white.png" IsVisible="true"  HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                       <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="search" Tapped="Search_Tapped" />
+                </Image.GestureRecognizers> 
             </Image>
         </Grid>
         <ContentView x:Name="PlaceHolder" Grid.Row="2" />

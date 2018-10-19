@@ -3,6 +3,7 @@ using HappeningsApp.Models;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
+using HappeningsApp.Views.Search;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,10 @@ namespace HappeningsApp.Views
           
 		}
 
+        void Search_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SearchPage(),true);
+        }
     
 
    
@@ -82,23 +87,9 @@ namespace HappeningsApp.Views
             bxVwCat.BackgroundColor = Color.Black;
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
-            //IntroPageViewModel intro = new IntroPageViewModel();
-            //intro.GetDeals();
+         
             BindingContext =ivm;
 
-            //if (ivm?.DealsfromAPI?.Count>0)
-            //{
-            //    BindingContext = ivm?.DealsfromAPI;
-
-            //}
-            //else
-            //{
-            //    UserDialogs.Instance.ShowLoading("Hi there", Acr.UserDialogs.MaskType.Black);
-            //    await Task.Delay(7000);
-            //    BindingContext = ivm?.DealsfromAPI;
-            //    UserDialogs.Instance.HideLoading();
-
-            //}
 
         }
 
