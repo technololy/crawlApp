@@ -29,7 +29,9 @@
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
-                                        <Label Text="{Binding NickName}" Opacity="0.7" TextColor="Black" />
+                                        <Label Text="{Binding NickName}" 
+                                               LineBreakMode="TailTruncation" 
+                                               Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
                                         <StackLayout HorizontalOptions="EndAndExpand">
                                             <Label Text="Tap here to add" 

@@ -150,6 +150,8 @@
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\Crawl_logo_header.png" />
     <BundleResource Include="Resources\ic_settings.png" />
+    <BundleResource Include="Resources\favorites.jpg" />
+    <BundleResource Include="Resources\messages.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -171,7 +173,7 @@
       <Version>1.9.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.9.0</Version>
+      <Version>1.10.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Push">
       <Version>1.9.0</Version>

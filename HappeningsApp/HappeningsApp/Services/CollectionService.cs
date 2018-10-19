@@ -108,10 +108,35 @@ namespace HappeningsApp.Services
             }
         }
 
-        internal async Task UpdateCollectionWithDetails(CollectionsResp ctl)
+        internal async Task<bool> UpdateCollectionWithDetails(CollectionsResp ctl)
         {
-            string endpoint = $"api/Collections??User_Id={ctl.User_id}&collection_id={ctl.Id}";
-           await APIService.Put<CollectionsResp>(ctl, endpoint);
+            bool response = false;
+            try
+            {
+                string endpoint = $"api/Collections??User_Id={ctl.User_id}&collection_id={ctl.Id}";
+                var add = await APIService.Put<CollectionsResp>(ctl, endpoint);
+                if (add.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var content = await add.Content.ReadAsStringAsync();
+                    if (content.ToLower().Contains("success"))
+                        response = true;
+                }
+
+                else
+                {
+                    var content = await add.Content.ReadAsStringAsync();
+
+                    response = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+                response = false;
+            }
+
+            return response;
         }
     }
 

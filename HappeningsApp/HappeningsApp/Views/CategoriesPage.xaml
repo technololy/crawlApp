@@ -20,7 +20,7 @@
         <ListView x:Name="ListCategories"
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
-                  
+                  BackgroundColor="Black"
                   ItemTapped="Handle_ItemTapped"
                   Footer=""
                   >
@@ -33,7 +33,14 @@
                             </Grid.RowDefinitions>
                             <ff:CachedImage Grid.Row="0" HeightRequest="150"  Aspect="Fill"  Source="{Binding ImagePath}" Margin="10,0,10,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                             <!--<Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
-                            <Label Grid.Row="0" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" TextColor="White"   Text="{Binding CategoryName}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Grid.Row="0" Margin="10,0,0,0"
+                                   VerticalTextAlignment="Center" 
+                                   FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" 
+                                   FontSize="Large" TextColor="White"  
+                                   Text="{Binding CategoryName}" 
+                                   HorizontalOptions="StartAndExpand" 
+                                   VerticalOptions="EndAndExpand"/>
 
                         </Grid>
                        
