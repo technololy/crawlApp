@@ -113,7 +113,7 @@ namespace HappeningsApp.Services
             bool response = false;
             try
             {
-                string endpoint = $"api/Collections??User_Id={ctl.User_id}&collection_id={ctl.Id}";
+                string endpoint = $"api/Collections?User_Id={ctl.User_id}&collection_id={ctl.Id}";
                 var add = await APIService.Put<CollectionsResp>(ctl, endpoint);
                 if (add.StatusCode == System.Net.HttpStatusCode.OK)
                 {
