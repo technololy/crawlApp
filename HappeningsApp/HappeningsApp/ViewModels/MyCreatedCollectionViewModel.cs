@@ -11,6 +11,8 @@ namespace HappeningsApp.ViewModels
 {
     public class MyCreatedCollectionViewModel: INotifyPropertyChanged
     {
+        public bool IsEnabled { get; set; }
+
         private ObservableCollection<CollectionsResp> _CollectionsList;
 
         public ObservableCollection<CollectionsResp> CollectionsList
@@ -34,7 +36,7 @@ namespace HappeningsApp.ViewModels
         }
         public MyCreatedCollectionViewModel()
         {
-            GetListCollection();
+           // GetListCollection();
         }
 
         public async Task GetListCollection()

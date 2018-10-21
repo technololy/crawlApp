@@ -27,6 +27,10 @@ namespace HappeningsApp.Views.Favourites
 
         private async void txtDescription_Completed(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(fvm.NewCollectionNick)|| string.IsNullOrEmpty(fvm.NewCollectionName) )
+            {
+                return;
+            }
            var b = await fvm.AddNewCollection().ConfigureAwait(false);
 
             if (b)

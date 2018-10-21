@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
-             Padding="20,20,20,0"
+             Padding="40"
              BackgroundColor="Black"
              x:Class="HappeningsApp.Views.Favourites.AddNewFavourite">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="40">
             <StackLayout Spacing="5">
                 <c:BorderlessEntry Placeholder="Name" 
                                    Text="{Binding NewCollectionName}"

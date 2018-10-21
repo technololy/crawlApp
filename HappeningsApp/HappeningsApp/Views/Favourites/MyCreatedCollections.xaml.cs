@@ -9,9 +9,22 @@ namespace HappeningsApp.Views.Favourites
 {
     public partial class MyCreatedCollections : ContentPage
     {
+        MyCreatedCollectionViewModel mcvm;
         public MyCreatedCollections()
         {
             InitializeComponent();
+            mcvm = new MyCreatedCollectionViewModel();
+            //BindingContext = new MyCreatedCollectionViewModel();//this was the original that worked
+            //im saving it cos i suffered to understand it
+            //now lemme try this new one below
+            mcvm.GetListCollection();
+            BindingContext = mcvm ;
+        }
+
+        public MyCreatedCollections(Deals deals)
+        {
+            InitializeComponent();
+            mcvm.IsEnabled = true;
             BindingContext = new MyCreatedCollectionViewModel();
         }
 
