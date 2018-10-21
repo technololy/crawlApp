@@ -23,5 +23,15 @@ namespace HappeningsApp.Models
             get;
             set;
         }
+        public string Activity
+        {
+            get;
+            set;
+        }
+        public string URL
+        {
+            get;
+            set;
+        }
     }
 }

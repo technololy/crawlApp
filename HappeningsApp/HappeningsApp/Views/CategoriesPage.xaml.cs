@@ -18,11 +18,20 @@ namespace HappeningsApp.Views
         public CategoriesPage ()
 		{
 			InitializeComponent ();
+            RefreshCategoryListView();
             //BindingContext = categoryViewModel = new CategoryViewModel();
 
         }
 
- 
+        private void RefreshCategoryListView()
+        {
+            ListCategories.RefreshCommand = new Command(()=>
+            {
+                IntroPageViewModel ivmm = new IntroPageViewModel();
+                ivmm.GetCategories();
+                this.BindingContext = ivmm.CategfromAPI;
+            });
+        }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {

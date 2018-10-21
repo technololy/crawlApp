@@ -13,41 +13,27 @@ namespace HappeningsApp.Views.AppViews
     {
 
         public ObservableCollection<Activity> Activity;
-        void Handle_Tapped(object sender, System.EventArgs e)
-        {
-            //Navigation.PushModalAsync(new Deals());
-        }
-
-        private void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
-        {
-            if (dealsListview.SelectedItem==null)
-            {
-                return;
-            }
-            if (dealsListview.SelectedItem is HappeningsApp.Models.Deals selected)
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
-                //Navigation.PushAsync(new DetailPage(selected));
-
-            }
-            else
-            {
-                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
-                //Navigation.PushAsync(new DetailPage(selected2));
-
-            }
-
-        }
-
+      
        
         private Category cat;
 
         public DealsList()
         {
             InitializeComponent();
-          
+            RefreshListView();
 
+        }
+
+        private void RefreshListView()
+        {
+            dealsListview.RefreshCommand = new Command(()=>
+            
+            {
+                IntroPageViewModel vm = new IntroPageViewModel();
+                vm.GetDeals();
+                this.BindingContext = vm.DealsfromAPI;
+                dealsListview.IsRefreshing = false;
+            });
         }
 
         public DealsList(Category cat)
@@ -96,6 +82,35 @@ namespace HappeningsApp.Views.AppViews
                 
                
             }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            //Navigation.PushModalAsync(new Deals());
+        }
+
+        private void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            if (dealsListview.SelectedItem == null)
+            {
+                return;
+            }
+            if (dealsListview.SelectedItem is HappeningsApp.Models.Deals selected)
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+                //Navigation.PushAsync(new DetailPage(selected));
+
+            }
+            else
+            {
+                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                //Navigation.PushAsync(new DetailPage(selected2));
+
+            }
+
+        }
+
+
 
         private void TapPlus_Tapped(object sender, EventArgs e)
         {

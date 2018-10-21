@@ -60,6 +60,8 @@ namespace HappeningsApp.Views
                 }
                 else
                 {
+                    await LogService.LogErrorsNew(activity: "User was presented survey one screen");
+
                     await Navigation.PushModalAsync(new Survey.SurveyOne(),true);
                 }
             }
@@ -89,12 +91,13 @@ namespace HappeningsApp.Views
             bxVwthisWeek.BackgroundColor = Color.Black;
          
             BindingContext =ivm;
+          await  LogService.LogErrorsNew(activity: "User clicked on Deals Tab");
 
 
         }
 
 
-        private void ThisWeek_Tapped(object sender, EventArgs e)
+        private async void ThisWeek_Tapped(object sender, EventArgs e)
         {
             var page = new ThisWeek();
             PlaceHolder.Content = page.Content;
@@ -106,6 +109,8 @@ namespace HappeningsApp.Views
             var groupByDate = GroupListByDate();
             GlobalStaticFields.GetAllGrouping = groupByDate;
             BindingContext = groupByDate;
+            await LogService.LogErrorsNew(activity: "User clicked on This Week Tab");
+
         }
 
         private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
@@ -136,7 +141,7 @@ namespace HappeningsApp.Views
             }
             return GroupedDeals;
         }
-        private void Categories_Tapped(object sender, EventArgs e)
+        private async void Categories_Tapped(object sender, EventArgs e)
         {
             var page = new CategoriesPage();
             page.Content.BackgroundColor = Color.FromHex("#000015");
@@ -148,10 +153,12 @@ namespace HappeningsApp.Views
             bxVwCol.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
             BindingContext = ivm;
+            await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+
 
         }
 
-        private void Collections_Tapped(object sender, EventArgs e)
+        private async void Collections_Tapped(object sender, EventArgs e)
         {
             var page = new Collections();
             page.Content.BackgroundColor = Color.FromHex("#000015");
@@ -162,7 +169,8 @@ namespace HappeningsApp.Views
             bxVwDeals.BackgroundColor = Color.Black;
             bxVwthisWeek.BackgroundColor = Color.Black;
             BindingContext = ivm;
-          
+            await LogService.LogErrorsNew(activity: "User clicked on Collections Tab");
+
 
         }
 
@@ -172,9 +180,11 @@ namespace HappeningsApp.Views
         }
 
         
-        void settings_Tapped(object sender, System.EventArgs e)
+       async void settings_Tapped(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new Settings.SettingsPage(),true);
+            await LogService.LogErrorsNew(activity: "User clicked on Settings");
+
+           await Navigation.PushAsync(new Settings.SettingsPage(),true);
         }
     }
 }

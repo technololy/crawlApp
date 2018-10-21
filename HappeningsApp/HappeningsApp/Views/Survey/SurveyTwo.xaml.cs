@@ -47,6 +47,7 @@ namespace HappeningsApp.Views.Survey
                 await Task.Delay(1000);
                 svm.surveyModel.Other_Interests = OtherInterests.SelectedItem;
                 svm.surveyModel.Favourite_Spot = SportPicker.SelectedItem;
+                await LogService.LogErrorsNew(activity: "User clicked on submit on Survey two");
 
                 await Navigation.PopModalAsync(true);
                 ShowSurVeyThree();
@@ -105,12 +106,16 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked_1(object sender, System.EventArgs e)
         {
+            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey two");
+
             await Navigation.PopModalAsync(true);
         }
 
-        void Dismiss_Clicked(object sender, System.EventArgs e)
+       async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PopModalAsync(true);
+            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey two");
+
+           await Navigation.PopModalAsync(true);
             ShowSurVeyThree();
 
         }

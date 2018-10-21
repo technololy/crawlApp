@@ -16,7 +16,7 @@
             </Grid.RowDefinitions> 
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
-                             CachingStrategy="RetainElement"                             Grid.Row="0" ItemsSource="{Binding CollectionsList}" 
+                             CachingStrategy="RecycleElement"                             Grid.Row="0" ItemsSource="{Binding CollectionsList}" 
                              HasUnevenRows="true"
                              ItemTapped="Handle_ItemTapped"
                              ScrollToRequested="Handle_ScrollToRequested" 

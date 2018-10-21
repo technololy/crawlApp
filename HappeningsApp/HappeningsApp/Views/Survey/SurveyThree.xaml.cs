@@ -38,6 +38,8 @@ namespace HappeningsApp.Views.Survey
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 svm.surveyModel.How_Did_You_hear = HowDidYou.SelectedItem;
+                await LogService.LogErrorsNew(activity: "User clicked on submit on Survey 3");
+
                 SurveyService.SubmitSurvey(svm);
                 await Task.Delay(3000);
             };
@@ -60,9 +62,11 @@ namespace HappeningsApp.Views.Survey
             }
         }
 
-        void Dismiss_Clicked(object sender, System.EventArgs e)
+       async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PopModalAsync(true);
+            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey three");
+
+           await Navigation.PopModalAsync(true);
         }
     }
 }

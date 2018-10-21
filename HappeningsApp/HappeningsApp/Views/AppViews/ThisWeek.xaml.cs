@@ -1,4 +1,5 @@
 ﻿using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,20 @@ namespace HappeningsApp.Views.AppViews
                 LogService.LogErrors(log.ToString());
             }
 
+        }
+
+
+        private void RefreshListView()
+        {
+            dealsListview.RefreshCommand = new Command(async() =>
+
+            {
+                //IntroPageViewModel vm = new IntroPageViewModel();
+                //vm.GetAll();
+                //this.BindingContext = vm.GgetAll;
+                await Task.Delay(3000);
+                dealsListview.IsRefreshing = false;
+            });
         }
 
         private string GetFullDay(string select)

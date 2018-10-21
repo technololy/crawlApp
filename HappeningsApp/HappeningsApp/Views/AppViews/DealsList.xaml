@@ -18,7 +18,8 @@
             <ListView ItemsSource="{Binding DealsfromAPI}" 
                          x:Name="dealsListview" 
                          SeparatorVisibility="None" 
-                         IsPullToRefreshEnabled="True"  
+                         IsPullToRefreshEnabled="True" 
+                      RefreshCommand="{Binding RefreshDealsList}"
                          ItemTapped="dealsListview_ItemTapped" 
                          BackgroundColor="Transparent" 
                          HasUnevenRows="true">

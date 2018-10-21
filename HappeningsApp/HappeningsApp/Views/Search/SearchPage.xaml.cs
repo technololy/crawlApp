@@ -14,6 +14,8 @@ namespace HappeningsApp.Views.Search
         {
             InitializeComponent();
             BindingContext = GlobalStaticFields.GetAll;
+            LogService.LogErrorsNew(activity: "User landed on Search Page");
+
         }
 
         void Search_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)

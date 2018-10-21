@@ -57,6 +57,7 @@ namespace HappeningsApp.Views.Survey
 
             };
             Application.Current.Properties["SurveyOne"] = true;
+            await LogService.LogErrorsNew(activity: "User clicked submit on Survey One");
 
             await Navigation.PopModalAsync(true);
             await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
@@ -106,7 +107,7 @@ namespace HappeningsApp.Views.Survey
         {
             try
             {
-                await Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
+                await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
 
                 //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
                 //{
@@ -131,9 +132,11 @@ namespace HappeningsApp.Views.Survey
                 Location.SelectedIndex = 1;
             }
         }
-        void Dismiss_Clicked(object sender, System.EventArgs e)
+        async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PopModalAsync(true);
+           await Task.Run(async()=> { await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey One"); }); 
+
+           await Navigation.PopModalAsync(true);
             ShowSurVeyTwo();
 
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using HappeningsApp.Models;
 
 namespace HappeningsApp.Services
@@ -21,19 +22,19 @@ namespace HappeningsApp.Services
             var cont = await l.Content.ReadAsStringAsync();
         }
 
-        public async static void LogErrorsNew(string error,string request, string response)
+        public async static Task LogErrorsNew(string error="",string request="",
+                                              string response="", string url="",
+                                              string activity="")
         {
-            //var logger = new LogModel()
-            //{
-            //    User = GlobalStaticFields.Username,
-            //    Error = error
-            //};
+           
             var errorx = new Errors()
             {
                 Error = error,
                 Response  = response,
                 Request = request,
-                 User = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username)
+                 User = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username),
+                URL = url,
+                Activity = activity
             
             };
             var l = await APIService.LogNewAsync(errorx);

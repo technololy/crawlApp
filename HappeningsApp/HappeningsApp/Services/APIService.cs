@@ -32,23 +32,11 @@ namespace HappeningsApp.Services
                 var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var message = await client.PostAsync(url, stringContent);
                 var resultt = await message.Content.ReadAsStringAsync();
-                LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+                //LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
+                await LogService.LogErrorsNew(url: method, request: json, response: resultt, activity: "put Async");
 
                 return resultt;
-                //  var resultt = await message.Content.ReadAsStringAsync();
-
-                //if (message.StatusCode== HttpStatusCode.OK)
-                //{
-                //    var result = await message.Content.ReadAsStringAsync();
-                //    var deserilize = JsonConvert.DeserializeObject<T>(result);
-                //}
-                //else
-                //{
-                //    var result = await message.Content.ReadAsStringAsync();
-                //    var deserilize = JsonConvert.DeserializeObject<T>(result);
-                //}
-
-                //    return message;
+     
             }
 
 
@@ -74,15 +62,9 @@ namespace HappeningsApp.Services
                 //method address would be like api/callUber:SomePort for example
                 res = await client.PostAsync("/token",new FormUrlEncodedContent(dict));
                 string cont = await res.Content.ReadAsStringAsync();
-                //return result;
 
-                //client.MaxResponseContentBufferSize = 256000;
-
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
-                //                                        ("application/json"));
-                //res = await client.PostAsync(url, new FormUrlEncodedContent(dict));
-                //var cont = await res.Content.ReadAsStringAsync();
-                LogService.LogErrors($"Endpoint is {client.BaseAddress.ToString()}/token. Response json\n{cont}");
+                //LogService.LogErrors($"Endpoint is {client.BaseAddress.ToString()}/token. Response json\n{cont}");
+                await LogService.LogErrorsNew(url: url, response: cont, activity: "Get Token");
 
             }
 
@@ -109,7 +91,8 @@ namespace HappeningsApp.Services
 
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
-                LogService.LogErrors($"Endpoint is {url}. Request json:\n{json}, Response json\n{resultt}");
+                // LogService.LogErrors($"Endpoint is {url}. Request json:\n{json}, Response json\n{resultt}");
+                await LogService.LogErrorsNew(url: url, request: json, response: resultt, activity: "POST Async");
 
 
             }
@@ -143,7 +126,8 @@ namespace HappeningsApp.Services
 
 
                     }
-                    LogService.LogErrors($"PUT url is {endpoint}, Request {json} and response:\n{response}");
+                    //LogService.LogErrors($"PUT url is {endpoint}, Request {json} and response:\n{response}");
+                    await LogService.LogErrorsNew(url:endpoint,request:json,response:response,activity:"put Async");
                     return result;
                 }
             }
@@ -202,7 +186,9 @@ namespace HappeningsApp.Services
                 res =await client.GetAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
 
-                LogService.LogErrors($"Request {url} and response:\n{content}");
+                // LogService.LogErrors($"Request {url} and response:\n{content}");
+                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: "GET Async");
+
                 return res;
 
 
@@ -223,6 +209,7 @@ namespace HappeningsApp.Services
                 var client = new HttpClient();
                 var message = await client.PostAsync(url, stringContent).ConfigureAwait(true);
                 var resultt = await message.Content.ReadAsStringAsync();
+                await LogService.LogErrorsNew(url: url, request: json, response: resultt, activity: "REGISTER LOCAL Async");
 
                 return resultt;
             }
@@ -252,7 +239,8 @@ namespace HappeningsApp.Services
                     client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     responseMessage = await client2.PostAsync(url, stringContent).ConfigureAwait(true);
                     var resultt = await responseMessage.Content.ReadAsStringAsync();
-                    LogService.LogErrors($"End point: {url}. Request json:\n{json}, Response json\n{resultt}");
+                    //LogService.LogErrors($"End point: {url}. Request json:\n{json}, Response json\n{resultt}");
+                    await LogService.LogErrorsNew(url: url, request: json, response: resultt, activity: "REGISTERATION Async");
 
                 }
 

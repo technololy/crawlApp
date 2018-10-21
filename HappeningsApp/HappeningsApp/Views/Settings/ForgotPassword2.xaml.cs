@@ -16,7 +16,9 @@ namespace HappeningsApp.Views.Settings
 		public ForgotPassword2 ()
 		{
 			InitializeComponent ();
-		}
+            LogService.LogErrorsNew(activity: "User landed on Forgot Password Final");
+
+        }
 
         private void txtcode_Completed(object sender, EventArgs e)
         {

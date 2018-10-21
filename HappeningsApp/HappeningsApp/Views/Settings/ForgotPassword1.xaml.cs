@@ -16,7 +16,9 @@ namespace HappeningsApp.Views.Settings
 		public ForgotPassword1 ()
 		{
 			InitializeComponent ();
-		}
+             LogService.LogErrorsNew(activity: "User landed on Forgot Password First Stage");
+
+        }
 
         private async void submit_Clicked(object sender, EventArgs e)
         {
