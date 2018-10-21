@@ -10,13 +10,13 @@ namespace HappeningsApp.Views.Survey
     public partial class SurveyOne : ContentPage
     {
 
-        SurveyViewModel svm ;
+        SurveyViewModel svm;
         public SurveyOne()
         {
             InitializeComponent();
 
             svm = new SurveyViewModel();
-           // BindingContext = new SurveyViewModel();
+            // BindingContext = new SurveyViewModel();
             this.BindingContext = this.svm;
             Location.ItemsSource = svm.LocationDS;
             MaritalPicker.ItemsSource = svm.MaritalDS;
@@ -29,13 +29,18 @@ namespace HappeningsApp.Views.Survey
             //{
             //    "Lagos","Port Harcourt","Abuja","Kaduna"
             //};
-            
+
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-           //svm.SelectedLocation= Location.SelectedItem;
-          
+            //svm.SelectedLocation= Location.SelectedItem;
+            if (!CheckValidity())
+            {
+                await DisplayAlert("Info", "Please enter all fields", "OK");
+                return;
+
+            }
 
             //svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
@@ -54,15 +59,47 @@ namespace HappeningsApp.Views.Survey
             Application.Current.Properties["SurveyOne"] = true;
 
             await Navigation.PopModalAsync(true);
-            await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm),true);
+            await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
 
             await ShowSurVeyTwo();
 
         }
+
+        private bool CheckValidity()
+        {
+            //return svm.surveyModel.Marital_Status == "" || svm.surveyModel.Smoker == "" || svm.surveyModel.Drinker == ""
+            //|| svm.surveyModel.City == "" || svm.surveyModel.SelectedLocation == ""
+            //? false
+            //: true;
+            if
+                (string.IsNullOrEmpty(svm.surveyModel.Marital_Status)|| 
+                 string.IsNullOrEmpty(svm.surveyModel.Smoker) ||
+                 string.IsNullOrEmpty(svm.surveyModel.Drinker)
+                 || string.IsNullOrEmpty(svm.surveyModel.City) ||
+                 string.IsNullOrEmpty(svm.surveyModel.SelectedLocation)
+                )
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Smoker.ToLower()=="yes" && string.IsNullOrEmpty(svm.surveyModel.Smoking_Preference))
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.DrinkingChoice))
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         private async Task ShowSurVeyTwo()
         {
             //await Task.Delay(30000);
-         await  NowShowTwo();
+            await NowShowTwo();
 
         }
         private async Task NowShowTwo()
@@ -89,12 +126,12 @@ namespace HappeningsApp.Views.Survey
         }
         void Location_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (Location.SelectedIndex==0)
+            if (Location.SelectedIndex == 0)
             {
                 Location.SelectedIndex = 1;
             }
         }
-        void  Dismiss_Clicked(object sender, System.EventArgs e)
+        void Dismiss_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PopModalAsync(true);
             ShowSurVeyTwo();
@@ -103,14 +140,14 @@ namespace HappeningsApp.Views.Survey
 
         void Smoke_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-           if (SmokerPicker.SelectedItem==null)
+            if (SmokerPicker.SelectedItem == null)
             {
                 return;
             }
 
 
 
-            if (SmokerPicker.SelectedItem.ToString()=="Yes")
+            if (SmokerPicker.SelectedItem.ToString() == "Yes")
             {
                 MoreSmokingTypeStack.IsVisible = true;
                 //LaunchMultiSelector();

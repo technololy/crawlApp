@@ -37,6 +37,11 @@ namespace HappeningsApp.Views.Survey
 
         async void  Handle_Clicked(object sender, System.EventArgs e)
         {
+            if(!CheckValidity())
+            {
+                await DisplayAlert("Info", "Please enter all fields", "OK");
+                return;
+            }
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(1000);
@@ -51,6 +56,22 @@ namespace HappeningsApp.Views.Survey
       
 
         }
+
+        private bool CheckValidity()
+        {
+            if
+                (string.IsNullOrEmpty(svm.surveyModel.Other_Interests) ||
+                 string.IsNullOrEmpty(svm.surveyModel.Favourite_Spot)
+                )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private async Task ShowSurVeyThree()
         {
            // await Task.Delay(30000);

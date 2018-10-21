@@ -24,8 +24,6 @@
 	<string>Crawl</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.technololy.crawl</string>
-	<key>CFBundleVersion</key>
-	<string>1.19</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>XSAppIconAssets</key>
@@ -47,5 +45,7 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>3.1</string>
 </dict>
 </plist>

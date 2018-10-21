@@ -25,7 +25,7 @@ namespace HappeningsApp.Views.Settings
                 using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
                 {
                     GlobalStaticFields.Username = txtUsername.Text.Trim();
-                    var result = await HappeningsApp.Services.LoginSignUp.LoginSignUp.ForgotPassword(GlobalStaticFields.Username);
+                    var result = await Services.LoginSignUp.LoginSignUp.ForgotPassword(GlobalStaticFields.Username);
                     if (result)
                     {
                         await Navigation.PushAsync(new ForgotPassword2(), true);

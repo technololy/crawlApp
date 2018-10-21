@@ -25,6 +25,8 @@ namespace HappeningsApp.Views.Settings
             switch (text)
             {
                 case "Log Out":
+                    Application.Current.Properties["username"] = null;
+                    Application.Current.Properties["password"] = null;
                     var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
                     var before = Navigation.NavigationStack.ToList()[0];
                     Navigation.InsertPageBefore(new LoginOrSignUp(),before);
