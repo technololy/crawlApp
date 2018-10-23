@@ -27,6 +27,7 @@ namespace HappeningsApp.Views.Favourites
 
         private async void txtDescription_Completed(object sender, EventArgs e)
         {
+            fvm.NewCollectionNick = fvm.NewCollectionNick;//segun said i should remove the nick name
             if (string.IsNullOrEmpty(fvm.NewCollectionNick)|| string.IsNullOrEmpty(fvm.NewCollectionName) )
             {
                 return;
@@ -36,7 +37,7 @@ namespace HappeningsApp.Views.Favourites
             if (b)
             {
                 await fvm.GetListCollection();
-                Navigation.PopModalAsync(true);
+               await Navigation.PopModalAsync(true);
                 
             }
         }

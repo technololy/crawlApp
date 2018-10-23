@@ -58,8 +58,8 @@ namespace HappeningsApp.Views.Settings
 
                             LogService.LogErrors(eh.ToString());
                         }
-                        MyToast.DisplayToast(Color.Blue, "Password change successful. Please login");
-                        await Navigation.PushAsync(new LoggedOn(), true);
+                       var mytoast = ( "Password change successful. Please login");
+                        await Navigation.PushAsync(new LoggedOn(mytoast), true);
                     }
 
                     else

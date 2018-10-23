@@ -19,7 +19,7 @@
                                        PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
-            <StackLayout Spacing="5">
+            <StackLayout Spacing="5" IsVisible="false">
                 <c:BorderlessEntry Placeholder="Nickname" 
                                    Text="{Binding NewCollectionNick}"
                                    

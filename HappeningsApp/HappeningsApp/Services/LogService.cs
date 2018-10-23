@@ -18,7 +18,7 @@ namespace HappeningsApp.Services
             //    Error = error
             //};
            // await APIService.LogClient<LogModel>(logger, "api/Error");
-        var l=    await APIService.LogAsync(error);
+            var l=await  Task.Run(async()=> await APIService.LogAsync(error));
             var cont = await l.Content.ReadAsStringAsync();
         }
 
@@ -37,7 +37,7 @@ namespace HappeningsApp.Services
                 Activity = activity
             
             };
-            var l = await APIService.LogNewAsync(errorx);
+            var l = await Task.Run(async()=> await APIService.LogNewAsync(errorx));
             var cont = await l.Content.ReadAsStringAsync();
         }
     }

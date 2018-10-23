@@ -47,6 +47,18 @@
                                                         x:Name="AddToFav"/>
                                                 </Label.GestureRecognizers>
                                             </Label>
+                                            <Label Text="Delete" 
+                                                   TextColor="{StaticResource CrawlRedColor}" 
+                                                   FontAttributes="Bold"
+                                                   >
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Tapped="Delete_Tapped"
+                                                        
+                                                        CommandParameter="{Binding .}"
+                                                        x:Name="DeleteFav"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
                                         </StackLayout>
                                 </StackLayout>
                                 

@@ -56,6 +56,11 @@ namespace HappeningsApp.Views.Favourites
         {
             // fvvm.AddNewTest();//this works. went tru hell getting it to work via viewmodel, never knowing this would wwork but o think it worked cos of command parameter added
         }
+        private void Delete_Tapped(object sender, EventArgs e)
+        {
+            var s = (TappedEventArgs)e;
+            var castedObj = s.Parameter as CollectionsResp;
+        }
         void Handle_ScrollToRequested(object sender, Xamarin.Forms.ScrollToRequestedEventArgs e)
         {
 

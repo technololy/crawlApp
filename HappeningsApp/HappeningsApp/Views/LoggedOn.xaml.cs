@@ -189,6 +189,17 @@ namespace HappeningsApp.Views
 
         }
 
+        public LoggedOn(string message )
+        {
+            InitializeComponent();
+            store = AccountStore.Create();
+            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            var mytoast = MyToast.DisplayToast(Color.Blue, message);
+
+            this.BindingContext = lvm;
+
+        }
+
         private void SignUpTap_Tapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new LoginSignUp.SignUp(), true);
@@ -206,14 +217,14 @@ namespace HappeningsApp.Views
                 string clientId = null;
                 string redirectUri = null;
 
-                switch (Xamarin.Forms.Device.RuntimePlatform)
+                switch (Device.RuntimePlatform)
                 {
-                    case Xamarin.Forms.Device.iOS:
+                    case Device.iOS:
                         clientId = Constants.iOSClientId;
                         redirectUri = Constants.iOSRedirectUrl;
                         break;
 
-                    case Xamarin.Forms.Device.Android:
+                    case Device.Android:
                         clientId = Constants.AndroidClientId;
                         redirectUri = Constants.AndroidRedirectUrl;
                         break;
