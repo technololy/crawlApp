@@ -32,12 +32,17 @@ namespace HappeningsApp.Views.Survey
             svm = survey;
             SportPicker.ItemsSource = svm.SportPickerDS;
             OtherInterests.ItemsSource = svm.OtherInterestDS;
+            HowDidYou.ItemsSource = svm.HowDidYouDS;
+
         }
 
 
         async void  Handle_Clicked(object sender, System.EventArgs e)
         {
-            if(!CheckValidity())
+            svm.surveyModel.Other_Interests = OtherInterests.SelectedItem;
+            svm.surveyModel.Favourite_Spot = SportPicker.SelectedItem;
+            svm.surveyModel.How_Did_You_hear = HowDidYou.SelectedItem;
+            if (!CheckValidity())
             {
                 await DisplayAlert("Info", "Please enter all fields", "OK");
                 return;
@@ -45,12 +50,13 @@ namespace HappeningsApp.Views.Survey
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(1000);
-                svm.surveyModel.Other_Interests = OtherInterests.SelectedItem;
-                svm.surveyModel.Favourite_Spot = SportPicker.SelectedItem;
+              
+
                 await LogService.LogErrorsNew(activity: "User clicked on submit on Survey two");
+                SurveyService.SubmitSurvey(svm);
 
                 await Navigation.PopModalAsync(true);
-                ShowSurVeyThree();
+                //ShowSurVeyThree();
             };
 
             Application.Current.Properties["SurveyTwo"] = true;
@@ -60,17 +66,8 @@ namespace HappeningsApp.Views.Survey
 
         private bool CheckValidity()
         {
-            if
-                (string.IsNullOrEmpty(svm.surveyModel.Other_Interests) ||
-                 string.IsNullOrEmpty(svm.surveyModel.Favourite_Spot)
-                )
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !string.IsNullOrEmpty(svm.surveyModel.Other_Interests) && !string.IsNullOrEmpty(svm.surveyModel.Favourite_Spot) && !string.IsNullOrEmpty(svm.surveyModel.How_Did_You_hear)
+;
         }
 
         private async Task ShowSurVeyThree()
@@ -106,17 +103,18 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked_1(object sender, System.EventArgs e)
         {
-            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey two");
+            await LogService.LogErrorsNew(activity: "User clicked on previous button on Survey two");
 
-            await Navigation.PopModalAsync(true);
+             Navigation.PopModalAsync(true);
+             Navigation.PushModalAsync(new SurveyOne(), true);
         }
 
        async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey two");
+            //await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey two");
 
            await Navigation.PopModalAsync(true);
-            ShowSurVeyThree();
+            //ShowSurVeyThree();
 
         }
 

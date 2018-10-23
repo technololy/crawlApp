@@ -37,8 +37,16 @@ namespace HappeningsApp.Services
                 Activity = activity
             
             };
-            var l = await Task.Run(async()=> await APIService.LogNewAsync(errorx));
-            var cont = await l.Content.ReadAsStringAsync();
+            var l = await Task.Run(()=> APIService.LogNewAsync(errorx));
+            try
+            {
+                var cont = await l.Content.ReadAsStringAsync();
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
         }
     }
 }

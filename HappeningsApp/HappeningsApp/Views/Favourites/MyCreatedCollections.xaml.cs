@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Acr.UserDialogs;
 using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views.AppViews;
@@ -24,8 +25,16 @@ namespace HappeningsApp.Views.Favourites
         public MyCreatedCollections(Deals deals)
         {
             InitializeComponent();
-            mcvm.IsEnabled = true;
-            BindingContext = new MyCreatedCollectionViewModel();
+           
+                mcvm = new MyCreatedCollectionViewModel
+                {
+                    IsEnabled = true
+                };
+                mcvm.GetListCollection();
+
+                BindingContext = mcvm;
+
+              
         }
 
 

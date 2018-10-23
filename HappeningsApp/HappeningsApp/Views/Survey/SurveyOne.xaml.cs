@@ -18,7 +18,7 @@ namespace HappeningsApp.Views.Survey
             svm = new SurveyViewModel();
             // BindingContext = new SurveyViewModel();
             this.BindingContext = this.svm;
-            Location.ItemsSource = svm.LocationDS;
+            //Location.ItemsSource = svm.LocationDS;
             MaritalPicker.ItemsSource = svm.MaritalDS;
             DietPicker.ItemsSource = svm.DietDS;
             SmokerPicker.ItemsSource = svm.SmokerDS;
@@ -34,7 +34,13 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            //svm.SelectedLocation= Location.SelectedItem;
+            svm.surveyModel.City= svm.surveyModel.SelectedLocation;
+            svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
+            svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+            svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
+            svm.surveyModel.User_Id = GlobalStaticFields.Username;
+            svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
+            svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
             if (!CheckValidity())
             {
                 await DisplayAlert("Info", "Please enter all fields", "OK");
@@ -46,21 +52,16 @@ namespace HappeningsApp.Views.Survey
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
-                svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
-                svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
-                svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
-                svm.surveyModel.User_Id = GlobalStaticFields.Username;
-                svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
-                svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
-                svm.surveyModel.City = Location.SelectedItem;
-                svm.surveyModel.SelectedLocation = Location.SelectedItem;
+             
+                //svm.surveyModel.City = txtLocation.Text.Trim();
+                //svm.surveyModel.SelectedLocation 
 
             };
             Application.Current.Properties["SurveyOne"] = true;
             await LogService.LogErrorsNew(activity: "User clicked submit on Survey One");
 
             await Navigation.PopModalAsync(true);
-            await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
 
             await ShowSurVeyTwo();
 
@@ -125,19 +126,19 @@ namespace HappeningsApp.Views.Survey
 
             }
         }
-        void Location_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (Location.SelectedIndex == 0)
-            {
-                Location.SelectedIndex = 1;
-            }
-        }
+        //void Location_SelectedIndexChanged(object sender, System.EventArgs e)
+        //{
+        //    if (Location.SelectedIndex == 0)
+        //    {
+        //        Location.SelectedIndex = 1;
+        //    }
+        //}
         async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-           await Task.Run(async()=> { await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey One"); }); 
+           //await Task.Run(async()=> { await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey One"); }); 
 
            await Navigation.PopModalAsync(true);
-            ShowSurVeyTwo();
+         await   ShowSurVeyTwo();
 
         }
 

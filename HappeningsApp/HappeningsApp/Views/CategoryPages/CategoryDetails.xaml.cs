@@ -98,7 +98,7 @@ namespace HappeningsApp.Views.CategoryPages
                 var img = sender as Image;
                 var item = img.BindingContext as Deals;
                 //var item2 = img.BindingContext as Category;
-                Navigation.PushAsync(new AppViews.Favourites(item), true);
+               Application.Current.MainPage.Navigation.PushAsync(new Favourites.MyCreatedCollections(item), true);
             }
             catch (Exception ex)
             {

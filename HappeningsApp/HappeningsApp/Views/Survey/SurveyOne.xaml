@@ -12,15 +12,21 @@
                     AlignItems="Stretch" 
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
-            <Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />
- <Label HorizontalTextAlignment="Center" Text="1/3" />
-            <StackLayout>
-                <c:ExtendedPicker Title="Where do you live" 
-                                  x:Name="Location" 
-                                  ItemsSource="{Binding Location}"
-                                  SelectedIndexChanged="Location_SelectedIndexChanged" 
-                                  SelectedItem="{Binding SelectedLocation}" />
+            <Label HorizontalTextAlignment="Center" Text="To offer you the best personalised mobile experience please complete this quick survey. Thank you!" />
+ <Label HorizontalTextAlignment="Center" Text="1/2" />
+                 <StackLayout Spacing="5">
+                <c:BorderlessEntry Placeholder="What city do you live in" 
+                                   Text="{Binding surveyModel.SelectedLocation}"
+                                       x:Name="txtLocation"
+                                   IsSpellCheckEnabled="false"
+                                    HorizontalTextAlignment="Start" 
+                                       IsTextPredictionEnabled="false"
+                                       TextColor="White" 
+                                      
+                                       PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
+         
              <StackLayout>
                 <c:ExtendedPicker Title="Marital Status" 
                                   x:Name="MaritalPicker" />

@@ -1,5 +1,6 @@
 ﻿using HappeningsApp.Models;
 using Newtonsoft.Json;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -280,6 +281,8 @@ namespace HappeningsApp.Services
         {
             //var user = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username);
             //var jsonRequest = "{'user': '" + user + "','Error': '" + json + "'}}";
+            if (!CrossConnectivity.Current.IsConnected)
+                return new HttpResponseMessage();
             var jsonRequest = JsonConvert.SerializeObject(err);
             using (var client = new HttpClient())
             {

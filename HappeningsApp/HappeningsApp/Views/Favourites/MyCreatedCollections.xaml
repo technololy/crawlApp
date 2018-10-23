@@ -9,15 +9,24 @@
              
              >
    <Grid>
+ 
            <Grid.RowDefinitions>
-                <RowDefinition Height="85*"/>
+                <RowDefinition Height="5*"/>
+            
+                <RowDefinition Height="80*"/>
                 
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions> 
+               <ActivityIndicator Grid.Row="0" Color="White" x:Name="activityIndicator" 
+                          
+                           IsRunning="{Binding ActivityRunning}" />
                    <ListView BackgroundColor="Black" 
                              SeparatorVisibility="None" 
-                             CachingStrategy="RecycleElement"                             Grid.Row="0" ItemsSource="{Binding CollectionsList}" 
+                             CachingStrategy="RecycleElement"
+                             Grid.Row="1"
+                             ItemsSource="{Binding CollectionsList}" 
                              HasUnevenRows="true"
+                              
                              ItemTapped="Handle_ItemTapped"
                              ScrollToRequested="Handle_ScrollToRequested" 
                              x:Name="MyFavList" Footer="">
@@ -68,7 +77,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-         <StackLayout  Grid.Row="1">
+         <StackLayout  Grid.Row="2">
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
                  </StackLayout>
             <StackLayout>

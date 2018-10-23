@@ -54,9 +54,9 @@ namespace HappeningsApp.Views
         {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) && Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) && Convert.ToBoolean(Application.Current.Properties["SurveyThree"]) == true)
+                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) && Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
                 {
-
+                    //show survey
                 }
                 else
                 {
@@ -69,6 +69,7 @@ namespace HappeningsApp.Views
             {
                 var log = ex;
                 Application.Current.Properties["SurveyOne"] = false;
+                Application.Current.Properties["SurveyTwo"] = false;
             }
         }
 
