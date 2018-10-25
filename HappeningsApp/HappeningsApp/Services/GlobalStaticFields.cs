@@ -36,7 +36,7 @@ namespace HappeningsApp.Services
         public static ObservableCollection<Deals> dealsfromAPI { get;  set; }
         public static CollectionsModelResp AllCollections { get;  set; }
         public static ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouping { get; set; }
-        public static ObservableCollection<CollectionsResp> CollectionList { get; internal set; }
+        public static ObservableCollection<CollectionsResp> CollectionList { get; set; }
         //public static List<> AllService { get; internal set; }
     }
 }

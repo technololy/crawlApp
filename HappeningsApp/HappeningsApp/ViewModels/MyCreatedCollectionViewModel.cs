@@ -14,6 +14,19 @@ namespace HappeningsApp.ViewModels
     public class MyCreatedCollectionViewModel : INotifyPropertyChanged
     {
         public bool IsEnabled { get; set; }
+        public bool WasNewFavAddedOk { get; set; } = false;
+
+        public string NewCollectionName
+        {
+            get;
+            set;
+        }
+
+        public string NewCollectionNick
+        {
+            get;
+            set;
+        }
         public Deals CurrentlySelectedFav { get; set; }
         public Command GetFavCommand { get; set; }
         public bool ActivityRunning
@@ -73,6 +86,20 @@ namespace HappeningsApp.ViewModels
 
         }
 
+        public async Task<bool> DeleteCollection(CollectionsResp resp)
+        {
+            CollectionService cserv = new CollectionService();
+            var result = await cserv.DeleteCollection(resp).ConfigureAwait(false);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
         private async Task UpdateCollections(CollectionsResp ctl)
         {
@@ -122,6 +149,35 @@ namespace HappeningsApp.ViewModels
             GlobalStaticFields.CollectionList = CollectionsList;
 
         }
+
+        public async Task<bool> AddNewCollection()
+        {
+            WasNewFavAddedOk = false;
+
+            using (UserDialogs.Instance.Loading(""))
+            {
+                CollectionService cs = new CollectionService();
+                bool result = await cs.CreateNewCollection(NewCollectionName, NewCollectionNick);
+                if (result)
+                {
+                    //refresh list
+
+                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.Green, "Successful..."));
+                    //await GetFavs();
+                    return WasNewFavAddedOk = true;
+
+                }
+                else
+                {
+                    UserDialogs.Instance.Toast(MyToast.DisplayToast(Color.OrangeRed, "Not Successful..."));
+                    return WasNewFavAddedOk = false;
+
+
+                }
+            }
+
+        }
+
 
     }
 }

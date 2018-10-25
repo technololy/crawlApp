@@ -82,6 +82,33 @@ namespace HappeningsApp.Services
 
         }
 
+
+
+
+        internal async Task<bool> DeleteCollection(CollectionsResp coll)
+        {
+            string endpoint = "api/Collections?id="+coll.Id;
+
+            var resp = await APIService.Delete(endpoint);
+            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var cont = await resp.Content.ReadAsStringAsync();
+                if (cont.ToLower().Contains("success"))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+
+            }
+
+        }
+
+
+
+
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
             ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();

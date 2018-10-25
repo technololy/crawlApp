@@ -183,7 +183,9 @@ namespace HappeningsApp.Views
         
        async void settings_Tapped(object sender, System.EventArgs e)
         {
-            await LogService.LogErrorsNew(activity: "User clicked on Settings");
+            await settingsImage.ScaleTo(2, 500, Easing.SinInOut);
+            await settingsImage.ScaleTo(1, 500, Easing.SinInOut);
+            //await LogService.LogErrorsNew(activity: "User clicked on Settings");
 
            await Navigation.PushAsync(new Settings.SettingsPage(),true);
         }

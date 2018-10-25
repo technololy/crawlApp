@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HappeningsApp.Models;
+using HappeningsApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +15,11 @@ namespace HappeningsApp.Views.AppViews
 	{
         Models.Deals dealz;
         private Activity selected2;
+        public string MapsAddress
+        {
+            get;
+            set;
+        }
 
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
@@ -34,6 +40,7 @@ namespace HappeningsApp.Views.AppViews
             InitializeComponent();
             dealz = new Models.Deals();
             dealz = myDeals;
+            MapsAddress = myDeals.Owner_Location;
             BindingContext = myDeals;
       
         }
@@ -43,6 +50,7 @@ namespace HappeningsApp.Views.AppViews
             InitializeComponent();
           
             BindingContext = myDeals;
+            MapsAddress = myDeals.Owner_Location;
          
         }
         public DetailPage(Activity selected2)
@@ -51,12 +59,26 @@ namespace HappeningsApp.Views.AppViews
 
             this.selected2 = selected2;
             BindingContext = selected2;
+            MapsAddress = selected2.Owner_Location;
 
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var uri = new Uri($"http://maps.google.com/maps?daddr={MapsAddress}&directionsmode=transit");
+                Device.OpenUri(uri);
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
         }
     }
 }

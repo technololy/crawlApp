@@ -4,9 +4,11 @@
              xmlns:c="clr-namespace:HappeningsApp.Custom"
              Padding="40"
              BackgroundColor="Black"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea = "true"
              x:Class="HappeningsApp.Views.Favourites.AddNewFavourite">
     <ContentPage.Content>
-        <StackLayout Spacing="40">
+        <StackLayout Spacing="40" Margin="20,50,20,0">
             <StackLayout Spacing="5">
                 <c:BorderlessEntry Placeholder="Name" 
                                    Text="{Binding NewCollectionName}"

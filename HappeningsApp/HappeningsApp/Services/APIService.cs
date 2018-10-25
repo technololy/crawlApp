@@ -197,6 +197,39 @@ namespace HappeningsApp.Services
 
         }
 
+
+
+
+        internal async static Task<HttpResponseMessage> Delete(string method)
+        {
+
+            HttpResponseMessage res = new HttpResponseMessage();
+            string url = "";
+            url = Constants.CrawlAPI + method;
+
+            using (var client = new HttpClient())
+            {
+                client.MaxResponseContentBufferSize = 256000;
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                                                        ("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+
+                res = await client.DeleteAsync(url);
+                var content = await res.Content.ReadAsStringAsync();
+
+                // LogService.LogErrors($"Request {url} and response:\n{content}");
+                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: "Delete Async");
+
+                return res;
+
+
+            }
+
+        }
+
+
+
         internal async static Task<string> RegisterLocal(Registeration reg)
         {
             try

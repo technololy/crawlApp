@@ -13,11 +13,15 @@ namespace HappeningsApp.Views.Favourites
 	public partial class AddNewFavourite : ContentPage
 	{
         FavViewModel fvm;
-		public AddNewFavourite ()
+        MyCreatedCollectionViewModel mcvm;
+        // Add an event to notify when things are updated
+        public event EventHandler<EventArgs> AddOperationCompeleted;
+        public AddNewFavourite ()
 		{
 			InitializeComponent ();
             fvm = new FavViewModel();
-            BindingContext = fvm;
+         mcvm=   new MyCreatedCollectionViewModel();
+            BindingContext = mcvm;
 		}
 
         private void txtName_Completed(object sender, EventArgs e)
@@ -27,17 +31,27 @@ namespace HappeningsApp.Views.Favourites
 
         private async void txtDescription_Completed(object sender, EventArgs e)
         {
-            fvm.NewCollectionNick = fvm.NewCollectionNick;//segun said i should remove the nick name
-            if (string.IsNullOrEmpty(fvm.NewCollectionNick)|| string.IsNullOrEmpty(fvm.NewCollectionName) )
+            mcvm.NewCollectionNick = mcvm.NewCollectionName;//segun said i should remove the nick name
+            if (string.IsNullOrEmpty(mcvm.NewCollectionNick)|| 
+                string.IsNullOrEmpty(mcvm.NewCollectionName) )
             {
                 return;
             }
-           var b = await fvm.AddNewCollection().ConfigureAwait(false);
+           var b = await mcvm.AddNewCollection().ConfigureAwait(false);
 
             if (b)
             {
-                await fvm.GetListCollection();
-               await Navigation.PopModalAsync(true);
+                //await fvm.GetListCollection();
+               // MyCreatedCollectionViewModel mcvm = new MyCreatedCollectionViewModel();
+                //AddOperationCompeleted?.Invoke(this, EventArgs.Empty);
+
+                Device.BeginInvokeOnMainThread(() => Navigation.PopModalAsync(true));
+                //mcvm.ActivityRunning = true;
+                //Device.BeginInvokeOnMainThread(async() => await mcvm.GetListCollection().ConfigureAwait(false));
+
+                //too tired to move it all to the newly 
+                //created MyCreatedCollectionViewModel. will do so later
+              
                 
             }
         }
