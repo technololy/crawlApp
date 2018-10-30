@@ -26,11 +26,12 @@ namespace HappeningsApp.Views.Favourites
         public MyCreatedCollections(Deals deals)
         {
             InitializeComponent();
-           
-                mcvm = new MyCreatedCollectionViewModel
-                {
-                    IsEnabled = true
-                };
+
+            mcvm = new MyCreatedCollectionViewModel
+            {
+                IsEnabled = true,
+                CurrentlySelectedFav = deals
+            };
                 mcvm.GetListCollection();
 
                 BindingContext = mcvm;

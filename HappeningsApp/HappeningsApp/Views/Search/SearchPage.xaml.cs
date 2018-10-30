@@ -20,12 +20,17 @@ namespace HappeningsApp.Views.Search
 
         void Search_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+          
             var keyword = e.NewTextValue.ToLower();
             if (string.IsNullOrEmpty(keyword))
             {
+                dealsListview.IsVisible = false;
+
                 dealsListview.ItemsSource = GlobalStaticFields.GetAll;
                 return;
             }
+            dealsListview.IsVisible = keyword.Length > 0 ? true : false;
+
             dealsListview.ItemsSource = GlobalStaticFields.GetAll.Where(c => c.Name.ToLower().Contains(keyword) ||
                                                                         c.Owner_Location.ToLower().Contains(keyword) ||
                                                                         c.Details.ToLower().Contains(keyword)

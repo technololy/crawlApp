@@ -35,7 +35,7 @@
                <ListView ItemsSource="{Binding .}"
                       Grid.Row="1"
                          x:Name="dealsListview" 
-                   
+                   IsVisible="false"
                       SeparatorColor="Black"
                       
                  
