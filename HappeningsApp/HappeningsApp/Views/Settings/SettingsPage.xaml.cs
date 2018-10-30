@@ -44,12 +44,14 @@ namespace HappeningsApp.Views.Settings
                     break;
 
                 case "Found a bug?":
-                    await LogService.LogErrorsNew(activity: "User click Found a Bug");
-
-                   // await Navigation.PushAsync(new Settings.ChangePassword(), true);
+                    //await LogService.LogErrorsNew(activity: "User click Found a Bug");
+                    var url = new Uri("mailto:segunaina@gmail.com?subject=Found a bug");
+                    Device.OpenUri(url);
                     break;
                 case "Found a place?":
-                    await LogService.LogErrorsNew(activity: "User click Found a place");
+                    //await LogService.LogErrorsNew(activity: "User click Found a place");
+                    var uri =new Uri("mailto:segunaina@gmail.com?subject=Found a Place");
+                    Device.OpenUri(uri);
 
                     // await Navigation.PushAsync(new Settings.ChangePassword(), true);
                     break;
