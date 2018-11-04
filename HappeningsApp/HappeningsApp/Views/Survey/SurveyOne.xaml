@@ -58,7 +58,7 @@
                     
                 <Button Margin="0,15,0,0" Text="Next" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked"  />
                 <!--<Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White"  />-->
-                <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+                <Button Text="Not Interested" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
             </StackLayout>
             
         </FlexLayout>
