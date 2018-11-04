@@ -43,7 +43,7 @@ namespace HappeningsApp.Views.Settings
                     await Navigation.PushAsync(new Settings.ChangePassword(),true);
                     break;
 
-                case "Found a bug?":
+                case "Found a bug? Suggestions":
                     //await LogService.LogErrorsNew(activity: "User click Found a Bug");
                     var url = new Uri("mailto:segunaina@gmail.com?subject=Found a bug");
                     Device.OpenUri(url);

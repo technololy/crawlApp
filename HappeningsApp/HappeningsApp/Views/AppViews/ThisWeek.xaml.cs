@@ -1,4 +1,5 @@
-﻿using HappeningsApp.Services;
+﻿using HappeningsApp.Models;
+using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using MvvmHelpers;
 using System;
@@ -17,10 +18,14 @@ namespace HappeningsApp.Views.AppViews
 	public partial class ThisWeek : ContentPage
 	{
        public List<string> days;
-		public ThisWeek ()
+        public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+
+        IntroPageViewModel ivm;
+
+        public ThisWeek ()
 		{
 			InitializeComponent ();
-            
+            ivm = new IntroPageViewModel();
              days = new List<string>() { "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN", "ALL" };
             segment.Children = days;
         }
@@ -80,14 +85,32 @@ namespace HappeningsApp.Views.AppViews
             dealsListview.RefreshCommand = new Command(async() =>
 
             {
-                //IntroPageViewModel vm = new IntroPageViewModel();
-                //vm.GetAll();
-                //this.BindingContext = vm.GgetAll;
+                 ivm = new IntroPageViewModel();
+                ivm.GetDeals();
+                ivm.GetCategories();
+                ivm.GetAll();
+                await Task.Delay(3000);
+
+                var groupByDate = GroupListByDate();
+                //GlobalStaticFields.GetAllGrouping = groupByDate;
+                BindingContext = groupByDate;
                 await Task.Delay(3000);
                 dealsListview.IsRefreshing = false;
             });
         }
-
+        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
+        {
+            var grp = from h in ivm?.GgetAll
+                      orderby h?.Expiration_Date
+                      group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                      select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+            GetAllGrouped.Clear();
+            foreach (var g in grp)
+            {
+                GetAllGrouped.Add(g);
+            }
+            return GetAllGrouped;
+        }
         private string GetFullDay(string select)
         {
             string day = "";

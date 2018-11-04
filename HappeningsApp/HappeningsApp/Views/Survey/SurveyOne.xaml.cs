@@ -87,7 +87,7 @@ namespace HappeningsApp.Views.Survey
             {
                 return false;
             }
-            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.DrinkingChoice))
+            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Drinking_Preference))
             {
                 return false;
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HappeningsApp.Models;
+using Plugin.Connectivity;
 
 namespace HappeningsApp.Services
 {
@@ -37,16 +38,20 @@ namespace HappeningsApp.Services
                 Activity = activity
             
             };
-            var l = await Task.Run(()=> APIService.LogNewAsync(errorx));
-            try
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var cont = await l.Content.ReadAsStringAsync();
+                var l = await Task.Run(() => APIService.LogNewAsync(errorx));
+                try
+                {
+                    var cont = await l.Content.ReadAsStringAsync();
 
+                }
+                catch (Exception ex)
+                {
+                    var log = ex;
+                }
             }
-            catch (Exception ex)
-            {
-                var log = ex;
-            }
+        
         }
     }
 }

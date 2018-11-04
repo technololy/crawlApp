@@ -24,14 +24,28 @@ namespace HappeningsApp.Views.AppViews
 
         }
 
+        //private void RefreshListView()
+        //{
+        //    dealsListview.RefreshCommand = new Command(()=>
+
+        //    {
+        //        IntroPageViewModel vm = new IntroPageViewModel();
+        //        vm.GetDeals();
+        //        this.BindingContext = vm;
+        //        dealsListview.IsRefreshing = false;
+        //    });
+        //}
+
         private void RefreshListView()
         {
-            dealsListview.RefreshCommand = new Command(()=>
-            
+            dealsListview.RefreshCommand = new Command(() =>
+
             {
                 IntroPageViewModel vm = new IntroPageViewModel();
                 vm.GetDeals();
-                this.BindingContext = vm.DealsfromAPI;
+                vm.GetCategories();
+                vm.GetAll();
+                this.BindingContext = vm;
                 dealsListview.IsRefreshing = false;
             });
         }

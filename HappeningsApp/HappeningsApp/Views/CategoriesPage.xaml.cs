@@ -29,7 +29,9 @@ namespace HappeningsApp.Views
             {
                 IntroPageViewModel ivmm = new IntroPageViewModel();
                 ivmm.GetCategories();
-                this.BindingContext = ivmm.CategfromAPI;
+                     ivmm.GetDeals();
+                ivmm.GetAll();
+                this.BindingContext = ivmm;
             });
         }
 
