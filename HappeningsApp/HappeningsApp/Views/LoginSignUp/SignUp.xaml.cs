@@ -32,85 +32,10 @@ namespace HappeningsApp.Views.LoginSignUp
             this.BindingContext = lvm;
            
 		}
-        //async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        var url = e.Url;
-        //        using (UserDialogs.Instance.Loading("Please wait..."))
-        //        {
-        //            lvm.ExtractAccessToken(url);
-        //            if (!string.IsNullOrEmpty(lvm.accessToken))
-        //            {
-        //                await lvm.CallFaceBookGraphAPI(lvm.accessToken);
-        //                if (lvm.IsSuccess)
-        //                {
-        //                    using (UserDialogs.Instance.Loading("Facebook Authenticated.Now logging on.."))
-        //                    {
-        //                        lvm.SetFacebookUserProfileAsync();
-        //                        var lg = await lvm.GetTokenFromAPI();
-        //                        if (lg)
-        //                        {
-        //                            lvm.PersistUserDetails();
-        //                            Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
-        //                        }
 
-        //                        else
-        //                        {
-        //                            var res = await lvm.Register();
-        //                            if (res)
-        //                            {
-        //                                var tkResponse = await lvm.GetTokenFromAPI();
-
-        //                                //navigate to sign in user
-        //                                if (tkResponse)
-        //                                {
-        //                                    lvm.PersistUserDetails();
-
-        //                                    //Navigation.PopModalAsync(true);
-        //                                    Application.Current.MainPage.Navigation.PushAsync(new AppLanding(), true);
-
-
-
-        //                                }
-        //                                else
-        //                                {
-        //                                    await DisplayAlert("Sorry", "Sign in not successful at this time", "OK");
-        //                                }
-
-        //                            }
-        //                            else
-        //                            {
-        //                                if (await DisplayAlert("Sorry", lvm.RegisterationError, "OK", "Back to login"))
-        //                                    Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
-        //                                else
-        //                                    Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
-
-
-        //                            }
-
-        //                        }
-
-
-        //                        //await lvm.CallProviderLoginAPI();
-        //                    }
-
-
-        //                }
-        //            }
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var log = ex;
-        //        LogService.LogErrors(log.ToString());
-
-        //    }
-        //}
         async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
         {
+            var activity = "FaceBook Login";
             try
             {
                 var url = e.Url;
@@ -128,32 +53,32 @@ namespace HappeningsApp.Views.LoginSignUp
                                 var lg = await lvm.GetTokenFromAPI();
                                 if (lg)
                                 {
-                                    LogService.LogErrors($"login using successful facebook API was successful for email{lvm?.User.EmailAddress}");
+                                    await LogService.LogErrorsNew(error: $"facebook API ok=>login(token) ok " +
+                                                                  " successful for email " + lvm?.User.EmailAddress, activity: activity + " successful facebook login, then called token ");
                                     lvm.PersistUserDetails();
                                     await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
                                 }
 
                                 else
                                 {
-                                    LogService.LogErrors($"failed log user in using facebook API after it was successful, for email{lvm?.User?.EmailAddress}. will proceed to registeration");
+                                    await LogService.LogErrorsNew(error: $"facebook API ok=>login(token) fail: email {lvm?.User?.EmailAddress}.", activity: activity + " login failed. will go ahead and reregister user ");
 
                                     var res = await lvm.Register();
                                     if (res)
                                     {
-                                        LogService.LogErrors("After Successful facebook API, login failed. " +
-                                                             "so reg was done.reg was successful. " +
-                                                             "for email" + lvm?.User?.EmailAddress);
+                                        await LogService.LogErrorsNew(error: "initial login failed. " +
+                                                              "reg done,Ok.=>loggin in.. " +
+                                                                      "for email" + lvm?.User?.EmailAddress, activity: activity + "  ");
 
                                         var tkResponse = await lvm.GetTokenFromAPI();
 
                                         //navigate to sign in user
                                         if (tkResponse)
                                         {
-                                            LogService.LogErrors($"Facebook APi Successful." +
-                                                                 "immediate login failed." +
-                                                           "reg was done after & was successful. " +
-                                                                 "token was called & its successful" +
-                                                           "for email" + lvm?.User?.EmailAddress);
+                                            await LogService.LogErrorsNew(error: $"..login failed=>" +
+                                                            "reg ok => token fired & its ok" +
+                                                                          "for email" + lvm?.User?.EmailAddress, activity: activity
+                                                                          + ": After fb ok, login(token) failed, reg done, reg ok, login(token) ok ");
                                             lvm.PersistUserDetails();
 
                                             //Navigation.PopModalAsync(true);
@@ -164,11 +89,11 @@ namespace HappeningsApp.Views.LoginSignUp
                                         }
                                         else
                                         {
-                                            LogService.LogErrors($"Facebook APi Successful." +
+                                            await LogService.LogErrorsNew(error: $"token ok" +
+                                                                          "for email" + lvm?.User?.EmailAddress, activity: activity + "  Facebook APi Successful." +
                                                               "immediate login failed." +
                                                         "reg was done after & was successful. " +
-                                                              "token was called & its successful" +
-                                                        "for email" + lvm?.User?.EmailAddress);
+                                                              "token was called & its successful");
 
                                             if (await DisplayAlert("Sorry", "Sign in not successful at this time", "OK", "Understood"))
                                                 Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
@@ -181,6 +106,8 @@ namespace HappeningsApp.Views.LoginSignUp
                                     }
                                     else
                                     {
+                                        await LogService.LogErrorsNew(error: $"registeration failed" +
+                                                                         "for email" + lvm?.User?.EmailAddress, activity: activity + "  Facebook APi Successful. reg was done after & failed.");
                                         if (await DisplayAlert("Error", lvm.RegisterationError, "OK", "Back to login"))
                                             Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
                                         else
@@ -197,6 +124,29 @@ namespace HappeningsApp.Views.LoginSignUp
 
 
                         }
+                        else
+                        {
+                            await LogService.LogErrorsNew(error: $"facebook graph api failed" +
+                                                                       "for email" + lvm?.User?.EmailAddress, activity: activity + "  Facebook graph APi failed");
+
+                            if (await DisplayAlert("Sorry", "facebook graph api failed" +
+                                                   " at this time", "OK", "Understood"))
+                                await Application.Current.MainPage.Navigation.PushAsync(new LoggedOn(), true);
+                            else
+                                await Application.Current.MainPage.Navigation.PushAsync(new LoggedOn(), true);
+
+                        }
+                    }
+                    else
+                    {
+                        await LogService.LogErrorsNew(error: $"access token null" +
+                                                                       "for email" + lvm?.User?.EmailAddress, activity: activity + "  get access token APi failed");
+
+                        if (await DisplayAlert("Sorry", "Fscebook access token null at this time", "OK", "Try again"))
+                            await Application.Current.MainPage.Navigation.PushAsync(new LoggedOn(), true);
+                        else
+                            await Application.Current.MainPage.Navigation.PushAsync(new LoggedOn(), true);
+
                     }
                 }
 
@@ -206,17 +156,14 @@ namespace HappeningsApp.Views.LoginSignUp
             {
                 var log = ex;
                 LogService.LogErrors(log.ToString());
-                if (await DisplayAlert("Sorry", "Sign in not successful at this time", "OK", "Understood"))
-                    Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
-                else
-                    Application.Current.MainPage.Navigation.PushAsync(new LoginOrSignUp(), true);
-
-
-
+                await DisplayAlert("Sorry", "Facebook sign in had errors at this time", "OK", "Understood");
+                   
             }
         }
 
-        private  void facebook_clicked(object sender, EventArgs e)
+
+
+        private void facebook_clicked(object sender, EventArgs e)
         {
             try
             {

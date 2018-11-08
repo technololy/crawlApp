@@ -33,23 +33,33 @@ namespace HappeningsApp
 		{
 			InitializeComponent();
 
-            //if (!CrossConnectivity.Current.IsConnected)
-            //{
-            //    Acr.UserDialogs.UserDialogs.Instance.Alert("No Internet", "Info", "OK");
+       
 
-            //    return;
-            //}
+
+
+
+            //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+
+
             if (IsUserLoggedOn())
             {
-                LoginViewModel lvmm = new LoginViewModel();
-                lvmm.User.Username = Current.Properties["username"].ToString();
-                lvmm.User.EmailAddress = lvmm.User.Username;
-                lvmm.User.Password = Current.Properties["password"].ToString();
-                GlobalStaticFields.Username = lvmm.User.EmailAddress;
-                lvmm.GetTokenFromAPI();
-                //Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+                try
+                {
+                    LoginViewModel lvmm = new LoginViewModel();
+                    lvmm.User.Username = Current.Properties["username"].ToString();
+                    lvmm.User.EmailAddress = lvmm.User.Username;
+                    lvmm.User.Password = Current.Properties["password"].ToString();
+                    GlobalStaticFields.Username = lvmm.User.EmailAddress;
+                    lvmm.GetTokenFromAPI();
 
-                MainPage = new NavigationPage(new Views.AppLanding());
+
+                    MainPage = new NavigationPage(new Views.AppLanding());
+                }
+                catch (Exception ex)
+                {
+                    LogService.LogErrorsNew(error: ex.ToString(), activity: "Exception at app.xaml.cs loggin on");
+
+                }
 
             }
             else
@@ -85,6 +95,7 @@ namespace HappeningsApp
             catch (Exception ex)
             {
                 var logg = ex;
+               // LogService.LogErrorsNew(error:logg.ToString(),activity:"Exception at app.xaml.cs IsUserLoggedOn()");
             }
             return log;
 
@@ -98,7 +109,7 @@ namespace HappeningsApp
 
         private void CheckIfUserIsPersistent()
         {
-            throw new NotImplementedException();
+            
         }
 
         public static Page GetMainPage()

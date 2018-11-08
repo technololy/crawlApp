@@ -21,6 +21,7 @@
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
                   BackgroundColor="Black"
+                  RefreshCommand="{Binding RefreshCategoryListView}"
                   IsPullToRefreshEnabled="true"
                   ItemTapped="Handle_ItemTapped"
                   Footer=""

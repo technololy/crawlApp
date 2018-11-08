@@ -32,15 +32,15 @@ namespace HappeningsApp.ViewModels
         public bool ActivityRunning
         {
             get => _activityRunning;
-            set 
+            set
             {
-                if(_activityRunning != value)
+                if (_activityRunning != value)
                 {
                     _activityRunning = value;
                     OnPropertyChanged();
 
                 }
-            } 
+            }
         }
         private ObservableCollection<CollectionsResp> _CollectionsList;
         private bool _activityRunning;
@@ -59,6 +59,20 @@ namespace HappeningsApp.ViewModels
             }
         }
 
+        private CollectionsResp _userFavs;
+
+        public CollectionsResp UserFavs 
+        {
+            get => _userFavs; 
+            set 
+            {
+                if (_userFavs != value)
+                {
+                    _userFavs = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string name = "")
@@ -108,7 +122,7 @@ namespace HappeningsApp.ViewModels
                 using (UserDialogs.Instance.Loading("Adding to " + ctl.Name))
                 {
                     var cs = this.CurrentlySelectedFav;
-                    ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id });
+                    ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id, ImageURL = CurrentlySelectedFav.ImagePath });
                     CollectionService cserv = new CollectionService();
                     var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
                     if (isCollAdded)
@@ -144,6 +158,7 @@ namespace HappeningsApp.ViewModels
             {
                 CollectionsList = new ObservableCollection<CollectionsResp>(myCollectn);
             }
+            ActivityRunning = false;
 
 
             GlobalStaticFields.CollectionList = CollectionsList;
@@ -176,6 +191,33 @@ namespace HappeningsApp.ViewModels
                 }
             }
 
+        }
+
+
+
+        public async Task<bool> DeleteSavedFavorites(Favourite ctl, string categoryID)
+        {
+            bool response = false;
+            try
+            {
+                using (UserDialogs.Instance.Loading("Deleting...."))
+                {
+                    // var cs = this.CurrentlySelectedFav;
+                    // ctl.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id, ImageURL = CurrentlySelectedFav.ImagePath });
+                    CollectionService cserv = new CollectionService();
+                    var isDeleted = await cserv.DeleteCollectionWithDetails(ctl, categoryID);
+                    response = isDeleted;
+                }
+                //return response;
+            }
+
+
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
+
+            return response;
         }
 
 

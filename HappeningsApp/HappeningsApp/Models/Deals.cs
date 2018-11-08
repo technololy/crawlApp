@@ -28,7 +28,29 @@ namespace HappeningsApp.Models
         public DateTime Modified { get; set; }
         public string User_Id { get; set; }
         public string CategoryId { get; set; }
+        public string OpeningHours
+        {
+            get;
+            set;
+        }
 
+        //public string OpeningHoursDate
+        //{
+        //    get
+        //    {
+        //        return OpeningHours == null ? "10-10-2100" : OpeningHours.Date.ToString("dd-MM-yyyy");
+        //    }
+
+        //}
+
+        //public string OpeningTime
+        //{
+        //    get
+        //    {
+        //        return OpeningHours == null? "12:00:00": OpeningHours.TimeOfDay.ToString();
+        //    }
+            
+        //}
 
        
     }

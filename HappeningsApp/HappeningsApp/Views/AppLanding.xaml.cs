@@ -77,40 +77,56 @@ namespace HappeningsApp.Views
 
         private async void Deals_Tapped(object sender, EventArgs e)
         {
-            var page =new DealsList();
+        
+            try
+            {
+                var page = new DealsList();
 
-            page.Content.BackgroundColor = Color.FromHex("#000015");
-            PlaceHolder.Content = page.Content;
-            //lblDeals.TextColor = Color.Magenta;
-            //lblThisWeek.TextColor = Color.White;
-            //lblCategories.TextColor = Color.White;
-            //lblCollections.TextColor = Color.White;
-            bxVwDeals.BackgroundColor = Color.FromHex("#3498db");
+                page.Content.BackgroundColor = Color.FromHex("#000015");
+                PlaceHolder.Content = page.Content;
+                //lblDeals.TextColor = Color.Magenta;
+                //lblThisWeek.TextColor = Color.White;
+                //lblCategories.TextColor = Color.White;
+                //lblCollections.TextColor = Color.White;
+                bxVwDeals.BackgroundColor = Color.FromHex("#3498db");
 
-            bxVwCat.BackgroundColor = Color.Black;
-            bxVwCol.BackgroundColor = Color.Black;
-            bxVwthisWeek.BackgroundColor = Color.Black;
-         
-            BindingContext =ivm;
-          await  LogService.LogErrorsNew(activity: "User clicked on Deals Tab");
+                bxVwCat.BackgroundColor = Color.Black;
+                bxVwCol.BackgroundColor = Color.Black;
+                bxVwthisWeek.BackgroundColor = Color.Black;
 
+                BindingContext = ivm;
+                await LogService.LogErrorsNew(activity: "User clicked on Deals Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+
+            }
 
         }
 
 
         private async void ThisWeek_Tapped(object sender, EventArgs e)
         {
-            var page = new ThisWeek();
-            PlaceHolder.Content = page.Content;
-            bxVwthisWeek.BackgroundColor = Color.FromHex("#3498db");
-            bxVwCat.BackgroundColor = Color.Black;
-            bxVwCol.BackgroundColor = Color.Black;
-            bxVwDeals.BackgroundColor = Color.Black;
-        
-            var groupByDate = GroupListByDate();
-            GlobalStaticFields.GetAllGrouping = groupByDate;
-            BindingContext = groupByDate;
-            await LogService.LogErrorsNew(activity: "User clicked on This Week Tab");
+         try
+            {
+                var page = new ThisWeek();
+                PlaceHolder.Content = page.Content;
+                bxVwthisWeek.BackgroundColor = Color.FromHex("#3498db");
+                bxVwCat.BackgroundColor = Color.Black;
+                bxVwCol.BackgroundColor = Color.Black;
+                bxVwDeals.BackgroundColor = Color.Black;
+
+                var groupByDate = GroupListByDate();
+                GlobalStaticFields.GetAllGrouping = groupByDate;
+                BindingContext = groupByDate;
+                await LogService.LogErrorsNew(activity: "User clicked on This Week Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+
+            }
 
         }
 
@@ -144,33 +160,49 @@ namespace HappeningsApp.Views
         }
         private async void Categories_Tapped(object sender, EventArgs e)
         {
-            var page = new CategoriesPage();
-            page.Content.BackgroundColor = Color.FromHex("#000015");
+            try
+            {
+                var page = new CategoriesPage();
+                page.Content.BackgroundColor = Color.FromHex("#000015");
 
-            PlaceHolder.Content = page.Content;
-       
-            bxVwCat.BackgroundColor = Color.FromHex("#3498db");
-            bxVwDeals.BackgroundColor = Color.Black;
-            bxVwCol.BackgroundColor = Color.Black;
-            bxVwthisWeek.BackgroundColor = Color.Black;
-            BindingContext = ivm;
-            await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+                PlaceHolder.Content = page.Content;
+
+                bxVwCat.BackgroundColor = Color.FromHex("#3498db");
+                bxVwDeals.BackgroundColor = Color.Black;
+                bxVwCol.BackgroundColor = Color.Black;
+                bxVwthisWeek.BackgroundColor = Color.Black;
+                BindingContext = ivm;
+                await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
+           
 
 
         }
 
         private async void Collections_Tapped(object sender, EventArgs e)
         {
-            var page = new Collections();
-            page.Content.BackgroundColor = Color.FromHex("#000015");
+         try
+            {
+                var page = new Collections();
+                page.Content.BackgroundColor = Color.FromHex("#000015");
 
-            PlaceHolder.Content = page.Content;
-            bxVwCol.BackgroundColor = Color.FromHex("#3498db");
-            bxVwCat.BackgroundColor = Color.Black;
-            bxVwDeals.BackgroundColor = Color.Black;
-            bxVwthisWeek.BackgroundColor = Color.Black;
-            BindingContext = ivm;
-            await LogService.LogErrorsNew(activity: "User clicked on Collections Tab");
+                PlaceHolder.Content = page.Content;
+                bxVwCol.BackgroundColor = Color.FromHex("#3498db");
+                bxVwCat.BackgroundColor = Color.Black;
+                bxVwDeals.BackgroundColor = Color.Black;
+                bxVwthisWeek.BackgroundColor = Color.Black;
+                BindingContext = ivm;
+                await LogService.LogErrorsNew(activity: "User clicked on Collections Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+
+            }
 
 
         }
@@ -183,11 +215,14 @@ namespace HappeningsApp.Views
         
        async void settings_Tapped(object sender, System.EventArgs e)
         {
-            await settingsImage.ScaleTo(2, 500, Easing.SinInOut);
-            await settingsImage.ScaleTo(1, 500, Easing.SinInOut);
+            //await settingsImage.ScaleTo(2, 500, Easing.SinInOut);
+            //await settingsImage.ScaleTo(1, 500, Easing.SinInOut);
+            await settingsImage.RotateTo(360, 300, Easing.SinInOut);
+            await settingsImage.RotateTo(0, 300, Easing.SinInOut);
+            
             //await LogService.LogErrorsNew(activity: "User clicked on Settings");
 
-           await Navigation.PushAsync(new Settings.SettingsPage(),true);
+            await Navigation.PushAsync(new Settings.SettingsPage(),true);
         }
     }
 }

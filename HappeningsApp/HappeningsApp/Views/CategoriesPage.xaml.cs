@@ -32,6 +32,7 @@ namespace HappeningsApp.Views
                      ivmm.GetDeals();
                 ivmm.GetAll();
                 this.BindingContext = ivmm;
+                ListCategories.IsRefreshing = false;
             });
         }
 

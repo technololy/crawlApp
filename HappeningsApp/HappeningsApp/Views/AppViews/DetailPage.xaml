@@ -96,7 +96,7 @@
                                                        />
                               
                                         </StackLayout>
-                                      <Frame HasShadow="false" HeightRequest="60" >
+                                      <Frame HasShadow="false" HeightRequest="60"  IsVisible="false" >
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
                                                     
@@ -108,7 +108,7 @@
                                             </StackLayout>
                                         </Frame>
                                          <StackLayout>
-                        <Label Text="Details"  TextColor="Black" FontSize="15" />
+                        <Label Text="Opening Time" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  TextColor="Black" FontSize="15" />
                         <BoxView Color="Gray" HeightRequest="0.3"  />
                            <Grid>
                             <Grid.RowDefinitions>
@@ -121,13 +121,12 @@
                                 <ColumnDefinition Width="30*" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                        <Label Text="Friday, SEP 07"  TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                        <Label Text="Monday, SEP 09"  TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                        <Label Text="Tuesday, SEP 11"  TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                        <Label Text="5:30PM"  TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                        <Label Text="6:30PM"  TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                        <Label Text="9:30PM"  TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                            
+                      <!--  <Label Text="Friday, SEP 07"  TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                         <Label Text="5:30PM"  TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                      --> 
+                         <Label Text="{Binding OpeningHours}"  TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                       <!--  <Label Text="{Binding OpeningTime}"  TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />-->
+                      
                         </Grid>
                     </StackLayout>
                                         </StackLayout>

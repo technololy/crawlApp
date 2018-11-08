@@ -33,11 +33,11 @@ namespace HappeningsApp.iOS
             CachedImageRenderer.Init();
 
             //google analytics
-            GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
-            GoogleAnalytics.Current.Config.AppId = "GASample";
-            GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
-            GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
-            GoogleAnalytics.Current.InitTracker();
+            //GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
+            //GoogleAnalytics.Current.Config.AppId = "GASample";
+            //GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
+            //GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
+            //GoogleAnalytics.Current.InitTracker();
 
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

@@ -165,6 +165,41 @@ namespace HappeningsApp.Services
 
             return response;
         }
+
+
+
+        internal async Task<bool> DeleteCollectionWithDetails(Favourite ctl, string CategoryID)
+        {
+            bool response = false;
+            try
+            {
+                string endpoint = $"DeleteFavorite?id={CategoryID}";
+                var add = await APIService.PostNew<Favourite>(ctl, endpoint);
+                if (add.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var content = await add.Content.ReadAsStringAsync();
+                    if (content.ToLower().Contains("success"))
+                        response = true;
+                }
+
+                else
+                {
+                    var content = await add.Content.ReadAsStringAsync();
+
+                    response = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+                response = false;
+            }
+
+            return response;
+        }
+
+
     }
 
  

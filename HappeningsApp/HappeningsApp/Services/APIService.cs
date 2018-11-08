@@ -228,6 +228,43 @@ namespace HappeningsApp.Services
 
         }
 
+        internal async static Task<HttpResponseMessage> SendAsync<T>(T model,string method)
+        {
+
+            HttpResponseMessage res = new HttpResponseMessage();
+            string json = "";
+            json = JsonConvert.SerializeObject(model);
+            string url = "";
+            url = Constants.CrawlAPI + method;
+
+            var request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(url),
+                Content = new StringContent(json)
+
+            };
+
+            using (var client = new HttpClient())
+            {
+                client.MaxResponseContentBufferSize = 256000;
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
+                                                        ("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
+
+                res = await client.SendAsync(request);
+                var content = await res.Content.ReadAsStringAsync();
+
+                // LogService.LogErrors($"Request {url} and response:\n{content}");
+                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: "Delete Async");
+
+                return res;
+
+
+            }
+
+        }
 
 
         internal async static Task<string> RegisterLocal(Registeration reg)

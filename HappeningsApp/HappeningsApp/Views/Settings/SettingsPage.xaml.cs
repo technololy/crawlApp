@@ -26,16 +26,26 @@ namespace HappeningsApp.Views.Settings
             switch (text)
             {
                 case "Log Out":
-                    await LogService.LogErrorsNew(activity: "User clicked Log Out");
+                    try
+                    {
+                        await LogService.LogErrorsNew(activity: "User clicked Log Out");
 
-                    Application.Current.Properties["username"] = null;
-                    Application.Current.Properties["password"] = null;
-                    var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
-                    var before = Navigation.NavigationStack.ToList()[0];
+                        Application.Current.Properties["username"] = null;
+                        Application.Current.Properties["password"] = null;
+                        var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
+                        var before = Navigation.NavigationStack.ToList()[0];
 
-                    Navigation.InsertPageBefore(new LoginOrSignUp(),before);
-                    GlobalStaticFields.Username = "";
-                    await Navigation.PopToRootAsync(true);
+                        Navigation.InsertPageBefore(new LoginOrSignUp(), before);
+                        GlobalStaticFields.Username = "";
+                        await Navigation.PopToRootAsync(true);
+                    }
+                    catch (Exception ex)
+                    {
+                        await LogService.LogErrorsNew( activity: "User clicked Log Out and got error", error: ex.ToString());
+
+                        await Navigation.PopToRootAsync(true);
+
+                    }
                     break;
                 case "Change Password":
                     await LogService.LogErrorsNew(activity: "User click change password");

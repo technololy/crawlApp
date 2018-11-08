@@ -72,13 +72,19 @@ namespace HappeningsApp.Views.AppViews
         {
             try
             {
-                var uri = new Uri($"http://maps.google.com/maps?daddr={MapsAddress}&directionsmode=transit");
+               var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+                var uri = new Uri($"http://maps.google.com/maps?daddr={MapsAddressPlus}&directionsmode=transit");
                 Device.OpenUri(uri);
             }
             catch (Exception ex)
             {
                 LogService.LogErrors(ex.ToString());
             }
+        }
+
+        private string AddPlusToMapAddress(string mapsAddress)
+        {
+            return mapsAddress = mapsAddress.Replace(" ", "+");
         }
     }
 }
