@@ -22,12 +22,16 @@
                 <Frame Grid.Row="0"
                        BackgroundColor="Transparent"
                        Padding="0" 
-                       HeightRequest="150" 
+                       HeightRequest="250" 
                        IsClippedToBounds="True">
                   <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
                <forms:CachedImage  
-                    Source="{Binding ImagePath}" Aspect="Fill" />
+                    Source="{Binding ImagePath}" Aspect="AspectFill" 
+                        HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    
+                    />
                     
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
@@ -38,7 +42,7 @@
                        CornerRadius="30" 
                        Padding="0" 
                        Margin="15,0,15,0" 
-                       TranslationY="-50" 
+                       TranslationY="-10" 
                        Grid.Row="1" 
                        
                        BackgroundColor="#ecf0f1"  >
@@ -96,10 +100,14 @@
                                                        />
                               
                                         </StackLayout>
-                                      <Frame HasShadow="false" HeightRequest="60"  IsVisible="false" >
+                                      <Frame HasShadow="false" HeightRequest="60"  >
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
+                                                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Uber_tapped" />
                                                     
+                                                </Frame.GestureRecognizers>
+                                                
                                                 </Frame>
                                                 <StackLayout>
                                                     <Label Text="Tap to get an uber" TextColor="Black" />

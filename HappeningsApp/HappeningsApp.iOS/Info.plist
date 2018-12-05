@@ -19,7 +19,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>11.4</string>
+	<string>11.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Crawl</string>
 	<key>CFBundleIdentifier</key>
@@ -45,11 +45,11 @@
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>3.98</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>4.01</string>
 </dict>
 </plist>

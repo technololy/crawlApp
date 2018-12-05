@@ -57,7 +57,9 @@ namespace HappeningsApp
                 }
                 catch (Exception ex)
                 {
-                    LogService.LogErrorsNew(error: ex.ToString(), activity: "Exception at app.xaml.cs loggin on");
+                    MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+
+                    //LogService.LogErrorsNew(error: ex.ToString(), activity: "Exception at app.xaml.cs loggin on");
 
                 }
 

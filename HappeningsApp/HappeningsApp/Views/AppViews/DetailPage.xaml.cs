@@ -53,6 +53,22 @@ namespace HappeningsApp.Views.AppViews
             MapsAddress = myDeals.Owner_Location;
          
         }
+
+        public DetailPage(Favourite myDeals)
+        {
+            InitializeComponent();
+            var CopyFavIntoDeals = new GetAll2.Deal()
+            {
+                ImagePath = myDeals.ImageURL,
+                Owner_Location = myDeals.Address,
+                Details = myDeals.Description
+            };
+            BindingContext = CopyFavIntoDeals;
+
+        }
+
+
+
         public DetailPage(Activity selected2)
         {
             InitializeComponent();
@@ -85,6 +101,21 @@ namespace HappeningsApp.Views.AppViews
         private string AddPlusToMapAddress(string mapsAddress)
         {
             return mapsAddress = mapsAddress.Replace(" ", "+");
+        }
+
+        void Uber_tapped(object sender, System.EventArgs e)
+        {
+
+            try
+            {
+                var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+
+                Device.OpenUri(new Uri("uber://?addr="+MapsAddressPlus));
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
         }
     }
 }

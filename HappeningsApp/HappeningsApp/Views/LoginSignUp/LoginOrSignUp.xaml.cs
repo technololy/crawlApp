@@ -27,12 +27,12 @@ namespace HappeningsApp.Views.LoginSignUp
         {
             InitializeComponent();
 
+            //LoginViewModel lvmm = new LoginViewModel();
 
             //if (IsUserLoggedOn())
             //{
             //    try
             //    {
-            //        LoginViewModel lvmm = new LoginViewModel();
             //        lvmm.User.Username = Application.Current.Properties["username"].ToString();
             //        lvmm.User.EmailAddress = lvmm.User.Username;
             //        lvmm.User.Password = Application.Current.Properties["password"].ToString();

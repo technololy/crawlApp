@@ -147,9 +147,13 @@ namespace HappeningsApp.Views
 
         private ObservableCollection<Grouping<string, Models.Deals>> GroupListByDateBkUp()
         {
+            var todaysDate = DateTime.Now;
+            var sevenDaysAfter = DateTime.Now.AddDays(7);
             var grp = from h in ivm.DealsfromAPI
+                      //where h.Expiration_Date.Date>=todaysDate && h.Expiration_Date.Date<=sevenDaysAfter 
                       orderby h.Expiration_Date
                       group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                                   
                       select new Grouping<string, Models.Deals>(ThisWeeksGroup.Key, ThisWeeksGroup);
 
             foreach (var g in grp)

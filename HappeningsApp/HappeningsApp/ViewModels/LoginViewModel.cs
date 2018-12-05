@@ -117,7 +117,7 @@ namespace HappeningsApp.ViewModels
         internal async Task<bool> Register()
         {
             IsSuccess = false;
-            using (UserDialogs.Instance.Loading("Registration you.."))
+            using (UserDialogs.Instance.Loading(".."))
             {
                 var reg = new Registeration()
                 {

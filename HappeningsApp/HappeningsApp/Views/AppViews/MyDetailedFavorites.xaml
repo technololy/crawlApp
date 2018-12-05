@@ -20,6 +20,7 @@
                              SeparatorVisibility="None" 
                              Grid.Row="0" ItemsSource="{Binding Details}" 
                              HasUnevenRows="true"
+                             ItemTapped="MyFavList_ItemTapped"
                              x:Name="MyFavList" Footer="">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -40,7 +41,7 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImageURL}" Aspect="Fill" />
+                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImageURL}" Aspect="AspectFill" />
                                     <Image Source="ic_clear_blue.png" BackgroundColor="White" HeightRequest="30" WidthRequest="30" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" 

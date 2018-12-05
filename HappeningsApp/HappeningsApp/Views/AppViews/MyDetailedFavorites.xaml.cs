@@ -91,5 +91,19 @@ namespace HappeningsApp.Views.AppViews
                 }
             }
         }
+
+        void MyFavList_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            if (MyFavList.SelectedItem==null)
+            {
+                return;
+            }
+
+            if (MyFavList.SelectedItem is Favourite collections)
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(collections));
+
+            }
+        }
     }
 }

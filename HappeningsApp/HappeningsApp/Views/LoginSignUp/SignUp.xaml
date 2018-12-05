@@ -8,7 +8,7 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
     
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
                 <Button TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
@@ -70,5 +70,5 @@
         </StackLayout> 
         </StackLayout>
       
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>
