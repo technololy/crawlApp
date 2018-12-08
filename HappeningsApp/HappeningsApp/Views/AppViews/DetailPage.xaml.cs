@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using HappeningsApp.Models;
 using HappeningsApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace HappeningsApp.Views.AppViews
 {
@@ -103,14 +105,55 @@ namespace HappeningsApp.Views.AppViews
             return mapsAddress = mapsAddress.Replace(" ", "+");
         }
 
-        void Uber_tapped(object sender, System.EventArgs e)
+        async void Uber_tapped(object sender, System.EventArgs e)
         {
 
             try
             {
-                var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+              
 
-                Device.OpenUri(new Uri("uber://?addr="+MapsAddressPlus));
+                var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+                var encodedAddress = HttpUtility.UrlEncode(MapsAddress);
+                var loc = await Geocoding.GetLocationsAsync(MapsAddress);
+                var point = loc?.FirstOrDefault();
+                if (point!=null)
+                {
+                    var longitude = point.Longitude;
+                    var latitude = point.Latitude;
+                    var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
+                    +latitude+"&dropoff[longitude]="+longitude+"&dropoff[nickname]=" 
+                        + encodedAddress + "&dropoff" +
+                "[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
+                "=partner%3A%2F%2Fteam%2F9383\n";
+                    Device.OpenUri(new Uri(uberLaunch333));
+
+
+                }
+                //var uberLaunch = $"https://m.uber.com/ul/?action=setPickup&pickup[nickname]={encodedAddress}&" +
+                //	"pickup[formatted_address]=my_location&dropoff[nickname]={encodedAddress}&dropoff" +
+                //	"[formatted_address]={encodedAddress}";
+
+                //var uberLaunch2 = "https://m.uber.com/ul/?action=setPickup&pickup[nickname]=lagos&" +
+                //	"pickup[formatted_address]=my_location&dropoff[latitude]=37.802374&dropoff[longitude]" +
+                //	"=-122.405818&dropoff[nickname]=Coit%20Tower&dropoff[formatted_address]=" +
+                //	"1%20Telegraph%20Hill%20Blvd%2C%20San%20Francisco%2C%20CA%2094133";
+                ////Device.OpenUri(new Uri("uber://?addr=" + MapsAddressPlus));
+
+                //var uberLaunch3 = $"https://m.uber.com/ul/?action=setPickup&pickup[latitude]=37.775818&pickup" +
+                //	"[longitude]=-122.418028&pickup[nickname]=UberHQ&pickup[formatted_address]=" +
+                //	"1455%20Market%20St%2C%20San%20Francisco%2C%20CA%2094103&dropoff[latitude]=" +
+                //	"37.802374&dropoff[longitude]=-122.405818&dropoff[nickname]=" +
+                //	"Coit%20Tower&dropoff[formatted_address]=" +
+                //	"1%20Telegraph%20Hill%20Blvd%2C%20San%20Francisco%2C%20CA%2094133&product_id=" +
+                //	"a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink" +
+                //	"=partner%3A%2F%2Fteam%2F9383\n";
+
+                //var uberLaunch33 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=" +
+                //  "6.448936&dropoff[longitude]=3.3936575&dropoff[nickname]="+encodedAddress+"&dropoff" +
+                //  "[formatted_address]="+encodedAddress+"&link_text=View%20team%20roster&partner_deeplink" +
+                //  "=partner%3A%2F%2Fteam%2F9383\n";
+
+                //Device.OpenUri(new Uri(uberLaunch33));
             }
             catch (Exception ex)
             {

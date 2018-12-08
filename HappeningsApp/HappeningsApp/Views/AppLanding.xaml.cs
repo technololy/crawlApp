@@ -93,7 +93,7 @@ namespace HappeningsApp.Views
                 bxVwCat.BackgroundColor = Color.Black;
                 bxVwCol.BackgroundColor = Color.Black;
                 bxVwthisWeek.BackgroundColor = Color.Black;
-
+                ivm.DealsfromAPI = GlobalStaticFields.dealsfromAPI;
                 BindingContext = ivm;
                 await LogService.LogErrorsNew(activity: "User clicked on Deals Tab");
             }
@@ -175,6 +175,7 @@ namespace HappeningsApp.Views
                 bxVwDeals.BackgroundColor = Color.Black;
                 bxVwCol.BackgroundColor = Color.Black;
                 bxVwthisWeek.BackgroundColor = Color.Black;
+                ivm.CategfromAPI = GlobalStaticFields.CategoriesFromAPI;
                 BindingContext = ivm;
                 await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
             }
