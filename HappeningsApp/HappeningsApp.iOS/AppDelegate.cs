@@ -6,7 +6,7 @@ using Foundation;
 using HappeningsApp.OAuth;
 using Plugin.GoogleAnalytics;
 using UIKit;
-
+using Microsoft.AppCenter.Push;
 namespace HappeningsApp.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -53,6 +53,21 @@ namespace HappeningsApp.iOS
             AuthenticationState.Authenticator.OnPageLoading(uri);
 
             return true;
+        }
+
+
+        [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
+        public void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        {
+            var result = Push.DidReceiveRemoteNotification(userInfo);
+            if (result)
+            {
+                completionHandler?.Invoke(UIBackgroundFetchResult.NewData);
+            }
+            else
+            {
+                completionHandler?.Invoke(UIBackgroundFetchResult.NoData);
+            }
         }
     }
 }
