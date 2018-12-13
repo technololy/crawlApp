@@ -28,17 +28,22 @@ namespace HappeningsApp.Views.AppViews
                 Collectz = favs;
                 if (favs.Details.Count == 1 && string.IsNullOrEmpty(favs.Details[0].Name))
                 {
-                    favs.Details[0].Name = "Nothing here yet";
+                    //favs.Details[0].Name = "Nothing here yet";
+                }
+
+                else
+                {
+                    //this.BindingContext = favs;
+                    this.BindingContext = mcvm.UserFavs;
+                    //this.BindingContext = null;
+                    this.Title = "Saved in " + favs.Name;
                 }
             }
             catch (Exception ex)
             {
                 LogService.LogErrors(ex.ToString());
             }
-            //this.BindingContext = favs;
-            this.BindingContext = mcvm.UserFavs;
-            //this.BindingContext = null;
-            this.Title = "Saved in " + favs.Name;
+      
 
         }
 

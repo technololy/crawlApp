@@ -33,11 +33,11 @@
                                         <!--<RowDefinition Height="10*" />-->
 
                                         <RowDefinition Height="60*" />
-                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="20*" />
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
+                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
                                     <Image Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>

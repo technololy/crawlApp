@@ -13,8 +13,22 @@ namespace HappeningsApp.Views.Messages
         {
             InitializeComponent();
             BindingContext = new MessagesViewModel();
+            RefreshMessage();
         }
 
-      
+        private void RefreshMessage()
+        {
+            msgListView.RefreshCommand = new Command(
+            
+                ()=>
+                {
+                    BindingContext = new MessagesViewModel();
+                    msgListView.IsRefreshing = false;
+                }
+
+
+
+            );
+        }
     }
 }

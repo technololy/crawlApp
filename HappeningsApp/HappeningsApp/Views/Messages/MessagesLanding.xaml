@@ -24,10 +24,18 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Blue">
-                            <StackLayout>
-                <c:ExtendedLabel Text="{Binding Message}" />
+                            <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*" />
+                                
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Message}" Grid.Row="0" FontSize="15" />
+                            <BoxView Grid.Row="1" HeightRequest="1" Color="#C7C7CC" />
+<!--                <c:ExtendedLabel Text="{Binding Message}" VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"  />-->
                
-            </StackLayout>
+            </Grid>
                            
                         </c:ExtendedViewCell>
 
