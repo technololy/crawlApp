@@ -139,6 +139,8 @@ namespace HappeningsApp.Views.AppViews
             catch (Exception ex)
             {
                 var log = ex;
+                await DisplayAlert("Lat/Long Error", "Issue doing reverse geocoding of the selected location", "OK");
+
             }
         }
     }

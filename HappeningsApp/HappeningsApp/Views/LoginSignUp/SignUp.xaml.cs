@@ -367,11 +367,11 @@ namespace HappeningsApp.Views.LoginSignUp
 
                             case "facebook":
                                 
-                               var fbuser = JsonValue.Parse(response.GetResponseText());
-                                lvm.User.Username = fbuser["email"];
-                                lvm.User.Password = fbuser["email"];
-                                lvm.User.EmailAddress = fbuser["email"];
-                                lvm.User.ConfirmPin = fbuser["email"];
+                               //var fbuser = JsonValue.Parse(response.GetResponseText());
+                                //lvm.User.Username = fbuser["email"];
+                                //lvm.User.Password = fbuser["email"];
+                                //lvm.User.EmailAddress = fbuser["email"];
+                                //lvm.User.ConfirmPin = fbuser["email"];
                                 break;
                             default:
                                 break;
