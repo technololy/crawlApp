@@ -30,7 +30,7 @@
                                 <RowDefinition Height="*" />
                                 
                             </Grid.RowDefinitions>
-                            <Label Text="{Binding Message}" Grid.Row="0" FontSize="15" />
+                            <Label Text="{Binding Message}" Grid.Row="0" FontSize="17" />
                             <BoxView Grid.Row="1" HeightRequest="1" Color="#C7C7CC" />
 <!--                <c:ExtendedLabel Text="{Binding Message}" VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand"  />-->

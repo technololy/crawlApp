@@ -130,6 +130,11 @@ namespace HappeningsApp.Views.AppViews
 
                 }
 
+                else
+                {
+                  await  DisplayAlert("Lat/Long Issue", "Can not get the latitude/longitude of the selected location", "OK");
+                }
+
             }
             catch (Exception ex)
             {

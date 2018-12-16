@@ -28,7 +28,7 @@ namespace HappeningsApp.Views.Settings
                 case "Log Out":
                     try
                     {
-                        await LogService.LogErrorsNew(activity: "User clicked Log Out");
+                       // await LogService.LogErrorsNew(activity: "User clicked Log Out");
 
                         Application.Current.Properties["username"] = null;
                         Application.Current.Properties["password"] = null;

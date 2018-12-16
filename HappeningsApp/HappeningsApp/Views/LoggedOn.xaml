@@ -91,8 +91,8 @@
                     <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
-                      <Button TextColor="White" WidthRequest="300" Text="Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="Facebook_Tapped" />
-                        <Button TextColor="White" Text="Google" x:Name="googleSignIn" Clicked="googleSignIn_Clicked" WidthRequest="300" BackgroundColor="#c0392b" />
+                      <Button TextColor="White" WidthRequest="300" Text="Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
+                        <Button TextColor="White" Text="Google" x:Name="googleSignIn" Clicked="OAuth_Clicked" WidthRequest="300" BackgroundColor="#c0392b" />
                 
                    
                 </StackLayout>

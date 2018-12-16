@@ -37,7 +37,7 @@
                     
                 <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked" />
                 <Button Text="Go back" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White" Clicked="Handle_Clicked_1"  />
-                <Button Text="Not interested" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+                <Button Text="Maybe later" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
             </StackLayout>
             
         </FlexLayout>
