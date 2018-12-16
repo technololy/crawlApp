@@ -813,11 +813,11 @@ namespace HappeningsApp.Views.LoginSignUp
                         // The users email address will be used to identify data in SimpleDB
                         string userJson = await response.GetResponseTextAsync();
 
-                        var fbuser = JsonValue.Parse(response.GetResponseText());
-                        lvm.User.Username = fbuser["email"];
-                        lvm.User.Password = fbuser["email"];
-                        lvm.User.EmailAddress = fbuser["email"];
-                        lvm.User.ConfirmPin = fbuser["email"];
+                        //var fbuser = JsonValue.Parse(response.GetResponseText());
+                        //lvm.User.Username = fbuser["email"];
+                        //lvm.User.Password = fbuser["email"];
+                        //lvm.User.EmailAddress = fbuser["email"];
+                        //lvm.User.ConfirmPin = fbuser["email"];
 
                     
 
@@ -898,11 +898,11 @@ namespace HappeningsApp.Views.LoginSignUp
                         // The users email address will be used to identify data in SimpleDB
                         string userJson = await response.GetResponseTextAsync();
 
-                        var fbuser = JsonValue.Parse(response.GetResponseText());
-                        lvm.User.Username = fbuser["email"];
-                        lvm.User.Password = fbuser["email"];
-                        lvm.User.EmailAddress = fbuser["email"];
-                        lvm.User.ConfirmPin = fbuser["email"];
+                        //var fbuser = JsonValue.Parse(response.GetResponseText());
+                        //lvm.User.Username = fbuser["email"];
+                        //lvm.User.Password = fbuser["email"];
+                        //lvm.User.EmailAddress = fbuser["email"];
+                        //lvm.User.ConfirmPin = fbuser["email"];
 
 
 
