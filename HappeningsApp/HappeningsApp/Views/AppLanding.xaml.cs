@@ -132,8 +132,12 @@ namespace HappeningsApp.Views
 
         private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
         {
+            var todaysDate = DateTime.Now;
+            var sevenDaysAfter = DateTime.Now.AddDays(7);
             var grp = from h in ivm?.GgetAll
-                    orderby h?.Expiration_Date
+                      where h.Expiration_Date.Date >= todaysDate && h.Expiration_Date.Date <= sevenDaysAfter
+
+                      orderby h?.Expiration_Date
                     group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                     select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
             GetAllGrouped.Clear();
@@ -150,7 +154,7 @@ namespace HappeningsApp.Views
             var todaysDate = DateTime.Now;
             var sevenDaysAfter = DateTime.Now.AddDays(7);
             var grp = from h in ivm.DealsfromAPI
-                      //where h.Expiration_Date.Date>=todaysDate && h.Expiration_Date.Date<=sevenDaysAfter 
+                      where h.Expiration_Date.Date>=todaysDate && h.Expiration_Date.Date<=sevenDaysAfter 
                       orderby h.Expiration_Date
                       group h by h.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                                    

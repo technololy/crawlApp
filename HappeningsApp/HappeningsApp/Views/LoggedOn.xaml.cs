@@ -366,7 +366,7 @@ namespace HappeningsApp.Views
                         {
                             Device.BeginInvokeOnMainThread
                                   (
-                                async () => Navigation.PushAsync(new AppLanding())
+                                async () =>await Navigation.PushAsync(new AppLanding())
                                      );
 
                         }

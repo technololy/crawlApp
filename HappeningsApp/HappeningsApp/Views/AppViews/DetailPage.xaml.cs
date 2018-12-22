@@ -107,14 +107,14 @@ namespace HappeningsApp.Views.AppViews
 
         async void Uber_tapped(object sender, System.EventArgs e)
         {
-
+            var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+            var encodedAddress = HttpUtility.UrlEncode(MapsAddress);
             try
             {
-              
 
-                var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
-                var encodedAddress = HttpUtility.UrlEncode(MapsAddress);
-                var loc = await Geocoding.GetLocationsAsync(MapsAddress);
+                //MapsAddress = "African Fintech Foundry";
+            
+                var loc = await Geocoding.GetLocationsAsync(MapsAddress).ConfigureAwait(false);
                 var point = loc?.FirstOrDefault();
                 if (point!=null)
                 {
@@ -122,10 +122,12 @@ namespace HappeningsApp.Views.AppViews
                     var latitude = point.Latitude;
                     var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
                     +latitude+"&dropoff[longitude]="+longitude+"&dropoff[nickname]=" 
-                        + encodedAddress + "&dropoff" +
+                        + MapsAddress + "&dropoff" +
                 "[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
                 "=partner%3A%2F%2Fteam%2F9383\n";
-                    Device.OpenUri(new Uri(uberLaunch333));
+
+                    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(uberLaunch333)));
+                    //Device.OpenUri(new Uri(uberLaunch333));
 
 
                 }
@@ -135,11 +137,33 @@ namespace HappeningsApp.Views.AppViews
                   await  DisplayAlert("Lat/Long Issue", "Can not get the latitude/longitude of the selected location", "OK");
                 }
 
+
             }
+
+
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                await DisplayAlert("Faild", fnsEx.Message, "OK");
+            }
+            catch (PermissionException pEx)
+            {
+                await DisplayAlert("Faild", pEx.Message, "OK");
+            }
+
             catch (Exception ex)
             {
+                var fakelongitude = "0";
+                var fakelatitude = "0";
                 var log = ex;
-                await DisplayAlert("Lat/Long Error", "Issue doing reverse geocoding of the selected location", "OK");
+                var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
+                 + fakelatitude + "&dropoff[longitude]=" + fakelongitude + "&dropoff[nickname]="
+                     + MapsAddress + "&dropoff" +
+             "[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
+             "=partner%3A%2F%2Fteam%2F9383\n";
+                Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(uberLaunch333)));
+
+                //await DisplayAlert("Lat/Long Error", "Can not find the longitude and latitude of the chosen address " +
+                	//"from google maps", "OK");
 
             }
         }

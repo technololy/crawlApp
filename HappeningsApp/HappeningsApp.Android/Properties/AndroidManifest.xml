@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="6" android:versionName="6" package="com.technololy.crawl">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.location" android:required="false" />  
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />  
 	<application android:label="Crawl" android:icon="@drawable/crawl_white_blue">
 		<!-- Add these lines -->
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
