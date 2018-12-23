@@ -410,7 +410,10 @@ namespace HappeningsApp.Views
 
                         if (tk)
                         {
-                            Navigation.PushAsync(new AppLanding());
+                            Device.BeginInvokeOnMainThread
+                                 (
+                               async () => await Navigation.PushAsync(new AppLanding())
+                                    );
                         }
                         else
                         {
@@ -420,7 +423,7 @@ namespace HappeningsApp.Views
                             {
                                 Device.BeginInvokeOnMainThread
                                       (
-                                    async () => Navigation.PushAsync(new AppLanding())
+                                    async () =>await Navigation.PushAsync(new AppLanding())
                                          );
 
                             }

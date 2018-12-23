@@ -520,7 +520,11 @@ namespace HappeningsApp.Views.LoginSignUp
 
                         if (tk)
                         {
-                            Navigation.PushAsync(new AppLanding());
+                            //await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                            Device.BeginInvokeOnMainThread
+                                       (
+                                     async () => Navigation.PushAsync(new AppLanding())
+                                          );
                         }
                         else
                         {
