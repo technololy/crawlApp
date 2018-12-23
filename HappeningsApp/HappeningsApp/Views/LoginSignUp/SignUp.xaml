@@ -9,9 +9,9 @@
              x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
     
     <ScrollView>
-        <StackLayout>
+        <StackLayout x:Name="signUpParentStack">
             <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
-                <Button TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
+                <Button x:Name="signUpFB" TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
                 <Button TextColor="White" x:Name="googleBtn" Clicked="OAuth_Clicked" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
                   <Label HorizontalOptions="CenterAndExpand" Text="OR" TextColor="White" />
                 <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />

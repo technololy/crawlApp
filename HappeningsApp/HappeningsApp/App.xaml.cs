@@ -38,9 +38,9 @@ namespace HappeningsApp
 
 
 
-            //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+           //MainPage = new NavigationPage(new Views.LoggedOn());
 
-
+            //return;
             if (IsUserLoggedOn())
             {
                 try

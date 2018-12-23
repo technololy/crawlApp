@@ -24,9 +24,16 @@ namespace HappeningsApp.Views.LoginSignUp
         LoginViewModel lvm;
         Account account;
         AccountStore store;
+        public bool HasPageBeenAnimated { get; set; } = false;
         public SignUp ()
 		{
 			InitializeComponent ();
+            if (!HasPageBeenAnimated)
+            {
+                HasPageBeenAnimated = true;
+                 AnimateThisPage();
+
+            }
             lvm = new LoginViewModel();
             store = AccountStore.Create();
             account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
@@ -193,7 +200,52 @@ namespace HappeningsApp.Views.LoginSignUp
 
         //}
 
-     
+        //private void googleBtn_Clicked(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        SocialMedia = "google";
+        //        string clientId = null;
+        //        string redirectUri = null;
+
+        //        switch (Xamarin.Forms.Device.RuntimePlatform)
+        //        {
+        //            case Xamarin.Forms.Device.iOS:
+        //                clientId = Constants.iOSClientId;
+        //                redirectUri = Constants.iOSRedirectUrl;
+        //                break;
+
+        //            case Xamarin.Forms.Device.Android:
+        //                clientId = Constants.AndroidClientId;
+        //                redirectUri = Constants.AndroidRedirectUrl;
+        //                break;
+        //        }
+
+        //        var authenticator = new OAuth2Authenticator(
+        //            clientId,
+        //            null,
+        //            Constants.Scope,
+        //            new Uri(Constants.AuthorizeUrl),
+        //            new Uri(redirectUri),
+        //            new Uri(Constants.AccessTokenUrl),
+        //            null,
+        //            true);
+
+        //        authenticator.Completed += OnAuthCompleted;
+        //        authenticator.Error += OnAuthError;
+
+        //        AuthenticationState.Authenticator = authenticator;
+
+        //        var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
+        //        presenter.Login(authenticator);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var log = ex;
+        //        LogService.LogErrors(log.ToString());
+        //    }
+
+        //}
         #endregion
         void Handle_Completed(object sender, System.EventArgs e)
         {
@@ -271,55 +323,36 @@ namespace HappeningsApp.Views.LoginSignUp
 
         }
 
-        private void googleBtn_Clicked(object sender, EventArgs e)
+       private async Task AnimateThisPage()
         {
-            try
-            {
-                SocialMedia = "google";
-                string clientId = null;
-                string redirectUri = null;
+            await googleBtn.ScaleTo(0, 0);
+            await signUpFB.ScaleTo(0, 0);
+            await signUp.ScaleTo(0, 0);
+            await signUpParentStack.TranslateTo(-500, 0, 0);
+            await signUpParentStack.TranslateTo(0, 0, 1000, Easing.SinIn);
 
-                switch (Xamarin.Forms.Device.RuntimePlatform)
-                {
-                    case Xamarin.Forms.Device.iOS:
-                        clientId = Constants.iOSClientId;
-                        redirectUri = Constants.iOSRedirectUrl;
-                        break;
+            await googleBtn.ScaleTo(1, 500, Easing.BounceOut);
+            await signUpFB.ScaleTo(1, 500, Easing.BounceOut);
+            await signUp.ScaleTo(1, 500, Easing.BounceOut);
+            //HasPageBeenAnimated = true;
+            //await  myStack.TranslateTo(0, -150,0);         
 
-                    case Xamarin.Forms.Device.Android:
-                        clientId = Constants.AndroidClientId;
-                        redirectUri = Constants.AndroidRedirectUrl;
-                        break;
-                }
-
-                var authenticator = new OAuth2Authenticator(
-                    clientId,
-                    null,
-                    Constants.Scope,
-                    new Uri(Constants.AuthorizeUrl),
-                    new Uri(redirectUri),
-                    new Uri(Constants.AccessTokenUrl),
-                    null,
-                    true);
-
-                authenticator.Completed += OnAuthCompleted;
-                authenticator.Error += OnAuthError;
-
-                AuthenticationState.Authenticator = authenticator;
-
-                var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-                presenter.Login(authenticator);
-            }
-            catch (Exception ex)
-            {
-                var log = ex;
-                LogService.LogErrors(log.ToString());
-            }
+            // await myStack.TranslateTo(0, 0, 1000, Easing.SinInOut);
 
         }
 
+        protected async override void OnAppearing()
+        {
+            if (!HasPageBeenAnimated)
+            {
+                HasPageBeenAnimated = true;
 
-    
+                await AnimateThisPage();
+
+            }
+            base.OnAppearing();
+        }
+
 
         void OnAuthError(object sender, AuthenticatorErrorEventArgs e)
         {

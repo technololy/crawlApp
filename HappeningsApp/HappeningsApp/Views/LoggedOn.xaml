@@ -21,13 +21,13 @@
                 <RowDefinition Height="auto" />
                
             </Grid.RowDefinitions>
-            <StackLayout HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
+            <StackLayout x:Name="crawlImageStack" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" >
                 <Image Source="Crawl_white_blue.png" HeightRequest="250"  />
             
             </StackLayout>
             <StackLayout Spacing="50"   VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0"  >
            
-                <StackLayout Spacing="5">
+                <StackLayout Spacing="5" x:Name="emailStack">
                     <c:BorderlessEntry Placeholder="Email" 
                                        x:Name="txtUsername"
                                    IsSpellCheckEnabled="false"
@@ -39,7 +39,7 @@
                     <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
                 </StackLayout>
                 <StackLayout Spacing="0">
-                <StackLayout Spacing="5">
+                <StackLayout Spacing="5" x:Name="passwordStack">
                           <c:BorderlessEntry Placeholder="Password" 
                                              x:Name="txtPassword"
                                              IsPassword="True"  
@@ -56,7 +56,7 @@
                     </StackLayout>
                     
                      <StackLayout Margin="0,15,0,0" Orientation="Horizontal">
-                        <Label Text="Dismiss" TextColor="White">
+                        <Label x:Name="labelDismiss" Text="Dismiss" TextColor="White">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Dismissed_tapped" 
                                                       NumberOfTapsRequired="1" />
@@ -65,7 +65,7 @@
                             <Label Text="Forgot Password?" 
                            TextColor="White" 
                            HorizontalOptions="EndAndExpand" 
-
+                           x:Name="labelForgotPassword"
                            >
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
@@ -88,10 +88,10 @@
                 </StackLayout>
          <StackLayout Grid.Row="4"  Margin="0,15,0,0" >
                  <StackLayout>
-                    <Label Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                    <Label x:Name="labelLogInWith" Text="Or Login with" HorizontalOptions="CenterAndExpand" TextColor="White" />
                 </StackLayout>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
-                      <Button TextColor="White" WidthRequest="300" Text="Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
+                      <Button x:Name="loginFB" TextColor="White" WidthRequest="300" Text="Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
                         <Button TextColor="White" Text="Google" x:Name="googleSignIn" Clicked="OAuth_Clicked" WidthRequest="300" BackgroundColor="#c0392b" />
                 
                    

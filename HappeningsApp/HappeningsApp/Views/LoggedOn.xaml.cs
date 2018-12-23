@@ -276,6 +276,7 @@ namespace HappeningsApp.Views
         public LoggedOn()
         {
             InitializeComponent();
+            AnimateThisPage();
             store = AccountStore.Create();
             account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             #region commentedOut
@@ -292,6 +293,7 @@ namespace HappeningsApp.Views
         public LoggedOn(string message )
         {
             InitializeComponent();
+            //AnimateThisPage();
             store = AccountStore.Create();
             account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             var mytoast = MyToast.DisplayToast(Color.Blue, message);
@@ -556,6 +558,56 @@ namespace HappeningsApp.Views
             }
 
         }
+
+
+        private async Task AnimateThisPage()
+        {
+           
+            await crawlImageStack.TranslateTo(0, -1500, 0);
+            await emailStack.TranslateTo(0, -1500, 0);
+            await passwordStack.TranslateTo(0, -1500, 0);
+            await loginFB.TranslateTo(0, -1500, 0);
+            await googleSignIn.TranslateTo(0, -1500, 0);
+            await login.TranslateTo(0, -1500, 0);
+            await labelDismiss.TranslateTo(-500, 0, 0);
+            await labelForgotPassword.TranslateTo(500, 0, 0);
+            await labelLogInWith.TranslateTo(0, 1500, 0);
+
+
+            await Task.WhenAll(
+                 labelDismiss.TranslateTo(0, 0, 2500, Easing.SinInOut),
+                 labelForgotPassword.TranslateTo(0, 0, 2500, Easing.SinInOut),
+                 labelLogInWith.TranslateTo(0, 0, 2500, Easing.SinInOut)
+                );
+
+            await Task.WhenAll(
+
+                 crawlImageStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
+             emailStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
+             passwordStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
+             login.TranslateTo(0, 0, 2500, Easing.SinInOut),
+             loginFB.TranslateTo(0, 0, 2500, Easing.SinInOut),
+             googleSignIn.TranslateTo(0, 0, 2500, Easing.SinInOut)
+
+                );
+            //await crawlImageStack.TranslateTo(0, 0, 2500, Easing.SinInOut);
+            //await emailStack.TranslateTo(0, 0, 2500, Easing.SinInOut);
+            //await passwordStack.TranslateTo(0, 0, 2500, Easing.SinInOut);
+            //await login.TranslateTo(0, 0, 2500, Easing.SinInOut);
+            //await loginFB.TranslateTo(0, 0, 2500, Easing.SinInOut);
+            //await googleSignIn.TranslateTo(0, 0, 2500, Easing.SinInOut);
+
+
+        }
+
+        protected async override void OnAppearing()
+        {
+          await  AnimateThisPage();
+            base.OnAppearing();
+        }
+
+
+
 
         #region savedforfuture
         //async void OnAuthCompletedNew(object sender, AuthenticatorCompletedEventArgs e)
