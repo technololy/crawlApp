@@ -35,7 +35,7 @@ namespace HappeningsApp.Views.Settings
 
                     else
                     {
-                        await DisplayAlert("Info", "Email not found", "OK");
+                        await DisplayAlert("Info", "Unusual error occured/Email not found", "OK");
                     }
                 }
             }

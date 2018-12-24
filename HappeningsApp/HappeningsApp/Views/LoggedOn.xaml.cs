@@ -256,7 +256,7 @@ namespace HappeningsApp.Views
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Error logging in at this time. Please try again", "OK");
+                    await DisplayAlert("Error", lvm.RegisterationError+"\n Please try again", "OK");
                 }
             }
         }
