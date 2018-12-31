@@ -9,6 +9,7 @@ using Android.OS;
 using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
 using Plugin.GoogleAnalytics;
+using Plugin.CurrentActivity;
 
 namespace HappeningsApp.Droid
 {
@@ -21,6 +22,7 @@ namespace HappeningsApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            CrossCurrentActivity.Current.Activity.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle); // add this line to your code
                                                                         //...
             global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, bundle);

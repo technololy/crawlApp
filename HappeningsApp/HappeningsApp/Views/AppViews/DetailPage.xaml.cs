@@ -9,6 +9,7 @@ using HappeningsApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Plugin.Geolocator;
 
 namespace HappeningsApp.Views.AppViews
 {
@@ -109,6 +110,18 @@ namespace HappeningsApp.Views.AppViews
         {
             var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
             var encodedAddress = HttpUtility.UrlEncode(MapsAddress);
+
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 5000;
+                var position = await locator.GetPositionsForAddressAsync("oshodi");
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
             try
             {
 
