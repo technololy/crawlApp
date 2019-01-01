@@ -574,14 +574,16 @@ namespace HappeningsApp.Views
             await labelLogInWith.TranslateTo(0, 1500, 0);
 
 
+            //await Task.WhenAll(
+                // labelDismiss.TranslateTo(0, 0, 500, Easing.SinInOut),
+                // labelForgotPassword.TranslateTo(0, 0, 500, Easing.SinInOut),
+                // labelLogInWith.TranslateTo(0, 0, 500, Easing.SinInOut)
+                //);
+
             await Task.WhenAll(
-                 labelDismiss.TranslateTo(0, 0, 500, Easing.SinInOut),
+                        labelDismiss.TranslateTo(0, 0, 500, Easing.SinInOut),
                  labelForgotPassword.TranslateTo(0, 0, 500, Easing.SinInOut),
-                 labelLogInWith.TranslateTo(0, 0, 500, Easing.SinInOut)
-                );
-
-            await Task.WhenAll(
-
+                 labelLogInWith.TranslateTo(0, 0, 500, Easing.SinInOut),
                  crawlImageStack.TranslateTo(0, 0, 500, Easing.SinInOut),
              emailStack.TranslateTo(0, 0, 500, Easing.SinInOut),
              passwordStack.TranslateTo(0, 0, 500, Easing.SinInOut),

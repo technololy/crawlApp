@@ -173,14 +173,25 @@ namespace HappeningsApp.Views.AppViews
                 //        + MapsAddress + "&dropoff" +
                 //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
                 //"=partner%3A%2F%2Fteam%2F9383\n";
+                var msg = "Apple Maps can not " +
+                        "find that exact address so will use parts of the address instead";
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    using (UserDialogs.Instance.Loading("Apple Maps can not " +
-                    	"find that exact address so will use parts of the address instead"))
-                    {
-                        deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
-                        Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+                    //using (UserDialogs.Instance.Loading(msg))
+                    //{
+                    //    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                    //    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
 
+                    //}
+
+                    if( await DisplayAlert("",msg,"Got It","OK"))
+                    {
+                        using (UserDialogs.Instance.Loading(""))
+                        {
+                            deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                            Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+
+                        }
                     }
                 }
 
