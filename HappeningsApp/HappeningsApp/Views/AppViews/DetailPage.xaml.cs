@@ -191,27 +191,36 @@ namespace HappeningsApp.Views.AppViews
                     //        + MapsAddress + "&dropoff" +
                     //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
                     //"=partner%3A%2F%2Fteam%2F9383\n";
-                    var msg = "Apple Maps can not " +
-                            "find that exact address so will use approximate method to find the address instead";
-                    if (Device.RuntimePlatform == Device.iOS)
+                    try
                     {
-                        //using (UserDialogs.Instance.Loading(msg))
-                        //{
-                        //    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
-                        //    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
-
-                        //}
-
-                        if (await DisplayAlert("", msg, "Ok. Got It", "No, Not interested"))
+                        var msg = "Apple Maps can not " +
+                         "find that exact address so will use approximate method to find the address instead";
+                        if (Device.RuntimePlatform == Device.iOS)
                         {
-                            using (UserDialogs.Instance.Loading(""))
-                            {
-                                deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
-                                Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+                            //using (UserDialogs.Instance.Loading(msg))
+                            //{
+                            //    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                            //    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
 
+                            //}
+
+                            if (await DisplayAlert("", msg, "Ok. Got It", "No, Not interested"))
+                            {
+                                using (UserDialogs.Instance.Loading(""))
+                                {
+                                    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                                    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+
+                                }
                             }
                         }
                     }
+                    catch (Exception exx)
+                    {
+                        await DisplayAlert("", "Error occured", "OK");
+                        var logg = exx;
+                    }
+                 
 
                     //await DisplayAlert("Lat/Long Error", "Can not find the longitude and latitude of the chosen address " +
                     //"from google maps", "OK");
