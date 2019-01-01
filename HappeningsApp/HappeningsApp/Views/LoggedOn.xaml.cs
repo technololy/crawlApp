@@ -575,19 +575,19 @@ namespace HappeningsApp.Views
 
 
             await Task.WhenAll(
-                 labelDismiss.TranslateTo(0, 0, 2500, Easing.SinInOut),
-                 labelForgotPassword.TranslateTo(0, 0, 2500, Easing.SinInOut),
-                 labelLogInWith.TranslateTo(0, 0, 2500, Easing.SinInOut)
+                 labelDismiss.TranslateTo(0, 0, 500, Easing.SinInOut),
+                 labelForgotPassword.TranslateTo(0, 0, 500, Easing.SinInOut),
+                 labelLogInWith.TranslateTo(0, 0, 500, Easing.SinInOut)
                 );
 
             await Task.WhenAll(
 
-                 crawlImageStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
-             emailStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
-             passwordStack.TranslateTo(0, 0, 2500, Easing.SinInOut),
-             login.TranslateTo(0, 0, 2500, Easing.SinInOut),
-             loginFB.TranslateTo(0, 0, 2500, Easing.SinInOut),
-             googleSignIn.TranslateTo(0, 0, 2500, Easing.SinInOut)
+                 crawlImageStack.TranslateTo(0, 0, 500, Easing.SinInOut),
+             emailStack.TranslateTo(0, 0, 500, Easing.SinInOut),
+             passwordStack.TranslateTo(0, 0, 500, Easing.SinInOut),
+             login.TranslateTo(0, 0, 500, Easing.SinInOut),
+             loginFB.TranslateTo(0, 0, 500, Easing.SinInOut),
+             googleSignIn.TranslateTo(0, 0, 500, Easing.SinInOut)
 
                 );
             //await crawlImageStack.TranslateTo(0, 0, 2500, Easing.SinInOut);
