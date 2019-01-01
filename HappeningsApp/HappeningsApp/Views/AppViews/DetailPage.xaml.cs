@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
+using Acr.UserDialogs;
 
 namespace HappeningsApp.Views.AppViews
 {
@@ -110,41 +111,40 @@ namespace HappeningsApp.Views.AppViews
         {
             var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
             var encodedAddress = HttpUtility.UrlEncode(MapsAddress);
+            string deepLink = "";
+            LatLong ll = new LatLong();
+            Uber uber = new Uber();
+
 
             try
             {
-                var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 5000;
-                var position = await locator.GetPositionsForAddressAsync("oshodi");
-
-            }
-            catch (Exception ex)
-            {
-                var log = ex;
-            }
-            try
-            {
-
-                //MapsAddress = "African Fintech Foundry";
+              var coordinates= await ll.CalcLongLat(MapsAddress);
             
-                var loc = await Geocoding.GetLocationsAsync(MapsAddress).ConfigureAwait(false);
-                var point = loc?.FirstOrDefault();
-                if (point!=null)
-                {
-                    var longitude = point.Longitude;
-                    var latitude = point.Latitude;
-                    var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
-                    +latitude+"&dropoff[longitude]="+longitude+"&dropoff[nickname]=" 
-                        + MapsAddress + "&dropoff" +
-                "[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
-                "=partner%3A%2F%2Fteam%2F9383\n";
+                //var loc = await Geocoding.GetLocationsAsync(MapsAddress).ConfigureAwait(false);
+                //var point = loc?.FirstOrDefault();
+                //if (point!=null)
+                //{
+                //    var longitude = point.Longitude;
+                //    var latitude = point.Latitude;
+                //    var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
+                //    +latitude+"&dropoff[longitude]="+longitude+"&dropoff[nickname]=" 
+                //        + MapsAddress + "&dropoff" +
+                //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
+                //"=partner%3A%2F%2Fteam%2F9383\n";
 
-                    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(uberLaunch333)));
-                    //Device.OpenUri(new Uri(uberLaunch333));
+                //Device.OpenUri(new Uri(uberLaunch333));
+
+
+                //}
+                if (!string.IsNullOrEmpty(coordinates.Latitude.ToString()) && 
+                (!string.IsNullOrEmpty(coordinates.Longitude.ToString())))
+                {
+                    deepLink =  uber.GetUberDeepLink(coordinates.Longitude, 
+                    coordinates.Latitude, encodedAddress);
+                    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
 
 
                 }
-
                 else
                 {
                   await  DisplayAlert("Lat/Long Issue", "Can not get the latitude/longitude of the selected location", "OK");
@@ -165,15 +165,24 @@ namespace HappeningsApp.Views.AppViews
 
             catch (Exception ex)
             {
-                var fakelongitude = "0";
-                var fakelatitude = "0";
+             //   var fakelongitude = "0";
+             //   var fakelatitude = "0";
                 var log = ex;
-                var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
-                 + fakelatitude + "&dropoff[longitude]=" + fakelongitude + "&dropoff[nickname]="
-                     + MapsAddress + "&dropoff" +
-             "[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
-             "=partner%3A%2F%2Fteam%2F9383\n";
-                Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(uberLaunch333)));
+                //   var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
+                //    + fakelatitude + "&dropoff[longitude]=" + fakelongitude + "&dropoff[nickname]="
+                //        + MapsAddress + "&dropoff" +
+                //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
+                //"=partner%3A%2F%2Fteam%2F9383\n";
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    using (UserDialogs.Instance.Loading("Apple Maps can not " +
+                    	"find that exact address so will use parts of the address instead"))
+                    {
+                        deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                        Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+
+                    }
+                }
 
                 //await DisplayAlert("Lat/Long Error", "Can not find the longitude and latitude of the chosen address " +
                 	//"from google maps", "OK");

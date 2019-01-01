@@ -46,14 +46,16 @@
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
+	<array/>
 	<key>CFBundleVersion</key>
 	<string>4.03</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>True</string>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
 </dict>
 </plist>
