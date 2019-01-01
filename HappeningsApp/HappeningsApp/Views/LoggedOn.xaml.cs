@@ -569,9 +569,9 @@ namespace HappeningsApp.Views
             await loginFB.TranslateTo(0, -1500, 0);
             await googleSignIn.TranslateTo(0, -1500, 0);
             await login.TranslateTo(0, -1500, 0);
-            await labelDismiss.TranslateTo(-500, 0, 0);
-            await labelForgotPassword.TranslateTo(500, 0, 0);
-            await labelLogInWith.TranslateTo(0, 1500, 0);
+            await labelDismiss.TranslateTo(-1500, 0, 0);
+            await labelForgotPassword.TranslateTo(-1500, 0, 0);
+            await labelLogInWith.TranslateTo(0, -1500, 0);
 
 
             //await Task.WhenAll(
@@ -581,15 +581,15 @@ namespace HappeningsApp.Views
                 //);
 
             await Task.WhenAll(
-                        labelDismiss.TranslateTo(0, 0, 500, Easing.SinInOut),
-                 labelForgotPassword.TranslateTo(0, 0, 500, Easing.SinInOut),
-                 labelLogInWith.TranslateTo(0, 0, 500, Easing.SinInOut),
-                 crawlImageStack.TranslateTo(0, 0, 500, Easing.SinInOut),
-             emailStack.TranslateTo(0, 0, 500, Easing.SinInOut),
-             passwordStack.TranslateTo(0, 0, 500, Easing.SinInOut),
-             login.TranslateTo(0, 0, 500, Easing.SinInOut),
-             loginFB.TranslateTo(0, 0, 500, Easing.SinInOut),
-             googleSignIn.TranslateTo(0, 0, 500, Easing.SinInOut)
+                        labelDismiss.TranslateTo(0, 0, 1000, Easing.SinInOut),
+                 labelForgotPassword.TranslateTo(0, 0, 1000, Easing.SinInOut),
+                 labelLogInWith.TranslateTo(0, 0, 1000, Easing.SinInOut),
+                 crawlImageStack.TranslateTo(0, 0, 1000, Easing.SinInOut),
+             emailStack.TranslateTo(0, 0, 1000, Easing.SinInOut),
+             passwordStack.TranslateTo(0, 0, 1000, Easing.SinInOut),
+             login.TranslateTo(0, 0, 1000, Easing.SinInOut),
+             loginFB.TranslateTo(0, 0, 1000, Easing.SinInOut),
+             googleSignIn.TranslateTo(0, 0, 1000, Easing.SinInOut)
 
                 );
             //await crawlImageStack.TranslateTo(0, 0, 2500, Easing.SinInOut);
