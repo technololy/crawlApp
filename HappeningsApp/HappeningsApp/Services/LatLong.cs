@@ -74,7 +74,7 @@ namespace HappeningsApp.Services
         {
             List<Uber> longlat = new List<Uber>();
             Uber uber = new Uber();
-            var loc = await Geocoding.GetLocationsAsync(address).ConfigureAwait(false);
+            var loc = await Xamarin.Essentials.Geocoding.GetLocationsAsync(address).ConfigureAwait(false);
             var point = loc?.FirstOrDefault();
             if (point != null)
             {

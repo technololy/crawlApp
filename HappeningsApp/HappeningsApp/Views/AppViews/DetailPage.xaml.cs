@@ -11,6 +11,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
 using Acr.UserDialogs;
+using Geocoding;
+using Geocoding.Google;
 
 namespace HappeningsApp.Views.AppViews
 {
@@ -137,22 +139,6 @@ namespace HappeningsApp.Views.AppViews
                 {
                     var coordinates = await ll.CalcLongLat(MapsAddress);
 
-                    //var loc = await Geocoding.GetLocationsAsync(MapsAddress).ConfigureAwait(false);
-                    //var point = loc?.FirstOrDefault();
-                    //if (point!=null)
-                    //{
-                    //    var longitude = point.Longitude;
-                    //    var latitude = point.Latitude;
-                    //    var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
-                    //    +latitude+"&dropoff[longitude]="+longitude+"&dropoff[nickname]=" 
-                    //        + MapsAddress + "&dropoff" +
-                    //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
-                    //"=partner%3A%2F%2Fteam%2F9383\n";
-
-                    //Device.OpenUri(new Uri(uberLaunch333));
-
-
-                    //}
                     if (!string.IsNullOrEmpty(coordinates.Latitude.ToString()) &&
                     (!string.IsNullOrEmpty(coordinates.Longitude.ToString())))
                     {
@@ -183,32 +169,29 @@ namespace HappeningsApp.Views.AppViews
               
                 catch (Exception ex)
                 {
-                    //   var fakelongitude = "0";
-                    //   var fakelatitude = "0";
+               
                     var log = ex;
-                    //   var uberLaunch333 = "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
-                    //    + fakelatitude + "&dropoff[longitude]=" + fakelongitude + "&dropoff[nickname]="
-                    //        + MapsAddress + "&dropoff" +
-                    //"[formatted_address]=" + encodedAddress + "&link_text=View%20team%20roster&partner_deeplink" +
-                    //"=partner%3A%2F%2Fteam%2F9383\n";
+                   
                     try
                     {
                         var msg = "Apple Maps can not " +
                          "find that exact address so will use approximate method to find the address instead";
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            //using (UserDialogs.Instance.Loading(msg))
-                            //{
-                            //    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
-                            //    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
-
-                            //}
+                        
 
                             if (await DisplayAlert("", msg, "Ok. Got It", "No, Not interested"))
                             {
                                 using (UserDialogs.Instance.Loading(""))
                                 {
-                                    deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                                    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyBeq5wC6XqvGG73TGPDzqJkx - WFwG6uqx4" };
+                                    IEnumerable<Address> addresses = await geocoder.GeocodeAsync(MapsAddress);
+                                    //Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
+                                
+                                    var lat = addresses.First().Coordinates.Latitude;
+                                    var longitude = addresses.First().Coordinates.Longitude;
+                                    deepLink = uber.GetUberDeepLink(longitude,lat, MapsAddress);
+                                    // deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
                                     Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
 
                                 }
