@@ -27,11 +27,25 @@
                             <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*" />
                                 
                             </Grid.RowDefinitions>
-                            <Label Text="{Binding Message}" Grid.Row="0" FontSize="17" />
-                            <BoxView Grid.Row="1" HeightRequest="1" Color="#C7C7CC" />
+                            <Frame BackgroundColor="White">
+                                <StackLayout>
+                                    <Label Text="{Binding Created,StringFormat='{0:dd MMM, yyyy hh:mm}'}" 
+                                           Grid.Row="0" 
+                                           FontSize="13" 
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+                            <Label Text="{Binding Message}" 
+                                   Grid.Row="1" 
+                                   TextColor="Black"
+                                   FontSize="17" />
+                                </StackLayout>
+                            </Frame>
+                            
+<!--                            <BoxView Grid.Row="1" HeightRequest="0.5" Color="#C7C7CC" />-->
 <!--                <c:ExtendedLabel Text="{Binding Message}" VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand"  />-->
                

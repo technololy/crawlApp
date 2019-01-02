@@ -28,8 +28,7 @@ namespace HappeningsApp.iOS
             global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
-
-       
+            UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;
             CachedImageRenderer.Init();
 
             //google analytics
@@ -57,17 +56,44 @@ namespace HappeningsApp.iOS
 
 
         [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
-        public void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
-            var result = Push.DidReceiveRemoteNotification(userInfo);
-            if (result)
+
+            try
             {
-                completionHandler?.Invoke(UIBackgroundFetchResult.NewData);
+                var result = Push.DidReceiveRemoteNotification(userInfo);
+                if (result)
+                {
+                    completionHandler?.Invoke(UIBackgroundFetchResult.NewData);
+                }
+                else
+                {
+                    completionHandler?.Invoke(UIBackgroundFetchResult.NoData);
+                }
+                //NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+
+                //string alert = string.Empty;
+                //if (aps.ContainsKey(new NSString("alert")))
+                //    alert = (aps[new NSString("alert")] as NSString).ToString();
+
+                //// Show alert
+                //if (!string.IsNullOrEmpty(alert))
+                //{
+                //    var notificationAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
+                //    notificationAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null));
+                //    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(notificationAlert, true, null);
+                //}
+
+                List<int> vs = new List<int>();
+                App.Current.Properties["BadgeOfNotif"] = "";
             }
-            else
+            catch (Exception ex)
             {
-                completionHandler?.Invoke(UIBackgroundFetchResult.NoData);
+                var log = ex;
             }
+
+       
+
         }
     }
 }

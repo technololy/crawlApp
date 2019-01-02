@@ -33,10 +33,10 @@ namespace HappeningsApp
 		{
 			InitializeComponent();
 
-       
 
 
 
+            GetAppInstallID();
 
            //MainPage = new NavigationPage(new Views.LoggedOn());
 
@@ -86,6 +86,20 @@ namespace HappeningsApp
 
         }
 
+        private async void GetAppInstallID()
+        {
+            try
+            {
+                System.Guid? installId = await AppCenter.GetInstallIdAsync();
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+
+        }
+
         private bool IsUserLoggedOn()
         {
             bool log = false;
@@ -123,6 +137,33 @@ namespace HappeningsApp
         }
 		protected override void OnStart ()
 		{
+            // This should come before AppCenter.Start() is called
+            // Avoid duplicate event registration:
+            if (!AppCenter.Configured)
+            {
+                Push.PushNotificationReceived += (sender, e) =>
+                {
+                    // Add the notification message and title to the message
+                    var summary = $"Push notification received:" +
+                                        $"\n\tNotification title: {e.Title}" +
+                                        $"\n\tMessage: {e.Message}";
+
+                    // If there is custom data associated with the notification,
+                    // print the entries
+                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary,"", "OK");
+                    if (e.CustomData != null)
+                    {
+                        summary += "\n\tCustom data:\n";
+                        foreach (var key in e.CustomData.Keys)
+                        {
+                            summary += $"\t\t{key} : {e.CustomData[key]}\n";
+                        }
+                    }
+
+                    // Send the notification summary to debug output
+                    System.Diagnostics.Debug.WriteLine(summary);
+                };
+            }
             // Handle when your app starts
             AppCenter.Start("ios=13747af2-67c5-4d4a-9db1-5f8a7149fc78;" + "android=0fb17a8c-75bc-4fe7-8d26-8aa2aab9a66a;", typeof(Analytics), typeof(Crashes),typeof(Push));
 

@@ -205,9 +205,6 @@ namespace HappeningsApp.Views.AppViews
                     }
                  
 
-                    //await DisplayAlert("Lat/Long Error", "Can not find the longitude and latitude of the chosen address " +
-                    //"from google maps", "OK");
-
                 }
             }
          

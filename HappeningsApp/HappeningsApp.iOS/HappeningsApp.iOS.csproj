@@ -57,7 +57,7 @@
     <CodesignKey>iPhone Distribution: Yemi Gabriel (2EYKMSN9F8)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>lolade</CodesignProvision>
+    <CodesignProvision>profile to test</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -82,6 +82,7 @@
     <Compile Include="Renderers\LineEntryRenderer.cs" />
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Renderers\ScrollViewWithNotBarRenderer.cs" />
+    <Compile Include="Helpers\CountBadge.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -310,5 +311,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\googlecircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

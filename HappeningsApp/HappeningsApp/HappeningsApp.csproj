@@ -102,6 +102,7 @@
     <Folder Include="Views\test\" />
     <Folder Include="Views\Search\" />
     <Folder Include="Views\Messages\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
