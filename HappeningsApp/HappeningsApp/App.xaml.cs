@@ -12,6 +12,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
 using Plugin.Connectivity;
+using Plugin.Badge;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -136,6 +137,11 @@ namespace HappeningsApp
             {
                 Push.PushNotificationReceived += (sender, e) =>
                 {
+                    if (Xamarin.Forms.Device.RuntimePlatform== Xamarin.Forms.Device.iOS)
+                    {
+                        CrossBadge.Current.SetBadge(0);
+                        Application.Current.MainPage.Navigation.PushAsync(new Views.Messages.MessagesLanding());
+                    }
                     // Add the notification message and title to the message
                     var summary = $"Push notification received:" +
                                         $"\n\tNotification title: {e.Title}" +
@@ -143,7 +149,7 @@ namespace HappeningsApp
 
                     // If there is custom data associated with the notification,
                     // print the entries
-                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary, "", "OK");
+                    //Acr.UserDialogs.UserDialogs.Instance.Alert(summary, "", "OK");
                     if (e.CustomData != null)
                     {
                         summary += "\n\tCustom data:\n";
@@ -165,31 +171,7 @@ namespace HappeningsApp
         protected override void OnSleep()
         {
             // Handle when your app sleeps
-            if (!AppCenter.Configured)
-            {
-                Push.PushNotificationReceived += (sender, e) =>
-                {
-                    // Add the notification message and title to the message
-                    var summary = $"Push notification received:" +
-                                        $"\n\tNotification title: {e.Title}" +
-                                        $"\n\tMessage: {e.Message}";
-
-                    // If there is custom data associated with the notification,
-                    // print the entries
-                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary, "", "OK");
-                    if (e.CustomData != null)
-                    {
-                        summary += "\n\tCustom data:\n";
-                        foreach (var key in e.CustomData.Keys)
-                        {
-                            summary += $"\t\t{key} : {e.CustomData[key]}\n";
-                        }
-                    }
-
-                    // Send the notification summary to debug output
-                    System.Diagnostics.Debug.WriteLine(summary);
-                };
-            }
+         
         }
 
         protected override void OnResume()
