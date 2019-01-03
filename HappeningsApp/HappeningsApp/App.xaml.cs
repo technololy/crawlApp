@@ -13,32 +13,25 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
 using Plugin.Connectivity;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HappeningsApp
 {
-	public partial class App : Application
-	{
-		public string username
-        {
-            get;
-            set;
-        }
+    public partial class App : Application
+    {
+        public string username{get;set;}
 
-        public string password
+        public string password{get;set;}
+
+        public App()
         {
-            get;
-            set;
-        }
-		public App ()
-		{
-			InitializeComponent();
+            InitializeComponent();
 
 
 
 
             GetAppInstallID();
 
-           //MainPage = new NavigationPage(new Views.LoggedOn());
+            //MainPage = new NavigationPage(new Views.LoggedOn());
 
             //return;
             if (IsUserLoggedOn())
@@ -111,7 +104,7 @@ namespace HappeningsApp
             catch (Exception ex)
             {
                 var logg = ex;
-               // LogService.LogErrorsNew(error:logg.ToString(),activity:"Exception at app.xaml.cs IsUserLoggedOn()");
+                // LogService.LogErrorsNew(error:logg.ToString(),activity:"Exception at app.xaml.cs IsUserLoggedOn()");
             }
             return log;
 
@@ -125,7 +118,7 @@ namespace HappeningsApp
 
         private void CheckIfUserIsPersistent()
         {
-            
+
         }
 
         public static Page GetMainPage()
@@ -135,8 +128,8 @@ namespace HappeningsApp
             navPage.BarBackgroundColor = Color.Green;
             return navPage;
         }
-		protected override void OnStart ()
-		{
+        protected override void OnStart()
+        {
             // This should come before AppCenter.Start() is called
             // Avoid duplicate event registration:
             if (!AppCenter.Configured)
@@ -150,7 +143,7 @@ namespace HappeningsApp
 
                     // If there is custom data associated with the notification,
                     // print the entries
-                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary,"", "OK");
+                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary, "", "OK");
                     if (e.CustomData != null)
                     {
                         summary += "\n\tCustom data:\n";
@@ -165,18 +158,44 @@ namespace HappeningsApp
                 };
             }
             // Handle when your app starts
-            AppCenter.Start("ios=13747af2-67c5-4d4a-9db1-5f8a7149fc78;" + "android=0fb17a8c-75bc-4fe7-8d26-8aa2aab9a66a;", typeof(Analytics), typeof(Crashes),typeof(Push));
+            AppCenter.Start("ios=13747af2-67c5-4d4a-9db1-5f8a7149fc78;" + "android=0fb17a8c-75bc-4fe7-8d26-8aa2aab9a66a;", typeof(Analytics), typeof(Crashes), typeof(Push));
 
         }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+            if (!AppCenter.Configured)
+            {
+                Push.PushNotificationReceived += (sender, e) =>
+                {
+                    // Add the notification message and title to the message
+                    var summary = $"Push notification received:" +
+                                        $"\n\tNotification title: {e.Title}" +
+                                        $"\n\tMessage: {e.Message}";
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+                    // If there is custom data associated with the notification,
+                    // print the entries
+                    Acr.UserDialogs.UserDialogs.Instance.Alert(summary, "", "OK");
+                    if (e.CustomData != null)
+                    {
+                        summary += "\n\tCustom data:\n";
+                        foreach (var key in e.CustomData.Keys)
+                        {
+                            summary += $"\t\t{key} : {e.CustomData[key]}\n";
+                        }
+                    }
+
+                    // Send the notification summary to debug output
+                    System.Diagnostics.Debug.WriteLine(summary);
+                };
+            }
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+            var log = 1;
+        }
+    }
 }

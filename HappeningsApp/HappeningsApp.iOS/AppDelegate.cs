@@ -28,7 +28,7 @@ namespace HappeningsApp.iOS
             global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
-            UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;
+            //UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;
             CachedImageRenderer.Init();
 
             //google analytics
@@ -54,6 +54,7 @@ namespace HappeningsApp.iOS
             return true;
         }
 
+        
 
         [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)

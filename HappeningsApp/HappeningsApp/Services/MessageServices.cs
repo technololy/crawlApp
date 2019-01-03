@@ -38,7 +38,7 @@ namespace HappeningsApp.Services
                     }
                 }
 
-                return PushRepList;
+                return PushRepList.OrderByDescending(d=>d.Created).ToList();
             }
 
             else

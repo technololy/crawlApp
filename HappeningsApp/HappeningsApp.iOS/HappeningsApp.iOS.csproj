@@ -223,6 +223,9 @@
     <PackageReference Include="Geocoding.Google">
       <Version>4.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Badge.Plugin">
+      <Version>2.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

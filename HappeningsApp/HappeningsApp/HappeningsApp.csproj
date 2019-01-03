@@ -27,6 +27,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Geocoding.Google" Version="4.0.1" />
+    <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
