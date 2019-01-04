@@ -80,12 +80,12 @@ namespace HappeningsApp
 
         }
 
-        private async void GetAppInstallID()
+        private  async Task GetAppInstallID()
         {
             try
             {
                 System.Guid? installId = await AppCenter.GetInstallIdAsync();
-
+                GlobalStaticFields.InstallID = installId;
             }
             catch (Exception ex)
             {
@@ -93,6 +93,8 @@ namespace HappeningsApp
             }
 
         }
+
+  
 
         private bool IsUserLoggedOn()
         {

@@ -10,9 +10,12 @@ namespace HappeningsApp.Services
         public double Latitude { get; set; }
 
 
-        public string GetUberDeepLink(double longi, double lat, string MapsAddress)
+        public string GetUberDeepLink(double longi, double lat, string MapsAddress, string name="")
         {
-
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                MapsAddress = "";
+            }
             return "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]="
             + lat + "&dropoff[longitude]=" + longi + "&dropoff[nickname]="
                 + MapsAddress + "&dropoff" +

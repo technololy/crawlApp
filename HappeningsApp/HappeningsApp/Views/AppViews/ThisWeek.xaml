@@ -57,7 +57,7 @@
                             <Frame Padding="0" Margin="5,0,5,5" 
                                    IsClippedToBounds="true" 
                                    BackgroundColor="Black"  
-                                   HeightRequest="150" 
+                                   HeightRequest="200" 
                                    CornerRadius="0">
                                 <Grid HeightRequest="150">
 

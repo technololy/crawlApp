@@ -1,5 +1,6 @@
 ﻿using HappeningsApp.Services;
 using HappeningsApp.Views.LoginSignUp;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +49,12 @@ namespace HappeningsApp.Views.Settings
                     }
                     break;
                 case "Change Password":
-                    await LogService.LogErrorsNew(activity: "User click change password").ConfigureAwait(true);
-
+                    //await LogService.LogErrorsNew(activity: "User click change password").ConfigureAwait(true);
+                    Analytics.TrackEvent("user changed password", new Dictionary<string, string> {
+                        { "User", GlobalStaticFields.Username },
+                        { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                        { "AppID", GlobalStaticFields.InstallID.ToString() }
+                       });
                     await Navigation.PushAsync(new Settings.ChangePassword(),true);
                     break;
 

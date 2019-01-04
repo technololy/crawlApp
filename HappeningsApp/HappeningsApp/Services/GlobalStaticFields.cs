@@ -23,6 +23,8 @@ namespace HappeningsApp.Services
             set;
         }
 
+        public static Guid? InstallID { get; set; } 
+
         public static ObservableCollection<FavoriteModel> FavList
         {
             get;

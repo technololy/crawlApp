@@ -16,9 +16,9 @@ using Geocoding.Google;
 
 namespace HappeningsApp.Views.AppViews
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DetailPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DetailPage : ContentPage
+    {
         Models.Deals dealz;
         private Activity selected2;
         public string MapsAddress
@@ -30,15 +30,15 @@ namespace HappeningsApp.Views.AppViews
 
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
-            if (await DisplayAlert("Info","Wanna add to a collection?","Yes","No"))
+            if (await DisplayAlert("Info", "Wanna add to a collection?", "Yes", "No"))
             {
-               await DisplayAlert("", "Done","OK");
+                await DisplayAlert("", "Done", "OK");
             }
         }
 
-		public DetailPage ()
-		{
-			InitializeComponent ();
+        public DetailPage()
+        {
+            InitializeComponent();
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
         }
 
@@ -48,17 +48,20 @@ namespace HappeningsApp.Views.AppViews
             dealz = new Models.Deals();
             dealz = myDeals;
             MapsAddress = myDeals.Owner_Location;
+            hostOrEventName = myDeals.Name;
             BindingContext = myDeals;
-      
+
         }
 
         public DetailPage(HappeningsApp.Models.GetAll2.Deal myDeals)
         {
             InitializeComponent();
-          
-            BindingContext = myDeals;
             MapsAddress = myDeals.Owner_Location;
-         
+            hostOrEventName = myDeals.Name;
+            BindingContext = myDeals;
+
+
+
         }
 
         public DetailPage(Favourite myDeals)
@@ -83,6 +86,8 @@ namespace HappeningsApp.Views.AppViews
             this.selected2 = selected2;
             BindingContext = selected2;
             MapsAddress = selected2.Owner_Location;
+            hostOrEventName = selected2.Name;
+
 
         }
 
@@ -95,7 +100,7 @@ namespace HappeningsApp.Views.AppViews
         {
             try
             {
-               var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
+                var MapsAddressPlus = AddPlusToMapAddress(MapsAddress);
                 var uri = new Uri($"http://maps.google.com/maps?daddr={MapsAddressPlus}&directionsmode=transit");
                 Device.OpenUri(uri);
             }
@@ -167,19 +172,19 @@ namespace HappeningsApp.Views.AppViews
                     await DisplayAlert("Faild", pEx.Message, "OK");
                 }
 
-              
+
                 catch (Exception ex)
                 {
-               
+
                     var log = ex;
-                   
+
                     try
                     {
                         var msg = "Navigating to uber. " +
                          "Please take note of the destination address";
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                        
+
 
                             if (await DisplayAlert("", msg, "Ok. Got It", "No, Not interested"))
                             {
@@ -188,12 +193,20 @@ namespace HappeningsApp.Views.AppViews
                                     IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyBeq5wC6XqvGG73TGPDzqJkx - WFwG6uqx4" };
                                     IEnumerable<Address> addresses = await geocoder.GeocodeAsync(MapsAddress);
                                     //Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-                                
-                                    var lat = addresses.First().Coordinates.Latitude;
-                                    var longitude = addresses.First().Coordinates.Longitude;
-                                    deepLink = uber.GetUberDeepLink(longitude,lat, MapsAddress);
-                                    // deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
-                                    Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+                                    if (addresses!=null)
+                                    {
+                                        var lat = addresses.First().Coordinates.Latitude;
+                                        var longitude = addresses.First().Coordinates.Longitude;
+                                        deepLink = uber.GetUberDeepLink(longitude, lat, MapsAddress,hostOrEventName);
+                                        // deepLink = await ll.ReturnUberDeepLinkNonPrecise(MapsAddress);
+                                        Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(deepLink)));
+                                    }
+                                    else
+                                    {
+                                        await DisplayAlert("", "Can not get longitude and latitude. Manually search uber", "OK");
+
+                                    }
+
 
                                 }
                             }
@@ -204,11 +217,11 @@ namespace HappeningsApp.Views.AppViews
                         await DisplayAlert("", "Error occured", "OK");
                         var logg = exx;
                     }
-                 
+
 
                 }
             }
-         
+
         }
     }
 }
