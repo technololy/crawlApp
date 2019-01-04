@@ -13,7 +13,7 @@ using Plugin.CurrentActivity;
 
 namespace HappeningsApp.Droid
 {
-    [Activity(Label = "HappeningsApp", Icon = "@drawable/Crawl_white_blue", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Crawl", Icon = "@drawable/crawl_lettera_box_black", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

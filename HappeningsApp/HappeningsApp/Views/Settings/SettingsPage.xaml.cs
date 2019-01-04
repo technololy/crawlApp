@@ -48,7 +48,7 @@ namespace HappeningsApp.Views.Settings
                     }
                     break;
                 case "Change Password":
-                    await LogService.LogErrorsNew(activity: "User click change password");
+                    await LogService.LogErrorsNew(activity: "User click change password").ConfigureAwait(true);
 
                     await Navigation.PushAsync(new Settings.ChangePassword(),true);
                     break;
@@ -66,7 +66,7 @@ namespace HappeningsApp.Views.Settings
                     // await Navigation.PushAsync(new Settings.ChangePassword(), true);
                     break;
                 case "About Crawl":
-                    await LogService.LogErrorsNew(activity: "User click About Crawl");
+                    //await LogService.LogErrorsNew(activity: "User click About Crawl");
 
                     // await Navigation.PushAsync(new Settings.ChangePassword(), true);
                     break;

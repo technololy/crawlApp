@@ -194,6 +194,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
     <AndroidResource Include="Resources\drawable\favorites.jpg" />
     <AndroidResource Include="Resources\drawable\messages.jpg" />
+    <AndroidResource Include="Resources\drawable\Crawl_LetterA_BOX_BLACK.png" />
+    <AndroidResource Include="Resources\drawable\splashPageDroid.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

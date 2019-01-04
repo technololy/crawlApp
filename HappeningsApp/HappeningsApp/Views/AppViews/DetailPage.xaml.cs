@@ -26,6 +26,7 @@ namespace HappeningsApp.Views.AppViews
             get;
             set;
         }
+        public string hostOrEventName { get; set; }
 
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
@@ -174,8 +175,8 @@ namespace HappeningsApp.Views.AppViews
                    
                     try
                     {
-                        var msg = "Apple Maps can not " +
-                         "find that exact address so will use approximate method to find the address instead";
+                        var msg = "Navigating to uber. " +
+                         "Please take note of the destination address";
                         if (Device.RuntimePlatform == Device.iOS)
                         {
                         

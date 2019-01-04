@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using HappeningsApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -53,7 +53,8 @@ namespace HappeningsApp.Views.Settings
 
 
                 var obj = sender as ChangePassword;
-                email = txtUsername.Text.Trim();
+                    //email = txtUsername.Text.Trim();
+                    email = GlobalStaticFields.Username;
                 CurPass = txtCurrentPassword.Text.Trim();
                 NewPass = txtNewPassword.Text.Trim();
                 ConfirmNewPass = txtConfirmNewPassword.Text.Trim();
