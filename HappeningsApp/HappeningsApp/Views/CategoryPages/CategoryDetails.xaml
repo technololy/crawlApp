@@ -37,9 +37,8 @@
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
 
-                                        <RowDefinition Height="60*" />
-                                        <RowDefinition Height="20*" />
-                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="*" />
+                                     
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
                                     <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
@@ -49,10 +48,12 @@
                                         </Image.GestureRecognizers>
                                     </Image>
 
-
-                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
-                                </Grid>
+                                    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                                         <Label Text="{Binding Name}"  TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.7" TextColor="White" />
+                               
+                                    </StackLayout>
+                                    </Grid>
 
 
                             </Frame>

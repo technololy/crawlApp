@@ -15,6 +15,7 @@ namespace HappeningsApp.Models
     {
         public int Id { get; set; }
         public string Message { get; set; }
+        public string Picture { get; set; }
         public string Createdby { get; set; }
         public string Status { get; set; }
         public DateTime Created { get; set; }

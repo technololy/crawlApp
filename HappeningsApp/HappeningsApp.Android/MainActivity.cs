@@ -10,6 +10,7 @@ using DLToolkit.Forms.Controls;
 using FFImageLoading.Forms.Droid;
 using Plugin.GoogleAnalytics;
 using Plugin.CurrentActivity;
+using CarouselView.FormsPlugin.Android;
 
 namespace HappeningsApp.Droid
 {
@@ -31,6 +32,7 @@ namespace HappeningsApp.Droid
 
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            CarouselViewRenderer.Init();
 
             FlowListView.Init();
             Acr.UserDialogs.UserDialogs.Init(this);

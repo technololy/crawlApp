@@ -53,7 +53,6 @@ namespace HappeningsApp
                 {
                     MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
 
-                    //LogService.LogErrorsNew(error: ex.ToString(), activity: "Exception at app.xaml.cs loggin on");
 
                 }
 
@@ -144,6 +143,8 @@ namespace HappeningsApp
                         CrossBadge.Current.SetBadge(0);
                         Application.Current.MainPage.Navigation.PushAsync(new Views.Messages.MessagesLanding());
                     }
+
+//##region push_notification_display_segment
                     //// Add the notification message and title to the message
                     //var summary = $"Push notification received:" +
                     //                    $"\n\tNotification title: {e.Title}" +
@@ -163,6 +164,7 @@ namespace HappeningsApp
 
                     //// Send the notification summary to debug output
                     //System.Diagnostics.Debug.WriteLine(summary);
+//#endregion
                 };
             }
             // Handle when your app starts

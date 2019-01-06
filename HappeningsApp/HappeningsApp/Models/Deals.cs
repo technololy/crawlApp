@@ -24,6 +24,8 @@ namespace HappeningsApp.Models
         public string Owner { get; set; }
         public DateTime Expiration_Date { get; set; }
         public string ImagePath { get; set; }
+        public List<Picture> Pictures { get; set; }
+        public Hostopeninghours Hostopeninghours { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public string User_Id { get; set; }
@@ -59,5 +61,16 @@ namespace HappeningsApp.Models
     {
         public string Message { get; set; }
         public ObservableCollection<Deals> Deals { get; set; }
+    }
+
+    public class Picture
+    {
+        public string picture { get; set; }
+    }
+    public class Hostopeninghours
+    {
+        public string Days { get; set; }
+        public string OpeningTime { get; set; }
+        public string ClosingTime { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace HappeningsApp.Views.AppViews
             InitializeComponent();
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
         }
-
+        //from dealslist
         public DetailPage(HappeningsApp.Models.Deals myDeals)
         {
             InitializeComponent();
@@ -49,6 +49,19 @@ namespace HappeningsApp.Views.AppViews
             dealz = myDeals;
             MapsAddress = myDeals.Owner_Location;
             hostOrEventName = myDeals.Name;
+            if (dealz?.Pictures?.Count>0)
+            {
+                Carousel.IsVisible = true;
+                SinglePicture.IsVisible = false;
+                //Carousel.ItemsSource = dealz.Pictures;
+            }
+            else
+            {
+                Carousel.IsVisible = false;
+                SinglePicture.IsVisible = true;
+
+
+            }
             BindingContext = myDeals;
 
         }
@@ -63,7 +76,7 @@ namespace HappeningsApp.Views.AppViews
 
 
         }
-
+        //from favorites
         public DetailPage(Favourite myDeals)
         {
             InitializeComponent();
@@ -139,7 +152,7 @@ namespace HappeningsApp.Views.AppViews
                     break;
             }
 
-            using (Acr.UserDialogs.UserDialogs.Instance.Loading($"Searching {map} maps"))
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading("Loading...."))
             {
                 try
                 {

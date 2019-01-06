@@ -7,6 +7,8 @@ using HappeningsApp.OAuth;
 using Plugin.GoogleAnalytics;
 using UIKit;
 using Microsoft.AppCenter.Push;
+using CarouselView.FormsPlugin.iOS;
+
 namespace HappeningsApp.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -28,7 +30,8 @@ namespace HappeningsApp.iOS
             global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
-            //UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;
+          
+            //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
             CachedImageRenderer.Init();
 
             //google analytics
@@ -37,6 +40,7 @@ namespace HappeningsApp.iOS
             //GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
             //GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
             //GoogleAnalytics.Current.InitTracker();
+            CarouselViewRenderer.Init();
 
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
