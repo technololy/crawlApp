@@ -8,12 +8,22 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Frame Grid.Row="0" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
+                <Frame Grid.Row="0"  x:Name="SinglePicture"  BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
-                    <forms:CachedImage x:Name="SinglePicture" RetryCount="3" RetryDelay="1000" Source="{Binding ImagePath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <forms:CachedImage RetryCount="3" RetryDelay="1000" Source="{Binding ImagePath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                     
-                    <carousel:CarouselViewControl x:Name="Carousel"
+                
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                
+                 <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
+                    <!--  <Image  Aspect="Fill"  
+                            Source="{Binding ImagePath}" />-->
+                    
+                    <carousel:CarouselViewControl 
                                             ShowIndicators="true"
                                                   IndicatorsShape="Circle"
                                                   IndicatorsTintColor="Purple"
