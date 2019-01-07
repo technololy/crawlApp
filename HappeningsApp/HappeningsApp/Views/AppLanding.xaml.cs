@@ -137,7 +137,7 @@ namespace HappeningsApp.Views
             var AfterAWeek = startOfWeek.AddDays(7);
             var sevenDaysAfter = DateTime.Now.AddDays(7);
             var grp = from h in ivm?.GgetAll
-                      where h.Expiration_Date.Date >= startOfWeek && h.Expiration_Date.Date <= AfterAWeek
+                      where h?.Expiration_Date.Date >= startOfWeek && h?.Expiration_Date.Date <= AfterAWeek
 
                       orderby h?.Expiration_Date
                     group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
