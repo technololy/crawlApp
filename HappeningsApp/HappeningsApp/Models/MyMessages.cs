@@ -20,5 +20,7 @@ namespace HappeningsApp.Models
         public string Status { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
+        public bool IsImageEnabled { get; set; }
+
     }
 }

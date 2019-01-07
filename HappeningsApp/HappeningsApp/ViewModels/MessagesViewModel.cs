@@ -11,6 +11,7 @@ namespace HappeningsApp.ViewModels
 {
     public class MessagesViewModel: INotifyPropertyChanged
     {
+        public bool IsImageEnabled { get; set; }
         public ObservableCollection<Pushresp> myMessages { get;set;}
         private ObservableCollection<Pushresp> _Notif;
 
@@ -49,7 +50,18 @@ namespace HappeningsApp.ViewModels
                     //item.Pushrespx;
                     myMessages = new ObservableCollection<Pushresp>(msg);
                     Notif = new ObservableCollection<Pushresp>(msg);
-
+                    foreach (var item in Notif)
+                    {
+                        if (string.IsNullOrEmpty(item?.Picture))
+                        {
+                            item.IsImageEnabled = false;
+                        }
+                        else
+                        {
+                            item.IsImageEnabled = true;
+                        }
+                        
+                    }
 
 
 

@@ -21,14 +21,16 @@
                             </Grid.RowDefinitions>
                             <Frame BackgroundColor="White">
                                 <StackLayout>
-                                     <ff:CachedImage Grid.Row="0" 
+                                    <Label Text="{Binding Created,StringFormat='{0:dd MMM, yyyy hh:mm}'}" Grid.Row="0" FontSize="13" TextColor="Black" FontAttributes="Bold" />
+                                     
+                                    <ff:CachedImage Grid.Row="1" 
                                             HeightRequest="200"  
                                             Aspect="AspectFill" 
                                             Source="{Binding Picture}" 
+                                                     IsVisible="{Binding IsImageEnabled}"
                                             Margin="1,5,1,5"
                                             HorizontalOptions="FillAndExpand" 
                                             VerticalOptions="FillAndExpand" />
-                                    <Label Text="{Binding Created,StringFormat='{0:dd MMM, yyyy hh:mm}'}" Grid.Row="1" FontSize="13" TextColor="Black" FontAttributes="Bold" />
                                     <Label Text="{Binding Message}" Grid.Row="2" TextColor="Black" FontSize="17" />
                                 </StackLayout>
                             </Frame>
