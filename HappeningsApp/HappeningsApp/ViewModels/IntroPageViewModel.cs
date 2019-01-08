@@ -84,7 +84,7 @@ namespace HappeningsApp.ViewModels
         {
             GetAllService ds = new GetAllService();
 
-            var all = await ds.GetAll2();
+            var all =  ds.GetAll2().Result;
             GgetAll = new ObservableCollection<GetAll2.Deal>(all);
             GlobalStaticFields.GetAll = GgetAll;
 

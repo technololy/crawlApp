@@ -26,6 +26,7 @@ namespace HappeningsApp.Views
         public string accessToken { get; set; }
         public string SocialMedia { get; set; }
         LoginViewModel lvm = new LoginViewModel();
+        //LoginViewModel lvm = new LoginViewModel(Application.Current.MainPage.Navigation);
 
         #region
         //async void WbView_Navigated(object sender, WebNavigatedEventArgs e)
@@ -236,29 +237,38 @@ namespace HappeningsApp.Views
         #endregion
         async void Logon_Tapped(object sender, System.EventArgs e)
         {
-            if (!CrossConnectivity.Current.IsConnected)
+            try
             {
-                await DisplayAlert("Hi there", "It appears you have no internet access", "OK");
-                return;
+                if (!CrossConnectivity.Current.IsConnected)
+                {
+                    await DisplayAlert("Hi there", "It appears you have no internet access", "OK");
+                    return;
+                }
+                using (UserDialogs.Instance.Loading(""))
+                {
+                    GlobalStaticFields.Username = lvm.User.Username;
+                    //lvm.User.Password = "Qwe123!";
+                    var resp = await lvm.GetTokenFromAPI();
+                    if (resp)
+                    {
+                        // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
+
+                        lvm.PersistUserDetails();
+                        await Navigation.PushAsync(new AppLanding());
+
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", lvm.RegisterationError + "\n Please try again", "OK");
+                    }
+                }
             }
-            using (UserDialogs.Instance.Loading(""))
+            catch (Exception ex)
             {
-                GlobalStaticFields.Username = lvm.User.Username;
-                //lvm.User.Password = "Qwe123!";
-                var resp = await lvm.GetTokenFromAPI();
-                if (resp)
-                {
-                    // await Task.Run(() => (GlobalStaticFields.IntroModel = new IntroPageViewModel()));
-
-                    lvm.PersistUserDetails();
-                    await Navigation.PushAsync(new AppLanding());
-
-                }
-                else
-                {
-                    await DisplayAlert("Error", lvm.RegisterationError+"\n Please try again", "OK");
-                }
+                await DisplayAlert("", "Error Navigation", "OK");
+                var log = ex;
             }
+         
         }
 
         void Handle_Completed(object sender, System.EventArgs e)
