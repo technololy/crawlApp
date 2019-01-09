@@ -23,16 +23,25 @@ namespace HappeningsApp.Views
         IntroPageViewModel ivm;
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
        public AppLanding ()
 		{
 			InitializeComponent();
-            ivm = new IntroPageViewModel();
-            ivm.GetDeals();
-            ivm.GetCategories();
-            ivm.GetAll();
-            Deals_Tapped(this, null);
-            ShowSurVeyOne();
-         
+            try
+            {
+                ivm = new IntroPageViewModel();
+                ivm.GetDeals();
+                ivm.GetCategories();
+                ivm.GetAll();
+                Deals_Tapped(this, null);
+                ShowSurVeyOne();
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+          
           
 		}
 
@@ -93,7 +102,7 @@ namespace HappeningsApp.Views
                 bxVwCat.BackgroundColor = Color.Black;
                 bxVwCol.BackgroundColor = Color.Black;
                 bxVwthisWeek.BackgroundColor = Color.Black;
-                ivm.DealsfromAPI = GlobalStaticFields.dealsfromAPI;
+                ivm.AllDeals = GlobalStaticFields.AllDeals;
                 BindingContext = ivm;
                 await LogService.LogErrorsNew(activity: "User clicked on Deals Tab");
             }
@@ -117,9 +126,9 @@ namespace HappeningsApp.Views
                 bxVwCol.BackgroundColor = Color.Black;
                 bxVwDeals.BackgroundColor = Color.Black;
 
-                var groupByDate = GroupListByDate();
-                GlobalStaticFields.GetAllGrouping = groupByDate;
-                BindingContext = groupByDate;
+                var groupEveryByDate = GroupListByDate();
+                GlobalStaticFields.GetEveryGrouping = groupEveryByDate;
+                BindingContext = groupEveryByDate;
                 await LogService.LogErrorsNew(activity: "User clicked on This Week Tab");
             }
             catch (Exception ex)
@@ -130,7 +139,27 @@ namespace HappeningsApp.Views
 
         }
 
-        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
+        {
+            //var todaysDate = DateTime.Now;
+            //DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
+            //var AfterAWeek = startOfWeek.AddDays(7);
+            //var sevenDaysAfter = DateTime.Now.AddDays(7);
+            //var grp = from h in ivm?.GetEvery
+            //          where h.Expiration_Date >= startOfWeek && h?.Expiration_Date.Date <= AfterAWeek
+
+            //          orderby h?.Expiration_Date
+            //        group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+            //        select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+            //GetEveryGrouped.Clear();
+            //foreach (var g in grp)
+            //{
+            //    GetEveryGrouped.Add(g);
+            //}
+            return GetEveryGrouped;
+        }
+
+        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDateOriginal()
         {
             var todaysDate = DateTime.Now;
             DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
@@ -140,8 +169,8 @@ namespace HappeningsApp.Views
                       where h?.Expiration_Date.Date >= startOfWeek && h?.Expiration_Date.Date <= AfterAWeek
 
                       orderby h?.Expiration_Date
-                    group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
-                    select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                      group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                      select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
             GetAllGrouped.Clear();
             foreach (var g in grp)
             {

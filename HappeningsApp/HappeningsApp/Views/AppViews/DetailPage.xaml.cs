@@ -20,6 +20,7 @@ namespace HappeningsApp.Views.AppViews
     public partial class DetailPage : ContentPage
     {
         Models.Deals dealz;
+        NewDealsModel.Deal AllNewDeals;
         private Activity selected2;
         public string MapsAddress
         {
@@ -42,6 +43,7 @@ namespace HappeningsApp.Views.AppViews
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = "#182C61";
         }
         //from dealslist
+        //this is old and will be discarded after stability
         public DetailPage(HappeningsApp.Models.Deals myDeals)
         {
             InitializeComponent();
@@ -65,6 +67,33 @@ namespace HappeningsApp.Views.AppViews
             BindingContext = myDeals;
 
         }
+
+        public DetailPage(HappeningsApp.Models.NewDealsModel.Deal AllDeals)
+        {
+            InitializeComponent();
+         
+            AllNewDeals = new NewDealsModel.Deal();
+         
+            AllNewDeals = AllDeals;
+            MapsAddress = AllNewDeals.Owner_Location;
+            hostOrEventName = AllNewDeals.Name;
+            if (dealz?.Pictures?.Count > 0)
+            {
+                Carousel.IsVisible = true;
+                SinglePicture.IsVisible = false;
+                //Carousel.ItemsSource = dealz.Pictures;
+            }
+            else
+            {
+                Carousel.IsVisible = false;
+                SinglePicture.IsVisible = true;
+
+
+            }
+            BindingContext = AllNewDeals;
+
+        }
+
 
         public DetailPage(HappeningsApp.Models.GetAll2.Deal myDeals)
         {

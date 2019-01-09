@@ -79,7 +79,7 @@ namespace HappeningsApp.Views.Search
                 md.Owner = m?.Owner;
                 md.Modified = m.Modified;
                  md.Owner_Id = Convert.ToInt32(m?.Owner_Id);
-                md.type = m?.type;
+                //md.type = m?.type;
                 md.User_Id = m?.User_Id?.ToString();
 
                 

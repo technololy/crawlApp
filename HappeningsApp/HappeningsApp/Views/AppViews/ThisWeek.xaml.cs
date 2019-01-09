@@ -25,6 +25,7 @@ namespace HappeningsApp.Views.AppViews
         public ThisWeek ()
 		{
 			InitializeComponent ();
+            RefreshListView();
             ivm = new IntroPageViewModel();
              days = new List<string>() { "ALL", "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN" };
             segment.Children = days;

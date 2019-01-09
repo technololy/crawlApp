@@ -13,7 +13,35 @@ namespace HappeningsApp.Services
         {
         }
 
-        public async Task<ObservableCollection<Deals>> GetDeals(string id="")
+        public async Task<ObservableCollection<NewDealsModel.Deal>> GetDeals(string id = "")
+        {
+
+            ObservableCollection<NewDealsModel.Deal> listOfAllDeals = new ObservableCollection<NewDealsModel.Deal>();
+
+            var respo = await APIService.Get("api/deals");
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+               var dealls = JsonConvert.DeserializeObject<NewDealsModel.RootObject>(content);
+
+                //deal = JsonConvert.DeserializeObject<DealRootObject>(content);
+                if (dealls.Message.ToLower().Contains("success"))
+                {
+                    listOfAllDeals = dealls.Deals;
+                }
+
+
+
+            }
+            else
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+            }
+            return listOfAllDeals;
+        }
+        public async Task<ObservableCollection<Deals>> GetDealsOriginal(string id="")
         {
             DealRootObject deal = new DealRootObject();
             ObservableCollection<Deals> listofdeals = new ObservableCollection<Deals>();

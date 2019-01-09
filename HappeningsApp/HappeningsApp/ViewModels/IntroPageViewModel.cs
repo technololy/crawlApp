@@ -14,6 +14,7 @@ namespace HappeningsApp.ViewModels
     public class IntroPageViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Deals> _dealsfromAPI;
+        private ObservableCollection<NewDealsModel.Deal> _allDeals;
         private ObservableCollection<Category> _categfromAPI;
 
         public bool IsEnabled { get; set; } = true;
@@ -25,6 +26,19 @@ namespace HappeningsApp.ViewModels
                 if (_dealsfromAPI != value)
                 {
                     _dealsfromAPI = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public ObservableCollection<NewDealsModel.Deal> AllDeals
+        {
+            get => _allDeals;
+            set
+            {
+                if (_allDeals != value)
+                {
+                    _allDeals = value;
                     OnPropertyChanged();
                 }
             }
@@ -45,6 +59,7 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<FavoriteModel> Favs { get; set; }
         public ObservableCollection<Collections> Coollections { get; set; }
         public ObservableCollection<GetAll2.Deal> GgetAll { get; set; }
+        public ObservableCollection<NewDealsModel.Deal> GetEvery { get; set; }
 
         public IntroPageViewModel()
         {
@@ -59,16 +74,24 @@ namespace HappeningsApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        public async Task<ObservableCollection<Deals>> GetDeals()
+        public async Task<ObservableCollection<NewDealsModel.Deal>> GetDeals()
         {
             DealsService ds = new DealsService();
 
-            DealsfromAPI = await ds.GetDeals();
+            AllDeals = await ds.GetDeals();
+            GlobalStaticFields.AllDeals = AllDeals;
+            return AllDeals;
+
+        }
+        public async Task<ObservableCollection<Deals>> GetDealsOriginal()
+        {
+            DealsService ds = new DealsService();
+
+            DealsfromAPI = await ds.GetDealsOriginal();
             GlobalStaticFields.dealsfromAPI = DealsfromAPI;
             return DealsfromAPI;
 
         }
-
 
         public async Task GetCategories()
         {
@@ -84,12 +107,20 @@ namespace HappeningsApp.ViewModels
         {
             GetAllService ds = new GetAllService();
 
-            var all =  ds.GetAll2().Result;
+            var all = await ds.GetAll2();
+            GetEvery = new ObservableCollection<NewDealsModel.Deal>(all);
+            GlobalStaticFields.GetEvery = GetEvery;
+
+        }
+        public async Task GetAllOriginal()
+        {
+            GetAllService ds = new GetAllService();
+
+            var all = await ds.GetAll2Original();
             GgetAll = new ObservableCollection<GetAll2.Deal>(all);
             GlobalStaticFields.GetAll = GgetAll;
 
         }
-
 
         //private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
         //{

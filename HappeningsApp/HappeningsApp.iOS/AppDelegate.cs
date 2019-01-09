@@ -30,8 +30,9 @@ namespace HappeningsApp.iOS
             global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
-          
+
             //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
+              UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
             CachedImageRenderer.Init();
 
             //google analytics

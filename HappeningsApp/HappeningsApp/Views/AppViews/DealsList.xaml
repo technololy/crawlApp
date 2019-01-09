@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.AppViews.DealsList" BackgroundColor="#000015" Padding="5,10,5,40" xmlns:c="clr-namespace:HappeningsApp.Custom" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
     <ContentPage.Content>
         <Grid x:Name="mainLayout">
-            <ListView ItemsSource="{Binding DealsfromAPI}" x:Name="dealsListview" SeparatorVisibility="None" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshDealsList}" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+            <ListView ItemsSource="{Binding AllDeals}" x:Name="dealsListview" SeparatorVisibility="None" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshDealsList}" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
