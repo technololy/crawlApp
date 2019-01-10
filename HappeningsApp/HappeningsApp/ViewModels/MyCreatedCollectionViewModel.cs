@@ -15,6 +15,8 @@ namespace HappeningsApp.ViewModels
     {
         public bool IsEnabled { get; set; }
         public bool WasNewFavAddedOk { get; set; } = false;
+        public NewCategoryDetailModel.Deal CurrentlySelectedFavorite { get; set; }
+        public NewDealsModel.Deal CurrentlySelectedFavoriteDeal { get; set; }
 
         public string NewCollectionName
         {
@@ -121,8 +123,13 @@ namespace HappeningsApp.ViewModels
             {
                 using (UserDialogs.Instance.Loading("Adding to " + ctl.Name))
                 {
-                    var cs = this.CurrentlySelectedFav;
-                    ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id, ImageURL = CurrentlySelectedFav.ImagePath });
+                    var cs = this.CurrentlySelectedFavorite;
+                    ctl.Details.Add(new Favourite 
+                    { Name = CurrentlySelectedFavorite.Name, 
+                    Address = CurrentlySelectedFavorite.Owner_Location, 
+                    Description = CurrentlySelectedFavorite.Details, 
+                    //Id = CurrentlySelectedFavorite.Id, 
+                    ImageURL = CurrentlySelectedFavorite.ImagePath });
                     CollectionService cserv = new CollectionService();
                     var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
                     if (isCollAdded)

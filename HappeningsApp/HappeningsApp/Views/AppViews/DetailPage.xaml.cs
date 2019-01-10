@@ -21,6 +21,7 @@ namespace HappeningsApp.Views.AppViews
     {
         Models.Deals dealz;
         NewDealsModel.Deal AllNewDeals;
+        NewCategoryDetailModel.Deal AllCategoryListing;
         private Activity selected2;
         public string MapsAddress
         {
@@ -91,6 +92,33 @@ namespace HappeningsApp.Views.AppViews
 
             }
             BindingContext = AllNewDeals;
+
+        }
+
+
+        public DetailPage(HappeningsApp.Models.NewCategoryDetailModel.Deal AllCategory)
+        {
+            InitializeComponent();
+
+            AllCategoryListing = new NewCategoryDetailModel.Deal();
+
+            AllCategoryListing = AllCategory;
+            MapsAddress = AllCategoryListing.Owner_Location;
+            hostOrEventName = AllCategoryListing.Name;
+            if (dealz?.Pictures?.Count > 0)
+            {
+                Carousel.IsVisible = true;
+                SinglePicture.IsVisible = false;
+                //Carousel.ItemsSource = dealz.Pictures;
+            }
+            else
+            {
+                Carousel.IsVisible = false;
+                SinglePicture.IsVisible = true;
+
+
+            }
+            BindingContext = AllCategoryListing;
 
         }
 

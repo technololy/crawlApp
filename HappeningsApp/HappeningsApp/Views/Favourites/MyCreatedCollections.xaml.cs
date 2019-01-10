@@ -23,20 +23,36 @@ namespace HappeningsApp.Views.Favourites
             BindingContext = mcvm ;
         }
 
-        public MyCreatedCollections(Deals deals)
+        public MyCreatedCollections(NewDealsModel.Deal deals)
         {
             InitializeComponent();
 
             mcvm = new MyCreatedCollectionViewModel
             {
                 IsEnabled = true,
-                CurrentlySelectedFav = deals
+                CurrentlySelectedFavoriteDeal = deals
             };
                 mcvm.GetListCollection();
 
                 BindingContext = mcvm;
 
               
+        }
+
+        public MyCreatedCollections(NewCategoryDetailModel.Deal deals)
+        {
+            InitializeComponent();
+
+            mcvm = new MyCreatedCollectionViewModel
+            {
+                IsEnabled = true,
+                CurrentlySelectedFavorite = deals
+            };
+            mcvm.GetListCollection();
+
+            BindingContext = mcvm;
+
+
         }
 
 

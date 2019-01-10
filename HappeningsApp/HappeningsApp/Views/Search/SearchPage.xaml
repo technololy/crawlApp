@@ -51,9 +51,9 @@
                             <Frame Padding="0" Margin="5,0,5,5" 
                                    IsClippedToBounds="true" 
                                    BackgroundColor="Black"  
-                                   HeightRequest="150" 
+                                   HeightRequest="250" 
                                    CornerRadius="0">
-                                <Grid HeightRequest="150">
+                                <Grid HeightRequest="250">
 
 
                                     <Grid.RowDefinitions>
@@ -64,7 +64,7 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
                                     <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                               <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>

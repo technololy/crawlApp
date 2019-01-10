@@ -102,11 +102,40 @@ namespace HappeningsApp.Services
         }
 
 
-        public async Task<ObservableCollection<Deals>> GetAllByCategoryID2(int id = 0)
+        public async Task<ObservableCollection<NewCategoryDetailModel.Deal>> GetAllByCategoryID2(int id = 0)
+        {
+            ObservableCollection<NewCategoryDetailModel.Deal> deals = new ObservableCollection<NewCategoryDetailModel.Deal>();
+            DealRootObject dealRootObject = new DealRootObject();
+             var respo = await APIService.Get($"api/all/getallbycategoryid2?id={id}");
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+              var  categoryDetail = JsonConvert.DeserializeObject<NewCategoryDetailModel.RootObject>(content);
+                if (categoryDetail.Message.Contains("Success"))
+                {
+                    //ActvRootList = JsonConvert.DeserializeObject<ObservableCollection<Activity_RootObject>>(content);
+
+                    deals = categoryDetail.Deals;
+                }
+
+
+
+
+            }
+            else
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+            }
+            return deals;
+        }
+
+        public async Task<ObservableCollection<Deals>> GetAllByCategoryID2Original(int id = 0)
         {
             ObservableCollection<Deals> deals = new ObservableCollection<Deals>();
             DealRootObject dealRootObject = new DealRootObject();
-             var respo = await APIService.Get($"api/all/getallbycategoryid2?id={id}");
+            var respo = await APIService.Get($"api/all/getallbycategoryid2?id={id}");
             if (respo.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var content = await respo.Content.ReadAsStringAsync();
@@ -130,7 +159,5 @@ namespace HappeningsApp.Services
             }
             return deals;
         }
-
-
     }
 }

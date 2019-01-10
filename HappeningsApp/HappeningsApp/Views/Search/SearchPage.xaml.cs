@@ -25,13 +25,16 @@ namespace HappeningsApp.Views.Search
             if (string.IsNullOrEmpty(keyword))
             {
                 dealsListview.IsVisible = false;
+                if (GlobalStaticFields.GetEvery!=null)
+                {
+                    dealsListview.ItemsSource = GlobalStaticFields.GetEvery;
 
-                dealsListview.ItemsSource = GlobalStaticFields.GetAll;
+                }
                 return;
             }
             dealsListview.IsVisible = keyword.Length > 0 ? true : false;
 
-            dealsListview.ItemsSource = GlobalStaticFields.GetAll.Where(c => c.Name.ToLower().Contains(keyword) ||
+            dealsListview.ItemsSource = GlobalStaticFields.GetEvery.Where(c => c.Name.ToLower().Contains(keyword) ||
                                                                         c.Owner_Location.ToLower().Contains(keyword) ||
                                                                         c.Details.ToLower().Contains(keyword)
                                                                        );
@@ -43,7 +46,7 @@ namespace HappeningsApp.Views.Search
             {
                 return;
             }
-            var selected = dealsListview.SelectedItem as HappeningsApp.Models.GetAll2.Deal;
+            var selected = dealsListview.SelectedItem as NewDealsModel.Deal;
             if (selected != null)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
@@ -64,12 +67,12 @@ namespace HappeningsApp.Views.Search
             {
 
                 var args = (TappedEventArgs)e;
-                var m = args.Parameter as GetAll2.Deal;
-                Deals md = new Deals();
+                var m = args.Parameter as NewDealsModel.Deal;
+                NewDealsModel.Deal md = new NewDealsModel.Deal();
 
                 md.Name = m?.Name;
                 md.Category = m?.Category;
-                md.CategoryId = m?.CategoryId;
+                //md.CategoryId = m?.CategoryId;
                 md.Created = m.Created;
                 md.Details = m?.Details;
                 md.Expiration_Date = m.Expiration_Date;
@@ -80,7 +83,7 @@ namespace HappeningsApp.Views.Search
                 md.Modified = m.Modified;
                  md.Owner_Id = Convert.ToInt32(m?.Owner_Id);
                 //md.type = m?.type;
-                md.User_Id = m?.User_Id?.ToString();
+                //md.User_Id = m?.User_Id?.ToString();
 
                 
                 Navigation.PushAsync(new AppViews.Favourites(md), true);

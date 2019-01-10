@@ -46,7 +46,7 @@ namespace HappeningsApp.Views.AppViews
             {
                 return;
             }
-            var selected = dealsListview.SelectedItem as GetAll2.Deal;
+            var selected = dealsListview.SelectedItem as NewDealsModel.Deal;
             if (selected != null)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));

@@ -141,21 +141,21 @@ namespace HappeningsApp.Views
 
         private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
         {
-            //var todaysDate = DateTime.Now;
-            //DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
-            //var AfterAWeek = startOfWeek.AddDays(7);
-            //var sevenDaysAfter = DateTime.Now.AddDays(7);
-            //var grp = from h in ivm?.GetEvery
-            //          where h.Expiration_Date >= startOfWeek && h?.Expiration_Date.Date <= AfterAWeek
+            var todaysDate = DateTime.Now;
+            DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));
+            var AfterAWeek = startOfWeek.AddDays(7);
+            var sevenDaysAfter = DateTime.Now.AddDays(7);
+            var grp = from h in ivm?.GetEvery
+                      where h.Expiration_Date >= startOfWeek && h?.Expiration_Date.Date <= AfterAWeek
 
-            //          orderby h?.Expiration_Date
-            //        group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
-            //        select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
-            //GetEveryGrouped.Clear();
-            //foreach (var g in grp)
-            //{
-            //    GetEveryGrouped.Add(g);
-            //}
+                      orderby h?.Expiration_Date
+                    group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                    select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+            GetEveryGrouped.Clear();
+            foreach (var g in grp)
+            {
+                GetEveryGrouped.Add(g);
+            }
             return GetEveryGrouped;
         }
 

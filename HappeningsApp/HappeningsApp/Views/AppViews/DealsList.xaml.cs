@@ -13,8 +13,8 @@ namespace HappeningsApp.Views.AppViews
     {
 
         public ObservableCollection<Activity> Activity;
-      
-       
+
+
         private Category cat;
 
         public DealsList()
@@ -56,10 +56,10 @@ namespace HappeningsApp.Views.AppViews
             try
             {
                 this.cat = cat;
-                
+
                 GetCategoryByID(this.cat);
-               
-               
+
+
             }
             catch (Exception ex)
             {
@@ -72,13 +72,42 @@ namespace HappeningsApp.Views.AppViews
 
         private async Task GetCategoryByID(Category cat)
         {
+
+            var a = 1;
+            //Activity = new ObservableCollection<Activity>();
+            //Services.DealsService ds = new Services.DealsService();
+            //using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
+            //{
+
+            //    //Activity = await ds.GetAllByCategoryID(cat.CategoryID);
+            //    var detail = await ds.GetAllByCategoryID2(cat.CategoryID);
+            //    if (detail?.Count > 0)
+            //    {
+            //        ObservableCollection<NewDealsModel.Deal> deals = new ObservableCollection<NewDealsModel.Deal>(detail);
+
+            //        this.BindingContext = deals;
+            //        //this.dealsListview.ItemsSource = resp;
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("", "No Content", "Ok");
+            //        await Application.Current.MainPage.Navigation.PopAsync(true);
+            //        return;
+            //    }
+            //}
+
+
+        }
+
+        private async Task GetCategoryByIDOriginal(Category cat)
+        {
             Activity = new ObservableCollection<Activity>();
             Services.DealsService ds = new Services.DealsService();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
 
                 //Activity = await ds.GetAllByCategoryID(cat.CategoryID);
-                var detail = await ds.GetAllByCategoryID2(cat.CategoryID);
+                var detail = await ds.GetAllByCategoryID2Original(cat.CategoryID);
                 if (detail?.Count > 0)
                 {
                     ObservableCollection<Deals> deals = new ObservableCollection<Deals>(detail);
@@ -93,9 +122,9 @@ namespace HappeningsApp.Views.AppViews
                     return;
                 }
             }
-                
-               
-            }
+
+
+        }
 
         void Handle_Tapped(object sender, System.EventArgs e)
         {
@@ -131,9 +160,9 @@ namespace HappeningsApp.Views.AppViews
             try
             {
                 var img = sender as Image;
-                var item = img.BindingContext as Deals;
+                var item = img.BindingContext as NewDealsModel.Deal;
                 //var item2 = img.BindingContext as Category;
-                Navigation.PushAsync(new Favourites(item),true);
+                Navigation.PushAsync(new Favourites(item), true);
             }
             catch (Exception ex)
             {
@@ -141,5 +170,5 @@ namespace HappeningsApp.Views.AppViews
             }
         }
     }
-    }
+}
 

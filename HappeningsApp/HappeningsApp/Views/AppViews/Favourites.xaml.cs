@@ -13,6 +13,7 @@ namespace HappeningsApp.Views.AppViews
     {
        public FavViewModel fvvm { get; set; } = new FavViewModel();
         Deals Dealss = new Deals();
+        NewDealsModel.Deal fav = new NewDealsModel.Deal();
 
         public  Favourites()//from collections
         {
@@ -33,12 +34,12 @@ namespace HappeningsApp.Views.AppViews
             GetFavList();
         }
 
-        public Favourites(Deals deals)// from categories
+        public Favourites(NewDealsModel.Deal deals)// from categories
         {
             InitializeComponent();
             fvvm.IsEnabled = true;
-            Dealss = deals;
-            fvvm.CurrentlySelectedFav = Dealss;
+            fav = deals;
+            fvvm.CurrentlySelectedFavorite = fav;
             GetFavList();
 
         }
