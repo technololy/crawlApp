@@ -105,7 +105,7 @@ namespace HappeningsApp.Views.AppViews
             AllCategoryListing = AllCategory;
             MapsAddress = AllCategoryListing.Owner_Location;
             hostOrEventName = AllCategoryListing.Name;
-            if (dealz?.Pictures?.Count > 0)
+            if (AllCategoryListing?.Pictures?.Count > 0)
             {
                 Carousel.IsVisible = true;
                 SinglePicture.IsVisible = false;

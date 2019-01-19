@@ -49,8 +49,8 @@ namespace HappeningsApp.Views.CategoryPages
             InitializeComponent();
             try
             {
-                
 
+                Title = cat.CategoryName;
                 GetCategoryByID(cat);
 
 
