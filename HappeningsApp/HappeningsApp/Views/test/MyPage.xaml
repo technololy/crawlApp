@@ -14,8 +14,7 @@
              
              
              
-             >
-    <ContentPage.Content>
+  
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -95,5 +94,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-    </ContentPage.Content>
+
 </ContentPage>

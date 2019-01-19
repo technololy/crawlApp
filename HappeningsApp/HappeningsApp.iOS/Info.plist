@@ -45,8 +45,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>4.03</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Crawl needs to access location of places you choose to visit</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -55,5 +53,7 @@
 	<string>Crawl needs to access location of places you choose to visit</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>CFBundleVersion</key>
+	<string>52</string>
 </dict>
 </plist>

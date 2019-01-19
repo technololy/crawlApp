@@ -18,6 +18,7 @@ namespace HappeningsApp.Views
 		{
 			InitializeComponent ();
             BindingContext = todaysViewModel = new TodaysViewModel();
+            //just to effect a fake push
 
         }
 	}

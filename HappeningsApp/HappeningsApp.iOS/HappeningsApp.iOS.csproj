@@ -27,9 +27,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>
-    </CodesignProvision>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>crawlAdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Yemi Gabriel (2EYKMSN9F8)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -69,7 +68,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Yemi Gabriel (2EYKMSN9F8)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>lolade</CodesignProvision>
+    <CodesignProvision>crawlAdHoc</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
