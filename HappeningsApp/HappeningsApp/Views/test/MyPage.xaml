@@ -1,45 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage">
-    <ContentPage.Content>
-        <StackLayout Margin="20,40,20,0">
-            <StackLayout Orientation="Horizontal" HeightRequest="100" Spacing="0" WidthRequest="20">
-                <Frame BackgroundColor="Silver" 
-                     WidthRequest="40"
-                       CornerRadius="0"  
-                       HasShadow="false"
-                       
-                     MinimumWidthRequest="20">
-                    
-                
-            </Frame> 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundColor="Black" 
+             NavigationPage.HasNavigationBar="False" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Views.test.MyPage"
             
-                <Frame BackgroundColor="White" 
-                      WidthRequest="390"
-                       Padding="0"
-                       CornerRadius="0"
-                       HasShadow="false"
-                     >
-                <Label Text="My Messages"
-                       VerticalOptions="CenterAndExpand"
-                       TextColor="Black" 
-                       HorizontalOptions="CenterAndExpand"/>
-            </Frame> 
-            </StackLayout>
-           
-            <Frame HeightRequest="80">
-                <StackLayout>
-                    <Label Text="Done and dusted" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Places I have visited" Opacity="0.7" TextColor="Black" />
-                </StackLayout>
-            </Frame>
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
-                <Button Text="View More" WidthRequest="100" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button WidthRequest="100" Text="Add here" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+             Padding="10,40,10,10"
+            
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+             
+             
+             
+             
+  
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+          <c:SegmentedBarControl Grid.Row="0"  
+                             x:Name="segment" 
+                             AutoScroll="true"
+                             TextColor="White" 
+                             SelectedTextColor="{StaticResource CrawlColor}"
+                             SelectedLineColor="Navy"/>
+
+            <ListView ItemsSource="{Binding .}"
+                      Grid.Row="1"
+                         x:Name="dealsListview" 
+                      IsGroupingEnabled="True"
+                      SeparatorColor="Black"
+                      
+                      GroupDisplayBinding="{Binding Key}"
+                         SeparatorVisibility="None" 
+                         IsPullToRefreshEnabled="True"  
+                          
+                         BackgroundColor="Black" 
+                         HasUnevenRows="true">
+                <ListView.GroupHeaderTemplate>
+                    
+                    <DataTemplate>
+                        <ViewCell Height="25">
+                            <StackLayout VerticalOptions="FillAndExpand"
+                       Padding="5"
+                       BackgroundColor="Black">
+                              <!--  <Label Text="{Binding Key}" 
+                                       TextColor="{StaticResource CrawlColor}" 
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="15"
+                                       HorizontalOptions="CenterAndExpand"
+                                       />-->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                            <Frame Padding="0" Margin="5,0,5,5" 
+                                   IsClippedToBounds="true" 
+                                   BackgroundColor="Black"  
+                                   HeightRequest="150" 
+                                   BorderColor="Black"
+                                   
+                                   CornerRadius="0">
+                                <Grid HeightRequest="150">
+
+
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="10*" />-->
+
+                                        <RowDefinition Height="60*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="10*" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                   <!-- <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                 
+
+
+                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
+                                </Grid>
+
+
+                            </Frame>
+                        </c:ExtendedViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
 </ContentPage>

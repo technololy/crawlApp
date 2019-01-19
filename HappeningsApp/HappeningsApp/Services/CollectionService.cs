@@ -82,6 +82,33 @@ namespace HappeningsApp.Services
 
         }
 
+
+
+
+        internal async Task<bool> DeleteCollection(CollectionsResp coll)
+        {
+            string endpoint = "api/Collections?id="+coll.Id;
+
+            var resp = await APIService.Delete(endpoint);
+            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var cont = await resp.Content.ReadAsStringAsync();
+                if (cont.ToLower().Contains("success"))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+
+            }
+
+        }
+
+
+
+
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
             ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();
@@ -113,7 +140,7 @@ namespace HappeningsApp.Services
             bool response = false;
             try
             {
-                string endpoint = $"api/Collections??User_Id={ctl.User_id}&collection_id={ctl.Id}";
+                string endpoint = $"api/Collections?User_Id={ctl.User_id}&collection_id={ctl.Id}";
                 var add = await APIService.Put<CollectionsResp>(ctl, endpoint);
                 if (add.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -138,6 +165,41 @@ namespace HappeningsApp.Services
 
             return response;
         }
+
+
+
+        internal async Task<bool> DeleteCollectionWithDetails(Favourite ctl, string CategoryID)
+        {
+            bool response = false;
+            try
+            {
+                string endpoint = $"DeleteFavorite?id={CategoryID}";
+                var add = await APIService.PostNew<Favourite>(ctl, endpoint);
+                if (add.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var content = await add.Content.ReadAsStringAsync();
+                    if (content.ToLower().Contains("success"))
+                        response = true;
+                }
+
+                else
+                {
+                    var content = await add.Content.ReadAsStringAsync();
+
+                    response = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+                response = false;
+            }
+
+            return response;
+        }
+
+
     }
 
  

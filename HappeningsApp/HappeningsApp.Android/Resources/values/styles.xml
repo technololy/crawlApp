@@ -8,7 +8,7 @@
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
         <!-- to set splash screen -->
-         <item name="android:windowBackground">@drawable/Crawl_white_blue</item> 
+         <item name="android:windowBackground">@drawable/splashPageDroid</item> 
     <!--We will be using the toolbar so no need to show ActionBar-->
     <item name="windowActionBar">false</item>
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
@@ -29,6 +29,8 @@
    <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
    <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+    <item name="android:textAllCaps">false</item>
+        
   </style>
   <style name="MyTheme" parent="android:style/Theme.Material.Light.DarkActionBar">
       

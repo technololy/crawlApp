@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Views.CategoryPages.CategoryDetails"
@@ -18,36 +18,43 @@
             <ListView ItemsSource="{Binding .}" 
                          x:Name="dealsListview" 
                          SeparatorVisibility="None" 
-                         IsPullToRefreshEnabled="True"  
+                          
                          ItemTapped="dealsListview_ItemTapped" 
                          BackgroundColor="Transparent" 
                          HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="10,0,10,5" IsClippedToBounds="true" BackgroundColor="Black"  HeightRequest="250" CornerRadius="0">
-                                <Grid HeightRequest="300">
+                            <Frame Padding="0" 
+                                   Margin="10,0,10,5" 
+                                   IsClippedToBounds="true" 
+                                   BackgroundColor="Black"  
+                                   HeightRequest="250" 
+                                   CornerRadius="0">
+                                <Grid HeightRequest="250">
 
 
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
 
-                                        <RowDefinition Height="60*" />
-                                        <RowDefinition Height="10*" />
-                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="0.6*" />
+                                        <RowDefinition Height="0.1*" />
+                                        <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
                                     <Image Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
                                         </Image.GestureRecognizers>
                                     </Image>
 
-
-                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
-                                </Grid>
+                                    <StackLayout Spacing="0" Grid.Row="2"  VerticalOptions="EndAndExpand">
+                                         <Label Text="{Binding Name}"  TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.7" TextColor="White" />
+                               
+                                    </StackLayout>
+                                    </Grid>
 
 
                             </Frame>

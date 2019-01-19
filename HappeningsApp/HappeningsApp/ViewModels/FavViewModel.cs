@@ -17,6 +17,7 @@ namespace HappeningsApp.ViewModels
         private CollectionsModelResp _collectionz;
 
         public Deals CurrentlySelectedFav { get; set; }
+        public NewDealsModel.Deal CurrentlySelectedFavorite { get; set; }
 
         private ObservableCollection<CollectionsResp> _collectionsList = new ObservableCollection<CollectionsResp>();
 
@@ -120,8 +121,12 @@ namespace HappeningsApp.ViewModels
             {
                 using (UserDialogs.Instance.Loading("Adding to "+ctl.Name))
                 {
-                    var cs = this.CurrentlySelectedFav;
-                    ctl.Details.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id });
+                    var cs = this.CurrentlySelectedFavorite;
+                    ctl.Details.Add(
+                    new Favourite { Name = CurrentlySelectedFavorite.Name, 
+                        Address = CurrentlySelectedFavorite.Owner_Location, 
+                        Description = CurrentlySelectedFavorite.Details, 
+                        Id = CurrentlySelectedFavorite.Id });
                     CollectionService cserv = new CollectionService();
                     var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
                     if (isCollAdded)

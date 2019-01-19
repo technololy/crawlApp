@@ -30,9 +30,16 @@ namespace HappeningsApp.Views.Survey
 
         async void Submit_Clicked(object sender, System.EventArgs e)
         {
+            if (!CheckValidity())
+            {
+                await DisplayAlert("Info", "Please enter all fields", "OK");
+                return;
+            }
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 svm.surveyModel.How_Did_You_hear = HowDidYou.SelectedItem;
+                await LogService.LogErrorsNew(activity: "User clicked on submit on Survey 3");
+
                 SurveyService.SubmitSurvey(svm);
                 await Task.Delay(3000);
             };
@@ -40,11 +47,26 @@ namespace HappeningsApp.Views.Survey
             await Navigation.PopModalAsync(true);
         }
 
-     
-
-        void Dismiss_Clicked(object sender, System.EventArgs e)
+        private bool CheckValidity()
         {
-            Navigation.PopModalAsync(true);
+            if
+                (
+                    string.IsNullOrEmpty(svm.surveyModel.How_Did_You_hear)
+                )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+       async void Dismiss_Clicked(object sender, System.EventArgs e)
+        {
+            await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey three");
+
+           await Navigation.PopModalAsync(true);
         }
     }
 }

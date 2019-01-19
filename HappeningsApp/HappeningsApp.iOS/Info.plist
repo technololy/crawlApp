@@ -19,13 +19,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>11.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Crawl</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.technololy.crawl</string>
-	<key>CFBundleVersion</key>
-	<string>1.17</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>XSAppIconAssets</key>
@@ -47,5 +45,15 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Crawl needs to access location of places you choose to visit</string>
+	<key>CFBundleVersion</key>
+	<string>52</string>
 </dict>
 </plist>

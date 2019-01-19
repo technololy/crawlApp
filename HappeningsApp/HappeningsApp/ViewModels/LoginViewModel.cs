@@ -22,9 +22,12 @@ namespace HappeningsApp.ViewModels
     {
         Account account;
         AccountStore store;
+        public INavigation nav { get; set; }
         public Command OnGoogleButtonCommand { get; set; }
-        public LoginViewModel()
+        public LoginViewModel()  
+            //public LoginViewModel(INavigation _nav)
         {
+            //this.nav = _nav;
             User = new UserInfo();
             store = AccountStore.Create();
             account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
@@ -78,6 +81,7 @@ namespace HappeningsApp.ViewModels
                 var cont = JsonConvert.DeserializeObject<TokenResponse>(res);
                 GlobalStaticFields.Token = cont.access_token;
                 IsSuccess = true;
+                
                 return IsSuccess;
 
             }
@@ -117,7 +121,7 @@ namespace HappeningsApp.ViewModels
         internal async Task<bool> Register()
         {
             IsSuccess = false;
-            using (UserDialogs.Instance.Loading("Registration you.."))
+            using (UserDialogs.Instance.Loading(".."))
             {
                 var reg = new Registeration()
                 {

@@ -11,11 +11,15 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="2">
                 
-                <c:CollectionsView HeaderText="My Messages"  ImageSource="messages.jpg">
-                  
+                <c:CollectionsView HeaderText="My Messages" >
+                        <c:CollectionsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Messages_Tapped" />
+                    </c:CollectionsView.GestureRecognizers> 
                 </c:CollectionsView>
-                <c:CollectionsView HeaderText="My Groups" ImageSource="ic_settings.png"/>
-                <c:CollectionsView HeaderText="My Favorites"  ImageSource="favorites.jpg">
+                <c:CollectionsView HeaderText="My Groups" IsVisible="false">
+                
+                </c:CollectionsView>
+                <c:CollectionsView HeaderText="My Favorites" >
                       <c:CollectionsView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Favourites_Clicked_3" />
                     </c:CollectionsView.GestureRecognizers>

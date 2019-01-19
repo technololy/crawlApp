@@ -9,6 +9,7 @@ namespace HappeningsApp.Services
     public class MockImageList
     {
         ObservableCollection<ImageItems> imageItems;
+        ObservableCollection<Deals> deals;
 
         public ObservableCollection<ImageItems> MockCategoryStore()
         {
@@ -52,6 +53,78 @@ namespace HappeningsApp.Services
 
             return imageItems;
         }
+
+
+
+
+        internal ObservableCollection<Deals> GetDealsTest()
+        {
+            deals = new ObservableCollection<Deals>();
+            var imageList = new ObservableCollection<Deals>()
+            {
+                 new Deals{Name="harvest Season 7",
+                    ImagePath="harvest.jpg",
+                    Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-5)
+                
+                },
+                new Deals
+                {
+                    Name="Club at VI",ImagePath="nightlagos.jpg",
+                         Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-5)
+
+                },
+                //new ImageItems{Name="Seminar and fun with all",Image="EkoHotel.jpg"},
+                new Deals
+                {
+                    Name="Sallah Deals",
+                    ImagePath="salahgrill.jpg",
+                     Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-5)
+
+                },   new Deals
+                {
+                    Name="Sallah Deals",
+                    ImagePath="salahgrill.jpg",
+                     Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-4)
+
+                },   new Deals
+                {
+                    Name="Sallah Deals",
+                    ImagePath="salahgrill.jpg",
+                     Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-4)
+
+                },   new Deals
+                {
+                    Name="Sallah Deals",
+                    ImagePath="salahgrill.jpg",
+                     Details="fafafafafafafafafafafafafafafa",
+                    Owner_Location="Lekki",
+                    Expiration_Date=DateTime.Now.AddDays(-3)
+
+                },
+
+
+            };
+
+            foreach (var item in imageList)
+            {
+
+                deals.Add(item);
+
+            }
+
+            return deals;
+        }
+
 
         internal ObservableCollection<ImageItems> NearBy()
         {

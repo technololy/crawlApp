@@ -133,7 +133,7 @@ namespace HappeningsApp.Services.LoginSignUp
             try
             {
                 var forgot = new ForgotPassword() { Email = username };
-                var testresult = await APIService.PostNew<ForgotPassword>(forgot, "");
+                var testresult = await APIService.PostNew<ForgotPassword>(forgot, "/api/Account/ForgotPassword");
                 content = await testresult.Content.ReadAsStringAsync();
                 if (content.ToLower().Contains("success"))
                 {
@@ -168,7 +168,7 @@ namespace HappeningsApp.Services.LoginSignUp
             try
             {
                 var reset = new ResetPassword() { Email = username, Code = code, Password=pass,ConfirmPassword = confirmPass };
-                var testresult = await APIService.PostNew<ResetPassword>(reset, "");
+                var testresult = await APIService.PostNew<ResetPassword>(reset, "api/account/ResetPassword");
                 content = await testresult.Content.ReadAsStringAsync();
                 if (content.ToLower().Contains("success"))
                 {

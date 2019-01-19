@@ -10,15 +10,15 @@ namespace HappeningsApp.Views.Survey
     public partial class SurveyOne : ContentPage
     {
 
-        SurveyViewModel svm ;
+        SurveyViewModel svm;
         public SurveyOne()
         {
             InitializeComponent();
 
             svm = new SurveyViewModel();
-           // BindingContext = new SurveyViewModel();
+            // BindingContext = new SurveyViewModel();
             this.BindingContext = this.svm;
-            Location.ItemsSource = svm.LocationDS;
+            //Location.ItemsSource = svm.LocationDS;
             MaritalPicker.ItemsSource = svm.MaritalDS;
             DietPicker.ItemsSource = svm.DietDS;
             SmokerPicker.ItemsSource = svm.SmokerDS;
@@ -29,47 +29,86 @@ namespace HappeningsApp.Views.Survey
             //{
             //    "Lagos","Port Harcourt","Abuja","Kaduna"
             //};
-            
+
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-           //svm.SelectedLocation= Location.SelectedItem;
-          
+            svm.surveyModel.City= svm.surveyModel.SelectedLocation;
+            svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
+            svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+            svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
+            svm.surveyModel.User_Id = GlobalStaticFields.Username;
+            svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
+            svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
+            if (!CheckValidity())
+            {
+                await DisplayAlert("Info", "Please enter all fields", "OK");
+                return;
+
+            }
 
             //svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
-                svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
-                svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
-                svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
-                svm.surveyModel.User_Id = GlobalStaticFields.Username;
-                svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
-                svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
-                svm.surveyModel.City = Location.SelectedItem;
-                svm.surveyModel.SelectedLocation = Location.SelectedItem;
+             
+                //svm.surveyModel.City = txtLocation.Text.Trim();
+                //svm.surveyModel.SelectedLocation 
 
             };
             Application.Current.Properties["SurveyOne"] = true;
+            await LogService.LogErrorsNew(activity: "User clicked submit on Survey One");
 
             await Navigation.PopModalAsync(true);
-            await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm),true);
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
 
             await ShowSurVeyTwo();
 
         }
+
+        private bool CheckValidity()
+        {
+            //return svm.surveyModel.Marital_Status == "" || svm.surveyModel.Smoker == "" || svm.surveyModel.Drinker == ""
+            //|| svm.surveyModel.City == "" || svm.surveyModel.SelectedLocation == ""
+            //? false
+            //: true;
+            if
+                (string.IsNullOrEmpty(svm.surveyModel.Marital_Status)|| 
+                 string.IsNullOrEmpty(svm.surveyModel.Smoker) ||
+                 string.IsNullOrEmpty(svm.surveyModel.Drinker)
+                 || string.IsNullOrEmpty(svm.surveyModel.City) ||
+                 string.IsNullOrEmpty(svm.surveyModel.SelectedLocation)
+                )
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Smoker.ToLower()=="yes" && string.IsNullOrEmpty(svm.surveyModel.Smoking_Preference))
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Drinking_Preference))
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         private async Task ShowSurVeyTwo()
         {
             //await Task.Delay(30000);
-         await  NowShowTwo();
+            await NowShowTwo();
 
         }
         private async Task NowShowTwo()
         {
             try
             {
-                await Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
+                await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
 
                 //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
                 //{
@@ -87,30 +126,32 @@ namespace HappeningsApp.Views.Survey
 
             }
         }
-        void Location_SelectedIndexChanged(object sender, System.EventArgs e)
+        //void Location_SelectedIndexChanged(object sender, System.EventArgs e)
+        //{
+        //    if (Location.SelectedIndex == 0)
+        //    {
+        //        Location.SelectedIndex = 1;
+        //    }
+        //}
+        async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            if (Location.SelectedIndex==0)
-            {
-                Location.SelectedIndex = 1;
-            }
-        }
-        void  Dismiss_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PopModalAsync(true);
-            ShowSurVeyTwo();
+           //await Task.Run(async()=> { await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey One"); }); 
+
+           await Navigation.PopModalAsync(true);
+         await   ShowSurVeyTwo();
 
         }
 
         void Smoke_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-           if (SmokerPicker.SelectedItem==null)
+            if (SmokerPicker.SelectedItem == null)
             {
                 return;
             }
 
 
 
-            if (SmokerPicker.SelectedItem.ToString()=="Yes")
+            if (SmokerPicker.SelectedItem.ToString() == "Yes")
             {
                 MoreSmokingTypeStack.IsVisible = true;
                 //LaunchMultiSelector();

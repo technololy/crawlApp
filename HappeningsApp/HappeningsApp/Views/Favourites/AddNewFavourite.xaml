@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
-             Padding="20,20,20,0"
+             Padding="40"
              BackgroundColor="Black"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea = "true"
              x:Class="HappeningsApp.Views.Favourites.AddNewFavourite">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="40" Margin="20,50,20,0">
             <StackLayout Spacing="5">
                 <c:BorderlessEntry Placeholder="Name" 
                                    Text="{Binding NewCollectionName}"
@@ -19,7 +21,7 @@
                                        PlaceholderColor="White"  />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}"   />
             </StackLayout>
-            <StackLayout Spacing="5">
+            <StackLayout Spacing="5" IsVisible="false">
                 <c:BorderlessEntry Placeholder="Nickname" 
                                    Text="{Binding NewCollectionNick}"
                                    

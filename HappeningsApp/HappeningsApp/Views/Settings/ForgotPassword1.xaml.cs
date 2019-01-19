@@ -16,7 +16,9 @@ namespace HappeningsApp.Views.Settings
 		public ForgotPassword1 ()
 		{
 			InitializeComponent ();
-		}
+             LogService.LogErrorsNew(activity: "User landed on Forgot Password First Stage");
+
+        }
 
         private async void submit_Clicked(object sender, EventArgs e)
         {
@@ -25,7 +27,7 @@ namespace HappeningsApp.Views.Settings
                 using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
                 {
                     GlobalStaticFields.Username = txtUsername.Text.Trim();
-                    var result = await HappeningsApp.Services.LoginSignUp.LoginSignUp.ForgotPassword(GlobalStaticFields.Username);
+                    var result = await Services.LoginSignUp.LoginSignUp.ForgotPassword(GlobalStaticFields.Username);
                     if (result)
                     {
                         await Navigation.PushAsync(new ForgotPassword2(), true);
@@ -33,7 +35,7 @@ namespace HappeningsApp.Views.Settings
 
                     else
                     {
-                        await DisplayAlert("Info", "Email not found", "OK");
+                        await DisplayAlert("Info", "Unusual error occured/Email not found", "OK");
                     }
                 }
             }

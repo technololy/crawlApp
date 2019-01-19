@@ -14,7 +14,7 @@
                     JustifyContent="SpaceEvenly" 
                     Margin="40" >
             <!--<Label HorizontalTextAlignment="Center" Text="Just to serve you better content. Please answer the following questions" />-->
-                <Label HorizontalTextAlignment="Center" Text="2/3" />
+                <Label HorizontalTextAlignment="Center" Text="2/2" />
 
                 <StackLayout>
                 <c:MultiPicker Title="Favourite Sport" x:Name="SportPicker" 
@@ -25,16 +25,19 @@
                 <c:MultiPicker Title="Other Interests" x:Name="OtherInterests" 
                                    />
             </StackLayout>
-            
+              <StackLayout>
+                <c:MultiPicker Title="How did you hear about us" x:Name="HowDidYou" 
+                                   />
+            </StackLayout>
             
             
            
             <StackLayout>
                    
                     
-                <Button Margin="0,15,0,0" Text="Next" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked" />
-                <!--<Button Text="Skip" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White" Clicked="Handle_Clicked_1"  />-->
-                <Button Text="Dismiss" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
+                <Button Margin="0,15,0,0" Text="Submit" BackgroundColor="{StaticResource CrawlColor}" TextColor="White" Clicked="Handle_Clicked" />
+                <Button Text="Go back" BackgroundColor="{StaticResource CrawlRedColor}" TextColor="White" Clicked="Handle_Clicked_1"  />
+                <Button Text="Maybe later" TextColor="{StaticResource CrawlColor}" Clicked="Dismiss_Clicked"  />
             </StackLayout>
             
         </FlexLayout>

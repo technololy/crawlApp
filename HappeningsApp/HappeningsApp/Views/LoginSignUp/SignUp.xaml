@@ -8,11 +8,11 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="HappeningsApp.Views.LoginSignUp.SignUp">
     
-    <ContentPage.Content>
-        <StackLayout>
+    <ScrollView>
+        <StackLayout x:Name="signUpParentStack">
             <StackLayout VerticalOptions="CenterAndExpand" Padding="40">
-                <Button TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="facebook_clicked" />
-                <Button TextColor="White" x:Name="googleBtn" Clicked="googleBtn_Clicked" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
+                <Button x:Name="signUpFB" TextColor="White" Text="Sign Up With Facebook"  BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
+                <Button TextColor="White" x:Name="googleBtn" Clicked="OAuth_Clicked" Text="Sign Up With Google"  BackgroundColor="#c0392b" />
                   <Label HorizontalOptions="CenterAndExpand" Text="OR" TextColor="White" />
                 <Label Text="Sign in with Email" HorizontalOptions="CenterAndExpand" TextColor="White" />
            
@@ -70,5 +70,5 @@
         </StackLayout> 
         </StackLayout>
       
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

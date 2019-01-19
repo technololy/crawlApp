@@ -14,6 +14,7 @@
             <Color x:Key="BackgroundColor">#FFFFFF</Color>
             <Color x:Key="PaleGray">#EDF2F6</Color>
             <Color x:Key="FormHeadingsColor">#A7A7A7</Color>
+            
             <!--end-->
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />

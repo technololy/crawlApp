@@ -49,12 +49,12 @@ namespace HappeningsApp.ViewModels
             };
         public List<string> MoreSmokingDS = new List<string>()
             {
-               "Cigar", "Shisha","Vape"
+               "Cigarette","Cigar", "Shisha","Vape","Others"
 
             };
         public List<string>  MoreDrinkDS = new List<string>()
             {
-               "Wine", "Beer","Whisky"
+               "Wine", "Beer","Whisky","Spirit","Champagne"
 
             };
         public List<string> HowDidYouDS = new List<string>()

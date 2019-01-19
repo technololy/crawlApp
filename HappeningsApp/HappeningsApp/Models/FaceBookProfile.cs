@@ -27,7 +27,7 @@ namespace HappeningsApp.Models
         public string Id { get; set; }
     }
 
-    public class Picture
+    public class FBPicture
     {
         public Data Data { get; set; }
     }
