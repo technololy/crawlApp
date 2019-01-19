@@ -255,8 +255,8 @@ namespace HappeningsApp.Views.AppViews
                         if (Device.RuntimePlatform == Device.iOS)
                         {
 
-
-                            if (await DisplayAlert("", msg, "Ok. Got It", "No, Not interested"))
+                            var fakeClick = true;//i was pressed for time so i just hardcoded this. wil corrct later
+                            if (fakeClick)
                             {
                                 using (UserDialogs.Instance.Loading(""))
                                 {
