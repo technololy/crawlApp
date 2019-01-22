@@ -417,11 +417,13 @@ namespace HappeningsApp.Views
                         //UserDialogs.Instance.Alert("", "Email address: " + user.Email + "\n fullname:" + user.Name + "\n gender:" + user.Gender, "OK");
                         MyToast t = new MyToast();
                         UserDialogs.Instance.Toast(t.ShowMyToast(Color.Green, "Successful login"));
-
+                        GlobalStaticFields.Username = lvm.User.Username;
                         var tk = await lvm.GetTokenFromAPI().ConfigureAwait(false);
 
                         if (tk)
                         {
+                            lvm.PersistUserDetails();
+
                             Device.BeginInvokeOnMainThread
                                  (
                                async () => await Navigation.PushAsync(new AppLanding())
@@ -433,6 +435,8 @@ namespace HappeningsApp.Views
 
                             if (reg)
                             {
+                                //lvm.PersistUserDetails();
+
                                 Device.BeginInvokeOnMainThread
                                       (
                                     async () =>await Navigation.PushAsync(new AppLanding())
