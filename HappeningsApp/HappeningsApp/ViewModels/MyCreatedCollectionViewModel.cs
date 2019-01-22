@@ -44,6 +44,25 @@ namespace HappeningsApp.ViewModels
                 }
             }
         }
+
+        public bool ShowTips
+        {
+            get => _showTips;
+            set
+
+            {
+                if (_showTips != value)
+                {
+                    _showTips = value;
+                    OnPropertyChanged();
+
+                }
+
+            }
+        }
+
+
+
         private ObservableCollection<CollectionsResp> _CollectionsList;
         private bool _activityRunning;
 
@@ -55,18 +74,21 @@ namespace HappeningsApp.ViewModels
                 if (_CollectionsList != value)
                 {
                     _CollectionsList = value;
+
                     ActivityRunning = false;
+                    ShowTips = true;
                     OnPropertyChanged();
                 }
             }
         }
 
         private CollectionsResp _userFavs;
+        private bool _showTips;
 
-        public CollectionsResp UserFavs 
+        public CollectionsResp UserFavs
         {
-            get => _userFavs; 
-            set 
+            get => _userFavs;
+            set
             {
                 if (_userFavs != value)
                 {
@@ -124,12 +146,14 @@ namespace HappeningsApp.ViewModels
                 using (UserDialogs.Instance.Loading("Adding to " + ctl.Name))
                 {
                     var cs = this.CurrentlySelectedFavorite;
-                    ctl.Details.Add(new Favourite 
-                    { Name = CurrentlySelectedFavorite.Name, 
-                    Address = CurrentlySelectedFavorite.Owner_Location, 
-                    Description = CurrentlySelectedFavorite.Details, 
-                    //Id = CurrentlySelectedFavorite.Id, 
-                    ImageURL = CurrentlySelectedFavorite.ImagePath });
+                    ctl.Details.Add(new Favourite
+                    {
+                        Name = CurrentlySelectedFavorite.Name,
+                        Address = CurrentlySelectedFavorite.Owner_Location,
+                        Description = CurrentlySelectedFavorite.Details,
+                        //Id = CurrentlySelectedFavorite.Id, 
+                        ImageURL = CurrentlySelectedFavorite.ImagePath
+                    });
                     CollectionService cserv = new CollectionService();
                     var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
                     if (isCollAdded)
@@ -164,6 +188,11 @@ namespace HappeningsApp.ViewModels
             if (myCollectn.Any())
             {
                 CollectionsList = new ObservableCollection<CollectionsResp>(myCollectn);
+                ShowTips = false;
+            }
+            else
+            {
+                ShowTips = true;
             }
             ActivityRunning = false;
 

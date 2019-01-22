@@ -553,6 +553,8 @@ namespace HappeningsApp.Views.LoginSignUp
 
                         if (tk)
                         {
+                            lvm.PersistUserDetails();
+
                             //await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
                             Device.BeginInvokeOnMainThread
                                        (
@@ -565,6 +567,8 @@ namespace HappeningsApp.Views.LoginSignUp
 
                             if (reg)
                             {
+                                lvm.PersistUserDetails();
+
                                 Device.BeginInvokeOnMainThread
                                       (
                                     async () => Navigation.PushAsync(new AppLanding())

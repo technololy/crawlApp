@@ -73,6 +73,7 @@ namespace HappeningsApp.ViewModels
 
         internal async Task<bool> GetTokenFromAPI()
         {
+            
             IsSuccess = false;
             var tk = await APIService.GetToken(User).ConfigureAwait(false);
             if (tk.StatusCode == System.Net.HttpStatusCode.OK)
@@ -108,7 +109,6 @@ namespace HappeningsApp.ViewModels
         public void PersistUserDetails()
         {
             Application.Current.Properties["IsUserLoggedOn"] = true;
-
             Application.Current.Properties["username"] = User.Username;
             Application.Current.Properties["password"] = User.Password;
             Application.Current.SavePropertiesAsync();
