@@ -169,7 +169,7 @@ namespace HappeningsApp.Services
             return res;
         }
 
-        internal async static Task<HttpResponseMessage> Get(string method)
+        internal async static Task<HttpResponseMessage> Get(string method, string actionPerformed = "")
         {
 
             HttpResponseMessage res = new HttpResponseMessage();
@@ -188,7 +188,7 @@ namespace HappeningsApp.Services
                 var content = await res.Content.ReadAsStringAsync();
 
                 // LogService.LogErrors($"Request {url} and response:\n{content}");
-                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: "GET Async");
+                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: actionPerformed+" GET Async");
 
                 return res;
 

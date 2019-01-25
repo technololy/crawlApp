@@ -113,7 +113,7 @@ namespace HappeningsApp.Services
         {
             ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();
             string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            var response = await APIService.Get(endpoint);
+            var response = await APIService.Get(endpoint,"Get Users Collection List");
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
