@@ -19,6 +19,7 @@ namespace HappeningsApp.Views.AppViews
 	{
        public List<string> days;
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
 
         IntroPageViewModel ivm;
 
@@ -99,17 +100,59 @@ namespace HappeningsApp.Views.AppViews
                 dealsListview.IsRefreshing = false;
             });
         }
-        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
         {
-            var grp = from h in ivm?.GgetAll
-                      orderby h?.Expiration_Date
-                      group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
-                      select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
-            GetAllGrouped.Clear();
-            foreach (var g in grp)
+            try
             {
-                GetAllGrouped.Add(g);
+                if (ivm?.GetEvery==null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in ivm?.GetEvery
+                          orderby h?.Expiration_Date
+                          group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
             }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast( Color.Red,"Slight error occured parsing response");
+            }
+         
+            return GetEveryThingGrouped;
+        }
+
+        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDateOriginal()
+        {
+            try
+            {
+                if (ivm?.GgetAll == null)
+                {
+                    return GetAllGrouped;
+                }
+                var grp = from h in ivm?.GgetAll
+                          orderby h?.Expiration_Date
+                          group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                          select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetAllGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetAllGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Color.Red, "Slight error occured parsing response");
+            }
+
             return GetAllGrouped;
         }
         private string GetFullDay(string select)

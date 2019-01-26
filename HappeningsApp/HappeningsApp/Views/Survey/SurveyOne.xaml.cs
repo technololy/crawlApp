@@ -34,13 +34,15 @@ namespace HappeningsApp.Views.Survey
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
+            svm.surveyModel.UserName = GlobalStaticFields.Username;
+
             svm.surveyModel.City= svm.surveyModel.SelectedLocation;
             svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
             svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
-            svm.surveyModel.Smoking_Preference = MoreSmokingChoice.SelectedItem;
+            svm.surveyModel.Smoking_Preference = string.IsNullOrEmpty(MoreSmokingChoice.SelectedItem) ? "n/a":MoreSmokingChoice.SelectedItem;
             svm.surveyModel.User_Id = GlobalStaticFields.Username;
-            svm.surveyModel.Drinker = DrinkerPicker.SelectedItem;
-            svm.surveyModel.Drinking_Preference = MoreDrinkOption.SelectedItem;
+            svm.surveyModel.Drinker =  string.IsNullOrEmpty(DrinkerPicker.SelectedItem) ? "n/a" : DrinkerPicker.SelectedItem;
+            svm.surveyModel.Drinking_Preference =  string.IsNullOrEmpty(MoreDrinkOption.SelectedItem) ? "n/a" : MoreDrinkOption.SelectedItem;
             if (!CheckValidity())
             {
                 await DisplayAlert("Info", "Please enter all fields", "OK");
