@@ -17,6 +17,7 @@ namespace HappeningsApp.ViewModels
         public bool WasNewFavAddedOk { get; set; } = false;
         public NewCategoryDetailModel.Deal CurrentlySelectedFavorite { get; set; }
         public NewDealsModel.Deal CurrentlySelectedFavoriteDeal { get; set; }
+        bool fake = true;
 
         public string NewCollectionName
         {
@@ -143,30 +144,36 @@ namespace HappeningsApp.ViewModels
         {
             try
             {
-                using (UserDialogs.Instance.Loading("Adding to " + ctl.Name))
+                //if (await UserDialogs.Instance.ConfirmAsync("Confirm", $"Are you sure you want to add{CurrentlySelectedFav.Name} to {ctl.Name}? ", "Yes", "No"))
+                if(fake)
                 {
-                    var cs = this.CurrentlySelectedFavorite;
-                    ctl.Details.Add(new Favourite
+                    using (UserDialogs.Instance.Loading("Adding to " + ctl.Name))
                     {
-                        Name = CurrentlySelectedFavorite.Name,
-                        Address = CurrentlySelectedFavorite.Owner_Location,
-                        Description = CurrentlySelectedFavorite.Details,
-                        //Id = CurrentlySelectedFavorite.Id, 
-                        ImageURL = CurrentlySelectedFavorite.ImagePath
-                    });
-                    CollectionService cserv = new CollectionService();
-                    var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
-                    if (isCollAdded)
-                    {
-                        UserDialogs.Instance.Alert("Great!! Added to " + ctl.Name, "Info", "OK");
-                    }
+                        var cs = this.CurrentlySelectedFavorite;
+                        ctl.Details.Add(new Favourite
+                        {
+                            Name = CurrentlySelectedFavorite.Name,
+                            Address = CurrentlySelectedFavorite.Owner_Location,
+                            Description = CurrentlySelectedFavorite.Details,
+                            //Id = CurrentlySelectedFavorite.Id, 
+                            ImageURL = CurrentlySelectedFavorite.ImagePath
+                        });
+                        CollectionService cserv = new CollectionService();
+                        var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
+                        if (isCollAdded)
+                        {
+                            UserDialogs.Instance.Alert("Great!! Added to " + ctl.Name, "Info", "OK");
+                        }
 
-                    else
-                    {
-                        UserDialogs.Instance.Alert("Unsuccessfull", "Error", "OK");
+                        else
+                        {
+                            UserDialogs.Instance.Alert("Unsuccessfull", "Error", "OK");
 
+                        }
                     }
                 }
+
+              
 
             }
             catch (Exception ex)
@@ -236,15 +243,20 @@ namespace HappeningsApp.ViewModels
             bool response = false;
             try
             {
-                using (UserDialogs.Instance.Loading("Deleting...."))
+                //if (await UserDialogs.Instance.ConfirmAsync("Confirm","Are you sure","Yes","No"))
+                if(fake)
                 {
-                    // var cs = this.CurrentlySelectedFav;
-                    // ctl.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id, ImageURL = CurrentlySelectedFav.ImagePath });
-                    CollectionService cserv = new CollectionService();
-                    var isDeleted = await cserv.DeleteCollectionWithDetails(ctl, categoryID);
-                    response = isDeleted;
+                    using (UserDialogs.Instance.Loading("Deleting...."))
+                    {
+                        // var cs = this.CurrentlySelectedFav;
+                        // ctl.Add(new Favourite { Name = CurrentlySelectedFav.Name, Address = CurrentlySelectedFav.Owner_Location, Description = CurrentlySelectedFav.Details, Id = CurrentlySelectedFav.Id, ImageURL = CurrentlySelectedFav.ImagePath });
+                        CollectionService cserv = new CollectionService();
+                        var isDeleted = await cserv.DeleteCollectionWithDetails(ctl, categoryID);
+                        response = isDeleted;
+                    }
+                    //return response;
                 }
-                //return response;
+
             }
 
 
