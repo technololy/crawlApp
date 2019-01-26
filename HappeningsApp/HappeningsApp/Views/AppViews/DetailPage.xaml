@@ -90,7 +90,7 @@
                                         </StackLayout>
                                     </Frame>
                                     <StackLayout>
-                                        <Label Text="Opening Time" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
+                                        <Label Text="{Binding Hostopeninghours.Days}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -103,11 +103,14 @@
                                                 <ColumnDefinition Width="30*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <!--  <Label Text="Friday, SEP 07"  TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                         <Label Text="5:30PM"  TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                      -->
-                                            <Label Text="{Binding OpeningHours}" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                                            <!--  <Label Text="{Binding OpeningTime}"  TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />-->
+                                              <Label Text="Date"  TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                        
+                                              <Label Text="Opens"  TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                              <Label Text="Closes"  TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                      
+                                            <Label Text="{Binding OpeningHours}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.OpeningTime}"  TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.ClosingTime}"  TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                         </Grid>
                                     </StackLayout>
                                 </StackLayout>
