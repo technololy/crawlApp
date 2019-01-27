@@ -64,7 +64,7 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill"  />
                                     <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                               <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
@@ -72,8 +72,8 @@
                                     </Image>
 
 
-                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
+                                    <Label Text="{Binding Name}"  FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}"  FontAttributes="Bold" FontSize="8" Grid.Row="2" TextColor="White" />
                                 </Grid>
 
 

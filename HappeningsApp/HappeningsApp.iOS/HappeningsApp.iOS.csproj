@@ -153,6 +153,11 @@
     <BundleResource Include="Resources\ic_settings.png" />
     <BundleResource Include="Resources\favorites.jpg" />
     <BundleResource Include="Resources\messages.jpg" />
+    <BundleResource Include="Resources\Spinner200px.gif" />
+    <BundleResource Include="Resources\Spinner200px%402x.gif" />
+    <BundleResource Include="Resources\Spinner200px%403x.gif" />
+    <BundleResource Include="Resources\Infinity195px.svg" />
+    <BundleResource Include="Resources\Infinity89px.gif" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

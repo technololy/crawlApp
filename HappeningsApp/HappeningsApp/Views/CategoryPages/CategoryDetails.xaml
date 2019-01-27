@@ -42,7 +42,15 @@
                                         <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="AspectFill" />
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  
+                                                       Source="{Binding ImagePath}" 
+                                                       Aspect="AspectFill" 
+                                                       
+                                                       ErrorPlaceholder="Crawl_white_blue"  
+                                                       FadeAnimationForCachedImages="true" 
+                                                       FadeAnimationEnabled="true"   />
+                                        
+                                    
                                     <Image Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
@@ -50,8 +58,8 @@
                                     </Image>
 
                                     <StackLayout Spacing="0" Grid.Row="2"  VerticalOptions="EndAndExpand">
-                                         <Label Text="{Binding Name}"  TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.7" TextColor="White" />
+                                         <Label Text="{Binding Name}" FontAttributes="Bold"  TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" TextColor="White" />
                                
                                     </StackLayout>
                                     </Grid>
