@@ -55,8 +55,8 @@ namespace HappeningsApp.Views.AppViews
             }
             else
             {
-                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                //var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                //Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
@@ -68,7 +68,7 @@ namespace HappeningsApp.Views.AppViews
                 var select = e.SelectedItem as string;
                 string fulldayName = GetFullDay(select);
                 var listViewDatax = dealsListview.ItemsSource;          
-                var dealsList = GlobalStaticFields.GetAll.Where(d=>d.Expiration_Date.
+                var dealsList = GlobalStaticFields.GetEvery.Where(d=>d.Expiration_Date.
                 DayOfWeek.ToString().ToLower()==fulldayName.ToLower()).FirstOrDefault();
                 dealsListview.ScrollTo(dealsList, ScrollToPosition.MakeVisible, true);
             

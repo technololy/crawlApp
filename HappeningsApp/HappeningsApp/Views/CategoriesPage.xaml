@@ -44,6 +44,8 @@
                             <Label Grid.Row="0" Margin="10,0,0,0"
                                    VerticalTextAlignment="Center" 
                                    FontAttributes="Bold" 
+                                   BackgroundColor="Black"
+                                   Opacity="0.6"
                                    HorizontalTextAlignment="Center" 
                                    FontSize="Large" TextColor="White"  
                                    Text="{Binding CategoryName}" 

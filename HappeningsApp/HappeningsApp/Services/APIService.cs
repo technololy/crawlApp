@@ -37,7 +37,7 @@ namespace HappeningsApp.Services
                 await LogService.LogErrorsNew(url: method, request: json, response: resultt, activity: "put Async");
 
                 return resultt;
-     
+
             }
 
 
@@ -61,7 +61,7 @@ namespace HappeningsApp.Services
                 //serialize your json using newtonsoft json serializer then add it to the StringContent
                 //var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
                 //method address would be like api/callUber:SomePort for example
-                res = await client.PostAsync("/token",new FormUrlEncodedContent(dict));
+                res = await client.PostAsync("/token", new FormUrlEncodedContent(dict));
                 string cont = await res.Content.ReadAsStringAsync();
 
                 //LogService.LogErrors($"Endpoint is {client.BaseAddress.ToString()}/token. Response json\n{cont}");
@@ -119,7 +119,7 @@ namespace HappeningsApp.Services
                     try
                     {
                         var t = JsonConvert.DeserializeObject<T>(response);
-                        
+
                     }
                     catch (Exception e)
                     {
@@ -128,7 +128,7 @@ namespace HappeningsApp.Services
 
                     }
                     //LogService.LogErrors($"PUT url is {endpoint}, Request {json} and response:\n{response}");
-                    await LogService.LogErrorsNew(url:endpoint,request:json,response:response,activity:"put Async");
+                    await LogService.LogErrorsNew(url: endpoint, request: json, response: response, activity: "put Async");
                     return result;
                 }
             }
@@ -184,11 +184,11 @@ namespace HappeningsApp.Services
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
 
-                res =await client.GetAsync(url);
+                res = await client.GetAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
 
                 // LogService.LogErrors($"Request {url} and response:\n{content}");
-                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: actionPerformed+" GET Async");
+                await LogService.LogErrorsNew(url: url, request: url, response: content, activity: actionPerformed + " GET Async");
 
                 return res;
 
@@ -228,7 +228,7 @@ namespace HappeningsApp.Services
 
         }
 
-        internal async static Task<HttpResponseMessage> SendAsync<T>(T model,string method)
+        internal async static Task<HttpResponseMessage> SendAsync<T>(T model, string method)
         {
 
             HttpResponseMessage res = new HttpResponseMessage();
@@ -330,7 +330,7 @@ namespace HappeningsApp.Services
         public async static Task<HttpResponseMessage> LogAsync(string json)
         {
             var user = (string.IsNullOrEmpty(GlobalStaticFields.Username) ? "NA" : GlobalStaticFields.Username);
-            var jsonRequest = "{'user': '"+user+"','Error': '"+json+"'}}";
+            var jsonRequest = "{'user': '" + user + "','Error': '" + json + "'}}";
             using (var client = new HttpClient())
             {
 
@@ -371,4 +371,4 @@ namespace HappeningsApp.Services
         }
     }
 
-    }
+}
