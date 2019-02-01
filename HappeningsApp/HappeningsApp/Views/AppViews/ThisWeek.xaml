@@ -77,8 +77,8 @@
                                     </Image>
 
                                     <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" >
-                                        <Label Text="{Binding Name}"  TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5"  TextColor="White" />
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}"  FontAttributes="Bold" FontSize="8" Opacity="0.5"  TextColor="White" />
                                
                                     </StackLayout>
                                      </Grid>

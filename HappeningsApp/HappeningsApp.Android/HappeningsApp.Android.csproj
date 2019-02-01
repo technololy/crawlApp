@@ -196,6 +196,15 @@
     <AndroidResource Include="Resources\drawable\messages.jpg" />
     <AndroidResource Include="Resources\drawable\Crawl_LetterA_BOX_BLACK.png" />
     <AndroidResource Include="Resources\drawable\splashPageDroid.png" />
+    <AndroidResource Include="Resources\drawable\Spinner200px.gif" />
+    <AndroidResource Include="Resources\drawable-hdpi\Spinner200px.gif" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Spinner200px.gif" />
+    <AndroidResource Include="Resources\drawable\Infinity195px.svg" />
+    <AndroidResource Include="Resources\drawable-hdpi\Infinity195px.svg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Infinity195px.svg" />
+    <AndroidResource Include="Resources\drawable\Infinity89px.gif" />
+    <AndroidResource Include="Resources\drawable-hdpi\Infinity89px.gif" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Infinity89px.gif" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

@@ -2,7 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.AppViews.DealsList" BackgroundColor="#000015" Padding="5,10,5,40" xmlns:c="clr-namespace:HappeningsApp.Custom" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
     <ContentPage.Content>
         <Grid x:Name="mainLayout">
-            <ListView ItemsSource="{Binding AllDeals}" x:Name="dealsListview" SeparatorVisibility="None" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshDealsList}" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Transparent" HasUnevenRows="true">
+            <ListView ItemsSource="{Binding AllDeals}" 
+                      x:Name="dealsListview" 
+                      SeparatorVisibility="None" 
+                      IsPullToRefreshEnabled="True" 
+                      RefreshCommand="{Binding RefreshDealsList}" 
+                      ItemTapped="dealsListview_ItemTapped" 
+                      BackgroundColor="Transparent" 
+                      HasUnevenRows="true"
+                      CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
@@ -14,15 +22,15 @@
                                       
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="150"  HorizontalOptions="Fill" Source="{Binding ImagePath}" Aspect="AspectFill" />
-                                    <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage HeightRequest="150"  HorizontalOptions="Fill" Source="{Binding ImagePath}" Aspect="AspectFill" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true"  ErrorPlaceholder="ic_clear_blue" />
+                                  <!--  <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
-                                    </Image>
+                                    </Image>-->
                                     <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
-                                        <Label Text="{Binding Name}" TextColor="White" FontSize="Large" />
-                                        <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.7" TextColor="White" />
+                                        <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="Large" />
+                                        <Label Text="{Binding Owner_Location}" FontSize="8" FontAttributes="Bold" TextColor="White" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>

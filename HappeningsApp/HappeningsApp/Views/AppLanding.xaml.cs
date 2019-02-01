@@ -24,7 +24,10 @@ namespace HappeningsApp.Views
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
         public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
-       public AppLanding ()
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+
+
+        public AppLanding ()
 		{
 			InitializeComponent();
             try
@@ -63,22 +66,34 @@ namespace HappeningsApp.Views
         {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyOne"]) && Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
+                if (!Application.Current.Properties.ContainsKey("DidSurveySubmitOk"))
                 {
-                    //show survey
+                    await Navigation.PushModalAsync(new Survey.SurveyOne(), true);
+
                 }
+
                 else
                 {
-                    await LogService.LogErrorsNew(activity: "User was presented survey one screen");
+                    if (Convert.ToBoolean(Application.Current.Properties["DidSurveySubmitOk"]))
+                    {
+                        //dont show survey
+                    }
+                    else
+                    {
+                        //show survey
+                        await LogService.LogErrorsNew(activity: "User was presented survey one screen");
 
-                    await Navigation.PushModalAsync(new Survey.SurveyOne(),true);
+                        await Navigation.PushModalAsync(new Survey.SurveyOne(), true);
+                    }
                 }
+            
             }
             catch (Exception ex)
             {
                 var log = ex;
                 Application.Current.Properties["SurveyOne"] = false;
                 Application.Current.Properties["SurveyTwo"] = false;
+                Application.Current.Properties["DidSurveySubmitOk"] = false;
             }
         }
 
@@ -138,8 +153,35 @@ namespace HappeningsApp.Views
             }
 
         }
-
         private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
+        {
+            try
+            {
+                if (ivm?.GetEvery == null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in ivm?.GetEvery
+                          orderby h?.Expiration_Date
+                          group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Color.Red, "Slight error occured parsing response");
+            }
+
+            return GetEveryThingGrouped;
+        }
+
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDatexx()
         {
             var todaysDate = DateTime.Now;
             DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek));

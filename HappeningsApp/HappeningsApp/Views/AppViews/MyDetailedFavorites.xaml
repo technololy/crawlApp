@@ -28,7 +28,7 @@
                          <Frame Padding="0" Margin="10,0,10,5" 
                                    IsClippedToBounds="true" 
                                    BackgroundColor="Black"  
-                                   HeightRequest="150" 
+                                   HeightRequest="250" 
                                    CornerRadius="0">
                                 <Grid HeightRequest="250">
                                     
@@ -41,7 +41,13 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3"  Source="{Binding ImageURL}" Aspect="AspectFill" />
+                                    <forms:CachedImage HeightRequest="250" 
+                                                       Grid.RowSpan="3"  
+                                                       Source="{Binding ImageURL}" 
+                                                       Aspect="AspectFill"  
+                                                        
+                                                       ErrorPlaceholder="Crawl_white_blue"  
+                                                       FadeAnimationForCachedImages="true" FadeAnimationEnabled="true"   />
                                     <Image Source="ic_clear_blue.png" BackgroundColor="White" HeightRequest="30" WidthRequest="30" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" 
@@ -52,10 +58,12 @@
                                         </Image.GestureRecognizers>
                                     </Image>
 
-
-                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Description}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
-                                </Grid>
+                                    <StackLayout Grid.Row="1" Spacing="5">
+                                    <Label Text="{Binding Name}"  TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Description}" FontSize="8" Opacity="0.5" TextColor="White" />
+                                
+                                    </StackLayout>
+                                     </Grid>
                             
                                   
                                 </Frame>
