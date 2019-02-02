@@ -90,7 +90,7 @@
                                         </StackLayout>
                                     </Frame>
                                     <StackLayout>
-                                        <Label Text="{Binding Hostopeninghours.Days}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
+                                        <Label Text="Opening Days" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
                                         <Grid>
                                             <Grid.RowDefinitions>
