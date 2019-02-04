@@ -70,7 +70,7 @@
                                     </Image>-->
                                     <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
                                         <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="Large" />
-                                        <Label Text="{Binding Owner_Location}" FontSize="8" FontAttributes="Bold" TextColor="White" />
+                                        <Label IsVisible="false" Text="{Binding Owner_Location}" FontSize="8" FontAttributes="Bold" TextColor="White" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>
