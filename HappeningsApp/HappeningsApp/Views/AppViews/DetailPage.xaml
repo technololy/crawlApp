@@ -73,37 +73,14 @@
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
-                                    <StackLayout>
+                                    
+                                
+                                    
+                                    <Grid>
                                         <Label Text="Opening Days" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
-                                        <ListView Footer="" x:Name="ListOpeningDays" HasUnevenRows="true">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto" />
-                                                            <ColumnDefinition Width="30*" />
-                                                            <ColumnDefinition Width="auto" />
-                                                        </Grid.ColumnDefinitions>
-<!--                                                        <Label Text="Days" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />-->
-                                                        <Label Text="{Binding .}" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                                                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" >
-                                                            <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                                        </StackLayout>
-                                                    </Grid>
-                                                        </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                        <!--    <Grid>
+                                   
+                                           <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
@@ -122,8 +99,8 @@
                                             <Label Text="{Binding OpeningHours}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding Hostopeninghours.OpeningTime}"  TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding Hostopeninghours.ClosingTime}"  TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                        </Grid>-->
-                                    </StackLayout>
+                                        </Grid>
+                                    </Grid>
                                 </StackLayout>
                             </Grid>
                         </Grid>
@@ -133,3 +110,35 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
+
+
+
+<!--         <ListView IsVisible="false" Footer="" x:Name="ListOpeningDays" HasUnevenRows="true">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="30*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                       <Label Text="Days" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                                        <Label Text="{Binding .}" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" >
+                                                            <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                                        </StackLayout>
+                                                    </Grid>
+                                                        </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>-->
+                                    
