@@ -8,21 +8,37 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Frame Grid.Row="0" x:Name="SinglePicture" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
+                <Frame Grid.Row="0"  x:Name="SinglePicture"  BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
                     <forms:CachedImage RetryCount="3" RetryDelay="1000" Source="{Binding ImagePath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    
+                
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
+                
+                 <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
-                    <carousel:CarouselViewControl ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="Purple" CurrentPageIndicatorTintColor="Red" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
+                    
+                    <carousel:CarouselViewControl 
+                                            ShowIndicators="true"
+                                                  IndicatorsShape="Circle"
+                                                  IndicatorsTintColor="Purple"
+                                                  CurrentPageIndicatorTintColor="Red"
+                                         AnimateTransition="True" 
+                                         HorizontalOptions="FillAndExpand"
+                                             InterPageSpacing="10"
+                                 ItemsSource="{Binding Pictures}" 
+                                 >
                         <carousel:CarouselViewControl.ItemTemplate>
                             <DataTemplate>
+
                                 <forms:CachedImage Source="{Binding picture}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                     
+                                   
                             </DataTemplate>
                         </carousel:CarouselViewControl.ItemTemplate>
                     </carousel:CarouselViewControl>
@@ -73,14 +89,10 @@
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
-                                    
-                                
-                                    
-                                    <Grid>
+                                    <StackLayout>
                                         <Label Text="Opening Days" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
-                                   
-                                           <Grid>
+                                        <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
@@ -100,7 +112,7 @@
                                             <Label Text="{Binding Hostopeninghours.OpeningTime}"  TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding Hostopeninghours.ClosingTime}"  TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                         </Grid>
-                                    </Grid>
+                                    </StackLayout>
                                 </StackLayout>
                             </Grid>
                         </Grid>
@@ -110,35 +122,3 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
-
-
-
-
-<!--         <ListView IsVisible="false" Footer="" x:Name="ListOpeningDays" HasUnevenRows="true">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto" />
-                                                            <ColumnDefinition Width="30*" />
-                                                            <ColumnDefinition Width="auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                       <Label Text="Days" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                                                        <Label Text="{Binding .}" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                                                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2" >
-                                                            <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                                        </StackLayout>
-                                                    </Grid>
-                                                        </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>-->
-                                    

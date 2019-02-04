@@ -76,7 +76,7 @@ namespace HappeningsApp.Views.AppViews
             AllNewDeals = AllDeals;
             MapsAddress = AllNewDeals.Owner_Location;
             hostOrEventName = AllNewDeals.Name;
-            var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllDeals.OpeningHours);
+           // var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllDeals.OpeningHours);
             if (dealz?.Pictures?.Count > 0)
             {
                 Carousel.IsVisible = true;
@@ -104,7 +104,7 @@ namespace HappeningsApp.Views.AppViews
             AllCategoryListing = AllCategory;
             MapsAddress = AllCategoryListing.Owner_Location;
             hostOrEventName = AllCategoryListing.Name;
-            var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllCategory.OpeningHours);
+            //var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllCategory.OpeningHours);
             if (AllCategoryListing?.Pictures?.Count > 0)
             {
                 Carousel.IsVisible = true;
@@ -295,21 +295,21 @@ namespace HappeningsApp.Views.AppViews
         }
 
 
-        public IEnumerable<string> ReturnDaysAsListAndSetListViewItemSource(string f)
-        {
-            try
-            {
-                var divide = f.Split(',').ToList();
-                OpeningDaysVertical = divide;
-                ListOpeningDays.ItemsSource = OpeningDaysVertical;
-            }
-            catch (Exception ex)
-            {
-                var log = ex;
-            }
+        //public IEnumerable<string> ReturnDaysAsListAndSetListViewItemSource(string f)
+        //{
+        //    try
+        //    {
+        //        var divide = f.Split(',').ToList();
+        //        OpeningDaysVertical = divide;
+        //        ListOpeningDays.ItemsSource = OpeningDaysVertical;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var log = ex;
+        //    }
 
 
-            return OpeningDaysVertical;
-        }
+        //    return OpeningDaysVertical;
+        //}
     }
 }
