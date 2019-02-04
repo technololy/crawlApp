@@ -24,7 +24,7 @@
                                     <Label Text="{Binding Created,StringFormat='{0:dd MMM, yyyy hh:mm}'}" Grid.Row="0" FontSize="13" TextColor="Black" FontAttributes="Bold" />
                                      
                                     <ff:CachedImage Grid.Row="1" 
-                                            HeightRequest="200"  
+                                            HeightRequest="300"  
                                             Aspect="AspectFill" 
                                             Source="{Binding Picture}" 
                                                      IsVisible="{Binding IsImageEnabled}"

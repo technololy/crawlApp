@@ -28,7 +28,7 @@
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
                                     </Image>-->
-                                    <StackLayout BackgroundColor="Black" Opacity="0.6" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
+                                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
                                         <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="Large" />
                                         <Label Text="{Binding Owner_Location}" FontSize="8" FontAttributes="Bold" TextColor="White" />
                                     </StackLayout>
