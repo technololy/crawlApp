@@ -32,7 +32,7 @@ namespace HappeningsApp.iOS
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
 
             //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
-              UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
+              //UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
             CachedImageRenderer.Init();
 
             //google analytics
