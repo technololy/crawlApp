@@ -25,19 +25,50 @@ namespace HappeningsApp.Views.Search
             if (string.IsNullOrEmpty(keyword))
             {
                 dealsListview.IsVisible = false;
-                if (GlobalStaticFields.GetEvery!=null)
+                if (GlobalStaticFields.GetEvery!=null && GlobalStaticFields.AllDeals!=null
+                
+                    && GlobalStaticFields.CategoriesFromAPI!=null)
                 {
                     dealsListview.ItemsSource = GlobalStaticFields.GetEvery;
+                    categoryListView.ItemsSource = GlobalStaticFields.CategoriesFromAPI;
+                    EveryListview.ItemsSource = GlobalStaticFields.AllDeals;
 
                 }
                 return;
             }
             dealsListview.IsVisible = keyword.Length > 0 ? true : false;
+            categoryListView.IsVisible =  false;
+            EveryListview.IsVisible =false;
 
-            dealsListview.ItemsSource = GlobalStaticFields.GetEvery.Where(c => c.Name.ToLower().Contains(keyword) ||
+            var every = GlobalStaticFields.GetEvery.Where(c => c.Name.ToLower().Contains(keyword) ||
                                                                         c.Owner_Location.ToLower().Contains(keyword) ||
                                                                         c.Details.ToLower().Contains(keyword)
                                                                        );
+            categoryListView.ItemsSource = GlobalStaticFields.CategoriesFromAPI.Where(c => c.CategoryName.ToLower().Contains(keyword) ||
+                                                                  c.Description.ToLower().Contains(keyword)
+                                                                 );
+           var allDeals = GlobalStaticFields.AllDeals.Where(c => c.Name.ToLower().Contains(keyword) ||
+                                                                  c.Owner_Location.ToLower().Contains(keyword) ||
+                                                                  c.Details.ToLower().Contains(keyword)
+                                                                 );
+
+            List<NewDealsModel.Deal> deals = new List<NewDealsModel.Deal>();
+
+            //var everyToList = every.ToList();
+            //var dealsToList = allDeals.ToList();
+            foreach (var item in every)
+            {
+                deals.Add(item);
+            }
+            foreach (var item in allDeals)
+            {
+                deals.Add(item);
+            }
+
+            dealsListview.ItemsSource = deals;
+            
+            //EveryListview.ItemsSource = allDeals;
+
         }
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
