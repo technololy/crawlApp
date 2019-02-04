@@ -98,7 +98,7 @@ namespace HappeningsApp.Views.AppViews
         public DetailPage(NewCategoryDetailModel.Deal AllCategory)
         {
             InitializeComponent();
-
+            OwnerAddress.IsVisible = false;
             AllCategoryListing = new NewCategoryDetailModel.Deal();
 
             AllCategoryListing = AllCategory;

@@ -13,7 +13,7 @@ namespace HappeningsApp.Views.Search
         public SearchPage()
         {
             InitializeComponent();
-            BindingContext = GlobalStaticFields.GetAll;
+            BindingContext = GlobalStaticFields.GetEvery;
             LogService.LogErrorsNew(activity: "User landed on Search Page");
 
         }
