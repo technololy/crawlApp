@@ -18,7 +18,7 @@ namespace HappeningsApp.Views.Search
 
         }
 
-        void Search_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void Search_TextChangedOld(object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
           
             var keyword = e.NewTextValue.ToLower();
@@ -70,6 +70,39 @@ namespace HappeningsApp.Views.Search
             //EveryListview.ItemsSource = allDeals;
 
         }
+
+
+
+        void Search_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+            var keyword = e.NewTextValue.ToLower();
+            if (string.IsNullOrEmpty(keyword))
+            {
+                dealsListview.IsVisible = false;
+                if (GlobalStaticFields.GetAllSearch != null)
+                {
+
+                    dealsListview.ItemsSource = GlobalStaticFields.GetAllSearch;
+           
+                }
+                return;
+            }
+            dealsListview.IsVisible = keyword.Length > 0 ? true : false;
+        
+
+            var everySearch = GlobalStaticFields.GetAllSearch.Where(c => c.Name.ToLower().Contains(keyword) ||
+                                                                        c.Owner_Location.ToLower().Contains(keyword) ||
+                                                                        c.Details.ToLower().Contains(keyword)
+                                                                       );
+       
+
+            dealsListview.ItemsSource = everySearch;
+
+         
+
+        }
+
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {

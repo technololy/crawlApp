@@ -16,6 +16,8 @@ namespace HappeningsApp.ViewModels
         private ObservableCollection<Deals> _dealsfromAPI;
         private ObservableCollection<NewDealsModel.Deal> _allDeals;
         private ObservableCollection<Category> _categfromAPI;
+        private ObservableCollection<NewDealsModel.Deal> _getAllSearch;
+        private ObservableCollection<NewDealsModel.Deal> _getThisWeek;
 
         public bool IsEnabled { get; set; } = true;
         public ObservableCollection<Deals> DealsfromAPI
@@ -43,14 +45,14 @@ namespace HappeningsApp.ViewModels
                 }
             }
         }
-        public ObservableCollection<Category> CategfromAPI 
-        { 
-            get => _categfromAPI; 
+        public ObservableCollection<Category> CategfromAPI
+        {
+            get => _categfromAPI;
             set
             {
-                if (_categfromAPI != value )
+                if (_categfromAPI != value)
                 {
-                     _categfromAPI = value;
+                    _categfromAPI = value;
                     OnPropertyChanged();
 
                 }
@@ -60,6 +62,31 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<Collections> Coollections { get; set; }
         public ObservableCollection<GetAll2.Deal> GgetAll { get; set; }
         public ObservableCollection<NewDealsModel.Deal> GetEvery { get; set; }
+        public ObservableCollection<NewDealsModel.Deal> GetThisWeek 
+        { 
+            get => _getThisWeek;
+            set
+                {
+                if (_getThisWeek!=value)
+                {
+                    _getThisWeek = value;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
+        public ObservableCollection<NewDealsModel.Deal> GetAllSearch
+        {
+            get => _getAllSearch;
+            set
+            {
+                if (_getAllSearch != value)
+                {
+                    _getAllSearch = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public IntroPageViewModel()
         {
@@ -112,6 +139,19 @@ namespace HappeningsApp.ViewModels
             GlobalStaticFields.GetEvery = GetEvery;
 
         }
+
+
+        public async Task GetAllSearchFromNewModel()
+        {
+            GetAllService ds = new GetAllService();
+
+            var search = await ds.GetAllSearch();
+            GetAllSearch = new ObservableCollection<NewDealsModel.Deal>(search);
+            GlobalStaticFields.GetAllSearch = GetAllSearch;
+
+        }
+
+
         public async Task GetAllOriginal()
         {
             GetAllService ds = new GetAllService();
@@ -121,6 +161,19 @@ namespace HappeningsApp.ViewModels
             GlobalStaticFields.GetAll = GgetAll;
 
         }
+
+        public async Task GetAllThisWeek()
+        {
+            GetAllService ds = new GetAllService();
+
+            var week = await ds.GetThisWeek();
+            GetThisWeek = new ObservableCollection<NewDealsModel.Deal>(week);
+            GlobalStaticFields.GetAllThisWeek = GetThisWeek;
+
+
+        }
+
+
 
         //private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()
         //{

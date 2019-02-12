@@ -36,6 +36,8 @@ namespace HappeningsApp.Views
                 ivm.GetDeals();
                 ivm.GetCategories();
                 ivm.GetAll();
+                ivm.GetAllSearchFromNewModel();
+                ivm.GetAllThisWeek();
                 Deals_Tapped(this, null);
                 ShowSurVeyOne();
 

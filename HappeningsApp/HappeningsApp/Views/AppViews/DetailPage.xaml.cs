@@ -99,6 +99,7 @@ namespace HappeningsApp.Views.AppViews
         {
             InitializeComponent();
             OwnerAddress.IsVisible = false;
+            OwnerName.IsVisible = false;
             AllCategoryListing = new NewCategoryDetailModel.Deal();
 
             AllCategoryListing = AllCategory;

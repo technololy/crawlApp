@@ -36,6 +36,14 @@ namespace HappeningsApp.Models
             public ObservableCollection<Picture> Pictures { get; set; }
             public Hostopeninghours Hostopeninghours { get; set; }
             public object HostCategories { get; set; }
+            public List<OpeningDays> DaysOpen { get; set; }
+
+        }
+
+
+        public class OpeningDays
+        {
+            public string DaysOpen { get; set; }
         }
 
         public class RootObject
