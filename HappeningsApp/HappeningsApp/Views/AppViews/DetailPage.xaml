@@ -41,11 +41,11 @@
                             <StackLayout HorizontalOptions="Start" Spacing="10">
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="20" TextColor="Black" />
                                 <Label Text="{Binding Details}" Opacity="0.9" TextColor="Black" />
-                                <StackLayout Spacing="0" >
-                                <Label x:Name="OwnerName" Text="{Binding Owner}" FontSize="20" TextColor="Black" />
-                                <Label x:Name="OwnerAddress" Text="{Binding Owner_Location}" FontSize="12" TextColor="Black" Opacity="0.7" />
-                            </StackLayout>
+                                <StackLayout Spacing="0">
+                                    <Label x:Name="OwnerName" Text="{Binding Owner}" FontSize="20" TextColor="Black" />
+                                    <Label x:Name="OwnerAddress" Text="{Binding Owner_Location}" FontSize="12" TextColor="Black" Opacity="0.7" />
                                 </StackLayout>
+                            </StackLayout>
                         </StackLayout>
                         <Grid Grid.Row="2">
                             <Grid>
@@ -79,24 +79,32 @@
                                     <StackLayout>
                                         <Label Text="Opening Days" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="30*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="Date" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
-                                            <Label Text="Opens" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                        <ListView BackgroundColor="Transparent" SeparatorVisibility="None" x:Name="DaysOpenListView" HeightRequest="150" Footer="" HasUnevenRows="true">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="30*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Text="{Binding Day}" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                                            <!-- <Label Text="Opens" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
                                             <Label Text="Closes" TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding OpeningHours,StringFormat='{0:dd MMM, yyyy hh:mm}'}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />
-                                        </Grid>
+                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />-->
+                                                        </Grid>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </StackLayout>
                                 </StackLayout>
                             </Grid>

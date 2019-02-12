@@ -1,98 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             BackgroundColor="Black" 
-             NavigationPage.HasNavigationBar="False" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Views.test.MyPage"
-            
-             Padding="10,40,10,10"
-            
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage" Padding="10,40,10,10" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <Grid HeightRequest="100">
+        <ListView x:Name="DaysOpenListView" HeightRequest="100" Footer="" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                               <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Day}" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                        <!-- <Label Text="Opens" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                            <Label Text="Closes" TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding OpeningHours,StringFormat='{0:dd MMM, yyyy hh:mm}'}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />-->
+                    </Grid>
+                    </ViewCell>
              
-             
-             
-             
-  
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-          <c:SegmentedBarControl Grid.Row="0"  
-                             x:Name="segment" 
-                             AutoScroll="true"
-                             TextColor="White" 
-                             SelectedTextColor="{StaticResource CrawlColor}"
-                             SelectedLineColor="Navy"/>
-
-            <ListView ItemsSource="{Binding .}"
-                      Grid.Row="1"
-                         x:Name="dealsListview" 
-                      IsGroupingEnabled="True"
-                      SeparatorColor="Black"
-                      
-                      GroupDisplayBinding="{Binding Key}"
-                         SeparatorVisibility="None" 
-                         IsPullToRefreshEnabled="True"  
-                          
-                         BackgroundColor="Black" 
-                         HasUnevenRows="true">
-                <ListView.GroupHeaderTemplate>
-                    
-                    <DataTemplate>
-                        <ViewCell Height="25">
-                            <StackLayout VerticalOptions="FillAndExpand"
-                       Padding="5"
-                       BackgroundColor="Black">
-                              <!--  <Label Text="{Binding Key}" 
-                                       TextColor="{StaticResource CrawlColor}" 
-                                       VerticalOptions="Center"
-                                       FontAttributes="Bold"
-                                       FontSize="15"
-                                       HorizontalOptions="CenterAndExpand"
-                                       />-->
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.GroupHeaderTemplate>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" 
-                                   IsClippedToBounds="true" 
-                                   BackgroundColor="Black"  
-                                   HeightRequest="150" 
-                                   BorderColor="Black"
-                                   
-                                   CornerRadius="0">
-                                <Grid HeightRequest="150">
-
-
-                                    <Grid.RowDefinitions>
-                                        <!--<RowDefinition Height="10*" />-->
-
-                                        <RowDefinition Height="60*" />
-                                        <RowDefinition Height="10*" />
-                                        <RowDefinition Height="10*" />
-                                    </Grid.RowDefinitions>
-                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                   <!-- <forms:CachedImage HeightRequest="150" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                 
-
-
-                                    <Label Text="{Binding Name}" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontSize="8" Opacity="0.5" Grid.Row="2" TextColor="White" />
-                                </Grid>
-
-
-                            </Frame>
-                        </c:ExtendedViewCell>
-
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>

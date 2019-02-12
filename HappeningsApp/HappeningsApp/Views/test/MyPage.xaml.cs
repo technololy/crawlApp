@@ -13,10 +13,15 @@ namespace HappeningsApp.Views.test
     {
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        NewDealsModel.Deal AllNewDeals;
 
         public MyPage()
         {
             InitializeComponent();
+
+
+
+
             MockImageList mds = new MockImageList();
             var mock = mds.GetDealsTest();
 
@@ -24,6 +29,21 @@ namespace HappeningsApp.Views.test
             BindingContext = mock1;
         }
 
+        public MyPage(NewDealsModel.Deal AllDeals)
+        {
+            InitializeComponent();
+
+            AllNewDeals = new NewDealsModel.Deal();
+
+            AllNewDeals = AllDeals;
+            //MapsAddress = AllNewDeals.Owner_Location;
+            //hostOrEventName = AllNewDeals.Name;
+            DaysOpenListView.ItemsSource = AllNewDeals.DaysOpen;
+            // var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllDeals.OpeningHours);
+        
+            BindingContext = AllNewDeals;
+
+        }
 
         private ObservableCollection<Grouping<string, Deals>> GroupListByDate(ObservableCollection<Deals> deals)
         {

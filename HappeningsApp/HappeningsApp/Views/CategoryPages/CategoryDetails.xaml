@@ -59,7 +59,7 @@
 
                                     <StackLayout Spacing="0" Grid.Row="2"  VerticalOptions="EndAndExpand">
                                          <Label Text="{Binding Name}" FontAttributes="Bold"  TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" TextColor="White" />
+                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" TextColor="White" />
                                
                                     </StackLayout>
                                     </Grid>

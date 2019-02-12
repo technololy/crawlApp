@@ -140,7 +140,8 @@ namespace HappeningsApp.Views.AppViews
             if (dealsListview.SelectedItem is NewDealsModel.Deal selected)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
-                //Navigation.PushAsync(new DetailPage(selected));
+                //Application.Current.MainPage.Navigation.PushAsync(new test.MyPage(selected));
+            
 
             }
             else

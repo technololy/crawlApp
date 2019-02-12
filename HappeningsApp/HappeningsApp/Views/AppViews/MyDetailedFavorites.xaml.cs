@@ -22,7 +22,7 @@ namespace HappeningsApp.Views.AppViews
             InitializeComponent();
             mcvm = new MyCreatedCollectionViewModel();
             mcvm.UserFavs = favs;
-            
+            //lblDescription.IsVisible = false;
             try
             {
                 Collectz = favs;

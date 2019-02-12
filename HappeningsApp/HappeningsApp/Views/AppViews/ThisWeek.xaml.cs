@@ -108,7 +108,7 @@ namespace HappeningsApp.Views.AppViews
                 {
                     return GetEveryThingGrouped;
                 }
-                var grp = from h in ivm?.GetEvery
+                var grp = from h in ivm?.GetThisWeek
                           orderby h?.Expiration_Date
                           group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                           select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);

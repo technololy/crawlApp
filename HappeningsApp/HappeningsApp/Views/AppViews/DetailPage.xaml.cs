@@ -76,6 +76,7 @@ namespace HappeningsApp.Views.AppViews
             AllNewDeals = AllDeals;
             MapsAddress = AllNewDeals.Owner_Location;
             hostOrEventName = AllNewDeals.Name;
+            DaysOpenListView.ItemsSource = AllNewDeals.DaysOpen;
            // var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllDeals.OpeningHours);
             if (dealz?.Pictures?.Count > 0)
             {
