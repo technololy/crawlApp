@@ -8,7 +8,7 @@
                       IsPullToRefreshEnabled="True" 
                       RefreshCommand="{Binding RefreshDealsList}" 
                       ItemTapped="dealsListview_ItemTapped" 
-                      BackgroundColor="Transparent" 
+                      BackgroundColor="Black" 
                       HasUnevenRows="true"
                       CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
