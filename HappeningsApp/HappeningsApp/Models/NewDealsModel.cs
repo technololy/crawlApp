@@ -45,6 +45,7 @@ namespace HappeningsApp.Models
         public class DaysOpen
         {
             public string Day { get; set; }
+            public string Time { get; set; }
         }
 
         public class RootObject

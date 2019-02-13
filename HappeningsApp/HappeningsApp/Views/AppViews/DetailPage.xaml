@@ -95,6 +95,8 @@
                                                                 <ColumnDefinition Width="auto" />
                                                             </Grid.ColumnDefinitions>
                                                             <Label Text="{Binding Day}" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                                            
+                                                            <Label Text="{Binding Time}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
                                                             <!-- <Label Text="Opens" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
                                             <Label Text="Closes" TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
                                             <Label Text="{Binding OpeningHours,StringFormat='{0:dd MMM, yyyy hh:mm}'}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
