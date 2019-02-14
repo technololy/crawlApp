@@ -21,6 +21,7 @@ namespace HappeningsApp.Models
         public class Deal
         {
             public int Id { get; set; }
+            public string type { get; set; }
             public string Name { get; set; }
             public string Details { get; set; }
             public int Category_Id { get; set; }

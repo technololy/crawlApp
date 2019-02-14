@@ -91,7 +91,8 @@ namespace HappeningsApp.Views.AppViews
                 ivm.GetDeals();
                 ivm.GetCategories();
                 ivm.GetAll();
-                await Task.Delay(3000);
+                // await Task.Delay(3000);
+                ivm.GetAllThisWeek();
 
                 var groupByDate = GroupListByDate();
                 //GlobalStaticFields.GetAllGrouping = groupByDate;

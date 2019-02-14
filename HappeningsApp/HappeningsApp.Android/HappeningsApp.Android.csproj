@@ -205,6 +205,10 @@
     <AndroidResource Include="Resources\drawable\Infinity89px.gif" />
     <AndroidResource Include="Resources\drawable-hdpi\Infinity89px.gif" />
     <AndroidResource Include="Resources\drawable-xhdpi\Infinity89px.gif" />
+    <AndroidResource Include="Resources\drawable\uber_PNG27.png" />
+    <AndroidResource Include="Resources\drawable\uberlogo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\uber_PNG27.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\uber_PNG27.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

@@ -157,6 +157,7 @@
     <BundleResource Include="Resources\Spinner200px%403x.gif" />
     <BundleResource Include="Resources\Infinity195px.svg" />
     <BundleResource Include="Resources\Infinity89px.gif" />
+    <BundleResource Include="Resources\uber_PNG27.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

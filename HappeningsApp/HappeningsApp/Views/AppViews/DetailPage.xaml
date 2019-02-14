@@ -65,11 +65,12 @@
                                     </StackLayout>
                                     <Frame HasShadow="false" HeightRequest="60">
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
+                                      <!--      <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
                                                 <Frame.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="Uber_tapped" />
                                                 </Frame.GestureRecognizers>
-                                            </Frame>
+                                            </Frame>-->
+                                            <Image Source="uber_PNG27"  />
                                             <StackLayout>
                                                 <Label Text="Tap to get an uber" TextColor="Black" />
                                                 <Label Text="Get 15% off your first deal with Crawl" TextColor="Black" Opacity="0.6" />
@@ -79,7 +80,13 @@
                                     <StackLayout>
                                         <Label Text="Opening Days" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="15" />
                                         <BoxView Color="Gray" HeightRequest="0.3" />
-                                        <ListView BackgroundColor="Transparent" SeparatorVisibility="None" x:Name="DaysOpenListView" HeightRequest="150" Footer="" HasUnevenRows="true">
+                                        <ListView BackgroundColor="Transparent" 
+                                                  SeparatorVisibility="None" 
+                                                  x:Name="DaysOpenListView"
+                                                  
+                                                  ItemsSource="{Binding DaysOpen}"
+                                                  HeightRequest="150" Footer="" 
+                                                  HasUnevenRows="true">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>

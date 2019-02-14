@@ -23,6 +23,13 @@ namespace HappeningsApp.Models
             public string Category { get; set; }
         }
 
+
+        public class DaysOpen
+        {
+            public string Day { get; set; }
+            public string Time { get; set; }
+        }
+
         public class Deal
         {
             public string type { get; set; }
@@ -45,6 +52,8 @@ namespace HappeningsApp.Models
             public ObservableCollection<HostCategory> HostCategories { get; set; }
             public DateTime Created { get; set; }
             public DateTime Modified { get; set; }
+            public List<DaysOpen> DaysOpen { get; set; }
+
         }
 
         public class RootObject

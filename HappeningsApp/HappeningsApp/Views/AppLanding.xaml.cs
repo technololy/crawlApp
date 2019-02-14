@@ -164,6 +164,35 @@ namespace HappeningsApp.Views
                     return GetEveryThingGrouped;
                 }
                 var grp = from h in ivm?.GetThisWeek
+                          orderby h?.type
+                          group h by h?.type into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Color.Red, "Slight error occured parsing response");
+            }
+
+            return GetEveryThingGrouped;
+        }
+
+
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate14022019()
+        {
+            try
+            {
+                if (ivm?.GetEvery == null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in ivm?.GetThisWeek
                           orderby h?.Expiration_Date
                           group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
                           select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
@@ -182,6 +211,7 @@ namespace HappeningsApp.Views
 
             return GetEveryThingGrouped;
         }
+
 
         private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDatexx()
         {
