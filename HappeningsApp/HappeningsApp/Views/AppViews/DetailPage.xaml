@@ -16,7 +16,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="250" IsClippedToBounds="True">
+                <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="200" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
                     <carousel:CarouselViewControl ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="Purple" CurrentPageIndicatorTintColor="Red" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
@@ -85,7 +85,7 @@
                                                   x:Name="DaysOpenListView"
                                                   
                                                   ItemsSource="{Binding DaysOpen}"
-                                                  HeightRequest="150" Footer="" 
+                                                  HeightRequest="250" Footer="" 
                                                   HasUnevenRows="true">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
