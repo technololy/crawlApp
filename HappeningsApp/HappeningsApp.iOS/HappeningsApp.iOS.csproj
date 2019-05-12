@@ -82,6 +82,7 @@
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Renderers\ScrollViewWithNotBarRenderer.cs" />
     <Compile Include="Helpers\CountBadge.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -159,10 +160,6 @@
     <BundleResource Include="Resources\Infinity195px.svg" />
     <BundleResource Include="Resources\Infinity89px.gif" />
     <BundleResource Include="Resources\uber_PNG27.png" />
-
-    <BundleResource Include="Resources\uberNewLogo.jpg" />
-    <BundleResource Include="Resources\uberNewLogoPNG.png" />
-
     <BundleResource Include="Resources\CATEGORIES.png" />
     <BundleResource Include="Resources\DATE PICKER.png" />
     <BundleResource Include="Resources\DEALS.png" />
@@ -225,7 +222,6 @@
     <BundleResource Include="Resources\splash_backgroundd.png" />
     <BundleResource Include="Resources\splash_backgroundImg.png" />
     <BundleResource Include="Resources\splash_background2.png" />
-
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -299,7 +295,7 @@
       <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.InputKit">
-      <Version>3.0.2</Version>
+      <Version>3.0.11</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -278,5 +278,10 @@ namespace HappeningsApp.Pages
 
             Debug.WriteLine("Authentication error: " + e.Message);
         }
+
+        void SignUp_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new Onboarding.SignUpEmail());
+        }
     }
 }

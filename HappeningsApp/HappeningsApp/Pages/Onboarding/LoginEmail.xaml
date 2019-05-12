@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Onboarding.LoginEmail" xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundImage="splash_background2">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+      x:Class="HappeningsApp.Pages.Onboarding.LoginEmail" 
+      xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" 
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             BackgroundImage="splash_background2">
     <ContentPage.Content>
         <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0">
             <StackLayout Spacing="5" x:Name="emailStack">
-                <c:BorderlessEntry Placeholder="Email address" x:Name="txtUsername" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" Completed="Handle_Completed" TextColor="White" ReturnType="Next" Text="{Binding User.Username}" PlaceholderColor="White" />
+                <c:BorderlessEntry 
+                Placeholder="Email address" x:Name="txtUsername" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" Completed="Handle_Completed" TextColor="White" ReturnType="Next" Text="{Binding User.Username}" PlaceholderColor="White" />
                 <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}" />
             </StackLayout>
             <StackLayout Spacing="0">

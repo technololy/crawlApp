@@ -19,7 +19,7 @@
                 <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="200" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
-                    <carousel:CarouselViewControl x:Name="CarouselControl" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="White" CurrentPageIndicatorTintColor="{StaticResource CrawlColor}" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
+                    <carousel:CarouselViewControl ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="Purple" CurrentPageIndicatorTintColor="Red" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
                         <carousel:CarouselViewControl.ItemTemplate>
                             <DataTemplate>
                                 <forms:CachedImage Source="{Binding picture}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
@@ -30,14 +30,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame HasShadow="true" 
-                       CornerRadius="30" 
-                       Padding="0" 
-                       Margin="15,0,15,0" 
-                       TranslationY="-10" 
-                       Grid.Row="1" 
-                       IsClippedToBounds="true"
-                       BackgroundColor="#ecf0f1">
+                <Frame HasShadow="true" CornerRadius="30" Padding="0" Margin="15,0,15,0" TranslationY="-10" Grid.Row="1" BackgroundColor="#ecf0f1">
                     <Grid Margin="10,0,10,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -72,15 +65,12 @@
                                     </StackLayout>
                                     <Frame HasShadow="false" HeightRequest="60">
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                     
-                                            <Frame BackgroundColor="Black" Padding="1" HasShadow="false">
-                                            <Image Source="uberNewLogoPNG">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="Uber_tapped" NumberOfTapsRequired="1" />
-                                                    
-                                                </Image.GestureRecognizers>
-                                            </Image>
-                                                </Frame>
+                                      <!--      <Frame BackgroundColor="Black" HeightRequest="30" WidthRequest="30" HasShadow="false">
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="Uber_tapped" />
+                                                </Frame.GestureRecognizers>
+                                            </Frame>-->
+                                            <Image Source="uber_PNG27"  />
                                             <StackLayout>
                                                 <Label Text="Tap to get an uber" TextColor="Black" />
                                                 <Label Text="Get 15% off your first deal with Crawl" TextColor="Black" Opacity="0.6" />
