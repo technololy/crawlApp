@@ -30,7 +30,7 @@ namespace HappeningsApp.ViewModels
             //this.nav = _nav;
             User = new UserInfo();
             store = AccountStore.Create();
-            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            //account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             //OnGoogleButtonCommand = new Command(OnGoogleButtonClick);
         }
         public UserInfo User

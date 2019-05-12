@@ -32,7 +32,7 @@ namespace HappeningsApp
 
             GetAppInstallID();
 
-            //MainPage = new NavigationPage(new Views.LoggedOn());
+            //MainPage = new NavigationPage(new Views.NewLook.AboutYouPage());
 
             //return;
             if (IsUserLoggedOn())
@@ -47,11 +47,12 @@ namespace HappeningsApp
                     lvmm.GetTokenFromAPI();
 
 
-                    MainPage = new NavigationPage(new Views.AppLanding());
+                    MainPage = new NavigationPage(new Pages.AppLanding());
                 }
                 catch (Exception ex)
                 {
-                    MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                    //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                    MainPage = new NavigationPage(new Pages.SignInUp());
 
 
                 }
@@ -59,7 +60,8 @@ namespace HappeningsApp
             }
             else
             {
-                MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                MainPage = new NavigationPage(new Pages.SignInUp());
 
             }
             #region comment

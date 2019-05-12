@@ -288,7 +288,7 @@ namespace HappeningsApp.Views
             InitializeComponent();
             AnimateThisPage();
             store = AccountStore.Create();
-            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            //account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             #region commentedOut
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFFFFF");
             //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Magenta;
@@ -305,7 +305,7 @@ namespace HappeningsApp.Views
             InitializeComponent();
             //AnimateThisPage();
             store = AccountStore.Create();
-            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            //account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
             var mytoast = MyToast.DisplayToast(Color.Blue, message);
 
             this.BindingContext = lvm;

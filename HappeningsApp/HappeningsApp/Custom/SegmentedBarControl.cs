@@ -159,7 +159,8 @@ namespace HappeningsApp.Custom
 
             var mainContentLayout = new StackLayout() { Spacing = 0 };
             mainContentLayout.Children.Add(_mainLayout);
-            mainContentLayout.Children.Add(new BoxView() { HeightRequest = 0.5, HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = Color.Silver });
+            //this boxview is situated under the text, from start to end of the scrollview
+            mainContentLayout.Children.Add(new BoxView() { Color=Color.Transparent, HeightRequest = 0.5, HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = Color.Silver });
 
             this.Content = mainContentLayout;
 

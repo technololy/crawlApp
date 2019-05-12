@@ -36,7 +36,7 @@ namespace HappeningsApp.Views.Settings
                         var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
                         var before = Navigation.NavigationStack.ToList()[0];
 
-                        Navigation.InsertPageBefore(new LoginOrSignUp(), before);
+                        Navigation.InsertPageBefore(new Pages.SignInUp(), before);
                         GlobalStaticFields.Username = "";
                         await Navigation.PopToRootAsync(true);
                     }

@@ -5,7 +5,7 @@
               NavigationPage.HasNavigationBar="False"
      xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
      xmlns:c="clr-namespace:HappeningsApp.Custom"
-             BackgroundColor="Black"
+            BackgroundImage="splash_background2"
             
              x:Class="HappeningsApp.Views.LoggedOn">
     <ContentPage.Content>

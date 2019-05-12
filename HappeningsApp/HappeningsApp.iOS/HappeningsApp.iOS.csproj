@@ -25,10 +25,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -158,6 +159,68 @@
     <BundleResource Include="Resources\Infinity195px.svg" />
     <BundleResource Include="Resources\Infinity89px.gif" />
     <BundleResource Include="Resources\uber_PNG27.png" />
+    <BundleResource Include="Resources\CATEGORIES.png" />
+    <BundleResource Include="Resources\DATE PICKER.png" />
+    <BundleResource Include="Resources\DEALS.png" />
+    <BundleResource Include="Resources\EVENT DETAIL SOCIAL.png" />
+    <BundleResource Include="Resources\EVENT DETAIL.png" />
+    <BundleResource Include="Resources\FAVOURITES.png" />
+    <BundleResource Include="Resources\HOME LIST VIEW.png" />
+    <BundleResource Include="Resources\HOME MAP VIEW.png" />
+    <BundleResource Include="Resources\LOADER.png" />
+    <BundleResource Include="Resources\LOGIN FIELDS.png" />
+    <BundleResource Include="Resources\LOGIN SIGNUP.png" />
+    <BundleResource Include="Resources\NOTIFICATION LIST.png" />
+    <BundleResource Include="Resources\NOTIFICTION DETAIL.png" />
+    <BundleResource Include="Resources\ONBOARDING 2.png" />
+    <BundleResource Include="Resources\ONBOARDING 4.png" />
+    <BundleResource Include="Resources\ONBOARDING 5.png" />
+    <BundleResource Include="Resources\ONBOARDING.png" />
+    <BundleResource Include="Resources\PREFERENCES 1.png" />
+    <BundleResource Include="Resources\PREFERENCES 2.png" />
+    <BundleResource Include="Resources\PROFILE SETTINGS.png" />
+    <BundleResource Include="Resources\PROFILE.png" />
+    <BundleResource Include="Resources\REGISTER EMAIL.png" />
+    <BundleResource Include="Resources\SPLASH SCREEN.png" />
+    <BundleResource Include="Resources\WELCOME PAGE.png" />
+    <BundleResource Include="Resources\abt.jpg" />
+    <BundleResource Include="Resources\background.jpg" />
+    <BundleResource Include="Resources\bed.png" />
+    <BundleResource Include="Resources\bell.png" />
+    <BundleResource Include="Resources\bogobiri.jpg" />
+    <BundleResource Include="Resources\circle.png" />
+    <BundleResource Include="Resources\coldstone.jpg" />
+    <BundleResource Include="Resources\crawlwhiteblue.jpg" />
+    <BundleResource Include="Resources\deals.jpg" />
+    <BundleResource Include="Resources\ekohotel.jpg" />
+    <BundleResource Include="Resources\event.png" />
+    <BundleResource Include="Resources\funds.png" />
+    <BundleResource Include="Resources\holo.png" />
+    <BundleResource Include="Resources\like.jpg" />
+    <BundleResource Include="Resources\like.png" />
+    <BundleResource Include="Resources\likeed.png" />
+    <BundleResource Include="Resources\list-button-with-3-elements.png" />
+    <BundleResource Include="Resources\list.png" />
+    <BundleResource Include="Resources\magnifying-glass.png" />
+    <BundleResource Include="Resources\map.png" />
+    <BundleResource Include="Resources\maps-and-flags.png" />
+    <BundleResource Include="Resources\noti.jpg" />
+    <BundleResource Include="Resources\on3.png" />
+    <BundleResource Include="Resources\placeholder.png" />
+    <BundleResource Include="Resources\restaurant.png" />
+    <BundleResource Include="Resources\search.jpg" />
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\small-calendar.png" />
+    <BundleResource Include="Resources\sort-button-with-three-lines.png" />
+    <BundleResource Include="Resources\splash_background.jpg" />
+    <BundleResource Include="Resources\user.png" />
+    <BundleResource Include="Resources\usero.png" />
+    <BundleResource Include="Resources\wifi.png" />
+    <BundleResource Include="Resources\pics\splash_background.jpg" />
+    <BundleResource Include="Resources\splash_backgroundpng.png" />
+    <BundleResource Include="Resources\splash_backgroundd.png" />
+    <BundleResource Include="Resources\splash_backgroundImg.png" />
+    <BundleResource Include="Resources\splash_background2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -208,7 +271,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations">
       <Version>2.4.4.859</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.1</Version>
     </PackageReference>
@@ -229,6 +292,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Badge.Plugin">
       <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.InputKit">
+      <Version>3.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

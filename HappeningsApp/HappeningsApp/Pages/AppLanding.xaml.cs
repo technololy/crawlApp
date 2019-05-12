@@ -1,0 +1,212 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using HappeningsApp.Models;
+using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
+using HappeningsApp.Views.AppViews;
+using HappeningsApp.Views.Search;
+using MvvmHelpers;
+using Xamarin.Forms;
+using System.Linq;
+using HappeningsApp.Views;
+
+namespace HappeningsApp.Pages
+{
+    public partial class AppLanding : ContentPage
+    {
+        IntroPageViewModel ivm;
+        public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
+        public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+        public string PageLandingTitle { get; set; }
+
+        public AppLanding()
+        {
+            InitializeComponent();
+            try
+            {
+                ivm = new IntroPageViewModel();
+                ivm.GetDeals();
+                ivm.GetCategories();
+                ivm.GetAll();
+                ivm.GetAllSearchFromNewModel();
+                ivm.GetAllThisWeek();
+                ThisWeek_Tapped(this, null);
+                ShowSurVeyOne();
+                this.BindingContext = this;
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+        }
+
+        private async void ThisWeek_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                var page = new Pages.Home.ThisWeek();
+                PlaceHolder.Content = page.Content;
+                //bxVwthisWeek.BackgroundColor = Color.FromHex("#3498db");
+                //bxVwCat.BackgroundColor = Color.Black;
+                //bxVwCol.BackgroundColor = Color.Black;
+                //bxVwDeals.BackgroundColor = Color.Black;
+                lblPageLandingTitle.Text = "This Week";
+                lblCategories.TextColor = Color.White;
+                lblProfiles.TextColor = Color.White;
+                lblThisWeek.TextColor = Color.FromHex("#3498db");
+                lblFavorites.TextColor = Color.White;
+
+              
+                var groupEveryByDate = GroupListByDate();
+                GlobalStaticFields.GetEveryGrouping = groupEveryByDate;
+                BindingContext = groupEveryByDate;
+                await LogService.LogErrorsNew(activity: "User clicked on This Week Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+
+            }
+
+        }
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
+        {
+            try
+            {
+                if (ivm?.GetEvery == null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in ivm?.GetThisWeek
+                          orderby h?.type
+                          group h by h?.type into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Color.Red, "Slight error occured parsing response");
+            }
+
+            return GetEveryThingGrouped;
+        }
+
+
+
+        void Search_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SearchPage(), true);
+        }
+
+
+
+
+        private async Task ShowSurVeyOne()
+        {
+            await Task.Delay(30000);
+            await NowShowOne();
+        }
+
+        private async Task NowShowOne()
+        {
+            try
+            {
+                if (!Application.Current.Properties.ContainsKey("DidSurveySubmitOk"))
+                {
+                    await Navigation.PushModalAsync(new Views.Survey.SurveyOne(), true);
+
+                }
+
+                else
+                {
+                    if (Convert.ToBoolean(Application.Current.Properties["DidSurveySubmitOk"]))
+                    {
+                        //dont show survey
+                    }
+                    else
+                    {
+                        //show survey
+                        await LogService.LogErrorsNew(activity: "User was presented survey one screen");
+
+                        await Navigation.PushModalAsync(new Views.Survey.SurveyOne(), true);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                Application.Current.Properties["SurveyOne"] = false;
+                Application.Current.Properties["SurveyTwo"] = false;
+                Application.Current.Properties["DidSurveySubmitOk"] = false;
+            }
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
+
+        async void settings_Tapped(object sender, System.EventArgs e)
+        {
+      
+            await settingsImage.RotateTo(360, 300, Easing.SinInOut);
+            await settingsImage.RotateTo(0, 300, Easing.SinInOut);
+
+        }
+
+        private async void Categories_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                lblPageLandingTitle.Text = "Categories";
+
+                var page = new CategoriesPage();
+                page.Content.BackgroundColor = Color.FromHex("#000015");
+
+                PlaceHolder.Content = page.Content;
+
+                bxVwCat.BackgroundColor = Color.FromHex("#3498db");
+                //bxVwDeals.BackgroundColor = Color.Black;
+                //bxVwCol.BackgroundColor = Color.Black;
+                bxVwthisWeek.BackgroundColor = Color.Black;
+                ivm.CategfromAPI = GlobalStaticFields.CategoriesFromAPI;
+                BindingContext = ivm;
+                await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
+
+
+
+        }
+
+        void Profiles_Tapped(object sender, System.EventArgs e)
+        {
+            lblPageLandingTitle.Text = "Profiles";
+
+        }
+
+        void Favorites_Tapped(object sender, System.EventArgs e)
+        {
+            lblPageLandingTitle.Text = "Favorites";
+
+            lblCategories.TextColor = Color.White;
+            lblProfiles.TextColor = Color.White;
+            lblThisWeek.TextColor = Color.White;
+            lblFavorites.TextColor = Color.FromHex("#3498db");
+        }
+    }
+}

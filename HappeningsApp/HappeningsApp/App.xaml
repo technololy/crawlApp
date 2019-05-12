@@ -7,6 +7,7 @@
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="CrawlColor">#3498db</Color>
+            <Color x:Key="crawlWhiteColor">#FFFFFF</Color>
             <Color x:Key="CrawlRedColor">#c0392b</Color>
             <!--Copied from another project-->
             <Color x:Key="SeparatorColor">#C7C7CC</Color>

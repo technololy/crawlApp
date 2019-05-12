@@ -34,7 +34,7 @@ namespace HappeningsApp.iOS
             //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
               UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
             CachedImageRenderer.Init();
-
+            Plugin.InputKit.Platforms.iOS.Config.Init();
             //google analytics
             //GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
             //GoogleAnalytics.Current.Config.AppId = "GASample";

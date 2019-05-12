@@ -29,7 +29,7 @@ namespace HappeningsApp.Droid
             global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, bundle);
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
-
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, bundle);
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CarouselViewRenderer.Init();
