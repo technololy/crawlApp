@@ -28,7 +28,8 @@
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Geocoding.Google" Version="4.0.1" />
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
-    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.0.2" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.0.11" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -109,6 +110,7 @@
     <Folder Include="Pages\" />
     <Folder Include="Pages\Onboarding\" />
     <Folder Include="Pages\Home\" />
+    <Folder Include="Pages\ProfileData\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

@@ -123,7 +123,7 @@ namespace HappeningsApp.Pages
             {
                 if (!Application.Current.Properties.ContainsKey("DidSurveySubmitOk"))
                 {
-                    await Navigation.PushModalAsync(new Views.Survey.SurveyOne(), true);
+                    await Navigation.PushModalAsync(new Pages.ProfileData.QuestionsAboutYou(), true);
 
                 }
 
@@ -138,7 +138,7 @@ namespace HappeningsApp.Pages
                         //show survey
                         await LogService.LogErrorsNew(activity: "User was presented survey one screen");
 
-                        await Navigation.PushModalAsync(new Views.Survey.SurveyOne(), true);
+                        await Navigation.PushModalAsync(new ProfileData.QuestionsAboutYou(), true);
                     }
                 }
 
@@ -193,9 +193,14 @@ namespace HappeningsApp.Pages
 
         }
 
-        void Profiles_Tapped(object sender, System.EventArgs e)
+        private async void Profiles_Tapped(object sender, System.EventArgs e)
         {
             lblPageLandingTitle.Text = "Profiles";
+            lblCategories.TextColor = Color.White;
+            lblFavorites.TextColor = Color.White;
+            lblThisWeek.TextColor = Color.White;
+            lblProfiles.TextColor = Color.FromHex("#3498db");
+            await Navigation.PushAsync(new Home.Profile());
 
         }
 

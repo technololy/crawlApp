@@ -23,6 +23,7 @@ namespace HappeningsApp.Pages.Onboarding
         public LoginEmail()
         {
             InitializeComponent();
+            this.BindingContext = lvm;
         }
 
         void Handle_Completed(object sender, System.EventArgs e)
