@@ -14,29 +14,23 @@
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="15*" />
             </Grid.ColumnDefinitions>
-                <Image Source="ic_search_white.png" HeightRequest="20" Scale="1.5" 
-                       WidthRequest="20" 
-                       Opacity="0.9" Grid.Column="0"
-                       Margin="0,0,10,10" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="search" Tapped="Search_Tapped" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="ic_settings.png" IsVisible="false" x:Name="settingsImage" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="1" Margin="10,0,0,0" Grid.Column="0">
+            <Image Source="ic_settings.png" x:Name="settingsImage" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="1" Margin="10,0,0,0" Grid.Column="0">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="settingsTapped" Tapped="settings_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
             <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label x:Name="lblPageLandingTitle" TextColor="White" HorizontalOptions="Center" FontSize="15" />
+                <BoxView Color="White" HeightRequest="1"/>
             
             </StackLayout>
-        
+            <Image Source="ic_search_white.png" IsVisible="true" HeightRequest="20" WidthRequest="20" Opacity="0.7" Grid.Column="2" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="search" Tapped="Search_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
         </Grid>
-        <StackLayout Grid.Row="1">
-       <BoxView  Color="LightGray" HeightRequest="0.5" />
-            
-            </StackLayout>
+       <BoxView Color="White" HeightRequest="0.1" Grid.Row="1" />
         
         <ContentView x:Name="PlaceHolder" Grid.Row="2" />
         <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="3" Opacity="0.5" />

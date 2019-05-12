@@ -120,6 +120,20 @@ namespace HappeningsApp.Views.AppViews
 
 
             }
+
+
+           
+            //add this to automatically slide the images
+            Device.StartTimer(TimeSpan.FromSeconds(5), (Func<bool>)(() =>
+            {
+
+                CarouselControl.Position = (CarouselControl.Position + 1) % AllCategoryListing.Pictures.Count;
+
+                return true;
+            }));
+
+
+
             BindingContext = AllCategoryListing;
 
         }

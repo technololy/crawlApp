@@ -28,13 +28,11 @@ namespace HappeningsApp
             InitializeComponent();
 
 
-#if DEBUG
-            HotReloader.Current.Start(this);
-#endif
+
 
             GetAppInstallID();
 
-            //MainPage = new NavigationPage(new Pages.ProfileData.QuestionsAboutYou());
+            //MainPage = new NavigationPage(new Views.NewLook.AboutYouPage());
 
             //return;
             if (IsUserLoggedOn())

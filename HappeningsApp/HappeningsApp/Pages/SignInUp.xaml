@@ -27,12 +27,7 @@
              
                
                  <StackLayout Grid.Row="5" VerticalOptions="Center" >
-                    <Label Text="Don't have an account? Sign Up" TextColor="{x:StaticResource CrawlRedColor}" HorizontalTextAlignment="Center" >
-                <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SignUp_Tapped"/>
-                    </Label.GestureRecognizers>
-                    
-                </Label>
+                    <Label Text="Don't have an account? Sign Up" TextColor="{x:StaticResource CrawlRedColor}" HorizontalTextAlignment="Center" />
                 </StackLayout>
             </Grid>
       

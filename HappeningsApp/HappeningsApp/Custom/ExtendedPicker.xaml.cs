@@ -90,17 +90,6 @@ namespace HappeningsApp.Custom
                                                             defaultBindingMode: BindingMode.TwoWay,
                                                             propertyChanged: PlaceHolderColorPropertyChanged);
 
-
-        public static BindableProperty   BoxUnderlineColorProperty = BindableProperty.Create(
-                                                            propertyName: "BoxUnderlineColor",
-                                                            returnType: typeof(Color),
-                                                            declaringType: typeof(ExtendedPicker),
-                                                            defaultValue: Color.FromHex("#3498db"),
-                                                            defaultBindingMode: BindingMode.TwoWay,
-                                                            propertyChanged: BoxUnderlineColorPropertyChanged);
-
-
-
         private static void PlaceHolderColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (ExtendedPicker)bindable;
@@ -108,16 +97,6 @@ namespace HappeningsApp.Custom
             if (control != null)
             {
                 control.PlaceHolderColor = (Color)newValue;
-            }
-        }
-
-        private static void BoxUnderlineColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (ExtendedPicker)bindable;
-
-            if (control != null)
-            {
-                control.BoxViewLine.Color = (Color)newValue;
             }
         }
 
@@ -207,12 +186,6 @@ namespace HappeningsApp.Custom
         {
             get { return (Color)GetValue(PlaceHolderColorProperty); }
             set { SetValue(PlaceHolderColorProperty, value); }
-        }
-
-        public Color BoxUnderlineColor
-        {
-            get { return (Color)GetValue(BoxUnderlineColorProperty); }
-            set { SetValue(BoxUnderlineColorProperty, value); }
         }
 
         public string Title
