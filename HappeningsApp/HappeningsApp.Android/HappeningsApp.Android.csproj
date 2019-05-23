@@ -216,6 +216,26 @@
     <AndroidResource Include="Resources\drawable\uberlogo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\uber_PNG27.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\uber_PNG27.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash_background2.png" />
+    <AndroidResource Include="Resources\drawable\splash_background2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash_background2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash_background2.png" />
+    <AndroidResource Include="Resources\drawable\ONBOARDING.png" />
+    <AndroidResource Include="Resources\drawable\ONBOARDING2.png" />
+    <AndroidResource Include="Resources\drawable\ONBOARDING3.png" />
+    <AndroidResource Include="Resources\drawable\ONBOARDING4.png" />
+    <AndroidResource Include="Resources\drawable\ONBOARDING5.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ONBOARDING.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ONBOARDING2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ONBOARDING3.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ONBOARDING4.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ONBOARDING5.png" />
+    <AndroidResource Include="Resources\drawable\notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\notification.png" />
+    <AndroidResource Include="Resources\drawable\like.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\like.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\like.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

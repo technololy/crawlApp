@@ -1,10 +1,15 @@
 ﻿using System;
-using Android.Content;
+
 using HappeningsApp.Custom;
 using HappeningsApp.Droid.Renderers;
+using Android.Support.V7.Widget;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using AView = Android.Views.View;
+using Android.App;
+using Android.Content;
+using Android.Widget;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationPageRenderer))]
 namespace HappeningsApp.Droid.Renderers
@@ -27,7 +32,7 @@ namespace HappeningsApp.Droid.Renderers
 
             int containerHeight = b - t;
 
-            PageController.ContainerArea = new Rectangle(0, 0, Context.FromPixels(r - l), Context.FromPixels(containerHeight));
+            PageController.ContainerArea = new Rectangle(0, 0,Context.FromPixels(r - l), Context.FromPixels(containerHeight));
 
             for (var i = 0; i < ChildCount; i++)
             {

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Pages.Notification.Notifications" 
+             BackgroundColor="#000015" Padding="10,20,10,10" 
+             xmlns:c="clr-namespace:HappeningsApp.Custom" Title="Notifications" 
+              xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <Grid>
+        <ListView ItemsSource="{Binding Notif}" x:Name="msgListView" 
+                  SeparatorColor="White" SeparatorVisibility="None" 
+                  ItemTapped="Notif_ItemTapped"
+                  IsPullToRefreshEnabled="True" BackgroundColor="Black" 
+                  HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="7*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                            <InputKit:RadioButton TextColor="White" Grid.Column="0"
+                                                  Orientation="Vertical" 
+                                                  TextFontSize="12" Color="Aqua" 
+                                                  CircleColor="White" 
+                                                  IsChecked="true" />
+                                
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding Status}" Grid.Row="0" FontSize="23" TextColor="White" FontAttributes="Bold" />
+                                    <Label Text="{Binding Message}" LineBreakMode="TailTruncation" Grid.Row="1" FontSize="13" TextColor="White"  />
+                                </Grid>
+                                <StackLayout Grid.Column="2" HorizontalOptions="EndAndExpand" 
+                                             VerticalOptions="Center">
+                                    <Label Text="8 hrs ago" HorizontalOptions="End" HorizontalTextAlignment="End" 
+                                           VerticalOptions="Center" FontSize="8" />
+                                </StackLayout>
+                            </Grid>
+                            <BoxView Grid.Row="1" HeightRequest="0.8" Color="#C7C7CC" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

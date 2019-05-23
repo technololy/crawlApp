@@ -8,6 +8,7 @@ using Plugin.GoogleAnalytics;
 using UIKit;
 using Microsoft.AppCenter.Push;
 using CarouselView.FormsPlugin.iOS;
+using FFImageLoading.Svg.Forms;
 
 namespace HappeningsApp.iOS
 {
@@ -34,6 +35,7 @@ namespace HappeningsApp.iOS
             //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
               UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
             CachedImageRenderer.Init();
+            var ignore = typeof(SvgCachedImage);
             Plugin.InputKit.Platforms.iOS.Config.Init();
             //google analytics
             //GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";

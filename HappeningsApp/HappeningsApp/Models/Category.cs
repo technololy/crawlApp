@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Auth.XamarinForms;
 
 namespace HappeningsApp.Models
 {
-    
 
-        public class CategoryRootobject
+    [Preserve(AllMembers = true)]
+    public class CategoryRootobject
         {
             public string Message { get; set; }
             public ObservableCollection<Category> categories { get; set; }

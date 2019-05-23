@@ -4,13 +4,15 @@
              x:Class="HappeningsApp.Pages.ProfileData.QuestionsAboutYou" 
              BackgroundImage="splash_background2" 
              Title="Please tell us about yourself" 
-             xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:c="clr-namespace:HappeningsApp.Custom">
+             xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:c="clr-namespace:HappeningsApp.Custom">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="skip">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+              <StackLayout>
             <!--<StackLayout Orientation="Horizontal">
                 <Label Text="Please tell us about yourself" Margin="12" VerticalOptions="Center" TextColor="White" HorizontalOptions="StartAndExpand"/> 
                 <Button Text="skip" TextColor="#E8E8E8" Margin="5,0" BorderColor="White"  FontSize="Small"/>
@@ -45,14 +47,14 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" >
-                    <c:ExtendedPicker BoxUnderlineColor="White"  HorizontalOptions="Start" Title="Dietary Choice" x:Name="DietPicker" />
-                    <c:ExtendedPicker  BoxUnderlineColor="White"  HorizontalOptions="End" Title="Favorite sports" x:Name="FavSports" />
+                    <c:ExtendedPicker BoxUnderlineColor="White"  HorizontalOptions="StartAndExpand" Title="Dietary Choices" x:Name="DietPicker" />
+                    <c:ExtendedPicker  BoxUnderlineColor="White"  HorizontalOptions="EndAndExpand" Title="Favorite Sports" x:Name="FavSports" />
                 </StackLayout>
               
                 <Label Text="Budget" TextColor="White" Margin="12" />
                 <StackLayout Orientation="Horizontal">
                     <Label Text="N0" TextColor="#E8E8E8" FontSize="13" HorizontalOptions="Start" />
-                    <Label Text="N100,000" TextColor="#E8E8E8" FontSize="13" HorizontalOptions="EndAndExpand" />
+                    <Label Text="N100,000" TextColor="{x:StaticResource crawlWhiteColor}" FontSize="13" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
                 <Slider Value="30000" Minimum="0" Maximum="100000" IsEnabled="True" />
                 <c:ExtendedPicker BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
@@ -71,5 +73,7 @@
              
             </Button>
         </StackLayout>
+        </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>

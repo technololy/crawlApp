@@ -33,6 +33,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\chat.svg" />
+    <EmbeddedResource Include="Resources\discount.svg" />
+    <EmbeddedResource Include="Resources\down-arrow.svg" />
+    <EmbeddedResource Include="Resources\event.svg" />
+    <EmbeddedResource Include="Resources\explore-tool.svg" />
+    <EmbeddedResource Include="Resources\funds.svg" />
+    <EmbeddedResource Include="Resources\home.svg" />
+    <EmbeddedResource Include="Resources\likeCopy.svg" />
+    <EmbeddedResource Include="Resources\magnifying-glass.svg" />
+    <EmbeddedResource Include="Resources\map.svg" />
+    <EmbeddedResource Include="Resources\placeholder.svg" />
+    <EmbeddedResource Include="Resources\small-calendar.svg" />
+    <EmbeddedResource Include="Resources\sort-button-with-three-lines.svg" />
+    <EmbeddedResource Include="Resources\star.svg" />
+    <EmbeddedResource Include="Resources\ticket.svg" />
+    <EmbeddedResource Include="Resources\timetable.svg" />
+    <EmbeddedResource Include="Resources\user.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="Custom\ExtendedLabel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -111,6 +130,9 @@
     <Folder Include="Pages\Onboarding\" />
     <Folder Include="Pages\Home\" />
     <Folder Include="Pages\ProfileData\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Test\" />
+    <Folder Include="Pages\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
@@ -143,5 +165,24 @@
     <Compile Update="Views\Messages\MessagesLanding.xaml.cs">
       <DependentUpon>MessagesLanding.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\chat.svg" />
+    <None Remove="Resources\discount.svg" />
+    <None Remove="Resources\down-arrow.svg" />
+    <None Remove="Resources\event.svg" />
+    <None Remove="Resources\explore-tool.svg" />
+    <None Remove="Resources\funds.svg" />
+    <None Remove="Resources\home.svg" />
+    <None Remove="Resources\like copy.svg" />
+    <None Remove="Resources\magnifying-glass.svg" />
+    <None Remove="Resources\map.svg" />
+    <None Remove="Resources\placeholder.svg" />
+    <None Remove="Resources\small-calendar.svg" />
+    <None Remove="Resources\sort-button-with-three-lines.svg" />
+    <None Remove="Resources\star.svg" />
+    <None Remove="Resources\ticket.svg" />
+    <None Remove="Resources\timetable.svg" />
+    <None Remove="Resources\user.svg" />
   </ItemGroup>
 </Project>

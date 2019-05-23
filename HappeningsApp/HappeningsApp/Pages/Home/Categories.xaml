@@ -1,5 +1,55 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Home.Categories">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Black"
+             xmlns:c="clr-namespace:HappeningsApp.Custom"
+             
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="HappeningsApp.Pages.Home.Categories">
     <ContentPage.Content>
+        
+          <ListView x:Name="ListCategories"
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding CategfromAPI}"
+                  BackgroundColor="Black"
+                  RefreshCommand="{Binding RefreshCategoryListView}"
+                  IsPullToRefreshEnabled="true"
+                  ItemTapped="Handle_ItemTapped"
+                  Footer=""
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ff:CachedImage Grid.Row="0" 
+                                            HeightRequest="300"  
+                                            Aspect="AspectFill" 
+                                            Source="{Binding ImagePath}" 
+                                            Margin="10,0,10,5"
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalOptions="FillAndExpand" />
+                            <!--<Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
+                            <Label Grid.Row="0" Margin="10,0,0,0"
+                                   VerticalTextAlignment="Center" 
+                                   FontAttributes="Bold" 
+                                  
+                                   HorizontalTextAlignment="Center" 
+                                   FontSize="Large" TextColor="White"  
+                                   Text="{Binding CategoryName}" 
+                                   HorizontalOptions="StartAndExpand" 
+                                   VerticalOptions="EndAndExpand"/>
+
+                        </Grid>
+                       
+                     </c:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
     </ContentPage.Content>
 </ContentPage>

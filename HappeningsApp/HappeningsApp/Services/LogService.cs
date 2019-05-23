@@ -19,8 +19,10 @@ namespace HappeningsApp.Services
             //    Error = error
             //};
            // await APIService.LogClient<LogModel>(logger, "api/Error");
-            var l=await  Task.Run(async()=> await APIService.LogAsync(error));
-            var cont = await l.Content.ReadAsStringAsync();
+
+            //commented this on 15 may 2019  so that i can work offline
+            //var l=await  Task.Run(async()=> await APIService.LogAsync(error));
+            //var cont = await l.Content.ReadAsStringAsync();
         }
 
         public async static Task LogErrorsNew(string error="",string request="",

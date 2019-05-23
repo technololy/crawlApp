@@ -13,6 +13,7 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
 using Plugin.Connectivity;
 using Plugin.Badge;
+using HappeningsApp.Custom;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -28,13 +29,13 @@ namespace HappeningsApp
             InitializeComponent();
 
 
-//#if DEBUG
-//            HotReloader.Current.Start(this);
-//#endif
+#if RELEASE
+            HotReloader.Current.Start(this);
+#endif
 
             GetAppInstallID();
 
-            //MainPage = new NavigationPage(new Pages.ProfileData.QuestionsAboutYou());
+            //MainPage = new CustomNavigationPage(new Test.TestPage());
 
             //return;
             if (IsUserLoggedOn())
@@ -49,12 +50,12 @@ namespace HappeningsApp
                     lvmm.GetTokenFromAPI();
 
 
-                    MainPage = new NavigationPage(new Pages.AppLanding());
+                    MainPage = new CustomNavigationPage(new Pages.AppLanding());
                 }
                 catch (Exception ex)
                 {
                     //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                    MainPage = new NavigationPage(new Pages.SignInUp());
+                    MainPage = new CustomNavigationPage(new Pages.SignInUp());
 
 
                 }
@@ -63,7 +64,7 @@ namespace HappeningsApp
             else
             {
                 //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                MainPage = new NavigationPage(new Pages.SignInUp());
+                MainPage = new CustomNavigationPage(new Pages.SignInUp());
 
             }
             #region comment

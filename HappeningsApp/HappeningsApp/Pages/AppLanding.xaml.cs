@@ -11,6 +11,7 @@ using MvvmHelpers;
 using Xamarin.Forms;
 using System.Linq;
 using HappeningsApp.Views;
+using HappeningsApp.Pages.Home;
 
 namespace HappeningsApp.Pages
 {
@@ -157,11 +158,10 @@ namespace HappeningsApp.Pages
         }
 
 
-        async void settings_Tapped(object sender, System.EventArgs e)
+        async void notif_Tapped(object sender, System.EventArgs e)
         {
-      
-            await settingsImage.RotateTo(360, 300, Easing.SinInOut);
-            await settingsImage.RotateTo(0, 300, Easing.SinInOut);
+
+            await Navigation.PushAsync(new Notification.Notifications());
 
         }
 
@@ -171,7 +171,7 @@ namespace HappeningsApp.Pages
             {
                 lblPageLandingTitle.Text = "Categories";
 
-                var page = new CategoriesPage();
+                var page = new Categories();
                 page.Content.BackgroundColor = Color.FromHex("#000015");
 
                 PlaceHolder.Content = page.Content;

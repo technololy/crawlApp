@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -173,9 +173,9 @@
     <BundleResource Include="Resources\LOGIN SIGNUP.png" />
     <BundleResource Include="Resources\NOTIFICATION LIST.png" />
     <BundleResource Include="Resources\NOTIFICTION DETAIL.png" />
-    <BundleResource Include="Resources\ONBOARDING 2.png" />
-    <BundleResource Include="Resources\ONBOARDING 4.png" />
-    <BundleResource Include="Resources\ONBOARDING 5.png" />
+    <BundleResource Include="Resources\ONBOARDING2.png" />
+    <BundleResource Include="Resources\ONBOARDING4.png" />
+    <BundleResource Include="Resources\ONBOARDING5.png" />
     <BundleResource Include="Resources\ONBOARDING.png" />
     <BundleResource Include="Resources\PREFERENCES 1.png" />
     <BundleResource Include="Resources\PREFERENCES 2.png" />
@@ -222,6 +222,8 @@
     <BundleResource Include="Resources\splash_backgroundd.png" />
     <BundleResource Include="Resources\splash_backgroundImg.png" />
     <BundleResource Include="Resources\splash_background2.png" />
+    <BundleResource Include="Resources\ONBOARDING3.png" />
+    <BundleResource Include="Resources\notification.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

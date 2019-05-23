@@ -12,7 +12,7 @@ namespace HappeningsApp.Pages.Home
         public Profile()
         {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
         }
 
         private async void ExtendedLabel_ItemTapped(object sender, Custom.ExtendedLabelTappedEvent e)
