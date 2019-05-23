@@ -50,12 +50,13 @@ namespace HappeningsApp
                     lvmm.GetTokenFromAPI();
 
 
-                    MainPage = new CustomNavigationPage(new Pages.AppLanding());
+                    //MainPage = new CustomNavigationPage(new Pages.AppLanding());
+                    MainPage = new NavigationPage(new AppLanding());
                 }
                 catch (Exception ex)
                 {
-                    //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                    MainPage = new CustomNavigationPage(new Pages.SignInUp());
+                    MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                    //MainPage = new CustomNavigationPage(new Pages.SignInUp());
 
 
                 }
@@ -63,8 +64,8 @@ namespace HappeningsApp
             }
             else
             {
-                //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                MainPage = new CustomNavigationPage(new Pages.SignInUp());
+                MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                //MainPage = new CustomNavigationPage(new Pages.SignInUp());
 
             }
             #region comment
