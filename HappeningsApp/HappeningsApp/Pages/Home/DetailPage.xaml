@@ -20,7 +20,7 @@
                 <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="350" IsClippedToBounds="True">
                     <!--  <Image  Aspect="Fill"  
                             Source="{Binding ImagePath}" />-->
-                    <carousel:CarouselViewControl ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="{x:StaticResource CrawlColor}" CurrentPageIndicatorTintColor="White" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
+                    <carousel:CarouselViewControl x:Name="cv" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="{x:StaticResource CrawlColor}" CurrentPageIndicatorTintColor="White" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
                         <carousel:CarouselViewControl.ItemTemplate>
                             <DataTemplate>
                                 <forms:CachedImage Source="{Binding picture}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />

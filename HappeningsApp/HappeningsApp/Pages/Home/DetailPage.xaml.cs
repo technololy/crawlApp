@@ -23,6 +23,10 @@ namespace HappeningsApp.Pages.Home
         public IEnumerable<OpeningDaysList> OpeningDaysGenericList { get; set; }
         public string hostOrEventName { get; set; }
         public string previousPageTitle { get; set; }
+        int Count = 0;
+        short Counter = 0;
+        int SlidePosition = 0;
+
 
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
@@ -52,6 +56,7 @@ namespace HappeningsApp.Pages.Home
                 Carousel.IsVisible = true;
                 SinglePicture.IsVisible = false;
                 //Carousel.ItemsSource = dealz.Pictures;
+                AutoSlide(dealz?.Pictures?.Count);
             }
             else
             {
@@ -62,6 +67,17 @@ namespace HappeningsApp.Pages.Home
             }
             BindingContext = myDeals;
 
+        }
+
+        private void AutoSlide(int? pictureCount)
+        {
+            Device.StartTimer(TimeSpan.FromSeconds(4), () =>
+            {
+                SlidePosition++;
+                if (SlidePosition == pictureCount) SlidePosition = 0;
+                cv.Position = SlidePosition;
+                return true;
+            });
         }
 
         public DetailPage(NewDealsModel.Deal AllDeals)
@@ -81,6 +97,7 @@ namespace HappeningsApp.Pages.Home
                 Carousel.IsVisible = true;
                 SinglePicture.IsVisible = false;
                 //Carousel.ItemsSource = dealz.Pictures;
+                AutoSlide(dealz?.Pictures?.Count);
             }
             else
             {
@@ -111,6 +128,7 @@ namespace HappeningsApp.Pages.Home
                 Carousel.IsVisible = true;
                 SinglePicture.IsVisible = false;
                 //Carousel.ItemsSource = dealz.Pictures;
+                AutoSlide(dealz?.Pictures?.Count);
             }
             else
             {
