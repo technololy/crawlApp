@@ -35,7 +35,7 @@ namespace HappeningsApp
 
             GetAppInstallID();
 
-            //MainPage = new NavigationPage(new Pages.Intro());
+            //MainPage = new NavigationPage(new Pages.ProfileData.QuestionsAboutYou());
 
             //return;
             if (IsUserLoggedOn())

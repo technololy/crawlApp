@@ -121,7 +121,7 @@ namespace HappeningsApp.Pages
 
         private async Task ShowSurVeyOne()
         {
-            await Task.Delay(30000);
+            await Task.Delay(300);
             if (!string.IsNullOrEmpty(GlobalStaticFields.Username))
             {
                 await NowShowOne();

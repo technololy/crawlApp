@@ -13,7 +13,7 @@
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <StackLayout x:Name="crawlImageStack" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0">
-                    <Image Source="Crawl_white_blue.png" Scale="2" HeightRequest="250" />
+                    <Image Source="Crawl_logo_header.png" Scale="0.5" HeightRequest="250" />
                 </StackLayout>
                 <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0">
                 

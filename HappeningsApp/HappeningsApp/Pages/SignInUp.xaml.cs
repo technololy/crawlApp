@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Acr.UserDialogs;
 using HappeningsApp.Models;
 using HappeningsApp.OAuth;
@@ -24,6 +25,16 @@ namespace HappeningsApp.Pages
         public SignInUp()
         {
             InitializeComponent();
+            store = AccountStore.Create();
+            try
+            {
+                account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
         }
 
 

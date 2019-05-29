@@ -15,8 +15,16 @@ namespace HappeningsApp.Models
         public string Drinking_Preference { get; set; } = "N/A";
             public string Favourite_Spot { get; set; }
             public string Other_Interests { get; set; }
-            public string How_Did_You_hear { get; set; }
-            public DateTime Created { get; set; }
+        public string How_Did_You_hear { get; set; }
+        public double Amount { get; set; }
+        public DateTime Created { get; set; }
+        public object MaritalStatusObj { get; set; }
+        public object Smoking_Preference_obj { get; set; }
+
+
+
+
+
         public string SelectedLocation
         {
             get;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Pages.ProfileData.PickChoicesAboutYou"
+                xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
+             
+             >
+    <ContentPage.Content>
+        <StackLayout>
+             <InputKit:SelectionView x:Name="selectionView" ItemsSource="{Binding Choices_Interest}" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

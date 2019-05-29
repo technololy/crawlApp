@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using HappeningsApp.Models;
+using Xamarin.Forms;
 
 namespace HappeningsApp.ViewModels
 {
-    public class SurveyViewModel
+    public class SurveyViewModel: BaseViewModel
     {
         public SurveyModel surveyModel{get;set;}
+        public ICommand SubmitFirstSurvey { get; set; }
         public SurveyViewModel()
         {
             surveyModel = new SurveyModel();
+            SubmitFirstSurvey = new Command(_submitFirstSurvey);
         }
 
-     
-
+        private void _submitFirstSurvey()
+        {
+           
+        }
 
         public List<string> LocationDS = new List<string>()
             {
@@ -62,7 +68,14 @@ namespace HappeningsApp.ViewModels
                 "Facebook", "Twitter","Instagram","Google","Blogs"
 
             };
-    internal void SubmitSurveyOne()
+
+
+        public List<string> Choices_Interest = new List<string>()
+            {
+                "Surfing", "Play Pool","Reading","Quiet Spots","Clubbing"
+
+            };
+        internal void SubmitSurveyOne()
         {
             string a = "g";
         }
