@@ -7,7 +7,7 @@ using Xamarin.Auth.XamarinForms;
 namespace HappeningsApp.Models
 {
 
-    [Preserve(AllMembers = true)]
+  
     public class CategoryRootobject
         {
             public string Message { get; set; }

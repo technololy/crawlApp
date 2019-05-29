@@ -42,9 +42,9 @@ namespace HappeningsApp.Pages.Home
                 //i need 
 
 
-
-                await Navigation.PushAsync(new ListPage(cat));
-
+               // await Application.Current.MainPage.Navigation.PushAsync(new CategoryListing(), true);
+                await Application.Current.MainPage.Navigation.PushAsync(new ListPage(cat),true);
+                ListCategories.SelectedItem = null;
             }
             catch (Exception ex)
             {

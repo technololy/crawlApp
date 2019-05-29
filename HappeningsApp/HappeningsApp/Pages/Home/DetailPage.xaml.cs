@@ -22,6 +22,7 @@ namespace HappeningsApp.Pages.Home
         public IEnumerable<string> OpeningDaysVertical { get; set; }
         public IEnumerable<OpeningDaysList> OpeningDaysGenericList { get; set; }
         public string hostOrEventName { get; set; }
+        public string previousPageTitle { get; set; }
 
         async void Handle_Tapped(object sender, System.EventArgs e)
         {
@@ -45,6 +46,7 @@ namespace HappeningsApp.Pages.Home
             dealz = myDeals;
             MapsAddress = myDeals.Owner_Location;
             hostOrEventName = myDeals.Name;
+            previousPageTitle = myDeals.Category;
             if (dealz?.Pictures?.Count > 0)
             {
                 Carousel.IsVisible = true;
@@ -71,6 +73,7 @@ namespace HappeningsApp.Pages.Home
             AllNewDeals = AllDeals;
             MapsAddress = AllNewDeals.Owner_Location;
             hostOrEventName = AllNewDeals.Name;
+            previousPageTitle = AllNewDeals.Category;
             //DaysOpenListView.ItemsSource = AllNewDeals.DaysOpen;
             // var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllDeals.OpeningHours);
             if (dealz?.Pictures?.Count > 0)
@@ -101,6 +104,7 @@ namespace HappeningsApp.Pages.Home
             AllCategoryListing = AllCategory;
             MapsAddress = AllCategoryListing.Owner_Location;
             hostOrEventName = AllCategoryListing.Name;
+            previousPageTitle = AllCategory.Category;
             //var returnedList = ReturnDaysAsListAndSetListViewItemSource(AllCategory.OpeningHours);
             if (AllCategoryListing?.Pictures?.Count > 0)
             {
@@ -289,6 +293,11 @@ namespace HappeningsApp.Pages.Home
                 }
             }
 
+        }
+
+        void Go_Back_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

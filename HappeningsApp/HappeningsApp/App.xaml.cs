@@ -29,13 +29,13 @@ namespace HappeningsApp
             InitializeComponent();
 
 
-#if RELEASE
-            HotReloader.Current.Start(this);
-#endif
+//#if DEBUG
+//            HotReloader.Current.Start(this);
+//#endif
 
             GetAppInstallID();
 
-            //MainPage = new CustomNavigationPage(new Test.TestPage());
+            //MainPage = new NavigationPage(new Pages.Intro());
 
             //return;
             if (IsUserLoggedOn())
@@ -51,12 +51,14 @@ namespace HappeningsApp
 
 
                     //MainPage = new CustomNavigationPage(new Pages.AppLanding());
-                    MainPage = new NavigationPage(new AppLanding());
+                    MainPage = new NavigationPage(new Pages.AppLanding());
+                    //MainPage = new NavigationPage(new Views.AppLanding());
                 }
                 catch (Exception ex)
                 {
-                    MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                    //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
                     //MainPage = new CustomNavigationPage(new Pages.SignInUp());
+                    MainPage = new NavigationPage(new Pages.Intro());
 
 
                 }
@@ -64,8 +66,9 @@ namespace HappeningsApp
             }
             else
             {
-                MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+                //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
                 //MainPage = new CustomNavigationPage(new Pages.SignInUp());
+                MainPage = new NavigationPage(new Pages.Intro());
 
             }
             #region comment

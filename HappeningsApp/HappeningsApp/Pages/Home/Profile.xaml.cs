@@ -75,14 +75,34 @@ namespace HappeningsApp.Pages.Home
 
         async void LogOut_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.Properties["username"] = null;
-            Application.Current.Properties["password"] = null;
-            var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
-            var before = Navigation.NavigationStack.ToList()[0];
+            try
+            {
+                Application.Current.Properties["username"] = null;
+                Application.Current.Properties["password"] = null;
 
-            Navigation.InsertPageBefore(new Pages.SignInUp(), before);
-            GlobalStaticFields.Username = "";
-            await Navigation.PopToRootAsync(true);
+                if(Navigation.NavigationStack.Count()>0)
+                {
+                    var pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
+                    var before = Navigation.NavigationStack.ToList()[0];
+                    Navigation.InsertPageBefore(new Pages.SignInUp(), before);
+
+                    GlobalStaticFields.Username = "";
+                    await Navigation.PopToRootAsync(true);
+                }
+                else
+                {
+
+                    GlobalStaticFields.Username = "";
+                    await Application.Current.MainPage.Navigation.PushAsync(new Pages.Intro());
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
         }
     }
 }

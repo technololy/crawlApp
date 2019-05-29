@@ -9,6 +9,7 @@ using UIKit;
 using Microsoft.AppCenter.Push;
 using CarouselView.FormsPlugin.iOS;
 using FFImageLoading.Svg.Forms;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace HappeningsApp.iOS
 {
@@ -44,6 +45,7 @@ namespace HappeningsApp.iOS
             //GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
             //GoogleAnalytics.Current.InitTracker();
             CarouselViewRenderer.Init();
+            ImageCircleRenderer.Init();
 
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

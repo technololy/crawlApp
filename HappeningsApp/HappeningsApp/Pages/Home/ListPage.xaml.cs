@@ -26,15 +26,16 @@ namespace HappeningsApp.Pages.Home
             var selected = dealsListview.SelectedItem as NewCategoryDetailModel.Deal;
             if (selected != null)
             {
-               //CustomNavigationPage(new DetailPage(selected));
-                Navigation.PushAsync(new  DetailPage(selected));
+                //CustomNavigationPage(new DetailPage(selected));
+                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
+               //Application.Current.MainPage.Navigation.PushAsync(new AllInnerDetail(selected),true);
 
             }
             else
             {
                 var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-             
-                Navigation.PushAsync(new DetailPage(selected2));
+
+                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
@@ -47,6 +48,7 @@ namespace HappeningsApp.Pages.Home
             {
 
                 Title = cat.CategoryName;
+                
                 GetCategoryByID(cat);
 
 

@@ -30,6 +30,7 @@
     <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
     <PackageReference Include="Xamarin.Forms.InputKit" Version="3.0.11" />
     <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -142,6 +143,8 @@
   <ItemGroup>
     <Compile Remove="Custom\SegmentedControlSample.cs" />
     <Compile Remove="Views\AppViews\Deals.xaml.cs" />
+    <Compile Remove="Pages\Introduction\Landing.xaml.cs" />
+    <Compile Remove="Pages\Introduction\MyPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\AppViews\Deals.xaml" />
@@ -164,6 +167,9 @@
     </Compile>
     <Compile Update="Views\Messages\MessagesLanding.xaml.cs">
       <DependentUpon>MessagesLanding.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Home\CategoryListing.xaml.cs">
+      <DependentUpon>CategoryListing.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

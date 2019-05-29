@@ -121,6 +121,9 @@
     <PackageReference Include="Xamarin.HotReload">
       <Version>1.2.9</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -236,6 +239,66 @@
     <AndroidResource Include="Resources\drawable\like.png" />
     <AndroidResource Include="Resources\drawable-hdpi\like.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\like.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_funds_white.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_small_calendar_white.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_sort_with_three_lines_white.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_user_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_funds_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_small_calendar_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_sort_with_three_lines_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_user_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_funds_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_small_calendar_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_sort_with_three_lines_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_user_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_funds_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_small_calendar_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_sort_with_three_lines_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_user_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_funds_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_small_calendar_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_sort_with_three_lines_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_user_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_favorite_border.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_favorite_border.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_favorite_border.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_favorite_border.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_favorite_border.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_small_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_small_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_small_calendar.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_small_calendar.png" />
+    <AndroidResource Include="Resources\drawable\ic_small_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_like.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_like.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_like.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_like.png" />
+    <AndroidResource Include="Resources\drawable\ic_like.png" />
+    <AndroidResource Include="Resources\drawable\ic_sort_button_with_three_lines.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_sort_button_with_three_lines.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_sort_button_with_three_lines.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_sort_button_with_three_lines.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_sort_button_with_three_lines.png" />
+    <AndroidResource Include="Resources\drawable\ic_small_calendar_blue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_small_calendar_blue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_small_calendar_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_small_calendar_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_small_calendar_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_three_lines_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_three_lines_blue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_three_lines_blue.png" />
+    <AndroidResource Include="Resources\drawable\ic_three_lines_blue.png" />
+    <AndroidResource Include="Resources\drawable\usero.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\usero.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\usero.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\usero.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\usero.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

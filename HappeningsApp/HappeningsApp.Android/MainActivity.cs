@@ -12,6 +12,7 @@ using Plugin.GoogleAnalytics;
 using Plugin.CurrentActivity;
 using CarouselView.FormsPlugin.Android;
 using FFImageLoading.Svg.Forms;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace HappeningsApp.Droid
 {
@@ -37,6 +38,7 @@ namespace HappeningsApp.Droid
             var ignore = typeof(SvgCachedImage);
             FlowListView.Init();
             Acr.UserDialogs.UserDialogs.Init(this);
+            ImageCircleRenderer.Init();
             //google analytics
             GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
             GoogleAnalytics.Current.Config.AppId = "GASample";

@@ -8,7 +8,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              >
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="15*" />
             </Grid.ColumnDefinitions>
-                <Image Source="ic_search_white.png" HeightRequest="20" Scale="1.5" 
+                <Image Source="ic_search_white.png" HeightRequest="20" Scale="1.2" 
                        WidthRequest="20" 
                        Opacity="0.9" Grid.Column="0"
                        Margin="0,0,10,10" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
@@ -64,13 +64,14 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
                 </StackLayout.GestureRecognizers>
-<!--                <Image  Source="ic_bookmark_border_blue" WidthRequest="22" HeightRequest="22" />-->
-                <ffSvg:SvgCachedImage BackgroundColor="White" x:Name="imgThisWeek" WidthRequest="22" HeightRequest="22" 
-                          Source="resource://HappeningsApp.Resources.event.svg">
+                <Image  x:Name="imgThisWeek"  Source="ic_small_calendar" WidthRequest="22" HeightRequest="22" />
+           <!--    <ff:CachedImage x:Name="imgThisWeek" WidthRequest="22" HeightRequest="22" 
+                          Source="ic_small_calendar">
+                    
                  
-                </ffSvg:SvgCachedImage>
+                </ff:CachedImage>-->
                 <Label  Text="This Weeks" TextColor="{x:StaticResource CrawlColor}" x:Name="lblThisWeek" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
-                <BoxView BackgroundColor="Black" x:Name="bxVwthisWeek" HeightRequest="4" />
+                
             </StackLayout>
             <!--    <StackLayout IsVisible="false" Spacing="0" Grid.Column="1" BackgroundColor="Transparent">
                 <StackLayout.GestureRecognizers>
@@ -83,41 +84,39 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
                 </StackLayout.GestureRecognizers>
-<!--                <Image   Source="ic_bookmark_border_blue" WidthRequest="22" HeightRequest="22" />-->
-                    <ffSvg:SvgCachedImage x:Name="imgCat" BackgroundColor="White"  WidthRequest="22" 
+                <Image x:Name="imgCat" Source="ic_sort_with_three_lines_white" WidthRequest="22" HeightRequest="22" />
+                  <!--  <ffSvg:SvgCachedImage x:Name="imgCat" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.sort-button-with-three-lines.svg">
                  
-                </ffSvg:SvgCachedImage>
+                </ffSvg:SvgCachedImage>-->
                 <Label Text="Categories" x:Name="lblCategories" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="{x:StaticResource CrawlColor}" HorizontalOptions="Center" />
-                <BoxView BackgroundColor="Black" x:Name="bxVwCat" HeightRequest="4" />
+               
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="Transparent">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Favorites" Tapped="Favorites_Tapped" />
                 </StackLayout.GestureRecognizers>
-<!--                <Image  x:Name="imgFav" Source="ic_bookmark_border_blue" WidthRequest="22" HeightRequest="22" />-->
-                     <ffSvg:SvgCachedImage x:Name="imgFav" BackgroundColor="White"  WidthRequest="22" 
+                <Image  x:Name="imgFav" Source="ic_favorite_border" WidthRequest="22" HeightRequest="22" />
+                   <!--  <ffSvg:SvgCachedImage x:Name="imgFav" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.likeCopy.svg">
                  
-                </ffSvg:SvgCachedImage>
+                </ffSvg:SvgCachedImage>-->
                 <Label Text="Favorites" x:Name="lblFavorites" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="{x:StaticResource CrawlColor}" HorizontalOptions="Center" />
-                <BoxView BackgroundColor="Black" x:Name="bxVwFavorites" HeightRequest="4" />
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Profiles" Tapped="Profiles_Tapped" />
                 </StackLayout.GestureRecognizers>
                
-<!--                <Image  x:Name="imgProf" Source="ic_bookmark_border_blue" WidthRequest="22" HeightRequest="22" />-->
-                     <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
+                <Image  x:Name="imgProf" Source="ic_user_white" WidthRequest="22" HeightRequest="22" />
+                <!--     <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.user.svg">
                  
-                </ffSvg:SvgCachedImage>
+                </ffSvg:SvgCachedImage>-->
                 <Label Text="Profiles" x:Name="lblProfiles" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
-                <BoxView BackgroundColor="Black" x:Name="bxVwProfiles" HeightRequest="4" />
             </StackLayout>
         </Grid>
     </Grid>

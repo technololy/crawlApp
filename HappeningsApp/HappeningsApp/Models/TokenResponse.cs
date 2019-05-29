@@ -6,7 +6,7 @@ using Xamarin.Auth.XamarinForms;
 
 namespace HappeningsApp.Models
 {
-    [Preserve(AllMembers = true)]
+  
     public class TokenResponse
     {   
             public string access_token { get; set; }

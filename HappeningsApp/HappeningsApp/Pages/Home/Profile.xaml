@@ -1,47 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="HappeningsApp.Pages.Home.Profile"
-    BackgroundColor="Black"
-    
-             Title="Profiles"
-             Padding="10,0,10,0"
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-          
-    >
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Home.Profile" BackgroundColor="Black" xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" Title="Profiles" Padding="10,0,10,0" xmlns:c="clr-namespace:HappeningsApp.Custom">
     <ContentPage.Content>
-            <ScrollView>
+        <ScrollView>
             <StackLayout>
-                <Grid RowSpacing="-80" Margin="0,10,0,0" >
-                    <StackLayout Grid.Column="0" >
-                        <Image Source="user"
-                               HeightRequest="90"
-                               BackgroundColor="White" />
+                <Grid RowSpacing="-80" Margin="0,10,0,0">
+                    <StackLayout Padding="5" Orientation="Horizontal">
+                        <Image:CircleImage Aspect="AspectFit" BorderColor="White" BorderThickness="2" Margin="0,20,0,0" BackgroundColor="White" Source="usero.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                        <StackLayout Padding="5">
+                            <Label Text="User name" TextColor="White" FontSize="Small" />
+                            <Label Text="0945834848" TextColor="White" FontSize="Small" />
+                            <Label Text="user@email.com" TextColor="White" FontSize="Small" />
+                        </StackLayout>
                     </StackLayout>
-               <StackLayout Grid.Column="1" >
-                     <Label Text="username" />
-                     <Label Text="07036605597" />
-                     <Label Text="loladeking@gmail.com" />
-                    
-                </StackLayout> 
-                <c:ExtendedLabel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-40,0,0" ItemTapped="ExtendedLabel_ItemTapped" />
-                    
+                    <c:ExtendedLabel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-40,0,0" ItemTapped="ExtendedLabel_ItemTapped" />
                 </Grid>
-           
-                <c:ExtendedLabel Text="Import contacts"  ItemTapped="ExtendedLabel_ItemTapped" />
-                
+                <c:ExtendedLabel Text="Import contacts" ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="About Crawl" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Found a bug or Suggestions?" ItemTapped="ExtendedLabel_ItemTapped"  />
-                <c:ExtendedLabel Text="Recommend a place" ItemTapped="ExtendedLabel_ItemTapped"  />
-                <c:ExtendedLabel Text="Change Password"  ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Like us on Twitter!"  ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Follow us on instagram!"  ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Like us on the Appstore"  ItemTapped="ExtendedLabel_ItemTapped" />
-               
-                
-                <Button Text="LOG OUT" Clicked="LogOut_Clicked" HorizontalOptions="Fill" Margin="70,30,70,0" x:Name="logout" BorderColor="{x:StaticResource crawlWhiteColor}"  BorderWidth="1" BackgroundColor="Transparent" TextColor="White" />
-            
+                <c:ExtendedLabel Text="Found a bug or Suggestions?" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Recommend a place" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Change Password" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Like us on Twitter!" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Follow us on instagram!" ItemTapped="ExtendedLabel_ItemTapped" />
+                <c:ExtendedLabel Text="Like us on the Appstore" ItemTapped="ExtendedLabel_ItemTapped" />
+                <Button Text="LOG OUT" Clicked="LogOut_Clicked" HorizontalOptions="Fill" Margin="70,30,70,0" x:Name="logout" BorderColor="{x:StaticResource crawlWhiteColor}" BorderWidth="1" BackgroundColor="Transparent" TextColor="White" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="false" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Home.AllInnerDetail" BackgroundColor="#000015" Padding="5,10,5,40" xmlns:c="clr-namespace:HappeningsApp.Custom" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+      
+    
+    <ContentPage.Content>
+        <c:ScrollViewWithNotBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+            <forms:CachedImage HeightRequest="300" Grid.Row="0" Source="{Binding ImagePath}" Aspect="AspectFill" ErrorPlaceholder="Crawl_white_blue" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true" />
+            <StackLayout Margin="10,0,0,10" Spacing="0" Grid.Row="0" VerticalOptions="EndAndExpand">
+                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="White" FontSize="36" />
+                <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" TextColor="White" />
+            </StackLayout>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Frame BackgroundColor="Transparent" Grid.Row="0">
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                   <Button Text="About" BorderWidth="1" BorderColor="{x:StaticResource CrawlColor}" BorderRadius="0" Grid.Column="0" />
+                   <Button Text="Social" TextColor="Black" BackgroundColor="{x:StaticResource crawlWhiteColor}" BorderWidth="1" BorderColor="{x:StaticResource crawlWhiteColor}" BorderRadius="0" Grid.Column="1" />
+                    </Grid>
+                </Frame>
+                
+             <Frame Grid.Row="1" CornerRadius="0" BackgroundColor="White" >
+                       <StackLayout Orientation="Horizontal"  BackgroundColor="White" >
+                    <Label Text="Request an Uber" TextColor="Black" FontSize="25" HorizontalOptions="StartAndExpand" />
+                    <Label Text="Uber" TextColor="Black" FontSize="25" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                </Frame>
+            <Frame  Grid.Row="2" BackgroundColor="Transparent" >
+                        <Label Text="Build Action can also be viewed and changed in the Properties pad for a file.This pad shows the Resource ID that is used to reference the resource in code. In the screenshot below, the Resource ID is WorkingWithImages.beach.jpg"/>
+                </Frame>
+            </Grid>
+        </Grid>
+        </c:ScrollViewWithNotBar>
+    </ContentPage.Content>
+</ContentPage>

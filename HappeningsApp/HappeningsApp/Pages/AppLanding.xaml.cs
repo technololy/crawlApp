@@ -50,11 +50,18 @@ namespace HappeningsApp.Pages
             try
             {
                 var page = new Pages.Home.ThisWeek();
+                PlaceHolder.Content = null;
+
                 PlaceHolder.Content = page.Content;
                 //bxVwthisWeek.BackgroundColor = Color.FromHex("#3498db");
                 //bxVwCat.BackgroundColor = Color.Black;
                 //bxVwCol.BackgroundColor = Color.Black;
                 //bxVwDeals.BackgroundColor = Color.Black;
+                imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_blue");
+
+                imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
+                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgFav.Source = ImageSource.FromFile("ic_favorite_border");
                 lblPageLandingTitle.Text = "This Week";
                 lblCategories.TextColor = Color.White;
                 lblProfiles.TextColor = Color.White;
@@ -115,7 +122,11 @@ namespace HappeningsApp.Pages
         private async Task ShowSurVeyOne()
         {
             await Task.Delay(30000);
-            await NowShowOne();
+            if (!string.IsNullOrEmpty(GlobalStaticFields.Username))
+            {
+                await NowShowOne();
+            }
+          
         }
 
         private async Task NowShowOne()
@@ -169,20 +180,30 @@ namespace HappeningsApp.Pages
         {
             try
             {
-                lblPageLandingTitle.Text = "Categories";
+              
 
                 var page = new Categories();
                 page.Content.BackgroundColor = Color.FromHex("#000015");
+                PlaceHolder.Content = null;
 
                 PlaceHolder.Content = page.Content;
+                lblPageLandingTitle.Text = "Categories";
+                lblCategories.TextColor = Color.FromHex("#3498db");
+                lblFavorites.TextColor = Color.White;
+                lblThisWeek.TextColor = Color.White;
+                lblProfiles.TextColor = Color.White;
 
-                bxVwCat.BackgroundColor = Color.FromHex("#3498db");
+                imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
+                imgCat.Source = ImageSource.FromFile("ic_three_lines_blue");
+                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgFav.Source = ImageSource.FromFile("ic_favorite_border");
+                //bxVwCat.BackgroundColor = Color.FromHex("#3498db");
                 //bxVwDeals.BackgroundColor = Color.Black;
                 //bxVwCol.BackgroundColor = Color.Black;
-                bxVwthisWeek.BackgroundColor = Color.Black;
+                //bxVwthisWeek.BackgroundColor = Color.Black;
                 ivm.CategfromAPI = GlobalStaticFields.CategoriesFromAPI;
                 BindingContext = ivm;
-                await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+               // await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
             }
             catch (Exception ex)
             {
@@ -200,18 +221,37 @@ namespace HappeningsApp.Pages
             lblFavorites.TextColor = Color.White;
             lblThisWeek.TextColor = Color.White;
             lblProfiles.TextColor = Color.FromHex("#3498db");
-            await Navigation.PushAsync(new Home.Profile());
+
+            imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
+            imgFav.Source = ImageSource.FromFile("ic_favorite_border");
+            imgProf.Source = ImageSource.FromFile("ic_user");
+            imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
+            //await Navigation.PushAsync(new Home.Profile());
+            var page = new Profile();
+            page.Content.BackgroundColor = Color.FromHex("#000015");
+            PlaceHolder.Content = null;
+            PlaceHolder.Content = page.Content;
 
         }
 
         void Favorites_Tapped(object sender, System.EventArgs e)
         {
+            var page = new Favorites();
+            //page.Content.BackgroundColor = Color.FromHex("#000015");
+            PlaceHolder.Content = null;
+
+            PlaceHolder.Content = page.Content;
             lblPageLandingTitle.Text = "Favorites";
 
             lblCategories.TextColor = Color.White;
             lblProfiles.TextColor = Color.White;
             lblThisWeek.TextColor = Color.White;
             lblFavorites.TextColor = Color.FromHex("#3498db");
+
+            imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
+            imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
+            imgProf.Source = ImageSource.FromFile("ic_user_white");
+            imgFav.Source = ImageSource.FromFile("ic_like");
         }
     }
 }
