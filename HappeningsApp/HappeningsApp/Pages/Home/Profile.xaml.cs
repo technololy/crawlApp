@@ -9,10 +9,13 @@ namespace HappeningsApp.Pages.Home
 {
     public partial class Profile : ContentPage
     {
+        public string userEmail { get; set; }
         public Profile()
         {
             InitializeComponent();
+            userEmail = GlobalStaticFields.Username;
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            BindingContext = this;
         }
 
         private async void ExtendedLabel_ItemTapped(object sender, Custom.ExtendedLabelTappedEvent e)

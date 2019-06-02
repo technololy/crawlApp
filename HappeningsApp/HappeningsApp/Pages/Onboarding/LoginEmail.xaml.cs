@@ -5,6 +5,8 @@ using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using HappeningsApp.Views;
 using HappeningsApp.Views.Settings;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Plugin.Connectivity;
 using Xamarin.Auth;
 using Xamarin.Forms;
@@ -47,6 +49,11 @@ namespace HappeningsApp.Pages.Onboarding
                 }
                 using (UserDialogs.Instance.Loading(""))
                 {
+                    Analytics.TrackEvent("logging on", new Dictionary<string, string> {
+                        { "User", GlobalStaticFields.Username},
+                        { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+
+                       });
                     GlobalStaticFields.Username = lvm.User.Username;
                     var resp = await lvm.GetTokenFromAPI();
                     if (resp)
@@ -64,8 +71,15 @@ namespace HappeningsApp.Pages.Onboarding
             }
             catch (Exception ex)
             {
-                await DisplayAlert("", "Error Navigation", "OK");
+                await DisplayAlert("", "Error Navigating", "OK");
                 var log = ex;
+                LogService.LogErrors("Error Navigating" + ex.ToString());
+                Crashes.TrackError(ex, new Dictionary<string, string> {
+                            { "User", GlobalStaticFields.Username },
+                            { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                            { "AppID", "no idea" },
+                             { "someMeaningfulID", "id" }
+                         });
                 //test
             }
 

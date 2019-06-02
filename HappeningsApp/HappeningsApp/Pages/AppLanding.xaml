@@ -7,7 +7,6 @@
              BackgroundColor="#000015" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
-             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              >
     <Grid RowSpacing="0">
@@ -24,7 +23,10 @@
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="15*" />
             </Grid.ColumnDefinitions>
-                <Image Source="ic_search_white.png" HeightRequest="20" Scale="1.2" 
+                <Image Source="ic_search_white.png" 
+                       HeightRequest="20" 
+                       Scale="1.2" 
+                       TranslationY="5"
                        WidthRequest="20" 
                        Opacity="0.9" Grid.Column="0"
                        Margin="0,0,10,10" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
@@ -52,7 +54,7 @@
         
         <ContentView x:Name="PlaceHolder" Grid.Row="2" />
         <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="3" Opacity="0.5" />
-        <Grid Grid.Row="4" x:Name="gridNavBar" Margin="0,5,0,0" RowSpacing="0" BackgroundColor="Black">
+        <Grid Grid.Row="4" x:Name="gridNavBar" Margin="0,0,0,0" RowSpacing="0" BackgroundColor="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -64,13 +66,12 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Image  x:Name="imgThisWeek"  Source="ic_small_calendar" WidthRequest="22" HeightRequest="22" />
-           <!--    <ff:CachedImage x:Name="imgThisWeek" WidthRequest="22" HeightRequest="22" 
-                          Source="ic_small_calendar">
-                    
-                 
-                </ff:CachedImage>-->
-                <Label  Text="This Weeks" TextColor="{x:StaticResource CrawlColor}" x:Name="lblThisWeek" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+                <Image  x:Name="imgThisWeek"  
+                        Source="ic_small_calendar" 
+                        WidthRequest="28"
+                        HeightRequest="28" />
+  
+                <Label  Text="This Week" TextColor="{x:StaticResource CrawlColor}" x:Name="lblThisWeek" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
                 
             </StackLayout>
             <!--    <StackLayout IsVisible="false" Spacing="0" Grid.Column="1" BackgroundColor="Transparent">
@@ -84,20 +85,29 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Image x:Name="imgCat" Source="ic_sort_with_three_lines_white" WidthRequest="22" HeightRequest="22" />
+                <Image x:Name="imgCat" 
+                       Source="ic_sort_with_three_lines_white" 
+                       WidthRequest="28" 
+                       HeightRequest="28" />
                   <!--  <ffSvg:SvgCachedImage x:Name="imgCat" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.sort-button-with-three-lines.svg">
                  
                 </ffSvg:SvgCachedImage>-->
-                <Label Text="Categories" x:Name="lblCategories" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="{x:StaticResource CrawlColor}" HorizontalOptions="Center" />
+                <Label Text="Categories" 
+                       x:Name="lblCategories" 
+                       VerticalOptions="CenterAndExpand" 
+                       FontSize="12" 
+                       TextColor="{x:StaticResource CrawlColor}" 
+                       HorizontalOptions="Center" />
                
             </StackLayout>
             <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="Transparent">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Favorites" Tapped="Favorites_Tapped" />
                 </StackLayout.GestureRecognizers>
-                <Image  x:Name="imgFav" Source="ic_favorite_border" WidthRequest="22" HeightRequest="22" />
+                <Image  x:Name="imgFav" Source="ic_favorite_border" 
+                        WidthRequest="28" HeightRequest="28" />
                    <!--  <ffSvg:SvgCachedImage x:Name="imgFav" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.likeCopy.svg">
@@ -110,7 +120,8 @@
                     <TapGestureRecognizer x:Name="Profiles" Tapped="Profiles_Tapped" />
                 </StackLayout.GestureRecognizers>
                
-                <Image  x:Name="imgProf" Source="ic_user_white" WidthRequest="22" HeightRequest="22" />
+                <Image  x:Name="imgProf" Source="ic_user_white" 
+                        WidthRequest="28" HeightRequest="28" />
                 <!--     <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.user.svg">

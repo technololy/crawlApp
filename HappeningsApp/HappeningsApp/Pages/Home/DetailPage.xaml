@@ -56,7 +56,7 @@
                         </Image>
                     </StackLayout>
                     
-                    <Label Text="Back" Grid.Column="1" HorizontalOptions="Start">
+                    <Label Text="Back.." Grid.Column="1" FontSize="18" HorizontalOptions="Start">
                         
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
@@ -71,7 +71,7 @@
                         </Image>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Column="3">
-                        <Image VerticalOptions="Start" Source="ic_favorite_border" Scale="1" WidthRequest="22" HeightRequest="22">
+                        <Image VerticalOptions="Start" Source="ic_favorite_border" Scale="1.5" WidthRequest="22" HeightRequest="22">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
                             </Image.GestureRecognizers>

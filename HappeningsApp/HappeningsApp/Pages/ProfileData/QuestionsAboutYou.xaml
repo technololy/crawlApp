@@ -11,14 +11,40 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
-              <StackLayout>
+        <StackLayout>
+               <Grid Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Grid.Column="0" 
+                           Source="ic_clear_blue" 
+                           WidthRequest="20" 
+                           HeightRequest="20"
+                           
+                           >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Skip_Clicked"/>
+                        </Image.GestureRecognizers>
+                        </Image>
+                    <Label HorizontalOptions="Center" 
+                        Text="Please tell us about yourself" 
+                           Grid.Column="1"
+                           FontSize="22"
+                           />
+                </Grid>
+        
+           <ScrollView>
+              <StackLayout Spacing="20" >
             <!--<StackLayout Orientation="Horizontal">
                 <Label Text="Please tell us about yourself" Margin="12" VerticalOptions="Center" TextColor="White" HorizontalOptions="StartAndExpand"/> 
                 <Button Text="skip" TextColor="#E8E8E8" Margin="5,0" BorderColor="White"  FontSize="Small"/>
             </StackLayout>-->
             <!--              <BoxView BackgroundColor="#E8E8E8" HeightRequest="1" Margin="4"/>-->
-            <StackLayout Padding="12,12,44,12" Spacing="15">
+           
+             
+                <StackLayout Padding="12,12,44,12" Spacing="15">
                 <StackLayout Spacing="5" x:Name="txtFriendsCall">
                     <c:BorderlessEntry 
                             Placeholder="What do your friends call you" 
@@ -74,17 +100,20 @@
             
             
              <!--   <Slider Value="30000" Minimum="0" Maximum="100000" IsEnabled="True" />-->
-                    <InputKit:AdvancedSlider 
+                <StackLayout>
+                            <InputKit:AdvancedSlider 
                         MinValue="0" 
                         MaxValue="500000" 
                         IsEnabled="true" 
                         StepValue="500" 
                         Title="Spending how much?"
                         TextColor="White"
-                      
+                      DisplayMinMaxValue="false"
+                       
                         Value="{Binding Amount}"
                     
                     />
+                    </StackLayout>
                 <c:ExtendedPicker SelectedIndex="{Binding surveyModel.How_Did_You_hear}" BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
             
             </StackLayout>
@@ -94,14 +123,11 @@
                     Padding="18,1" BorderColor="Aqua" BorderWidth="2" FontSize="13" TextColor="White">
              
             </Button>
-                  <Button Margin="50,5,50,0" Text="Skip" BorderRadius="20" 
-                   
-                    BackgroundColor="Black" 
-                    Padding="18,1" BorderColor="Aqua" Clicked="Skip_Clicked" BorderWidth="2" FontSize="13" TextColor="White">
-             
-            </Button>
+                 
         </StackLayout>
         </ScrollView>
+        </StackLayout>
+     
       
     </ContentPage.Content>
 </ContentPage>
