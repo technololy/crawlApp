@@ -45,29 +45,29 @@ namespace HappeningsApp.ViewModels
         {
 
 
-            ObservableCollection<Pushresp> pushRep = new ObservableCollection<Pushresp>() 
-            {
+    //        ObservableCollection<Pushresp> pushRep = new ObservableCollection<Pushresp>() 
+    //        {
 
-            new Pushresp {Message="Image files can be added to each application project and referenced " +
-            	"from Xamarin.Forms shared code. This method of distributing images is required when images " +
-            	"are platform-specific, such as when using different resolutions on different platforms, " +
-            	"or slightly different designs", Picture="",Status="Hello01 Subject"} ,
-            new Pushresp {Message="Test02 messages Image files can be added to each application project and " +
-            	"referenced from Xamarin.Forms shared code. This method of distributing images is required " +
-            	"when images are platform-specific, " +
-            	"such as when using different resolutions on different platforms, or slightly different designs", 
-    Picture="",Status="Hello02 Subject" } ,
-            new Pushresp {Message="Test03 messages Image files can be added to each" +
-            	" application project and referenced from Xamarin.Forms shared code. This method of " +
-            	"distributing images is required when images are " +
-            	"platform-specific, such as when using different resolutions on different platforms," +
-            	" or slightly different designs", Picture="",Status="Hello03 Subject" } ,
-            };
+    //        new Pushresp {Message="Image files can be added to each application project and referenced " +
+    //        	"from Xamarin.Forms shared code. This method of distributing images is required when images " +
+    //        	"are platform-specific, such as when using different resolutions on different platforms, " +
+    //        	"or slightly different designs", Picture="",Status="Hello01 Subject"} ,
+    //        new Pushresp {Message="Test02 messages Image files can be added to each application project and " +
+    //        	"referenced from Xamarin.Forms shared code. This method of distributing images is required " +
+    //        	"when images are platform-specific, " +
+    //        	"such as when using different resolutions on different platforms, or slightly different designs", 
+    //Picture="",Status="Hello02 Subject" } ,
+            //new Pushresp {Message="Test03 messages Image files can be added to each" +
+            //	" application project and referenced from Xamarin.Forms shared code. This method of " +
+            //	"distributing images is required when images are " +
+            //	"platform-specific, such as when using different resolutions on different platforms," +
+            //	" or slightly different designs", Picture="",Status="Hello03 Subject" } ,
+            //};
 
-            myMessages = pushRep;
-            Notif = pushRep;
+            //myMessages = pushRep;
+            //Notif = pushRep;
 
-            return;
+            //return;
             using (UserDialogs.Instance.Loading())
             {
                 MessageServices msgServ = new MessageServices();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
@@ -34,16 +35,18 @@ namespace HappeningsApp.Pages.ProfileData
         }
 
 
-        void submit_Clicked(object sender, System.EventArgs e)
+       async void submit_Clicked(object sender, System.EventArgs e)
         {
+            await Navigation.PopModalAsync(true);
+
             svm.surveyModel.UserName = GlobalStaticFields.Username;
 
-            svm.surveyModel.City = drpCity.SelectedItem; 
-            svm.surveyModel.Marital_Status = Marital_Status.SelectedItem.ToString();
+            svm.surveyModel.City = drpCity.SelectedItem?.ToString(); 
+            svm.surveyModel.Marital_Status = Marital_Status.SelectedItem?.ToString();
             //svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
             //svm.surveyModel.Smoking_Preference = string.IsNullOrEmpty(MoreSmokingChoice.SelectedItem) ? "n/a" : MoreSmokingChoice.SelectedItem;
             svm.surveyModel.User_Id = GlobalStaticFields.Username;
-            svm.surveyModel.Drinker = string.IsNullOrEmpty(DrinkerPicker.SelectedItem.ToString()) ? "n/a" : DrinkerPicker.SelectedItem.ToString();
+            svm.surveyModel.Drinker = string.IsNullOrEmpty(DrinkerPicker.SelectedItem?.ToString()) ? "n/a" : DrinkerPicker.SelectedItem?.ToString();
             //svm.surveyModel.Drinking_Preference = string.IsNullOrEmpty(MoreDrinkOption.SelectedItem) ? "n/a" : MoreDrinkOption.SelectedItem;
             if (!CheckValidity())
             {
@@ -51,11 +54,43 @@ namespace HappeningsApp.Pages.ProfileData
                 return;
 
             }
+
+            await ShowSurVeyTwo();
+    
+
+
         }
+        private async Task ShowSurVeyTwo()
+        {
+            //await Task.Delay(30000);
+            await NowShowTwo();
 
+        }
+        private async Task NowShowTwo()
+        {
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new PickChoicesAboutYou(),true);
 
+                //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
+                //{
+
+                //}
+                //else
+                //{
+                //    await Navigation.PushModalAsync(new Survey.SurveyTwo());
+                //}
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Properties["SurveyTwo"] = false;
+                LogService.LogErrors(ex.ToString());
+
+            }
+        }
         private bool CheckValidity()
         {
+            return true;
          
             if
                 (string.IsNullOrEmpty(svm.surveyModel.Marital_Status) ||

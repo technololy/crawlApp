@@ -8,18 +8,22 @@
                         <ColumnDefinition Width="0.9*" />
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout  
+                    <Grid 
                                  Grid.Column="0" 
-                                 Padding="5" 
-                                 Spacing="40" 
-                                 Orientation="Horizontal">
-                        <Image:CircleImage Aspect="AspectFit" BorderColor="White" BorderThickness="2" Margin="0,20,0,0" BackgroundColor="White" Source="usero.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-                        <StackLayout Padding="5" VerticalOptions="End" HorizontalOptions="End" >
-                            <Label IsVisible="false" Text="User name" TextColor="White" FontSize="Small" />
-                            <Label IsVisible="false" Text="0945834848" TextColor="White" FontSize="Small" />
+                                
+                                 
+                                 >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*" />
+                            <ColumnDefinition Width="0.7*" />
+                        </Grid.ColumnDefinitions>
+                        <Image:CircleImage Aspect="AspectFit" Grid.Column="0" BorderColor="White" BorderThickness="2" Margin="0,20,0,0" BackgroundColor="White" Source="usero.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" Grid.Column="1"  HorizontalOptions="CenterAndExpand" >
+                     <!--       <Label IsVisible="true" Text="User name" TextColor="White" FontSize="Small" />
+                            <Label IsVisible="false" Text="0945834848444" TextColor="White" FontSize="Small" />-->
                             <Label Text="{Binding userEmail}" TextColor="White" FontSize="Small" />
                         </StackLayout>
-                    </StackLayout>
+                    </Grid>
                     <c:ExtendedLabel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-40,0,0" ItemTapped="ExtendedLabel_ItemTapped" />
                 </Grid>
                 <c:ExtendedLabel Text="Import contacts" ItemTapped="ExtendedLabel_ItemTapped" />

@@ -128,7 +128,7 @@ namespace HappeningsApp.Pages.Home
                 Carousel.IsVisible = true;
                 SinglePicture.IsVisible = false;
                 //Carousel.ItemsSource = dealz.Pictures;
-                AutoSlide(dealz?.Pictures?.Count);
+                AutoSlide(AllCategoryListing?.Pictures?.Count);
             }
             else
             {
@@ -185,7 +185,7 @@ namespace HappeningsApp.Pages.Home
             Navigation.PopAsync();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void Maps_Clicked(object sender, System.EventArgs e)
         {
             try
             {

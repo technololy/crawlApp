@@ -35,10 +35,19 @@
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding Status}" Grid.Row="0" FontSize="23" TextColor="White" FontAttributes="Bold" />
-                                    <Label Text="{Binding Message}" LineBreakMode="TailTruncation" Grid.Row="1" FontSize="13" TextColor="White"  />
+                                    <Label Text="{Binding Title}" Grid.Row="0" LineBreakMode="TailTruncation" FontSize="23" TextColor="White" FontAttributes="Bold" />
+                                    <ff:CachedImage 
+                                    Source="{Binding Picture}" 
+                                    Grid.Row="1" 
+                                             HeightRequest="100"
+                                            Aspect="AspectFill" 
+                                         HorizontalOptions="FillAndExpand" 
+                                            VerticalOptions="FillAndExpand"
+                                    />
+                                    <Label Text="{Binding Message}" LineBreakMode="TailTruncation" Grid.Row="2" FontSize="13" TextColor="White"  />
                                 </Grid>
                                 <StackLayout Grid.Column="2" HorizontalOptions="EndAndExpand" 
                                              VerticalOptions="Center">

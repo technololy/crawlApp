@@ -39,7 +39,8 @@ namespace HappeningsApp.Pages.Notification
                     return;
                 }
 
-                Application.Current.MainPage.Navigation.PushAsync(new NotificationDetail(selected));
+                //Application.Current.MainPage.Navigation.PushAsync(new NotificationDetail(selected));
+                msgListView.SelectedItem = null;
             }
             catch (Exception ex)
             {

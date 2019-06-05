@@ -100,13 +100,14 @@
             
             
              <!--   <Slider Value="30000" Minimum="0" Maximum="100000" IsEnabled="True" />-->
-                <StackLayout>
+                <StackLayout Margin="10,30,10,0" >
                             <InputKit:AdvancedSlider 
                         MinValue="0" 
                         MaxValue="500000" 
                         IsEnabled="true" 
+                                x:Name="advSlider"
                         StepValue="500" 
-                        Title="Spending how much?"
+                        Title="What's your budget?"
                         TextColor="White"
                       DisplayMinMaxValue="false"
                        
@@ -117,7 +118,7 @@
                 <c:ExtendedPicker SelectedIndex="{Binding surveyModel.How_Did_You_hear}" BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
             
             </StackLayout>
-            <Button Margin="50,5,50,0" Text="Finish" BorderRadius="20" 
+            <Button Margin="50,5,50,0" Text="Next" BorderRadius="20" 
                  Clicked="submit_Clicked"
                     BackgroundColor="Black" 
                     Padding="18,1" BorderColor="Aqua" BorderWidth="2" FontSize="13" TextColor="White">
