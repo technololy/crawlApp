@@ -14,7 +14,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="5" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="0.3" />
+            <RowDefinition Height="0.005*" />
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
         <Grid>
@@ -48,12 +48,12 @@
         
         </Grid>
         <StackLayout Grid.Row="1">
-       <BoxView  Color="LightGray" HeightRequest="0.5" />
+       <BoxView  Color="LightGray" HeightRequest="2.5" />
             
             </StackLayout>
         
         <ContentView x:Name="PlaceHolder" Grid.Row="2" />
-        <BoxView HeightRequest="0.1" Color="LightGray" Grid.Row="3" Opacity="0.5" />
+        <BoxView HeightRequest="1.0" Color="LightGray" Grid.Row="3" />
         <Grid Grid.Row="4" x:Name="gridNavBar" Margin="0,0,0,0" RowSpacing="0" BackgroundColor="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

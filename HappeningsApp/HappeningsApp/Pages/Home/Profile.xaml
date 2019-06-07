@@ -3,29 +3,26 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Grid RowSpacing="-80" Margin="0,10,0,0">
+                <Grid RowSpacing="-10" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.9*" />
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid 
-                                 Grid.Column="0" 
-                                
-                                 
-                                 >
+                    <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.3*" />
-                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
                         </Grid.ColumnDefinitions>
-                        <Image:CircleImage Aspect="AspectFit" Grid.Column="0" BorderColor="White" BorderThickness="2" Margin="0,20,0,0" BackgroundColor="White" Source="usero.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-                        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" Grid.Column="1"  HorizontalOptions="CenterAndExpand" >
-                     <!--       <Label IsVisible="true" Text="User name" TextColor="White" FontSize="Small" />
-                            <Label IsVisible="false" Text="0945834848444" TextColor="White" FontSize="Small" />-->
-                            <Label Text="{Binding userEmail}" TextColor="White" FontSize="Small" />
+                        <Image:CircleImage Aspect="Fill" Scale="2" Grid.Column="0" BorderColor="White" BorderThickness="2" Margin="40,40,0,0" BackgroundColor="White" Source="usero.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                   <Label IsVisible="false" Text="Crawl" TextColor="White" FontSize="Small" />
+                            <Label IsVisible="false" Text="0945834848444" TextColor="White" FontSize="Small" />
+                            <Label x:Name="lblUsername" TextColor="White" FontSize="Small" HorizontalOptions="StartAndExpand" />
                         </StackLayout>
                     </Grid>
                     <c:ExtendedLabel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-40,0,0" ItemTapped="ExtendedLabel_ItemTapped" />
                 </Grid>
+                <StackLayout>
                 <c:ExtendedLabel Text="Import contacts" ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="About Crawl" ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="Found a bug or Suggestions?" ItemTapped="ExtendedLabel_ItemTapped" />
@@ -34,7 +31,9 @@
                 <c:ExtendedLabel Text="Like us on Twitter!" ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="Follow us on instagram!" ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="Like us on the Appstore" ItemTapped="ExtendedLabel_ItemTapped" />
-                <Button Text="LOG OUT" Clicked="LogOut_Clicked" HorizontalOptions="Fill" Margin="70,30,70,0" x:Name="logout" BorderColor="{x:StaticResource crawlWhiteColor}" BorderWidth="1" BackgroundColor="Transparent" TextColor="White" />
+              
+                </StackLayout>
+                 <Button Text="LOG OUT" Clicked="LogOut_Clicked" HorizontalOptions="Fill" Margin="70,30,70,0" x:Name="logout" BorderColor="{x:StaticResource crawlWhiteColor}" BorderWidth="1" BackgroundColor="Transparent" TextColor="White" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

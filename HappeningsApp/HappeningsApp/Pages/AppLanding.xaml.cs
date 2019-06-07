@@ -229,6 +229,7 @@ namespace HappeningsApp.Pages
             //await Navigation.PushAsync(new Home.Profile());
             var page = new Profile();
             page.Content.BackgroundColor = Color.FromHex("#000015");
+            
             PlaceHolder.Content = null;
             PlaceHolder.Content = page.Content;
 

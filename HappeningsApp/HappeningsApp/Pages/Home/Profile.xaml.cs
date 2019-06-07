@@ -14,6 +14,7 @@ namespace HappeningsApp.Pages.Home
         {
             InitializeComponent();
             userEmail = GlobalStaticFields.Username;
+            lblUsername.Text = userEmail;
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
             BindingContext = this;
         }

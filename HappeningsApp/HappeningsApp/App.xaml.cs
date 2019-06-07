@@ -29,9 +29,9 @@ namespace HappeningsApp
             InitializeComponent();
 
 
-#if DEBUG
-            HotReloader.Current.Start(this);
-#endif
+//#if DEBUG
+//            HotReloader.Current.Start(this);
+//#endif
 
             GetAppInstallID();
 

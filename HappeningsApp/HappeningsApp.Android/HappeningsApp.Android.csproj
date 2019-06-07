@@ -299,6 +299,16 @@
     <AndroidResource Include="Resources\drawable-xhdpi\usero.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\usero.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\usero.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ONBOARDING.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ONBOARDING2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ONBOARDING3.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ONBOARDING4.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ONBOARDING5.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING2.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING3.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING4.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING5.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />
