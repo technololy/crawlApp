@@ -18,7 +18,7 @@ namespace HappeningsApp.Pages.ProfileData
             this.BindingContext = svm;
         
           
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
             drpCity.ItemsSource = svm.LocationDS;
             DietPicker.ItemsSource = svm.DietDS;
             FavSports.ItemsSource = svm.SportPickerDS;
@@ -41,16 +41,21 @@ namespace HappeningsApp.Pages.ProfileData
 
             svm.surveyModel.UserName = GlobalStaticFields.Username;
 
-            svm.surveyModel.City = drpCity.SelectedItem?.ToString(); 
+            svm.surveyModel.City = drpCity.SelectedItem?.ToString();
+            svm.surveyModel.SelectedLocation = drpCity.SelectedItem?.ToString();
             svm.surveyModel.Marital_Status = Marital_Status.SelectedItem?.ToString();
-            //svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+
+          
+            svm.surveyModel.Smoker = SmokerPReference.SelectedItem?.ToString();
             //svm.surveyModel.Smoking_Preference = string.IsNullOrEmpty(MoreSmokingChoice.SelectedItem) ? "n/a" : MoreSmokingChoice.SelectedItem;
             svm.surveyModel.User_Id = GlobalStaticFields.Username;
-            svm.surveyModel.Drinker = string.IsNullOrEmpty(DrinkerPicker.SelectedItem?.ToString()) ? "n/a" : DrinkerPicker.SelectedItem?.ToString();
+            svm.surveyModel.Drinker = "n/a";
+           // svm.surveyModel.Drinker = string.IsNullOrEmpty(DrinkerPicker.SelectedItem?.ToString()) ? "n/a" : DrinkerPicker.SelectedItem?.ToString();
             //svm.surveyModel.Drinking_Preference = string.IsNullOrEmpty(MoreDrinkOption.SelectedItem) ? "n/a" : MoreDrinkOption.SelectedItem;
+            svm.surveyModel.Amount = advSlider.Value;
             if (!CheckValidity())
             {
-                 DisplayAlert("Info", "Please enter all fields", "OK");
+                await DisplayAlert("Info", "Please enter all fields", "OK");
                 return;
 
             }
@@ -70,7 +75,7 @@ namespace HappeningsApp.Pages.ProfileData
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new PickChoicesAboutYou(),true);
+                await Application.Current.MainPage.Navigation.PushModalAsync(new PickChoicesAboutYou(svm),true);
 
                 //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
                 //{
@@ -90,7 +95,7 @@ namespace HappeningsApp.Pages.ProfileData
         }
         private bool CheckValidity()
         {
-            return true;
+            //return true;
          
             if
                 (string.IsNullOrEmpty(svm.surveyModel.Marital_Status) ||
@@ -102,14 +107,14 @@ namespace HappeningsApp.Pages.ProfileData
             {
                 return false;
             }
-            else if (svm.surveyModel.Smoker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Smoking_Preference))
-            {
-                return false;
-            }
-            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Drinking_Preference))
-            {
-                return false;
-            }
+            //else if (svm.surveyModel.Smoker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Smoking_Preference))
+            //{
+            //    return false;
+            //}
+            //else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Drinking_Preference))
+            //{
+            //    return false;
+            //}
 
             else
             {

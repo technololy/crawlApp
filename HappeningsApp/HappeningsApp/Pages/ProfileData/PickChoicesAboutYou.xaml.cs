@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using HappeningsApp.Services;
 using HappeningsApp.ViewModels;
 using Xamarin.Forms;
 
@@ -19,7 +21,10 @@ namespace HappeningsApp.Pages.ProfileData
         public PickChoicesAboutYou(SurveyViewModel svmm)
         {
             InitializeComponent();
-            selectionView.ItemsSource = svmm.Choices_Interest;
+            svm = new SurveyViewModel();
+
+            svm = svmm;
+            selectionView.ItemsSource = svm.Choices_Interest;
             BindingContext = svmm;
 
 
@@ -30,12 +35,25 @@ namespace HappeningsApp.Pages.ProfileData
             await Navigation.PopModalAsync(true);
 
         }
-        void submit_Clicked(object sender, System.EventArgs e)
+        async void submit_Clicked(object sender, System.EventArgs e)
         {
             var seleted = selectionView.SelectedItems;
-            var seleted2 = selectionView.SelectedItem;
-             Navigation.PopModalAsync(true);
+            svm.surveyModel.Other_Interests = Newtonsoft.Json.JsonConvert.SerializeObject(seleted);
 
+             //Navigation.PopModalAsync(true);
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
+            {
+                await Task.Delay(1000);
+
+
+                await LogService.LogErrorsNew(activity: "User clicked on submit on Survey two");
+                SurveyService.SubmitSurvey(svm);
+
+                await Navigation.PopModalAsync(true);
+                //ShowSurVeyThree();
+            };
+
+            Application.Current.Properties["SurveyTwo"] = true;
         }
 
     }

@@ -28,7 +28,7 @@
                                 </Grid.ColumnDefinitions>
                             <InputKit:RadioButton TextColor="White" Grid.Column="0"
                                                   Orientation="Vertical" 
-                                                  TextFontSize="12" Color="Aqua" 
+                                                  TextFontSize="12" Color="{x:StaticResource CrawlColor}" 
                                                   CircleColor="White" 
                                                   IsChecked="true" />
                                 
@@ -42,7 +42,7 @@
                                     <ff:CachedImage 
                                     Source="{Binding Picture}" 
                                     Grid.Row="1" 
-                                             HeightRequest="100"
+                                            
                                             Aspect="AspectFill" 
                                          HorizontalOptions="FillAndExpand" 
                                             VerticalOptions="FillAndExpand"

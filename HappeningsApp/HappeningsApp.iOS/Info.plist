@@ -52,7 +52,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Crawl needs to access location of places you choose to visit</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.6</string>
+	<string>1.8</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

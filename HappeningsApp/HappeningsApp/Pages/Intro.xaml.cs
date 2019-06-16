@@ -31,5 +31,14 @@ namespace HappeningsApp.Pages
              Navigation.PushAsync(new Pages.SignInUp());
             //DisplayAlert("Info","i have been pressed","OK");
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+
+
+            return true;
+
+            //return base.OnBackButtonPressed();
+        }
     }
 }

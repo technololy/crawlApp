@@ -35,7 +35,7 @@ namespace HappeningsApp.Droid
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CarouselViewRenderer.Init();
-            var ignore = typeof(SvgCachedImage);
+            //var ignore = typeof(SvgCachedImage);
             FlowListView.Init();
             Acr.UserDialogs.UserDialogs.Init(this);
             ImageCircleRenderer.Init();

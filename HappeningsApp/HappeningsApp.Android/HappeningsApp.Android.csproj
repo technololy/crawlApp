@@ -309,6 +309,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING3.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING4.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING5.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ONBOARDING5.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ONBOARDING3.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

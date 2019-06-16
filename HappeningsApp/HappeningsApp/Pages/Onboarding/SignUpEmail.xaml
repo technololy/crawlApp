@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" 
-             xmlns:c="clr-namespace:HappeningsApp.Custom" 
-              
-             Title="Register"
-             xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Pages.Onboarding.SignUpEmail">
+<ContentPage xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" xmlns:c="clr-namespace:HappeningsApp.Custom" Title="Register" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Onboarding.SignUpEmail">
     <ContentPage.Content>
-        <StackLayout  Spacing="50"  Grid.Row="1" Padding="20,40,20,0">
-      <StackLayout Spacing="20">
-                      <Label Text="Create a new account" FontSize="30" />
-            <Label Text="Please enter your email address and we will send you an OTP for you to enter" FontSize="8" />
-            <StackLayout Spacing="5" x:Name="emailStack">
-                <c:BorderlessEntry Placeholder="Email address" x:Name="txtUsername" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" TextColor="White" ReturnType="Next" Text="{Binding User.Username}" PlaceholderColor="White" />
-                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}" />
+        <Grid>
+            <Image Source="splash_background2" Aspect="Fill" />
+            <StackLayout Spacing="20" Margin="30">
+                <Label Text="Create a new account" FontSize="30" />
+                <Label Text="Please enter your email address and password to begin crawling" FontSize="8" />
+                <StackLayout Spacing="5" x:Name="emailStack">
+                    <c:BorderlessEntry Placeholder="Email address" x:Name="txtUsername" 
+                                       IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" 
+                                       TextColor="White" ReturnType="Next" Text="{Binding User.EmailAddress}" 
+                                       PlaceholderColor="White"  Completed="Handle_Completed" />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}" />
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <c:BorderlessEntry Placeholder="Password" x:Name="txtPassword" ReturnType="Next" Completed="Password_Completed" IsSpellCheckEnabled="false" IsPassword="True" HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.Password}" PlaceholderColor="White" />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}" />
+                </StackLayout>
+                     <StackLayout Spacing="0">
+                <c:BorderlessEntry Placeholder="Confirm Password"  
+                                   IsSpellCheckEnabled="false"
+                                      x:Name="txtConfirmPassword"
+                                   ReturnType="Done"
+                                   Completed="Submit_Clicked"
+                                   IsPassword="True"
+                                    HorizontalTextAlignment="Start" TextColor="White" Text="{Binding User.ConfirmPin}"   PlaceholderColor="White"  />
+                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}"   />
             </StackLayout>
+                <Button Text="Submit" Margin="30,30,30,0" WidthRequest="300" x:Name="login" Clicked="Submit_Clicked" BorderWidth="1" BackgroundColor="Transparent" FontSize="20" BorderColor="{x:StaticResource CrawlColor}" TextColor="{x:StaticResource crawlWhiteColor}" />
             </StackLayout>
-            <Button Text="Submit" Margin="30,30,30,0" WidthRequest="300" x:Name="login" Clicked="Submit_Clicked" BorderWidth="1" BackgroundColor="Transparent" FontSize="20" BorderColor="{x:StaticResource CrawlColor}" TextColor="{x:StaticResource crawlWhiteColor}" />
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

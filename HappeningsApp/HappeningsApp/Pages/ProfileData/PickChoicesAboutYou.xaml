@@ -25,7 +25,7 @@
                         </Image.GestureRecognizers>
                         </Image>
                     <Label HorizontalOptions="Center" 
-                        Text="Please tell us about yourself" 
+                        Text="What are your interests" 
                            Grid.Column="1"
                            FontSize="22"
                            />
@@ -35,7 +35,7 @@
                 <InputKit:SelectionView x:Name="selectionView" 
                                         Color="{x:StaticResource CrawlColor}" 
                                           RowSpacing="20" ColumnSpacing="20"
-                                        
+                                        BackgroundColor="White" 
                                         SelectionType="MultipleButton" />
                     
                     

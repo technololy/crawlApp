@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Pages.ProfileData.QuestionsAboutYou" 
              BackgroundImage="splash_background2" 
-             Title="Please tell us about yourself" 
+         
              xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:c="clr-namespace:HappeningsApp.Custom">
     <ContentPage.ToolbarItems>
@@ -78,17 +78,38 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout Margin="12,15">
                         <Label Text="Status" TextColor="White" FontSize="20" />
-                        <InputKit:RadioButtonGroupView x:Name="Marital_Status" Spacing="15" SelectedItem="{Binding surveyModel.MaritalStatusObj}" Orientation="Horizontal" BackgroundColor="Transparent" IsRequired="True">
-                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="Aqua" Text="Single" CircleColor="White" IsChecked="True" />
-                            <InputKit:RadioButton TextColor="White" HorizontalOptions="CenterAndExpand" Orientation="Vertical" TextFontSize="12" Color="Aqua" CircleColor="White" Text="Married" />
-                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="Aqua" CircleColor="White" Text="Relationship" />
+                        <InputKit:RadioButtonGroupView x:Name="Marital_Status"  Spacing="15"  SelectedItem="{Binding surveyModel.MaritalStatusObj}" Orientation="Horizontal" BackgroundColor="Transparent" IsRequired="True">
+                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" Text="Single" Value="Single" CircleColor="White" IsChecked="True"/>
+                            <InputKit:RadioButton TextColor="White" HorizontalOptions="CenterAndExpand" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" Value="Married" CircleColor="White" Text="Married" />
+                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" CircleColor="White" Text="Relationship" Value="Relationship" />
                         </InputKit:RadioButtonGroupView>
                     </StackLayout>
                     <StackLayout Margin="12,15" HorizontalOptions="EndAndExpand">
                         <Label Text="Smoker" TextColor="White" FontSize="20" />
-                        <InputKit:RadioButtonGroupView x:Name="DrinkerPicker" Spacing="15" Orientation="Horizontal" SelectedItem="{Binding surveyModel.Smoking_Preference_obj}" BackgroundColor="Transparent" IsRequired="True">
-                            <InputKit:RadioButton Orientation="Vertical" TextColor="White" TextFontSize="12" Color="Aqua" Text="Yes" CircleColor="White" />
-                            <InputKit:RadioButton Orientation="Vertical" HorizontalOptions="EndAndExpand" TextColor="White" TextFontSize="12" Color="Aqua" CircleColor="White" Text="No" IsChecked="True" />
+                        <InputKit:RadioButtonGroupView x:Name="SmokerPReference"  
+                                                       Spacing="15" 
+                                                       Orientation="Horizontal" 
+                                                       SelectedItem="{Binding surveyModel.Smoking_Preference_obj}" 
+                                                       BackgroundColor="Transparent" 
+                                                       IsRequired="True">
+                            <InputKit:RadioButton Orientation="Vertical" 
+                                                  TextColor="White"
+                                                  Value="Yes"
+                                             
+                                                  TextFontSize="12" 
+                                                  Color="{x:StaticResource CrawlColor}" 
+                                                  Text="Yes" 
+                                                  CircleColor="White" />
+                            <InputKit:RadioButton Orientation="Vertical" 
+                                                  HorizontalOptions="EndAndExpand" 
+                                                  TextColor="White"
+                                                  Value="No"
+                                            
+                                                  TextFontSize="12" 
+                                                  Color="{x:StaticResource CrawlColor}" 
+                                                  CircleColor="White" 
+                                                  Text="No" 
+                                                  IsChecked="True" />
                         </InputKit:RadioButtonGroupView>
                     </StackLayout>
                 </StackLayout>
@@ -107,11 +128,12 @@
                         IsEnabled="true" 
                                 x:Name="advSlider"
                         StepValue="500" 
-                        Title="What's your budget?"
+                        Title="Budget?"
+                                
                         TextColor="White"
                       DisplayMinMaxValue="false"
                        
-                        Value="{Binding Amount}"
+                        
                     
                     />
                     </StackLayout>
@@ -121,7 +143,7 @@
             <Button Margin="50,5,50,0" Text="Next" BorderRadius="20" 
                  Clicked="submit_Clicked"
                     BackgroundColor="Black" 
-                    Padding="18,1" BorderColor="Aqua" BorderWidth="2" FontSize="13" TextColor="White">
+                    Padding="18,1" BorderColor="{x:StaticResource CrawlColor}" BorderWidth="2" FontSize="13" TextColor="White">
              
             </Button>
                  
