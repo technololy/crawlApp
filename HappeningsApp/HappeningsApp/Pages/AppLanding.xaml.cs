@@ -18,6 +18,7 @@ namespace HappeningsApp.Pages
     public partial class AppLanding : ContentPage
     {
         IntroPageViewModel ivm;
+        MyCreatedCollectionViewModel mcvm;
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
         public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
@@ -30,11 +31,14 @@ namespace HappeningsApp.Pages
             try
             {
                 ivm = new IntroPageViewModel();
+                mcvm = new MyCreatedCollectionViewModel();
                 ivm.GetDeals();
                 ivm.GetCategories();
                 ivm.GetAll();
                 ivm.GetAllSearchFromNewModel();
                 ivm.GetAllThisWeek();
+                
+                mcvm.InitializeFavListNewUI();
                 ThisWeek_Tapped(this, null);
                 ShowSurVeyOne();
                 this.BindingContext = this;
@@ -240,6 +244,7 @@ namespace HappeningsApp.Pages
             var page = new Favorites();
             //page.Content.BackgroundColor = Color.FromHex("#000015");
             PlaceHolder.Content = null;
+            BindingContext = mcvm.CollectionsList[1].Details;
 
             PlaceHolder.Content = page.Content;
             lblPageLandingTitle.Text = "Favorites";

@@ -66,6 +66,9 @@ namespace HappeningsApp.Views.Favourites
                 }
                 var selectedItem = e.Item as CollectionsResp;
                 Navigation.PushAsync(new MyDetailedFavorites(selectedItem));
+
+                //Deselect Item
+                ((ListView)sender).SelectedItem = null;
             }
             catch (Exception ex)
             {

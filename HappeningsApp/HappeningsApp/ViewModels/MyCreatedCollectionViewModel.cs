@@ -183,8 +183,73 @@ namespace HappeningsApp.ViewModels
 
         }
 
+        private async Task UpdateFavoriteList(CollectionsResp ctl)
+        {
+            try
+            {
+                //if (await UserDialogs.Instance.ConfirmAsync("Confirm", $"Are you sure you want to add{CurrentlySelectedFav.Name} to {ctl.Name}? ", "Yes", "No"))
+                if (fake)
+                {
+                    using (UserDialogs.Instance.Loading("Adding to favorites"))
+                    {
+                        var cs = this.CurrentlySelectedFavorite;
+                        ctl.Details.Add(new Favourite
+                        {
+                            Name = CurrentlySelectedFavorite.Name,
+                            Address = CurrentlySelectedFavorite.Owner_Location,
+                            Description = CurrentlySelectedFavorite.Details,
+                            //Id = CurrentlySelectedFavorite.Id, 
+                            ImageURL = CurrentlySelectedFavorite.ImagePath
+                        });
+                        CollectionService cserv = new CollectionService();
+                        var isCollAdded = await cserv.UpdateCollectionWithDetails(ctl);
+                        if (isCollAdded)
+                        {
+                            UserDialogs.Instance.Alert("Great!! Added "+ CurrentlySelectedFavorite.Name+ " to favorites", "Info", "OK");
+                        }
 
+                        else
+                        {
+                            UserDialogs.Instance.Alert("Unsuccessfull", "Error", "OK");
+
+                        }
+                    }
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+            }
+
+        }
         public async Task GetListCollection()
+        {
+            ActivityRunning = true;
+
+            CollectionService cs = new CollectionService();
+
+
+            var myCollectn = await cs.GetUserListCollection();
+            if (myCollectn.Any())
+            {
+                CollectionsList = new ObservableCollection<CollectionsResp>(myCollectn);
+                ShowTips = false;
+            }
+            else
+            {
+                ShowTips = true;
+            }
+            ActivityRunning = false;
+
+
+            GlobalStaticFields.CollectionList = CollectionsList;
+
+        }
+
+        public async Task InitializeFavListNewUI()
         {
             ActivityRunning = true;
 
