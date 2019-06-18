@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -55,6 +56,9 @@ namespace HappeningsApp.ViewModels
             //}
             get;set;
         } = new ObservableCollection<CollectionsResp>();
+
+        public ObservableCollection<Favourite> FavList { get; set; }
+
         public bool IsEnabled { get; set; }
         public Command GetFavCommand { get; set; }
         public Command AddNewCollectionCommand { get; set; }
@@ -202,6 +206,28 @@ namespace HappeningsApp.ViewModels
             return CollectionsList;
         }
 
+        public async Task InitializeFavListNewUI()
+        {
+           
 
+            FavService fs = new FavService();
+
+
+            var myCollectn = await fs.GetFavorites();
+            if (myCollectn.Any())
+            {
+                FavList = new ObservableCollection<Favourite>(myCollectn);
+              
+            }
+            else
+            {
+              
+            }
+
+
+
+            GlobalStaticFields.FavoriteList = FavList;
+
+        }
     }
 }

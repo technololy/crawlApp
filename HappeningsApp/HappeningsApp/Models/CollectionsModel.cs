@@ -21,6 +21,14 @@ namespace HappeningsApp.Models
         public string Message { get; set; }
         public ObservableCollection<CollectionsResp> Collections { get; set; }
     }
+
+    public class FavoritesModelAPIResponse
+    {
+        public string Message { get; set; }
+        public ObservableCollection<Favourite> favourites { get; set; }
+    }
+
+
     public class CollectionsResp
     {
         public int Id { get; set; }
@@ -35,6 +43,7 @@ namespace HappeningsApp.Models
     public class Favourite
     {
         public int Id { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }

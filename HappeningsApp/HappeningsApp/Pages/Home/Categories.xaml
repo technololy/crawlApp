@@ -12,6 +12,7 @@
                   HasUnevenRows="True"
                   ItemsSource="{Binding CategfromAPI}"
                   BackgroundColor="Black"
+                  CachingStrategy="RecycleElement"
                   RefreshCommand="{Binding RefreshCategoryListView}"
                   IsPullToRefreshEnabled="true"
                   ItemTapped="Handle_ItemTapped"

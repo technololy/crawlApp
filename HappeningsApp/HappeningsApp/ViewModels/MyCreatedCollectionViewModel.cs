@@ -183,7 +183,7 @@ namespace HappeningsApp.ViewModels
 
         }
 
-        private async Task UpdateFavoriteList(CollectionsResp ctl)
+        public async Task UpdateFavoriteList(CollectionsResp ctl)
         {
             try
             {

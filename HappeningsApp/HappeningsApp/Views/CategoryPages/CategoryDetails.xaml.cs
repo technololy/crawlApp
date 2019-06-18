@@ -83,7 +83,7 @@ namespace HappeningsApp.Views.CategoryPages
                 }
                 else
                 {
-                    await DisplayAlert("", "No Content", "Ok");
+                    await DisplayAlert("", "No Content", "Go Back");
                     await Application.Current.MainPage.Navigation.PopAsync(true);
                     return;
                 }
@@ -111,7 +111,7 @@ namespace HappeningsApp.Views.CategoryPages
                 }
                 else
                 {
-                    await DisplayAlert("", "No Content", "Ok");
+                    await DisplayAlert("", "No Content", "Back");
                     await Application.Current.MainPage.Navigation.PopAsync(true);
                     return;
                 }

@@ -44,6 +44,7 @@ namespace HappeningsApp.Services
         public static ObservableCollection<NewDealsModel.Deal> GetAllSearch { get; set; }
         public static ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouping { get; set; }
         public static ObservableCollection<NewDealsModel.Deal> GetAllThisWeek { get; set; }
+        public static ObservableCollection<Favourite> FavoriteList { get; set; }
         //public static List<> AllService { get; internal set; }
     }
 }

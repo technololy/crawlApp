@@ -44,7 +44,8 @@ namespace HappeningsApp.Pages.Home
 
                // await Application.Current.MainPage.Navigation.PushAsync(new CategoryListing(), true);
                 await Application.Current.MainPage.Navigation.PushAsync(new ListPage(cat),true);
-                ListCategories.SelectedItem = null;
+                ((ListView)sender).SelectedItem = null;
+
             }
             catch (Exception ex)
             {

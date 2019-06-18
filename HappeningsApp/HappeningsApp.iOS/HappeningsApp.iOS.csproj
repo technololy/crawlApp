@@ -240,6 +240,7 @@
     <BundleResource Include="Resources\ic_small_calendar_blue.png" />
     <BundleResource Include="Resources\ic_small_calendar.png" />
     <BundleResource Include="Resources\ic_funds_white.png" />
+    <BundleResource Include="Resources\ic_fav_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

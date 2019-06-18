@@ -91,12 +91,14 @@ namespace HappeningsApp.Pages.Home
                 try
                 {
                     var s = (TappedEventArgs)e;
-                    var castedObj = s.Parameter as CollectionsResp;
-                    // mcvm = new MyCreatedCollectionViewModel();
-                    var r = await mcvm.DeleteCollection(castedObj).ConfigureAwait(false);
+                    var castedObj = s.Parameter as Favourite;
+                    FavService fs = new FavService();
+
+                    bool r = await fs.DeleteFavorite(castedObj).ConfigureAwait(false);
                     if (r)
                     {
-                        mcvm.CollectionsList.Remove(castedObj);
+                        IntroPageViewModel ivm = new IntroPageViewModel();
+                        ivm.Initializefavourites();
                     }
                 }
                 catch (Exception ex)

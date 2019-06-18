@@ -90,7 +90,7 @@ namespace HappeningsApp.Views.AppViews
             //    }
             //    else
             //    {
-            //        await DisplayAlert("", "No Content", "Ok");
+            //        await DisplayAlert("", "No Content", "Back");
             //        await Application.Current.MainPage.Navigation.PopAsync(true);
             //        return;
             //    }
@@ -117,7 +117,7 @@ namespace HappeningsApp.Views.AppViews
                 }
                 else
                 {
-                    await DisplayAlert("", "No Content", "Ok");
+                    await DisplayAlert("", "No Content", "Back");
                     await Application.Current.MainPage.Navigation.PopAsync(true);
                     return;
                 }

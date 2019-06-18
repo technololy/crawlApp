@@ -6,6 +6,7 @@ using HappeningsApp.Models;
 using HappeningsApp.Services;
 using Xamarin.Forms;
 using HappeningsApp.Pages.Home;
+using HappeningsApp.ViewModels;
 
 namespace HappeningsApp.Pages.Home
 {
@@ -81,8 +82,8 @@ namespace HappeningsApp.Pages.Home
                 }
                 else
                 {
-                    await DisplayAlert("", "No Content", "Ok");
-                    //await Navigation.PopAsync(true);
+                    await DisplayAlert("", "No Content", "Back");
+                    await Navigation.PopAsync(true);
                     return;
                 }
             }
@@ -90,19 +91,56 @@ namespace HappeningsApp.Pages.Home
 
         }
 
-        private void TapPlus_Tapped(object sender, EventArgs e)
+        private async void TapPlus_Tapped(object sender, EventArgs e)
         {
-            try
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
-                var img = sender as Image;
-                var item = img.BindingContext as NewCategoryDetailModel.Deal;
-                //var item2 = img.BindingContext as Category;
-                Application.Current.MainPage.Navigation.PushAsync(new Favorites(item), true);
+                try
+                {
+                    var img = sender as Image;
+                    var item = img.BindingContext as NewCategoryDetailModel.Deal;
+                    //var item2 = img.BindingContext as Category;
+                    //Application.Current.MainPage.Navigation.PushAsync(new Favorites(item), true);
+                    FavService fs = new FavService();
+                    Favourite favourite = new Favourite()
+                    {
+                        Address = item.Owner_Location,
+                        Description = item.Details,
+                        ImageURL = item.ImagePath,
+                        Name = item.Name,
+                        UserId = GlobalStaticFields.Username,
+                        Id = Convert.ToInt32(item.Id)
+                    };
+
+                    var result = await fs.SaveFavorites(favourite);
+                    if (result)
+                    {
+                        RefreshFavourites();
+
+                        await DisplayAlert("", "Great!! Just added " + item.Name + " to your list of favorites", "Ok");
+
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Sorry!! Could not add " + item.Name + " to your list of favorites right now.", "Ok");
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var log = ex;
+                    await DisplayAlert("", "Sorry. Error occured", "Ok");
+                    await LogService.LogErrorsNew(error: ex.Message.ToString());
+
+                }
             }
-            catch (Exception ex)
-            {
-                var log = ex;
-            }
+                
+        }
+
+        private void RefreshFavourites()
+        {
+            IntroPageViewModel ivm = new IntroPageViewModel();
+            ivm.Initializefavourites();
         }
     }
 }

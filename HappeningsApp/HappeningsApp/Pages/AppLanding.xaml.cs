@@ -37,7 +37,7 @@ namespace HappeningsApp.Pages
                 ivm.GetAll();
                 ivm.GetAllSearchFromNewModel();
                 ivm.GetAllThisWeek();
-                
+                ivm.Initializefavourites();
                 mcvm.InitializeFavListNewUI();
                 ThisWeek_Tapped(this, null);
                 ShowSurVeyOne();
@@ -239,25 +239,35 @@ namespace HappeningsApp.Pages
 
         }
 
-        void Favorites_Tapped(object sender, System.EventArgs e)
+       async void Favorites_Tapped(object sender, System.EventArgs e)
         {
-            var page = new Favorites();
-            //page.Content.BackgroundColor = Color.FromHex("#000015");
-            PlaceHolder.Content = null;
-            BindingContext = mcvm.CollectionsList[1].Details;
+            try
+            {
+                var page = new Favorites();
+                //page.Content.BackgroundColor = Color.FromHex("#000015");
+                PlaceHolder.Content = null;
+                BindingContext = GlobalStaticFields.FavoriteList;
 
-            PlaceHolder.Content = page.Content;
-            lblPageLandingTitle.Text = "Favorites";
+                PlaceHolder.Content = page.Content;
+                lblPageLandingTitle.Text = "Favorites";
 
-            lblCategories.TextColor = Color.White;
-            lblProfiles.TextColor = Color.White;
-            lblThisWeek.TextColor = Color.White;
-            lblFavorites.TextColor = Color.FromHex("#3498db");
+                lblCategories.TextColor = Color.White;
+                lblProfiles.TextColor = Color.White;
+                lblThisWeek.TextColor = Color.White;
+                lblFavorites.TextColor = Color.FromHex("#3498db");
 
-            imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
-            imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
-            imgProf.Source = ImageSource.FromFile("ic_user_white");
-            imgFav.Source = ImageSource.FromFile("ic_like");
+                imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
+                imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
+                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgFav.Source = ImageSource.FromFile("ic_like");
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+               await LogService.LogErrorsNew(error:ex.Message.ToString());
+               await LogService.LogErrorsNew(error:"Testing logging error at fav tapped");
+               await DisplayAlert("Error", "Unexpected error occured. The tech Team has been alerted", "Ok");
+            }
         }
     }
 }

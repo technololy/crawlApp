@@ -311,6 +311,11 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ONBOARDING5.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ONBOARDING5.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ONBOARDING3.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_fav_blue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_fav_blue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_fav_blue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_fav_blue.png" />
+    <AndroidResource Include="Resources\drawable\ic_fav_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

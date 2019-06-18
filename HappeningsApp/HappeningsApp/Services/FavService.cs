@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using HappeningsApp.Models;
 using Newtonsoft.Json;
@@ -46,23 +47,106 @@ namespace HappeningsApp.Services
         }
 
 
-
-        public async Task<ObservableCollection<FavoriteModel>> GetFavsTest()
+        public async Task<ObservableCollection<Favourite>> GetFavorites()
         {
-            FavRootObject fav = new FavRootObject();
-            ObservableCollection<FavoriteModel> listofFavs = new ObservableCollection<FavoriteModel>()
-            {
-                new FavoriteModel{Name="Clubs i party", Details="Chilling when i need to cool down"},
-                new FavoriteModel{Name="events i like", Details="events to flourish"},
-                new FavoriteModel{Name="outdoors i like", Details="outing is the best thing ever"},
-                new FavoriteModel{Name="books i love", Details="lose my self in books of wisdom"},
-                new FavoriteModel{Name="Museums that curate", Details="art is life. if you know you know"},
-            };
-
+            FavoritesModelAPIResponse fav = new FavoritesModelAPIResponse();
+            ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
             ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
 
-     
+            var respo = await APIService.Get("GetFavouritesbyUserId?UserId="+GlobalStaticFields.Username);
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+                listofFavs = JsonConvert.DeserializeObject<ObservableCollection<Favourite>>(content);
+                if (listofFavs.Any())
+                {
+                   return listofFavs;
+                }
+                else
+                {
+                    listofFavs = null;
+                }
+
+
+
+            }
+            else
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+            }
             return listofFavs;
+        }
+
+        public async Task<bool> SaveFavorites(Favourite favourite)
+        {
+            FavoritesModelAPIResponse fav = new FavoritesModelAPIResponse();
+            ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
+            ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
+
+            var respo = await APIService.PostNew(favourite, "api/UserFavourites/");
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await respo.Content.ReadAsStringAsync();
+
+
+                if (content.ToLower().Contains("success"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
+
+
+
+            }
+            else
+            {
+                return false;
+
+
+            }
+            return false;
+        }
+
+        internal async Task<bool> DeleteFavorite(Favourite favourite)
+        {
+            FavoritesModelAPIResponse fav = new FavoritesModelAPIResponse();
+            ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
+            ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
+
+            var respo = await APIService.Delete("api/UserFavourites?id="+favourite.Id);
+            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return true;// will remove this when niyi corrects it
+
+                var content = await respo.Content.ReadAsStringAsync();
+
+
+                if (content.ToLower().Contains("success"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+
+                }
+
+
+
+            }
+            else
+            {
+                return false;
+
+
+            }
+            
         }
     }
 }

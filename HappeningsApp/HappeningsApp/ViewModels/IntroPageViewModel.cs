@@ -62,6 +62,7 @@ namespace HappeningsApp.ViewModels
         public ObservableCollection<Collections> Coollections { get; set; }
         public ObservableCollection<GetAll2.Deal> GgetAll { get; set; }
         public ObservableCollection<NewDealsModel.Deal> GetEvery { get; set; }
+        public ObservableCollection<Favourite> InitializedFav { get; set; }
         public ObservableCollection<NewDealsModel.Deal> GetThisWeek 
         { 
             get => _getThisWeek;
@@ -169,6 +170,17 @@ namespace HappeningsApp.ViewModels
             var week = await ds.GetThisWeek();
             GetThisWeek = new ObservableCollection<NewDealsModel.Deal>(week);
             GlobalStaticFields.GetAllThisWeek = GetThisWeek;
+
+
+        }
+
+        public async Task Initializefavourites()
+        {
+            FavService ds = new FavService();
+
+            var fav = await ds.GetFavorites();
+            InitializedFav = new ObservableCollection<Favourite>(fav);
+            GlobalStaticFields.FavoriteList = InitializedFav;
 
 
         }
