@@ -230,11 +230,11 @@ namespace HappeningsApp.Pages
                         if (tk)
                         {
                             lvm.PersistUserDetails();
-
-                            Device.BeginInvokeOnMainThread
-                                 (
-                               async () => await Navigation.PushAsync(new AppLanding())
-                                    );
+                           await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                            //Device.BeginInvokeOnMainThread
+                            // (
+                            //() => Application.Current.MainPage.Navigation.PushAsync(new AppLanding())
+                            //);
                         }
                         else
                         {
@@ -293,6 +293,11 @@ namespace HappeningsApp.Pages
         void SignUp_Tapped(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new Onboarding.SignUpEmail());
+        }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+        DisplayAlert("hello", "hi", "ok");
         }
     }
 }
