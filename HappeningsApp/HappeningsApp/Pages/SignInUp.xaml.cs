@@ -230,11 +230,11 @@ namespace HappeningsApp.Pages
                         if (tk)
                         {
                             lvm.PersistUserDetails();
-                           await Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
-                            //Device.BeginInvokeOnMainThread
-                            // (
-                            //() => Application.Current.MainPage.Navigation.PushAsync(new AppLanding())
-                            //);
+                            //Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                            Device.BeginInvokeOnMainThread
+                             (
+                          async  () => await Application.Current.MainPage.Navigation.PushAsync(new AppLanding())
+                            );
                         }
                         else
                         {
@@ -243,11 +243,11 @@ namespace HappeningsApp.Pages
                             if (reg)
                             {
                                 //lvm.PersistUserDetails();
-
-                                Device.BeginInvokeOnMainThread
-                                      (
-                                    async () => await Navigation.PushAsync(new AppLanding())
-                                         );
+                                Application.Current.MainPage.Navigation.PushAsync(new AppLanding());
+                                //Device.BeginInvokeOnMainThread
+                                //  (
+                                //async () => await Application.Current.MainPage.Navigation.PushAsync(new AppLanding())
+                                //);
 
                             }
                             else
