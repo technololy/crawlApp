@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.SignInUp" NavigationPage.HasNavigationBar="False" xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" xmlns:c="clr-namespace:HappeningsApp.Custom">
-    <ContentPage.Content>
+  <ScrollView>
 
                     <Grid>
             <Image Source="splash_background2" Aspect="Fill" />
@@ -34,5 +34,5 @@
             </Grid>
         </Grid>
   
-    </ContentPage.Content>
+   </ScrollView>
 </ContentPage>
