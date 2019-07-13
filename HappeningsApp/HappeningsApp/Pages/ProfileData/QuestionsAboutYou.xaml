@@ -141,7 +141,7 @@
                 <c:ExtendedPicker SelectedIndex="{Binding surveyModel.How_Did_You_hear}" BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
             
             </StackLayout>
-            <Button Margin="50,5,50,0" Text="Nexts" BorderRadius="20" 
+            <Button Margin="50,5,50,0" Text="Next" BorderRadius="20" 
                  Clicked="submit_Clicked"
                     BackgroundColor="Black" 
                     Padding="18,1" BorderColor="{x:StaticResource CrawlColor}" BorderWidth="2" FontSize="13" TextColor="White">

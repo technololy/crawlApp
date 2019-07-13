@@ -27,7 +27,7 @@
                             </Grid.RowDefinitions>
                             <ff:CachedImage Grid.Row="0" 
                                             HeightRequest="300"  
-                                            Aspect="AspectFill" 
+                                            Aspect="AspectFit" 
                                             Source="{Binding ImagePath}" 
                                             Margin="10,0,10,5"
                                             HorizontalOptions="FillAndExpand" 

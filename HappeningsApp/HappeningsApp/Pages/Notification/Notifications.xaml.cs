@@ -11,7 +11,7 @@ namespace HappeningsApp.Pages.Notification
         public Notifications()
         {
             InitializeComponent();
-            BindingContext = new MessagesViewModel();
+            //BindingContext = new MessagesViewModel();
             RefreshMessage();
         }
 

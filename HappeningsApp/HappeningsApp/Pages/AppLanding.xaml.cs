@@ -245,6 +245,7 @@ namespace HappeningsApp.Pages
             
             PlaceHolder.Content = null;
             PlaceHolder.Content = page.Content;
+            page.BindingContext = new MessagesViewModel();
 
         }
 
