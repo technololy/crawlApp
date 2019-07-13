@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Pages.AppLanding" 
@@ -34,13 +34,27 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="search" Tapped="Search_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="notification.png" x:Name="notifImage" VerticalOptions="Center" 
+            
+            
+       <!--     <Image Source="notification.png" x:Name="notifImage" VerticalOptions="Center" 
                    HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="0.6" Margin="10,0,0,0" 
                    Grid.Column="2">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="notifTapped" Tapped="notif_Tapped" />
                 </Image.GestureRecognizers>
+            </Image>-->
+            
+            
+              <Image Source="ic_user_white" x:Name="imgProf" VerticalOptions="Center" 
+                   HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="0.9" Margin="10,0,0,0" 
+                   Grid.Column="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="Profiles" Tapped="Profiles_Tapped" />
+                </Image.GestureRecognizers>
             </Image>
+            
+            
+            
             <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label x:Name="lblPageLandingTitle" TextColor="White" HorizontalOptions="Center" FontSize="15" />
             
@@ -115,20 +129,40 @@
                 </ffSvg:SvgCachedImage>-->
                 <Label Text="Favorites" x:Name="lblFavorites" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="{x:StaticResource CrawlColor}" HorizontalOptions="Center" />
             </StackLayout>
-            <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
+            
+            
+            
+            <!--   <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="Profiles" Tapped="Profiles_Tapped" />
                 </StackLayout.GestureRecognizers>
                
                 <Image  x:Name="imgProf" Source="ic_user_white" 
                         WidthRequest="28" HeightRequest="28" />
+                    <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
+                                          HeightRequest="22" 
+                          Source="resource://HappeningsApp.Resources.user.svg">
+                 
+                </ffSvg:SvgCachedImage>
+                <Label Text="Profiles" x:Name="lblProfiles" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+            </StackLayout>-->
+            
+            
+             <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Messages" Tapped="notif_Tapped" />
+                </StackLayout.GestureRecognizers>
+               
+                <Image  x:Name="imgMessages" Scale="0.57" Source="importantmailwhite" 
+                        WidthRequest="28" HeightRequest="28" />
                 <!--     <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
                                           HeightRequest="22" 
                           Source="resource://HappeningsApp.Resources.user.svg">
                  
                 </ffSvg:SvgCachedImage>-->
-                <Label Text="Profiles" x:Name="lblProfiles" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+                <Label Text="Messages" x:Name="lblMessages" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
             </StackLayout>
+            
         </Grid>
     </Grid>
 </ContentPage>

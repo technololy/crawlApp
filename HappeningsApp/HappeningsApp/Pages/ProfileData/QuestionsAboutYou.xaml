@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Pages.ProfileData.QuestionsAboutYou" 
@@ -121,7 +121,7 @@
             
             
              <!--   <Slider Value="30000" Minimum="0" Maximum="100000" IsEnabled="True" />-->
-                <StackLayout Margin="10,30,10,0" >
+                <StackLayout Margin="0,30,0,0" >
                             <InputKit:AdvancedSlider 
                         MinValue="0" 
                         MaxValue="500000" 
@@ -129,6 +129,7 @@
                                 x:Name="advSlider"
                         StepValue="500" 
                         Title="Budget?"
+                                
                                 
                         TextColor="White"
                       DisplayMinMaxValue="false"
@@ -140,7 +141,7 @@
                 <c:ExtendedPicker SelectedIndex="{Binding surveyModel.How_Did_You_hear}" BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
             
             </StackLayout>
-            <Button Margin="50,5,50,0" Text="Next" BorderRadius="20" 
+            <Button Margin="50,5,50,0" Text="Nexts" BorderRadius="20" 
                  Clicked="submit_Clicked"
                     BackgroundColor="Black" 
                     Padding="18,1" BorderColor="{x:StaticResource CrawlColor}" BorderWidth="2" FontSize="13" TextColor="White">

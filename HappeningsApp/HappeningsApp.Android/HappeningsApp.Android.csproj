@@ -316,6 +316,16 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_fav_blue.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_fav_blue.png" />
     <AndroidResource Include="Resources\drawable\ic_fav_blue.png" />
+    <AndroidResource Include="Resources\drawable\importantmailblue.png" />
+    <AndroidResource Include="Resources\drawable\importantmailwhite.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\importantmailblue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\importantmailwhite.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\importantmailblue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\importantmailwhite.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\importantmailblue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\importantmailwhite.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\importantmailblue.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\importantmailwhite.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\magentawhite.png" />

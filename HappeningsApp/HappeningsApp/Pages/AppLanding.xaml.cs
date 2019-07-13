@@ -64,11 +64,13 @@ namespace HappeningsApp.Pages
                 imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_blue");
 
                 imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
-                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                //imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgMessages.Source = ImageSource.FromFile("importantmailwhite");
                 imgFav.Source = ImageSource.FromFile("ic_favorite_border");
                 lblPageLandingTitle.Text = "This Week";
                 lblCategories.TextColor = Color.White;
-                lblProfiles.TextColor = Color.White;
+                //lblProfiles.TextColor = Color.White;
+                lblMessages.TextColor = Color.White;
                 lblThisWeek.TextColor = Color.FromHex("#3498db");
                 lblFavorites.TextColor = Color.White;
 
@@ -173,10 +175,11 @@ namespace HappeningsApp.Pages
         }
 
 
-        async void notif_Tapped(object sender, System.EventArgs e)
+        async void Profiles_Tapped(object sender, System.EventArgs e)
         {
 
-            await Navigation.PushAsync(new Notification.Notifications());
+            //await Navigation.PushAsync(new Notification.Notifications());
+            await Navigation.PushAsync(new Profile());
 
         }
 
@@ -195,11 +198,12 @@ namespace HappeningsApp.Pages
                 lblCategories.TextColor = Color.FromHex("#3498db");
                 lblFavorites.TextColor = Color.White;
                 lblThisWeek.TextColor = Color.White;
-                lblProfiles.TextColor = Color.White;
+                lblMessages.TextColor = Color.White;
 
                 imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
                 imgCat.Source = ImageSource.FromFile("ic_three_lines_blue");
-                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                //imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgMessages.Source = ImageSource.FromFile("importantmailwhite");
                 imgFav.Source = ImageSource.FromFile("ic_favorite_border");
                 //bxVwCat.BackgroundColor = Color.FromHex("#3498db");
                 //bxVwDeals.BackgroundColor = Color.Black;
@@ -218,20 +222,25 @@ namespace HappeningsApp.Pages
 
         }
 
-        private async void Profiles_Tapped(object sender, System.EventArgs e)
+        private async void notif_Tapped(object sender, System.EventArgs e)
         {
-            lblPageLandingTitle.Text = "Profiles";
+            lblPageLandingTitle.Text = "Messages";
             lblCategories.TextColor = Color.White;
             lblFavorites.TextColor = Color.White;
             lblThisWeek.TextColor = Color.White;
-            lblProfiles.TextColor = Color.FromHex("#3498db");
+            lblMessages.TextColor = Color.FromHex("#3498db");
 
             imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
             imgFav.Source = ImageSource.FromFile("ic_favorite_border");
-            imgProf.Source = ImageSource.FromFile("ic_user");
+            //imgProf.Source = ImageSource.FromFile("ic_user");
+          
+            imgMessages.Source = ImageSource.FromFile("importantmailblue");
             imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
             //await Navigation.PushAsync(new Home.Profile());
-            var page = new Profile();
+
+           // var page = new Profile();
+            var page = new Notification.Notifications();
+
             page.Content.BackgroundColor = Color.FromHex("#000015");
             
             PlaceHolder.Content = null;
@@ -252,13 +261,15 @@ namespace HappeningsApp.Pages
                 lblPageLandingTitle.Text = "Favorites";
 
                 lblCategories.TextColor = Color.White;
-                lblProfiles.TextColor = Color.White;
+                //lblProfiles.TextColor = Color.White;
+                lblMessages.TextColor = Color.White;
                 lblThisWeek.TextColor = Color.White;
                 lblFavorites.TextColor = Color.FromHex("#3498db");
 
                 imgThisWeek.Source = ImageSource.FromFile("ic_small_calendar_white");
                 imgCat.Source = ImageSource.FromFile("ic_sort_with_three_lines_white");
-                imgProf.Source = ImageSource.FromFile("ic_user_white");
+                //imgProf.Source = ImageSource.FromFile("ic_user_white");
+                imgMessages.Source = ImageSource.FromFile("importantmailwhite");
                 imgFav.Source = ImageSource.FromFile("ic_like");
             }
             catch (Exception ex)
