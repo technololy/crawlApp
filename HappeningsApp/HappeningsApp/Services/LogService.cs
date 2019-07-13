@@ -20,8 +20,10 @@ namespace HappeningsApp.Services
             //};
            // await APIService.LogClient<LogModel>(logger, "api/Error");
 
-            var l=await  Task.Run(async()=> await APIService.LogAsync(error));
-            var cont = await l.Content.ReadAsStringAsync();
+
+
+            //var l=await  Task.Run(async()=> await APIService.LogAsync(error));
+            //var cont = await l.Content.ReadAsStringAsync();
         }
 
         public async static Task LogErrorsNew(string error="",string request="",
@@ -41,16 +43,16 @@ namespace HappeningsApp.Services
             };
             if (CrossConnectivity.Current.IsConnected)
             {
-                var l = await Task.Run(() => APIService.LogNewAsync(errorx));
-                try
-                {
-                    var cont = await l.Content.ReadAsStringAsync();
+                //var l = await Task.Run(() => APIService.LogNewAsync(errorx));
+                //try
+                //{
+                //    var cont = await l.Content.ReadAsStringAsync();
 
-                }
-                catch (Exception ex)
-                {
-                    var log = ex;
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    var log = ex;
+                //}
             }
         
         }

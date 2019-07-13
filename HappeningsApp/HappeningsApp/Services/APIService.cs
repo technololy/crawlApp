@@ -338,8 +338,9 @@ namespace HappeningsApp.Services
                 //serialize your json using newtonsoft json serializer then add it to the StringContent
                 var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
                 //method address would be like api/callUber:SomePort for example
-                var result = await client.PostAsync("/api/Error", content);
-                string resultContent = await result.Content.ReadAsStringAsync();
+                //var result = await client.PostAsync("/api/Error", content);
+                //string resultContent = await result.Content.ReadAsStringAsync();
+                var result = new HttpResponseMessage();
                 return result;
             }
 

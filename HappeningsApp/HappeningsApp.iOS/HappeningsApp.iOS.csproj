@@ -117,13 +117,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\pinksharecirled.png" />
     <BundleResource Include="Resources\pinkshare.png" />
-    <BundleResource Include="Resources\bkmkpinknobkg.png" />
-    <BundleResource Include="Resources\fbCrawlBlkPk.png" />
-    <BundleResource Include="Resources\fbCrawlBlkPk%402x.png" />
-    <BundleResource Include="Resources\fbCrawlBlkPk%403x.png" />
-    <BundleResource Include="Resources\ggCrawlPkBlk.png" />
-    <BundleResource Include="Resources\ggCrawlPkBlk%402x.png" />
-    <BundleResource Include="Resources\ggCrawlPkBlk%403x.png" />
     <BundleResource Include="Resources\Crawl_white_blue.png" />
     <BundleResource Include="Resources\ic_clear_blue.png" />
     <BundleResource Include="Resources\ic_bookmark_border_blue.png" />
@@ -154,51 +147,16 @@
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\Crawl_logo_header.png" />
     <BundleResource Include="Resources\ic_settings.png" />
-    <BundleResource Include="Resources\favorites.jpg" />
-    <BundleResource Include="Resources\messages.jpg" />
-    <BundleResource Include="Resources\Spinner200px.gif" />
-    <BundleResource Include="Resources\Spinner200px%402x.gif" />
-    <BundleResource Include="Resources\Spinner200px%403x.gif" />
-    <BundleResource Include="Resources\Infinity195px.svg" />
-    <BundleResource Include="Resources\Infinity89px.gif" />
     <BundleResource Include="Resources\uber_PNG27.png" />
-    <BundleResource Include="Resources\CATEGORIES.png" />
-    <BundleResource Include="Resources\DATE PICKER.png" />
-    <BundleResource Include="Resources\DEALS.png" />
-    <BundleResource Include="Resources\EVENT DETAIL SOCIAL.png" />
-    <BundleResource Include="Resources\EVENT DETAIL.png" />
-    <BundleResource Include="Resources\FAVOURITES.png" />
-    <BundleResource Include="Resources\HOME LIST VIEW.png" />
-    <BundleResource Include="Resources\HOME MAP VIEW.png" />
-    <BundleResource Include="Resources\LOADER.png" />
-    <BundleResource Include="Resources\LOGIN FIELDS.png" />
-    <BundleResource Include="Resources\LOGIN SIGNUP.png" />
-    <BundleResource Include="Resources\NOTIFICATION LIST.png" />
-    <BundleResource Include="Resources\NOTIFICTION DETAIL.png" />
     <BundleResource Include="Resources\ONBOARDING2.png" />
     <BundleResource Include="Resources\ONBOARDING4.png" />
     <BundleResource Include="Resources\ONBOARDING5.png" />
     <BundleResource Include="Resources\ONBOARDING.png" />
-    <BundleResource Include="Resources\PREFERENCES 1.png" />
-    <BundleResource Include="Resources\PREFERENCES 2.png" />
-    <BundleResource Include="Resources\PROFILE SETTINGS.png" />
-    <BundleResource Include="Resources\PROFILE.png" />
-    <BundleResource Include="Resources\REGISTER EMAIL.png" />
     <BundleResource Include="Resources\SPLASH SCREEN.png" />
-    <BundleResource Include="Resources\WELCOME PAGE.png" />
-    <BundleResource Include="Resources\abt.jpg" />
     <BundleResource Include="Resources\background.jpg" />
-    <BundleResource Include="Resources\bed.png" />
-    <BundleResource Include="Resources\bell.png" />
-    <BundleResource Include="Resources\bogobiri.jpg" />
     <BundleResource Include="Resources\circle.png" />
-    <BundleResource Include="Resources\coldstone.jpg" />
     <BundleResource Include="Resources\crawlwhiteblue.jpg" />
-    <BundleResource Include="Resources\deals.jpg" />
-    <BundleResource Include="Resources\ekohotel.jpg" />
-    <BundleResource Include="Resources\event.png" />
     <BundleResource Include="Resources\funds.png" />
-    <BundleResource Include="Resources\holo.png" />
     <BundleResource Include="Resources\like.jpg" />
     <BundleResource Include="Resources\like.png" />
     <BundleResource Include="Resources\likeed.png" />
@@ -210,7 +168,6 @@
     <BundleResource Include="Resources\noti.jpg" />
     <BundleResource Include="Resources\on3.png" />
     <BundleResource Include="Resources\placeholder.png" />
-    <BundleResource Include="Resources\restaurant.png" />
     <BundleResource Include="Resources\search.jpg" />
     <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\small-calendar.png" />
@@ -330,54 +287,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\assorted2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\assortedfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\buzz.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\drink.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EkoCourts.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\friedyam.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\greenfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\harvest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icecream.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\lagosoilrig.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\negafood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\newmagentabluewhite2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\nightlagos.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\quilox.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\restaurant.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\salahgrill.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\bookmarkwhite%401x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -403,12 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_search_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\facebookcircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\googlecircle.png" />
   </ItemGroup>
   <ItemGroup />
 </Project>

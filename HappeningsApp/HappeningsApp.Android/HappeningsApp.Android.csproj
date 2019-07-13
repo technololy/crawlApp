@@ -28,6 +28,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -163,11 +165,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable\pinksharecirled.png" />
-    <AndroidResource Include="Resources\drawable\bkmkpinknobkg.png" />
-    <AndroidResource Include="Resources\drawable\fbCrawlBlkPk.png" />
-    <AndroidResource Include="Resources\drawable\ggCrawlPkBlk.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\fbCrawlBlkPk.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fbCrawlBlkPk.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\fbCrawlBlkPk.png" />
@@ -185,7 +182,6 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\fbCrawlBlkPk.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ggCrawlPkBlk.png" />
-    <AndroidResource Include="Resources\drawable\crawlicon120.png" />
     <AndroidResource Include="Resources\drawable\Crawl_white_blue.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Crawl_white_blue.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Crawl_white_blue.png" />
@@ -202,21 +198,11 @@
     <AndroidResource Include="Resources\drawable\Crawl_logo_header.png" />
     <AndroidResource Include="Resources\drawable\ic_settings.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
-    <AndroidResource Include="Resources\drawable\favorites.jpg" />
-    <AndroidResource Include="Resources\drawable\messages.jpg" />
     <AndroidResource Include="Resources\drawable\Crawl_LetterA_BOX_BLACK.png" />
     <AndroidResource Include="Resources\drawable\splashPageDroid.png" />
-    <AndroidResource Include="Resources\drawable\Spinner200px.gif" />
-    <AndroidResource Include="Resources\drawable-hdpi\Spinner200px.gif" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Spinner200px.gif" />
-    <AndroidResource Include="Resources\drawable\Infinity195px.svg" />
-    <AndroidResource Include="Resources\drawable-hdpi\Infinity195px.svg" />
     <AndroidResource Include="Resources\drawable-xhdpi\Infinity195px.svg" />
-    <AndroidResource Include="Resources\drawable\Infinity89px.gif" />
-    <AndroidResource Include="Resources\drawable-hdpi\Infinity89px.gif" />
     <AndroidResource Include="Resources\drawable-xhdpi\Infinity89px.gif" />
-    <AndroidResource Include="Resources\drawable\uber_PNG27.png" />
-    <AndroidResource Include="Resources\drawable\uberlogo.png" />
     <AndroidResource Include="Resources\drawable-hdpi\uber_PNG27.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\uber_PNG27.png" />
     <AndroidResource Include="Resources\drawable-hdpi\splash_background2.png" />
@@ -349,21 +335,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\tab_about.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EkoCourts.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\vi.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\lagosoilrig.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\quilox.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\magentawhite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxhdpi\magentawhite.png" />
   </ItemGroup>
   <ItemGroup>
@@ -388,115 +359,10 @@
     <AndroidResource Include="Resources\drawable\sharewhite.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\EkoCourts.jpg">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\lagosoilrig.jpg">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\quilox.jpg">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\vi.jpg">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\newmagentabluewhite2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\newmagentabluewhite2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\assorted2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\assortedfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\buzz.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\drink.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\friedyam.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\greenfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\harvest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icecream.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\negafood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\nightlagos.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\restaurant.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\salahgrill.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\assorted2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\assortedfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\buzz.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\drink.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\friedyam.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\greenfood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\harvest.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icecream.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\negafood.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\nightlagos.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\restaurant.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\salahgrill.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bookmarkwhite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\bookmarkwhite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\bookmarkwhite.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\bookmarkwhite.png" />
@@ -551,12 +417,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_search_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\facebookcircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\googlecircle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

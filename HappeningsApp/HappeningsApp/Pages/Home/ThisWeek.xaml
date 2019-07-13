@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Pages.Home.ThisWeek"
@@ -37,6 +37,7 @@
                          x:Name="dealsListview" 
                       IsGroupingEnabled="True"
                       SeparatorColor="Black"
+                      VerticalScrollBarVisibility="Never"
                       CachingStrategy="RecycleElement"
                       GroupDisplayBinding="{Binding Key}"
                          SeparatorVisibility="None" 
@@ -72,7 +73,7 @@
                                       
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="150"  HorizontalOptions="Fill" Source="{Binding ImagePath}" Aspect="AspectFill" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true"  ErrorPlaceholder="ic_clear_blue" />
+                                    <forms:CachedImage HeightRequest="250"  HorizontalOptions="Fill" Source="{Binding ImagePath}" Aspect="Fill" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true"  ErrorPlaceholder="ic_clear_blue" />
                                   <!--  <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappeningsApp.Pages.Home.ListPage"
@@ -14,7 +14,8 @@
             <ListView ItemsSource="{Binding .}" 
                          x:Name="dealsListview" 
                          SeparatorVisibility="None" 
-                          
+                          VerticalScrollBarVisibility="Never"
+                      CachingStrategy="RecycleElement"
                          ItemTapped="dealsListview_ItemTapped" 
                          BackgroundColor="Transparent" 
                          HasUnevenRows="true">
@@ -40,7 +41,7 @@
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
                                     <forms:CachedImage HeightRequest="300" Grid.RowSpan="3"  
                                                        Source="{Binding ImagePath}" 
-                                                       Aspect="AspectFill" 
+                                                       Aspect="Fill" 
                                                        
                                                        ErrorPlaceholder="Crawl_white_blue"  
                                                        FadeAnimationForCachedImages="true" 

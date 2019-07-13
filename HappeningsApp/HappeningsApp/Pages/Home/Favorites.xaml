@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappeningsApp.Pages.Home.Favorites"
@@ -28,7 +28,7 @@
                                         <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImageURL}" Aspect="AspectFill" ErrorPlaceholder="Crawl_white_blue" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true" />
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImageURL}" Aspect="Fill" ErrorPlaceholder="Crawl_white_blue" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true" />
                                     <Image Source="ic_fav_blue.png" HeightRequest="50" WidthRequest="50" Opacity="2" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="Delete_Tapped" NumberOfTapsRequired="1" />
