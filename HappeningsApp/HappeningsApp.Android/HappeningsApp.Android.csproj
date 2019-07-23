@@ -169,8 +169,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\fbCrawlBlkPk.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ggCrawlPkBlk.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\fbCrawlBlkPk.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\ggCrawlPkBlk.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\fbCrawlBlkPk.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\ggCrawlPkBlk.png" />
@@ -345,9 +343,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\magentawhite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\magentawhite.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\magentawhite.png" />
