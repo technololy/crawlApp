@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Pages.AppLanding" 
+             NavigationPage.HasNavigationBar="False" 
+             xmlns:customControl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList" 
+             BackgroundColor="#000015" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             >
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.005*" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="70*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+                <Image Source="ic_search_white.png" 
+                       HeightRequest="20" 
+                       Scale="1.2" 
+                       TranslationY="5"
+                       WidthRequest="20" 
+                       Opacity="0.9" Grid.Column="0"
+                       Margin="0,0,10,10" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="search" Tapped="Search_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            
+            
+       <!--     <Image Source="notification.png" x:Name="notifImage" VerticalOptions="Center" 
+                   HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="0.6" Margin="10,0,0,0" 
+                   Grid.Column="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="notifTapped" Tapped="notif_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>-->
+            
+            
+              <Image Source="ic_user_white" x:Name="imgProf" VerticalOptions="Center" 
+                   HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Scale="0.9" Margin="10,0,0,0" 
+                   Grid.Column="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="Profiles" Tapped="Profiles_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            
+            
+            
+            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label x:Name="lblPageLandingTitle" TextColor="White" HorizontalOptions="Center" FontSize="15" />
+            
+            </StackLayout>
+        
+        </Grid>
+        <StackLayout Grid.Row="1">
+       <BoxView  Color="LightGray" HeightRequest="2.5" />
+            
+            </StackLayout>
+        
+        <ContentView x:Name="PlaceHolder" Grid.Row="2" />
+        <BoxView HeightRequest="1.0" Color="LightGray" Grid.Row="3" />
+        <Grid Grid.Row="4" x:Name="gridNavBar" Margin="0,0,0,0" RowSpacing="0" BackgroundColor="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--tab items start here-->
+            <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Image  x:Name="imgThisWeek"  
+                        Source="ic_small_calendar" 
+                        WidthRequest="28"
+                        HeightRequest="28" />
+  
+                <Label  Text="This Week" TextColor="{x:StaticResource CrawlColor}" x:Name="lblThisWeek" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+                
+            </StackLayout>
+            <!--    <StackLayout IsVisible="false" Spacing="0" Grid.Column="1" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ThisWeek" Tapped="ThisWeek_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Label Text="THIS WEEK" LineBreakMode="NoWrap" x:Name="lblThisWeek" HorizontalOptions="Center" TextColor="White" VerticalOptions="CenterAndExpand" FontSize="12" />
+                <BoxView BackgroundColor="Black" x:Name="bxVwthisWeek" HeightRequest="4" />
+            </StackLayout>-->
+            <StackLayout Spacing="0" Grid.Column="1" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Categories" Tapped="Categories_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="imgCat" 
+                       Source="ic_sort_with_three_lines_white" 
+                       WidthRequest="28" 
+                       HeightRequest="28" />
+                  <!--  <ffSvg:SvgCachedImage x:Name="imgCat" BackgroundColor="White"  WidthRequest="22" 
+                                          HeightRequest="22" 
+                          Source="resource://HappeningsApp.Resources.sort-button-with-three-lines.svg">
+                 
+                </ffSvg:SvgCachedImage>-->
+                <Label Text="Categories" 
+                       x:Name="lblCategories" 
+                       VerticalOptions="CenterAndExpand" 
+                       FontSize="12" 
+                       TextColor="{x:StaticResource CrawlColor}" 
+                       HorizontalOptions="Center" />
+               
+            </StackLayout>
+            <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Favorites" Tapped="Favorites_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <Image  x:Name="imgFav" Source="ic_favorite_border" 
+                        WidthRequest="28" HeightRequest="28" />
+                   <!--  <ffSvg:SvgCachedImage x:Name="imgFav" BackgroundColor="White"  WidthRequest="22" 
+                                          HeightRequest="22" 
+                          Source="resource://HappeningsApp.Resources.likeCopy.svg">
+                 
+                </ffSvg:SvgCachedImage>-->
+                <Label Text="Favorites" x:Name="lblFavorites" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="{x:StaticResource CrawlColor}" HorizontalOptions="Center" />
+            </StackLayout>
+            
+            
+            
+            <!--   <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Profiles" Tapped="Profiles_Tapped" />
+                </StackLayout.GestureRecognizers>
+               
+                <Image  x:Name="imgProf" Source="ic_user_white" 
+                        WidthRequest="28" HeightRequest="28" />
+                    <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
+                                          HeightRequest="22" 
+                          Source="resource://HappeningsApp.Resources.user.svg">
+                 
+                </ffSvg:SvgCachedImage>
+                <Label Text="Profiles" x:Name="lblProfiles" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+            </StackLayout>-->
+            
+            
+             <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="Transparent">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Messages" Tapped="notif_Tapped" />
+                </StackLayout.GestureRecognizers>
+               
+                <Image  x:Name="imgMessages" Scale="0.57" Source="importantmailwhite" 
+                        WidthRequest="28" HeightRequest="28" />
+                <!--     <ffSvg:SvgCachedImage x:Name="imgProf" BackgroundColor="White"  WidthRequest="22" 
+                                          HeightRequest="22" 
+                          Source="resource://HappeningsApp.Resources.user.svg">
+                 
+                </ffSvg:SvgCachedImage>-->
+                <Label Text="Messages" x:Name="lblMessages" TextColor="{x:StaticResource CrawlColor}" VerticalOptions="CenterAndExpand" FontSize="12" HorizontalOptions="Center" />
+            </StackLayout>
+            
+        </Grid>
+    </Grid>
+</ContentPage>

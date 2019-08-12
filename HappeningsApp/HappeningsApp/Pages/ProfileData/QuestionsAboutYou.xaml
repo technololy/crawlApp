@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappeningsApp.Pages.ProfileData.QuestionsAboutYou" 
+             BackgroundImage="splash_background2" 
+         
+             xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:c="clr-namespace:HappeningsApp.Custom">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="skip">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+               <Grid Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Grid.Column="0" 
+                           Source="ic_clear_blue" 
+                           WidthRequest="20" 
+                           HeightRequest="20"
+                           
+                           >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Skip_Clicked"/>
+                        </Image.GestureRecognizers>
+                        </Image>
+                    <Label HorizontalOptions="Center" 
+                        Text="Please tell us about yourself" 
+                           Grid.Column="1"
+                           FontSize="22"
+                           />
+                </Grid>
+        
+           <ScrollView>
+              <StackLayout Spacing="20" >
+            <!--<StackLayout Orientation="Horizontal">
+                <Label Text="Please tell us about yourself" Margin="12" VerticalOptions="Center" TextColor="White" HorizontalOptions="StartAndExpand"/> 
+                <Button Text="skip" TextColor="#E8E8E8" Margin="5,0" BorderColor="White"  FontSize="Small"/>
+            </StackLayout>-->
+            <!--              <BoxView BackgroundColor="#E8E8E8" HeightRequest="1" Margin="4"/>-->
+           
+             
+                <StackLayout Padding="12,12,44,12" Spacing="15">
+                <StackLayout Spacing="5" x:Name="txtFriendsCall">
+                    <c:BorderlessEntry 
+                            Placeholder="What do your friends call you" 
+                                       x:Name="txtUsername" 
+                                       IsSpellCheckEnabled="false" 
+                                       HorizontalTextAlignment="Start" 
+                                       TextColor="White" 
+                                       ReturnType="Next" 
+                                       PlaceholderColor="White"
+                            Text="{Binding surveyModel.UserName}"
+                            
+                        />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}" />
+                </StackLayout>
+                <StackLayout Spacing="5" x:Name="txtlocation">
+                    <c:BorderlessEntry 
+                            Placeholder="I live in?" 
+                            Text="{Binding surveyModel.City}" 
+                        x:Name="txtLocation" 
+                        IsSpellCheckEnabled="false" 
+                        HorizontalTextAlignment="Start" 
+                        TextColor="White" 
+                        ReturnType="Next" 
+                        PlaceholderColor="White"
+                        
+                        />
+                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource crawlWhiteColor}" />
+                </StackLayout>
+                <c:ExtendedPicker  BoxUnderlineColor="White"  Title="City" x:Name="drpCity" />
+                
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Margin="12,15">
+                        <Label Text="Status" TextColor="White" FontSize="20" />
+                        <InputKit:RadioButtonGroupView x:Name="Marital_Status"  Spacing="15"  SelectedItem="{Binding surveyModel.MaritalStatusObj}" Orientation="Horizontal" BackgroundColor="Transparent" IsRequired="True">
+                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" Text="Single" Value="Single" CircleColor="White" IsChecked="True"/>
+                            <InputKit:RadioButton TextColor="White" HorizontalOptions="CenterAndExpand" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" Value="Married" CircleColor="White" Text="Married" />
+                            <InputKit:RadioButton TextColor="White" Orientation="Vertical" TextFontSize="12" Color="{x:StaticResource CrawlColor}" CircleColor="White" Text="Relationship" Value="Relationship" />
+                        </InputKit:RadioButtonGroupView>
+                    </StackLayout>
+                    <StackLayout Margin="12,15" HorizontalOptions="EndAndExpand">
+                        <Label Text="Smoker" TextColor="White" FontSize="20" />
+                        <InputKit:RadioButtonGroupView x:Name="SmokerPReference"  
+                                                       Spacing="15" 
+                                                       Orientation="Horizontal" 
+                                                       SelectedItem="{Binding surveyModel.Smoking_Preference_obj}" 
+                                                       BackgroundColor="Transparent" 
+                                                       IsRequired="True">
+                            <InputKit:RadioButton Orientation="Vertical" 
+                                                  TextColor="White"
+                                                  Value="Yes"
+                                             
+                                                  TextFontSize="12" 
+                                                  Color="{x:StaticResource CrawlColor}" 
+                                                  Text="Yes" 
+                                                  CircleColor="White" />
+                            <InputKit:RadioButton Orientation="Vertical" 
+                                                  HorizontalOptions="EndAndExpand" 
+                                                  TextColor="White"
+                                                  Value="No"
+                                            
+                                                  TextFontSize="12" 
+                                                  Color="{x:StaticResource CrawlColor}" 
+                                                  CircleColor="White" 
+                                                  Text="No" 
+                                                  IsChecked="True" />
+                        </InputKit:RadioButtonGroupView>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" >
+                    <c:ExtendedPicker BoxUnderlineColor="White"  HorizontalOptions="StartAndExpand" Title="Dietary Choices"  x:Name="DietPicker" />
+                    <c:ExtendedPicker  BoxUnderlineColor="White"  HorizontalOptions="EndAndExpand" Title="Favorite Sports" x:Name="FavSports" />
+                </StackLayout>
+              
+            
+            
+             <!--   <Slider Value="30000" Minimum="0" Maximum="100000" IsEnabled="True" />-->
+                <StackLayout Margin="0,30,0,0" >
+                            <InputKit:AdvancedSlider 
+                        MinValue="0" 
+                        MaxValue="500000" 
+                        IsEnabled="true" 
+                                x:Name="advSlider"
+                        StepValue="500" 
+                        Title="Budget?"
+                                
+                                
+                        TextColor="White"
+                      DisplayMinMaxValue="false"
+                       
+                        
+                    
+                    />
+                    </StackLayout>
+                <c:ExtendedPicker SelectedIndex="{Binding surveyModel.How_Did_You_hear}" BoxUnderlineColor="White" Title="How did you hear about us?" x:Name="drpHearAboutUs" />
+            
+            </StackLayout>
+            <Button Margin="50,5,50,0" Text="Next" BorderRadius="20" 
+                 Clicked="submit_Clicked"
+                    BackgroundColor="Black" 
+                    Padding="18,1" BorderColor="{x:StaticResource CrawlColor}" BorderWidth="2" FontSize="13" TextColor="White">
+             
+            </Button>
+                 
+        </StackLayout>
+        </ScrollView>
+        </StackLayout>
+     
+      
+    </ContentPage.Content>
+</ContentPage>

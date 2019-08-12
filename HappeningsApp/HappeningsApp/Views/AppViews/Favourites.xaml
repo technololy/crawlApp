@@ -29,7 +29,9 @@
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
-                                        <Label Text="{Binding NickName}" Opacity="0.7" TextColor="Black" />
+                                        <Label Text="{Binding NickName}" 
+                                               LineBreakMode="TailTruncation" 
+                                               Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
                                         <StackLayout HorizontalOptions="EndAndExpand">
                                             <Label Text="Tap here to add" 
@@ -57,7 +59,8 @@
                      <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
                  </StackLayout>
             <StackLayout>
-                <Button Text="Create a new collection" WidthRequest="100" Clicked="Button_Clicked"  BorderColor="{StaticResource CrawlColor}" />
+             <Button Text="Create a new collection" WidthRequest="100" Clicked="Button_Clicked"  BorderColor="{StaticResource CrawlColor}" />
+               <!-- <Button Text="Create a new test collection" WidthRequest="100" Clicked="AddToFav_Tapped"  BorderColor="{StaticResource CrawlColor}" />-->
             </StackLayout>                
             </StackLayout>   
         </Grid>

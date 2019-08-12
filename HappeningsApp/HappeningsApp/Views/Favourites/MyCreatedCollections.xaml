@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.Favourites.MyCreatedCollections" Title="My Favorites" BackgroundColor="Black" xmlns:c="clr-namespace:HappeningsApp.Custom" x:Name="myPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <ActivityIndicator Grid.Row="0" Color="White" x:Name="activityIndicator" IsRunning="{Binding ActivityRunning}" />
+        <ListView BackgroundColor="Black" SeparatorVisibility="None" CachingStrategy="RecycleElement" Grid.Row="1" ItemsSource="{Binding CollectionsList}" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" ScrollToRequested="Handle_ScrollToRequested" x:Name="MyFavList" Footer="">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                        <StackLayout Margin="20,5,20,0">
+                            <Frame HeightRequest="50" HasShadow="false">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
+                                        <!--  <Label Text="{Binding NickName}" 
+                                               LineBreakMode="TailTruncation" 
+                                               Opacity="0.7" TextColor="Black" />-->
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Label Text="Tap here to add" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding Path=BindingContext.IsEnabled,Source={x:Reference myPage}}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AddToFav_Tapped" Command="{Binding Path=BindingContext.GetFavCommand, Source={x:Reference myPage}}" CommandParameter="{Binding .}" x:Name="AddToFav" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Label Text="Delete" TextColor="{StaticResource CrawlRedColor}" FontAttributes="Bold">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Delete_Tapped" CommandParameter="{Binding .}" x:Name="DeleteFav" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </c:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Grid.Row="2">
+        
+            <StackLayout Spacing="2">
+                <Label Text="You have zero collection group created" HorizontalTextAlignment="Center" IsVisible="{Binding ShowTips}" x:Name="tipsOnFav" />
+                <Button Text="Tap here to create a new collection" WidthRequest="100" Clicked="Button_Clicked" BorderColor="{StaticResource CrawlColor}" />
+                <!-- <Button Text="Create a new test collection" WidthRequest="100" Clicked="AddToFav_Tapped"  BorderColor="{StaticResource CrawlColor}" />-->
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -9,76 +9,117 @@ namespace HappeningsApp.Views.Survey
 {
     public partial class SurveyOne : ContentPage
     {
-      
 
+        SurveyViewModel svm;
         public SurveyOne()
         {
             InitializeComponent();
-            BindingContext = new SurveyViewModel();
 
-            Location.ItemsSource = new List<string>()
-            {
-                "Lagos","Port Harcourt","Abuja","Kaduna"
-            };
-            MaritalPicker.ItemsSource = new List<string>()
-            {
-               "Single", "Married","Divorced"
-            };
-            DietPicker.ItemsSource = new List<string>()
-            {
-                "Vegetarian","Non-vegetarian"
-            };
-            SmokerPicker.ItemsSource = new List<string>()
-            {
-                "Yes","No"
-            };
-            DrinkerPicker.ItemsSource = new List<string>()
-            {
-                "Yes","No"
-            };
-            MoreSmokingChoice.ItemsSource = new List<string>()
-            {
-               "Cigar", "Shisha","Vape"
+            svm = new SurveyViewModel();
+            // BindingContext = new SurveyViewModel();
+            this.BindingContext = this.svm;
+            //Location.ItemsSource = svm.LocationDS;
+            MaritalPicker.ItemsSource = svm.MaritalDS;
+            DietPicker.ItemsSource = svm.DietDS;
+            SmokerPicker.ItemsSource = svm.SmokerDS;
+            MoreSmokingChoice.ItemsSource = svm.MoreSmokingDS;
+            DrinkerPicker.ItemsSource = svm.DrinkerDS;
+            MoreDrinkOption.ItemsSource = svm.MoreDrinkDS;
+            //Location.ItemsSource = new List<string>()
+            //{
+            //    "Lagos","Port Harcourt","Abuja","Kaduna"
+            //};
 
-            };
-            MoreDrinkOption.ItemsSource = new List<string>()
-            {
-               "Wine", "Beer","Whisky"
-
-            };
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
+            svm.surveyModel.UserName = GlobalStaticFields.Username;
+
+            svm.surveyModel.City= svm.surveyModel.SelectedLocation;
+            svm.surveyModel.Marital_Status = MaritalPicker.SelectedItem;
+            svm.surveyModel.Smoker = SmokerPicker.SelectedItem;
+            svm.surveyModel.Smoking_Preference = string.IsNullOrEmpty(MoreSmokingChoice.SelectedItem) ? "n/a":MoreSmokingChoice.SelectedItem;
+            svm.surveyModel.User_Id = GlobalStaticFields.Username;
+            svm.surveyModel.Drinker =  string.IsNullOrEmpty(DrinkerPicker.SelectedItem) ? "n/a" : DrinkerPicker.SelectedItem;
+            svm.surveyModel.Drinking_Preference =  string.IsNullOrEmpty(MoreDrinkOption.SelectedItem) ? "n/a" : MoreDrinkOption.SelectedItem;
+            if (!CheckValidity())
+            {
+                await DisplayAlert("Info", "Please enter all fields", "OK");
+                return;
+
+            }
+
+            //svm.SubmitSurveyOne();
             using (Acr.UserDialogs.UserDialogs.Instance.Loading(""))
             {
                 await Task.Delay(3000);
-                
+             
+                //svm.surveyModel.City = txtLocation.Text.Trim();
+                //svm.surveyModel.SelectedLocation 
+
             };
             Application.Current.Properties["SurveyOne"] = true;
+            await LogService.LogErrorsNew(activity: "User clicked submit on Survey One");
 
             await Navigation.PopModalAsync(true);
-            ShowSurVeyTwo();
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm), true);
+
+            await ShowSurVeyTwo();
 
         }
+
+        private bool CheckValidity()
+        {
+            //return svm.surveyModel.Marital_Status == "" || svm.surveyModel.Smoker == "" || svm.surveyModel.Drinker == ""
+            //|| svm.surveyModel.City == "" || svm.surveyModel.SelectedLocation == ""
+            //? false
+            //: true;
+            if
+                (string.IsNullOrEmpty(svm.surveyModel.Marital_Status)|| 
+                 string.IsNullOrEmpty(svm.surveyModel.Smoker) ||
+                 string.IsNullOrEmpty(svm.surveyModel.Drinker)
+                 || string.IsNullOrEmpty(svm.surveyModel.City) ||
+                 string.IsNullOrEmpty(svm.surveyModel.SelectedLocation)
+                )
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Smoker.ToLower()=="yes" && string.IsNullOrEmpty(svm.surveyModel.Smoking_Preference))
+            {
+                return false;
+            }
+            else if (svm.surveyModel.Drinker.ToLower() == "yes" && string.IsNullOrEmpty(svm.surveyModel.Drinking_Preference))
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         private async Task ShowSurVeyTwo()
         {
-            await Task.Delay(30000);
-            NowShowTwo();
+            //await Task.Delay(30000);
+            await NowShowTwo();
 
         }
         private async Task NowShowTwo()
         {
             try
             {
-                if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
-                {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new Survey.SurveyTwo(svm));
 
-                }
-                else
-                {
-                    await Navigation.PushModalAsync(new Survey.SurveyTwo());
-                }
+                //if (Convert.ToBoolean(Application.Current.Properties["SurveyTwo"]) == true)
+                //{
+
+                //}
+                //else
+                //{
+                //    await Navigation.PushModalAsync(new Survey.SurveyTwo());
+                //}
             }
             catch (Exception ex)
             {
@@ -87,30 +128,32 @@ namespace HappeningsApp.Views.Survey
 
             }
         }
-        void Location_SelectedIndexChanged(object sender, System.EventArgs e)
+        //void Location_SelectedIndexChanged(object sender, System.EventArgs e)
+        //{
+        //    if (Location.SelectedIndex == 0)
+        //    {
+        //        Location.SelectedIndex = 1;
+        //    }
+        //}
+        async void Dismiss_Clicked(object sender, System.EventArgs e)
         {
-            if (Location.SelectedIndex==0)
-            {
-                Location.SelectedIndex = 1;
-            }
-        }
-        void  Dismiss_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PopModalAsync(true);
-            ShowSurVeyTwo();
+           //await Task.Run(async()=> { await LogService.LogErrorsNew(activity: "User clicked on dismiss on Survey One"); }); 
+
+           await Navigation.PopModalAsync(true);
+         await   ShowSurVeyTwo();
 
         }
 
         void Smoke_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-           if (SmokerPicker.SelectedItem==null)
+            if (SmokerPicker.SelectedItem == null)
             {
                 return;
             }
 
 
 
-            if (SmokerPicker.SelectedItem.ToString()=="Yes")
+            if (SmokerPicker.SelectedItem.ToString() == "Yes")
             {
                 MoreSmokingTypeStack.IsVisible = true;
                 //LaunchMultiSelector();

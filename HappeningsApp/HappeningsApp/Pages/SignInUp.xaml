@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.SignInUp" NavigationPage.HasNavigationBar="False" xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" xmlns:c="clr-namespace:HappeningsApp.Custom">
+  <ScrollView>
+
+                    <Grid>
+            <Image Source="splash_background2" Aspect="Fill" />
+            <Grid RowSpacing="60" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                 
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="crawlImageStack"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0">
+                    <Image Source="Crawl_logo_header.png" Scale="0.5" />
+                </StackLayout>
+                <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0">
+                    <Label Text="Explore your city like never before" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="36" />
+                </StackLayout>
+                <StackLayout Grid.Row="2" Spacing="30" Margin="0,0,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Log in with email" WidthRequest="300" x:Name="login" Clicked="Logon_Tapped" BorderWidth="1" BackgroundColor="{x:StaticResource crawlWhiteColor}" TextColor="Black" />
+                    <Button x:Name="loginFB" TextColor="White" WidthRequest="300" Text="Log in with Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
+                    <Button TextColor="White" Text="Log in with Google" x:Name="googleSignIn" Clicked="OAuth_Clicked" WidthRequest="300" BackgroundColor="#c0392b" />
+               
+                </StackLayout>
+                <StackLayout Grid.Row="3" VerticalOptions="EndAndExpand">
+                    <Label Text="Don't have an account? Sign Up" TextColor="{x:StaticResource CrawlRedColor}" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignUp_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+        </Grid>
+  
+   </ScrollView>
+</ContentPage>

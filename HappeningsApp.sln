@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappeningsApp.iOS", "Happen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappeningsApp.UWP", "HappeningsApp\HappeningsApp.UWP\HappeningsApp.UWP.csproj", "{06B6E39F-7D9E-4D47-81DC-4014067512ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappeningsApp", "HappeningsApp\HappeningsApp\HappeningsApp.csproj", "{03DEBF6A-DE66-4524-B4E6-B77D437CAC4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HappeningsApp", "HappeningsApp\HappeningsApp\HappeningsApp.csproj", "{03DEBF6A-DE66-4524-B4E6-B77D437CAC4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,6 @@
-﻿using HappeningsApp.Services;
+﻿using HappeningsApp.Models;
+using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,17 @@ namespace HappeningsApp.Views.AppViews
 	public partial class ThisWeek : ContentPage
 	{
        public List<string> days;
-		public ThisWeek ()
+        public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+
+        IntroPageViewModel ivm;
+
+        public ThisWeek ()
 		{
 			InitializeComponent ();
-            
-             days = new List<string>() { "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN", "ALL" };
+            RefreshListView();
+            ivm = new IntroPageViewModel();
+             days = new List<string>() { "ALL", "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN" };
             segment.Children = days;
         }
 
@@ -39,7 +47,7 @@ namespace HappeningsApp.Views.AppViews
             {
                 return;
             }
-            var selected = dealsListview.SelectedItem as HappeningsApp.Models.GetAll2.Deal;
+            var selected = dealsListview.SelectedItem as NewDealsModel.Deal;
             if (selected != null)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
@@ -47,8 +55,8 @@ namespace HappeningsApp.Views.AppViews
             }
             else
             {
-                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                //var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                //Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
@@ -60,7 +68,7 @@ namespace HappeningsApp.Views.AppViews
                 var select = e.SelectedItem as string;
                 string fulldayName = GetFullDay(select);
                 var listViewDatax = dealsListview.ItemsSource;          
-                var dealsList = GlobalStaticFields.GetAll.Where(d=>d.Expiration_Date.
+                var dealsList = GlobalStaticFields.GetEvery.Where(d=>d.Expiration_Date.
                 DayOfWeek.ToString().ToLower()==fulldayName.ToLower()).FirstOrDefault();
                 dealsListview.ScrollTo(dealsList, ScrollToPosition.MakeVisible, true);
             
@@ -73,6 +81,81 @@ namespace HappeningsApp.Views.AppViews
 
         }
 
+
+        private void RefreshListView()
+        {
+            dealsListview.RefreshCommand = new Command(async() =>
+
+            {
+                 ivm = new IntroPageViewModel();
+                ivm.GetDeals();
+                ivm.GetCategories();
+                ivm.GetAll();
+                // await Task.Delay(3000);
+                ivm.GetAllThisWeek();
+
+                var groupByDate = GroupListByDate();
+                //GlobalStaticFields.GetAllGrouping = groupByDate;
+                BindingContext = groupByDate;
+                await Task.Delay(3000);
+                dealsListview.IsRefreshing = false;
+            });
+        }
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
+        {
+            try
+            {
+                if (ivm?.GetEvery==null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in ivm?.GetThisWeek
+                          orderby h?.Expiration_Date
+                          group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast( Color.Red,"Slight error occured parsing response");
+            }
+         
+            return GetEveryThingGrouped;
+        }
+
+        private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDateOriginal()
+        {
+            try
+            {
+                if (ivm?.GgetAll == null)
+                {
+                    return GetAllGrouped;
+                }
+                var grp = from h in ivm?.GgetAll
+                          orderby h?.Expiration_Date
+                          group h by h?.Expiration_Date.DayOfWeek.ToString() into ThisWeeksGroup
+                          select new Grouping<string, GetAll2.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetAllGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetAllGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Color.Red, "Slight error occured parsing response");
+            }
+
+            return GetAllGrouped;
+        }
         private string GetFullDay(string select)
         {
             string day = "";

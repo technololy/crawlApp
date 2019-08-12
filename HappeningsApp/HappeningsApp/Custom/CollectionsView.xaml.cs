@@ -24,6 +24,11 @@ namespace HappeningsApp.Custom
             }
         }
 
+        public ImageSource ImageSource
+        {
+            get;
+            set;
+        }
         public static readonly BindableProperty HeaderTextProperty = 
             BindableProperty.Create(nameof(HeaderText),
                                     typeof(string),
@@ -41,6 +46,21 @@ namespace HappeningsApp.Custom
             //if (!string.IsNullOrEmpty(ctl.txtHeader.Text))
             //{
             //}
+        }
+        public static readonly BindableProperty ImageSourceProperty =
+        BindableProperty.Create(nameof(ImageSource),
+                                typeof(ImageSource),
+                                typeof(CollectionsView),
+                                defaultValue: null,
+
+                                defaultBindingMode: BindingMode.TwoWay,
+                                propertyChanged: OnImageSourcepropertyChanged);
+
+        private static void OnImageSourcepropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var obj = bindable as CollectionsView;
+            obj.img.Source = (ImageSource)newValue;
+            
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

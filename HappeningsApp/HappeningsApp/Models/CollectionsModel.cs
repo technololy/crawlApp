@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace HappeningsApp.Models
@@ -18,8 +19,16 @@ namespace HappeningsApp.Models
     public class CollectionsModelResp
     {
         public string Message { get; set; }
-        public List<CollectionsResp> Collections { get; set; }
+        public ObservableCollection<CollectionsResp> Collections { get; set; }
     }
+
+    public class FavoritesModelAPIResponse
+    {
+        public string Message { get; set; }
+        public ObservableCollection<Favourite> favourites { get; set; }
+    }
+
+
     public class CollectionsResp
     {
         public int Id { get; set; }
@@ -34,8 +43,10 @@ namespace HappeningsApp.Models
     public class Favourite
     {
         public int Id { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
+        public string ImageURL { get; set; }
     }
 }

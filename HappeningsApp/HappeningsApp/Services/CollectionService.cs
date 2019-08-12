@@ -82,18 +82,48 @@ namespace HappeningsApp.Services
 
         }
 
+
+
+
+        internal async Task<bool> DeleteCollection(CollectionsResp coll)
+        {
+            string endpoint = "api/Collections?id="+coll.Id;
+
+            var resp = await APIService.Delete(endpoint);
+            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var cont = await resp.Content.ReadAsStringAsync();
+                if (cont.ToLower().Contains("success"))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+
+            }
+
+        }
+
+
+
+
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
-            //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+            ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();
             string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            //string endpoint = "GetByUserID?User_id=" + testuser;
-            var response = await APIService.Get(endpoint);
+            var response = await APIService.Get(endpoint,"Get Users Collection List");
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<ObservableCollection<CollectionsResp>>(content);
+                var model = JsonConvert.DeserializeObject<CollectionsModelResp>(content);
+               if (model.Message.ToLower().Contains("success"))
+                {
+                    Col = model.Collections;
+                }
                 //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
-                return model;
+                return Col;
             }
 
             else
@@ -104,6 +134,72 @@ namespace HappeningsApp.Services
                 return empty;
             }
         }
+
+        internal async Task<bool> UpdateCollectionWithDetails(CollectionsResp ctl)
+        {
+            bool response = false;
+            try
+            {
+                string endpoint = $"api/Collections?User_Id={ctl.User_id}&collection_id={ctl.Id}";
+                var add = await APIService.Put<CollectionsResp>(ctl, endpoint);
+                if (add.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var content = await add.Content.ReadAsStringAsync();
+                    if (content.ToLower().Contains("success"))
+                        response = true;
+                }
+
+                else
+                {
+                    var content = await add.Content.ReadAsStringAsync();
+
+                    response = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+                response = false;
+            }
+
+            return response;
+        }
+
+
+
+        internal async Task<bool> DeleteCollectionWithDetails(Favourite ctl, string CategoryID)
+        {
+            bool response = false;
+            try
+            {
+                string endpoint = $"DeleteFavorite?id={CategoryID}";
+                var add = await APIService.PostNew<Favourite>(ctl, endpoint);
+                if (add.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    var content = await add.Content.ReadAsStringAsync();
+                    if (content.ToLower().Contains("success"))
+                        response = true;
+                }
+
+                else
+                {
+                    var content = await add.Content.ReadAsStringAsync();
+
+                    response = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogErrors(ex.ToString());
+                response = false;
+            }
+
+            return response;
+        }
+
+
     }
 
  

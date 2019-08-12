@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "34982577863",
+    "firebase_url": "https://crawl-219215.firebaseio.com",
+    "project_id": "crawl-219215",
+    "storage_bucket": "crawl-219215.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34982577863:android:8096eb0501bb1612",
+        "android_client_info": {
+          "package_name": "com.technololy.crawl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34982577863-icabviuhls2o4h4tm34uok5volv0q0ir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFCI8Zh_K6MeUUel6gKOD3yZC4K9rB-LU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

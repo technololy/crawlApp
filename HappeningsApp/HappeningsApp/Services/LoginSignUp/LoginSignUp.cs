@@ -127,6 +127,74 @@ namespace HappeningsApp.Services.LoginSignUp
 
         }
 
+        internal async static Task<bool> ForgotPassword(string username)
+        {
+            string content = "";
+            try
+            {
+                var forgot = new ForgotPassword() { Email = username };
+                var testresult = await APIService.PostNew<ForgotPassword>(forgot, "/api/Account/ForgotPassword");
+                content = await testresult.Content.ReadAsStringAsync();
+                if (content.ToLower().Contains("success"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
 
+
+
+
+                // return registResp;
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                return false;
+
+            }
+
+
+
+
+        }
+
+        internal async static Task<bool> ResetPassword(string username,string code, string pass, string confirmPass)
+        {
+            string content = "";
+            try
+            {
+                var reset = new ResetPassword() { Email = username, Code = code, Password=pass,ConfirmPassword = confirmPass };
+                var testresult = await APIService.PostNew<ResetPassword>(reset, "api/account/ResetPassword");
+                content = await testresult.Content.ReadAsStringAsync();
+                if (content.ToLower().Contains("success"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+
+
+                // return registResp;
+
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                return false;
+
+            }
+
+
+
+
+        }
     }
 }

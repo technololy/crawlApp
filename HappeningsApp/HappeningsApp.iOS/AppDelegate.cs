@@ -6,6 +6,10 @@ using Foundation;
 using HappeningsApp.OAuth;
 using Plugin.GoogleAnalytics;
 using UIKit;
+using Microsoft.AppCenter.Push;
+using CarouselView.FormsPlugin.iOS;
+using FFImageLoading.Svg.Forms;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace HappeningsApp.iOS
 {
@@ -29,15 +33,19 @@ namespace HappeningsApp.iOS
             global::Xamarin.Forms.Forms.Init();
             //UITabBar.Appearance.SelectedImageTintColor = UIColor.Magenta;
 
-       
+            //var tt =  UIApplication.SharedApplication.ApplicationIconBadgeNumber;
+              UIApplication.SharedApplication.ApplicationIconBadgeNumber=0;
             CachedImageRenderer.Init();
-
+            var ignore = typeof(SvgCachedImage);
+            Plugin.InputKit.Platforms.iOS.Config.Init();
             //google analytics
-            GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
-            GoogleAnalytics.Current.Config.AppId = "GASample";
-            GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
-            GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
-            GoogleAnalytics.Current.InitTracker();
+            //GoogleAnalytics.Current.Config.TrackingId = "UA-XXXXXXXX-2";
+            //GoogleAnalytics.Current.Config.AppId = "GASample";
+            //GoogleAnalytics.Current.Config.AppName = "Google Analytics Sample";
+            //GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
+            //GoogleAnalytics.Current.InitTracker();
+            CarouselViewRenderer.Init();
+            ImageCircleRenderer.Init();
 
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
@@ -53,6 +61,49 @@ namespace HappeningsApp.iOS
             AuthenticationState.Authenticator.OnPageLoading(uri);
 
             return true;
+        }
+
+        
+
+        [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
+        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        {
+
+            try
+            {
+                var result = Push.DidReceiveRemoteNotification(userInfo);
+                if (result)
+                {
+                    completionHandler?.Invoke(UIBackgroundFetchResult.NewData);
+                }
+                else
+                {
+                    completionHandler?.Invoke(UIBackgroundFetchResult.NoData);
+                }
+                //NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+
+                //string alert = string.Empty;
+                //if (aps.ContainsKey(new NSString("alert")))
+                //    alert = (aps[new NSString("alert")] as NSString).ToString();
+
+                //// Show alert
+                //if (!string.IsNullOrEmpty(alert))
+                //{
+                //    var notificationAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
+                //    notificationAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null));
+                //    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(notificationAlert, true, null);
+                //}
+
+                List<int> vs = new List<int>();
+                App.Current.Properties["BadgeOfNotif"] = "";
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+            }
+
+       
+
         }
     }
 }

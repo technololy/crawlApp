@@ -5,24 +5,53 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CarouselView.FormsPlugin" Version="5.1.3" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="ksemenenko.GoogleAnalytics" Version="1.0.3.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.10.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.9.0" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.3.0" />
     <PackageReference Include="Xamarin.Auth" Version="1.6.0.2" />
     <PackageReference Include="Xamarin.Auth.XamarinForms" Version="1.6.0.2" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />  
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.880-pre" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />  
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Geocoding.Google" Version="4.0.1" />
+    <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.0.11" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\chat.svg" />
+    <EmbeddedResource Include="Resources\discount.svg" />
+    <EmbeddedResource Include="Resources\down-arrow.svg" />
+    <EmbeddedResource Include="Resources\event.svg" />
+    <EmbeddedResource Include="Resources\explore-tool.svg" />
+    <EmbeddedResource Include="Resources\funds.svg" />
+    <EmbeddedResource Include="Resources\home.svg" />
+    <EmbeddedResource Include="Resources\likeCopy.svg" />
+    <EmbeddedResource Include="Resources\magnifying-glass.svg" />
+    <EmbeddedResource Include="Resources\map.svg" />
+    <EmbeddedResource Include="Resources\placeholder.svg" />
+    <EmbeddedResource Include="Resources\small-calendar.svg" />
+    <EmbeddedResource Include="Resources\sort-button-with-three-lines.svg" />
+    <EmbeddedResource Include="Resources\star.svg" />
+    <EmbeddedResource Include="Resources\ticket.svg" />
+    <EmbeddedResource Include="Resources\timetable.svg" />
+    <EmbeddedResource Include="Resources\user.svg" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Custom\ExtendedLabel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -75,6 +104,12 @@
     <EmbeddedResource Update="Views\Settings\ChangePassword.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Settings\ForgotPassword1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Settings\ForgotPassword2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -88,6 +123,17 @@
     <Folder Include="Services\LoginSignUp\" />
     <Folder Include="Views\Survey\" />
     <Folder Include="Views\test\" />
+    <Folder Include="Views\Search\" />
+    <Folder Include="Views\Messages\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Views\NewLook\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Onboarding\" />
+    <Folder Include="Pages\Home\" />
+    <Folder Include="Pages\ProfileData\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Test\" />
+    <Folder Include="Pages\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
@@ -97,6 +143,8 @@
   <ItemGroup>
     <Compile Remove="Custom\SegmentedControlSample.cs" />
     <Compile Remove="Views\AppViews\Deals.xaml.cs" />
+    <Compile Remove="Pages\Introduction\Landing.xaml.cs" />
+    <Compile Remove="Pages\Introduction\MyPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\AppViews\Deals.xaml" />
@@ -114,5 +162,33 @@
     <Compile Update="Custom\CollectionsView.xaml.cs">
       <DependentUpon>CollectionsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Search\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Messages\MessagesLanding.xaml.cs">
+      <DependentUpon>MessagesLanding.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Home\CategoryListing.xaml.cs">
+      <DependentUpon>CategoryListing.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\chat.svg" />
+    <None Remove="Resources\discount.svg" />
+    <None Remove="Resources\down-arrow.svg" />
+    <None Remove="Resources\event.svg" />
+    <None Remove="Resources\explore-tool.svg" />
+    <None Remove="Resources\funds.svg" />
+    <None Remove="Resources\home.svg" />
+    <None Remove="Resources\like copy.svg" />
+    <None Remove="Resources\magnifying-glass.svg" />
+    <None Remove="Resources\map.svg" />
+    <None Remove="Resources\placeholder.svg" />
+    <None Remove="Resources\small-calendar.svg" />
+    <None Remove="Resources\sort-button-with-three-lines.svg" />
+    <None Remove="Resources\star.svg" />
+    <None Remove="Resources\ticket.svg" />
+    <None Remove="Resources\timetable.svg" />
+    <None Remove="Resources\user.svg" />
   </ItemGroup>
 </Project>

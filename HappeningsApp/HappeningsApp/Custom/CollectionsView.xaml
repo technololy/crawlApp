@@ -9,11 +9,17 @@
                          WidthRequest="20">
                 <Frame BackgroundColor="Silver" 
                      WidthRequest="40"
+                       
                        CornerRadius="0"  
                        HasShadow="false"
                        x:Name="imgPlaceHolder"
                      MinimumWidthRequest="20">
-                    
+                    <Image x:Name="img" Aspect="Fill"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           WidthRequest="40"
+                           HeightRequest="40"
+                           />
                 
             </Frame> 
             

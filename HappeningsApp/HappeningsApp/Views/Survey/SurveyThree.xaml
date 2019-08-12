@@ -9,7 +9,8 @@
                     AlignItems="Stretch" 
                     JustifyContent="Start" 
                     Margin="40" >
-      
+            <Label HorizontalTextAlignment="Center" Text="3/3" />
+
             <StackLayout>
                 <c:MultiPicker Title="How did you hear about us" x:Name="HowDidYou" 
                                    />

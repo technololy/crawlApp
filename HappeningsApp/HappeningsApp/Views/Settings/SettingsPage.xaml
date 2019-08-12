@@ -10,7 +10,7 @@
         <ScrollView>
             <StackLayout>
                 <c:ExtendedLabel Text="About Crawl" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Found a bug?" ItemTapped="ExtendedLabel_ItemTapped"  />
+                <c:ExtendedLabel Text="Found a bug or Suggestions?" ItemTapped="ExtendedLabel_ItemTapped"  />
                 <c:ExtendedLabel Text="Found a place?" ItemTapped="ExtendedLabel_ItemTapped"  />
                 <c:ExtendedLabel Text="Change Password"  ItemTapped="ExtendedLabel_ItemTapped" />
                 <c:ExtendedLabel Text="Log Out" ItemTapped="ExtendedLabel_ItemTapped"  />

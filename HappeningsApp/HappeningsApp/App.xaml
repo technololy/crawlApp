@@ -7,6 +7,7 @@
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="CrawlColor">#3498db</Color>
+            <Color x:Key="crawlWhiteColor">#FFFFFF</Color>
             <Color x:Key="CrawlRedColor">#c0392b</Color>
             <!--Copied from another project-->
             <Color x:Key="SeparatorColor">#C7C7CC</Color>
@@ -14,9 +15,10 @@
             <Color x:Key="BackgroundColor">#FFFFFF</Color>
             <Color x:Key="PaleGray">#EDF2F6</Color>
             <Color x:Key="FormHeadingsColor">#A7A7A7</Color>
+            
             <!--end-->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarBackgroundColor" Value="Black" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
            <Style TargetType="Label">

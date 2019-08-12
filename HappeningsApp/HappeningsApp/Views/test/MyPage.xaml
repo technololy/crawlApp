@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage">
-    <ContentPage.Content>
-        <StackLayout Margin="20,40,20,0">
-            <StackLayout Orientation="Horizontal" HeightRequest="100" Spacing="0" WidthRequest="20">
-                <Frame BackgroundColor="Silver" 
-                     WidthRequest="40"
-                       CornerRadius="0"  
-                       HasShadow="false"
-                       
-                     MinimumWidthRequest="20">
-                    
-                
-            </Frame> 
-            
-                <Frame BackgroundColor="White" 
-                      WidthRequest="390"
-                       Padding="0"
-                       CornerRadius="0"
-                       HasShadow="false"
-                     >
-                <Label Text="My Messages"
-                       VerticalOptions="CenterAndExpand"
-                       TextColor="Black" 
-                       HorizontalOptions="CenterAndExpand"/>
-            </Frame> 
-            </StackLayout>
-           
-            <Frame HeightRequest="80">
-                <StackLayout>
-                    <Label Text="Done and dusted" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Places I have visited" Opacity="0.7" TextColor="Black" />
-                </StackLayout>
-            </Frame>
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
-                <Button Text="View More" WidthRequest="100" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button WidthRequest="100" Text="Add here" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlColor}" />
-                <Button Text="Delete" WidthRequest="100" TextColor="{StaticResource CrawlRedColor}" BorderWidth="1" BackgroundColor="Transparent" BorderColor="{StaticResource CrawlRedColor}" />
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Create a new collection" WidthRequest="100" BorderColor="{StaticResource CrawlColor}" />
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:c="clr-namespace:HappeningsApp.Custom" BackgroundColor="Black" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.test.MyPage" Padding="10,40,10,10" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <Grid HeightRequest="100">
+        <ListView x:Name="DaysOpenListView" HeightRequest="100" Footer="" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                               <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Day}" TextColor="Black" Grid.Row="0" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                        <!-- <Label Text="Opens" TextColor="Black" Grid.Row="1" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                            <Label Text="Closes" TextColor="Black" Grid.Row="2" Grid.Column="0" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding OpeningHours,StringFormat='{0:dd MMM, yyyy hh:mm}'}" TextColor="Black" Grid.Row="0" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.OpeningTime}" TextColor="Black" Grid.Row="1" Grid.Column="2" Opacity="0.6" FontSize="15" />
+                                            <Label Text="{Binding Hostopeninghours.ClosingTime}" TextColor="Black" Grid.Row="2" Grid.Column="2" Opacity="0.6" FontSize="15" />-->
+                    </Grid>
+                    </ViewCell>
+             
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>

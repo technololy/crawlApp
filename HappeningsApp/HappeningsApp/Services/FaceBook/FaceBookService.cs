@@ -18,12 +18,26 @@ namespace HappeningsApp.Services.FaceBook
             var httpClient = new HttpClient();
 
             var userJson = await httpClient.GetStringAsync(requestUrl);
-            LogService.LogErrors(userJson);
+            //LogService.LogErrors(userJson);
 
             var facebookProfile = JsonConvert.DeserializeObject<FaceBookProfile>(userJson);
-
+            LogFaceBook(facebookProfile);
             return facebookProfile;
 
+        }
+
+        private static void LogFaceBook(FaceBookProfile facebookProfile)
+        {
+            if (facebookProfile != null)
+            {
+                LogService.LogErrors("Successfully pulled facebook details for " + facebookProfile?.Email);
+
+            }
+            else
+            {
+                LogService.LogErrors("failed to pulled facebook details");
+
+            }
         }
     }
 }

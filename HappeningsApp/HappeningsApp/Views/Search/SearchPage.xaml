@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.Search.SearchPage" BackgroundColor="#000015" Padding="10,40,10,10" xmlns:c="clr-namespace:HappeningsApp.Custom" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="90*" />
+        </Grid.RowDefinitions>
+        <StackLayout Spacing="5" Grid.Row="0">
+            <c:BorderlessEntry Placeholder="Type to search" x:Name="txtsearch" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" TextChanged="Search_TextChanged" TextColor="White" PlaceholderColor="White" />
+            <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}" />
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <ListView ItemsSource="{Binding .}" x:Name="dealsListview" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                                <Grid HeightRequest="250">
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="10*" />-->
+                                        <RowDefinition Height="0.6*" />
+                                        <RowDefinition Height="0.1*" />
+                                        <RowDefinition Height="0.3*" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
+                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <StackLayout Spacing="0" Grid.Row="2" VerticalOptions="EndAndExpand">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                        <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" Grid.Row="2" TextColor="White" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </c:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding .}" x:Name="EveryListview" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                                <Grid HeightRequest="250">
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="10*" />-->
+                                        <RowDefinition Height="60*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="10*" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
+                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" Grid.Row="2" TextColor="White" />
+                                </Grid>
+                            </Frame>
+                        </c:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding .}" x:Name="categoryListView" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <c:ExtendedViewCell SelectedBackgroundColor="Black">
+                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                                <Grid HeightRequest="250">
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="10*" />-->
+                                        <RowDefinition Height="60*" />
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition Height="10*" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
+                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
+                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
+                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" Grid.Row="2" TextColor="White" />
+                                </Grid>
+                            </Frame>
+                        </c:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

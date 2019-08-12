@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using HappeningsApp.Services;
+using HappeningsApp.ViewModels;
 using Xamarin.Forms;
 
 namespace HappeningsApp.Views.LoginSignUp
@@ -20,12 +21,64 @@ namespace HappeningsApp.Views.LoginSignUp
             Navigation.PushAsync(new LoggedOn());
         }
 
-        ViewModels.LoginViewModel LoginViewModel;
+       LoginViewModel LoginViewModel;
+
         public LoginOrSignUp()
         {
             InitializeComponent();
+
+            //LoginViewModel lvmm = new LoginViewModel();
+
+            //if (IsUserLoggedOn())
+            //{
+            //    try
+            //    {
+            //        lvmm.User.Username = Application.Current.Properties["username"].ToString();
+            //        lvmm.User.EmailAddress = lvmm.User.Username;
+            //        lvmm.User.Password = Application.Current.Properties["password"].ToString();
+            //        GlobalStaticFields.Username = lvmm.User.EmailAddress;
+            //        lvmm.GetTokenFromAPI();
+
+            //        Navigation.PushAsync(new Views.AppLanding());
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        LogService.LogErrorsNew(error: ex.ToString(), activity: "Exception at loginOrSignUp");
+            //        Navigation.PushAsync(new Views.LoginSignUp.LoginOrSignUp());
+
+
+            //    }
+
+            //}
+            //else
+            //{
+            //    Navigation.PushAsync(new Views.LoginSignUp.LoginOrSignUp());
+
+            //}
+
+
+
             LoginViewModel = new ViewModels.LoginViewModel();
             BindingContext = LoginViewModel;
+        }
+
+
+
+        private bool IsUserLoggedOn()
+        {
+            bool log = false;
+            try
+            {
+                log = Convert.ToBoolean(Application.Current.Properties["IsUserLoggedOn"]);
+
+            }
+            catch (Exception ex)
+            {
+                var logg = ex;
+                // LogService.LogErrorsNew(error:logg.ToString(),activity:"Exception at app.xaml.cs IsUserLoggedOn()");
+            }
+            return log;
+
         }
     }
 }

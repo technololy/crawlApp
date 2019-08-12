@@ -17,7 +17,7 @@ namespace HappeningsApp.Models
         public Cover Cover { get; set; }
         [JsonProperty("age_range")]
         public AgeRange AgeRange { get; set; }
-        public Device[] Devices { get; set; }
+        //public Device[] Devices { get; set; }
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
@@ -27,7 +27,7 @@ namespace HappeningsApp.Models
         public string Id { get; set; }
     }
 
-    public class Picture
+    public class FBPicture
     {
         public Data Data { get; set; }
     }
@@ -50,8 +50,5 @@ namespace HappeningsApp.Models
         public int Min { get; set; }
     }
 
-    public class Device
-    {
-        public string Os { get; set; }
-    }
+   
 }
