@@ -28,7 +28,7 @@ namespace HappeningsApp.Services
                 // var client = new HttpClient();
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                 //client.BaseAddress = new Uri(Constants.CrawlAPI);
-
+                //test
                 json = JsonConvert.SerializeObject(model);
                 var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var message = await client.PostAsync(url, stringContent);
