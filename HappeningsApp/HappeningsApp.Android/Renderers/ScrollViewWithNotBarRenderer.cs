@@ -25,8 +25,16 @@ namespace HappeningsApp.Droid.Renderers
 
         protected void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            this.HorizontalScrollBarEnabled = false;
-            this.VerticalScrollBarEnabled = false;
+            try
+            {
+                this.HorizontalScrollBarEnabled = false;
+                this.VerticalScrollBarEnabled = false;
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
 
         }
     }

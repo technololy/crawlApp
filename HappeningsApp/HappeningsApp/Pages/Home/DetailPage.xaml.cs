@@ -82,6 +82,9 @@ namespace HappeningsApp.Pages.Home
 
         public DetailPage(NewDealsModel.Deal AllDeals)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
 
             AllNewDeals = new NewDealsModel.Deal();
@@ -113,6 +116,9 @@ namespace HappeningsApp.Pages.Home
 
         public DetailPage(NewCategoryDetailModel.Deal AllCategory)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
             OwnerAddress.IsVisible = false;
             OwnerName.IsVisible = false;
@@ -144,6 +150,9 @@ namespace HappeningsApp.Pages.Home
 
         public DetailPage(GetAll2.Deal myDeals)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
             MapsAddress = myDeals.Owner_Location;
             hostOrEventName = myDeals.Name;
@@ -155,6 +164,9 @@ namespace HappeningsApp.Pages.Home
         //from favorites
         public DetailPage(Favourite myDeals)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
             var CopyFavIntoDeals = new GetAll2.Deal()
             {
@@ -170,6 +182,9 @@ namespace HappeningsApp.Pages.Home
 
         public DetailPage(Activity selected2)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
 
             this.selected2 = selected2;

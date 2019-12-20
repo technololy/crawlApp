@@ -3,7 +3,7 @@
     <ContentPage.Content>
         <Grid x:Name="mainLayout">
             <ListView ItemsSource="{Binding AllDeals}" 
-                      x:Name="dealsListview" 
+                      x:Name="dealsListview_" 
                       SeparatorVisibility="None" 
                       IsPullToRefreshEnabled="True" 
                       RefreshCommand="{Binding RefreshDealsList}" 

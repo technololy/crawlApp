@@ -8,17 +8,23 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace HappeningsApp.ViewModels
 {
-    public class IntroPageViewModel : INotifyPropertyChanged
+    public class IntroPageViewModel: INotifyPropertyChanged //: BaseViewModel
     {
         private ObservableCollection<Deals> _dealsfromAPI;
         private ObservableCollection<NewDealsModel.Deal> _allDeals;
         private ObservableCollection<Category> _categfromAPI;
         private ObservableCollection<NewDealsModel.Deal> _getAllSearch;
         private ObservableCollection<NewDealsModel.Deal> _getThisWeek;
-
+        MyCreatedCollectionViewModel mcvm;
+        public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
+        public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+        public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
+        public string PageTitle { get; set; }
         public bool IsEnabled { get; set; } = true;
         public ObservableCollection<Deals> DealsfromAPI
         {
@@ -27,8 +33,9 @@ namespace HappeningsApp.ViewModels
             {
                 if (_dealsfromAPI != value)
                 {
+                    //SetProperty(ref _dealsfromAPI, value);
                     _dealsfromAPI = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(DealsfromAPI));
                 }
             }
         }
@@ -52,9 +59,9 @@ namespace HappeningsApp.ViewModels
             {
                 if (_categfromAPI != value)
                 {
+                   // SetProperty(ref _categfromAPI, value);
                     _categfromAPI = value;
-                    OnPropertyChanged();
-
+                    OnPropertyChanged(nameof(CategfromAPI));
                 }
             }
         }
@@ -70,6 +77,8 @@ namespace HappeningsApp.ViewModels
                 {
                 if (_getThisWeek!=value)
                 {
+                    //SetProperty(ref _getThisWeek, value);
+
                     _getThisWeek = value;
                     OnPropertyChanged();
 
@@ -83,6 +92,8 @@ namespace HappeningsApp.ViewModels
             {
                 if (_getAllSearch != value)
                 {
+                    //SetProperty(ref _getAllSearch, value);
+
                     _getAllSearch = value;
                     OnPropertyChanged();
                 }
@@ -118,6 +129,23 @@ namespace HappeningsApp.ViewModels
             DealsfromAPI = await ds.GetDealsOriginal();
             GlobalStaticFields.dealsfromAPI = DealsfromAPI;
             return DealsfromAPI;
+
+        }
+
+
+        public async Task InitializeFromAPI()
+        {
+            mcvm = new MyCreatedCollectionViewModel();
+
+            await GetCategories();
+            await GetDeals();
+
+            await GetAll();
+            await GetAllSearchFromNewModel();
+            await GetAllThisWeek();
+            await Initializefavourites();
+            GroupListByDate();
+           await mcvm.InitializeFavListNewUI();
 
         }
 
@@ -185,6 +213,33 @@ namespace HappeningsApp.ViewModels
 
         }
 
+        private ObservableCollection<Grouping<string, NewDealsModel.Deal>> GroupListByDate()
+        {
+            try
+            {
+                if (GetEvery == null)
+                {
+                    return GetEveryThingGrouped;
+                }
+                var grp = from h in GetThisWeek
+                          orderby h?.type
+                          group h by h?.type into ThisWeeksGroup
+                          select new Grouping<string, NewDealsModel.Deal>(ThisWeeksGroup.Key, ThisWeeksGroup);
+                GetEveryThingGrouped.Clear();
+                foreach (var g in grp)
+                {
+                    GetEveryThingGrouped.Add(g);
+                }
+            }
+            catch (Exception ex)
+            {
+                var log = ex;
+                LogService.LogErrors(log.ToString());
+                MyToast.DisplayToast(Xamarin.Forms.Color.Red, "Slight error occured parsing response");
+            }
+
+            return GetEveryThingGrouped;
+        }
 
 
         //private ObservableCollection<Grouping<string, GetAll2.Deal>> GroupListByDate()

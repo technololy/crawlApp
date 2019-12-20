@@ -1,34 +1,129 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HappeningsApp.App">
+<Application
+    x:Class="HappeningsApp.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Global Styles-->
+            <!--  end  -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="Black" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Button">
+                <!-- <Setter Property="CornerRadius" Value="23"/>-->
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
+                <!--For the header-->
+                <Setter Property="Shell.BackgroundColor" Value="Black" />
+                <Setter Property="Shell.TabBarTitleColor" Value="#3498db" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
+            </Style>
+            <ControlTemplate x:Key="MasterTemplate">
+                <Grid
+                    HorizontalOptions="FillAndExpand"
+                    RowSpacing="0"
+                    VerticalOptions="EndAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.05*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="70*" />
+                            <ColumnDefinition Width="15*" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.Column="0"
+                            Margin="0,0,10,10"
+                            HeightRequest="20"
+                            HorizontalOptions="EndAndExpand"
+                            Opacity="0.9"
+                            Scale="1.2"
+                            Source="ic_search_white.png"
+                            TranslationY="5"
+                            VerticalOptions="Center"
+                            WidthRequest="20">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="search"
+                                    NumberOfTapsRequired="1"
+                                    Tapped="Search_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Column="1"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{TemplateBinding BindingContext.PageTitle}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Image
+                            x:Name="imgProf"
+                            Grid.Column="2"
+                            Margin="10,0,0,0"
+                            HeightRequest="30"
+                            HorizontalOptions="Start"
+                            Scale="0.9"
+                            Source="ic_user_white"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="Profiles"
+                                    NumberOfTapsRequired="1"
+                                    Tapped="Profiles_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+
+
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPageLandingTitle"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                TextColor="White" />
+
+                        </StackLayout>
+
+                    </Grid>
+                    <ContentPresenter
+                        Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+
+                </Grid>
+            </ControlTemplate>
+
+
+
+            <!--  Global Styles  -->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="CrawlColor">#3498db</Color>
             <Color x:Key="crawlWhiteColor">#FFFFFF</Color>
             <Color x:Key="CrawlRedColor">#c0392b</Color>
-            <!--Copied from another project-->
+            <!--  Copied from another project  -->
             <Color x:Key="SeparatorColor">#C7C7CC</Color>
             <Color x:Key="ElementBackground">#FFFFFF</Color>
             <Color x:Key="BackgroundColor">#FFFFFF</Color>
             <Color x:Key="PaleGray">#EDF2F6</Color>
             <Color x:Key="FormHeadingsColor">#A7A7A7</Color>
-            
-            <!--end-->
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="Black" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
-           <Style TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
-            </Style>
-            <Style TargetType="Button">
-               <!-- <Setter Property="CornerRadius" Value="23"/>-->
-               <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
+
+
+
+
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

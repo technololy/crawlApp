@@ -50,8 +50,8 @@ xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=Car
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="20" TextColor="Black" />
                                 <Label Text="{Binding Details}" Opacity="0.9" TextColor="Black" />
                                 <StackLayout Spacing="0">
-                                    <Label x:Name="OwnerName" Text="{Binding Owner}" FontSize="20" TextColor="Black" />
-                                    <Label x:Name="OwnerAddress" Text="{Binding Owner_Location}" FontSize="12" TextColor="Black" Opacity="0.7" />
+                                    <Label x:Name="OwnerName_" Text="{Binding Owner}" FontSize="20" TextColor="Black" />
+                                    <Label x:Name="OwnerAddress_" Text="{Binding Owner_Location}" FontSize="12" TextColor="Black" Opacity="0.7" />
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>

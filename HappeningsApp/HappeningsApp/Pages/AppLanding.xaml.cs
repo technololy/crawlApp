@@ -17,7 +17,7 @@ namespace HappeningsApp.Pages
 {
     public partial class AppLanding : ContentPage
     {
-        IntroPageViewModel ivm;
+        IntroPageViewModel ivm = new IntroPageViewModel();
         MyCreatedCollectionViewModel mcvm;
         public ObservableCollection<Grouping<string, Models.Deals>> GroupedDeals = new ObservableCollection<Grouping<string, Models.Deals>>();
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
@@ -30,16 +30,18 @@ namespace HappeningsApp.Pages
             InitializeComponent();
             try
             {
-                ivm = new IntroPageViewModel();
+               // ivm = new IntroPageViewModel();
                 mcvm = new MyCreatedCollectionViewModel();
-                ivm.GetDeals();
-                ivm.GetCategories();
-                ivm.GetAll();
-                ivm.GetAllSearchFromNewModel();
-                ivm.GetAllThisWeek();
-                ivm.Initializefavourites();
+                ivm.InitializeFromAPI();
+                //ivm.GetDeals();
+                //ivm.GetCategories();
+                //ivm.GetAll();
+                //ivm.GetAllSearchFromNewModel();
+                //ivm.GetAllThisWeek();
+                //ivm.Initializefavourites();
                 mcvm.InitializeFavListNewUI();
-                ThisWeek_Tapped(this, null);
+                //ThisWeek_Tapped(this, null);
+                Categories_Tapped(this, null);
                 ShowSurVeyOne();
                 this.BindingContext = this;
             }
@@ -47,6 +49,13 @@ namespace HappeningsApp.Pages
             {
                 var log = ex;
             }
+        }
+
+
+        protected override async void OnAppearing()
+        {
+            //await ivm.GetAllInfoFromAPI();
+            base.OnAppearing();
         }
 
         private async void ThisWeek_Tapped(object sender, EventArgs e)
@@ -211,7 +220,9 @@ namespace HappeningsApp.Pages
                 //bxVwthisWeek.BackgroundColor = Color.Black;
                 ivm.CategfromAPI = GlobalStaticFields.CategoriesFromAPI;
                 BindingContext = ivm;
-               // await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
+                //page.BindingContext = ivm;
+
+                // await LogService.LogErrorsNew(activity: "User clicked on Categories Tab");
             }
             catch (Exception ex)
             {

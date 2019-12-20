@@ -1,33 +1,37 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HappeningsApp.Pages.Home.ListPage"
-             BackgroundColor="#000015"
-             Padding="5,10,5,40"
-             NavigationPage.HasNavigationBar="true"
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.ListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Padding="5,10,5,40"
+    BackgroundColor="#000015"
+    NavigationPage.HasNavigationBar="true"
+    Shell.TabBarIsVisible="False">
     <ContentPage.Content>
-              <Grid x:Name="mainLayout">
-           
+        <Grid x:Name="mainLayout">
 
-            <ListView ItemsSource="{Binding .}" 
-                         x:Name="dealsListview" 
-                         SeparatorVisibility="None" 
-                          VerticalScrollBarVisibility="Never"
-                      CachingStrategy="RecycleElement"
-                         ItemTapped="dealsListview_ItemTapped" 
-                         BackgroundColor="Transparent" 
-                         HasUnevenRows="true">
+
+            <ListView
+                x:Name="dealsListview"
+                BackgroundColor="Transparent"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="true"
+                ItemTapped="dealsListview_ItemTapped"
+                ItemsSource="{Binding .}"
+                SeparatorVisibility="None"
+                VerticalScrollBarVisibility="Never">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" 
-                                   Margin="0,0,0,5" 
-                                   IsClippedToBounds="true" 
-                                   BackgroundColor="Black"  
-                                   HeightRequest="350" 
-                                   CornerRadius="0">
+                            <Frame
+                                Margin="0,0,0,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="10"
+                                HeightRequest="350"
+                                IsClippedToBounds="true">
                                 <Grid HeightRequest="350">
 
 
@@ -39,27 +43,50 @@
                                         <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="300" Grid.RowSpan="3"  
-                                                       Source="{Binding ImagePath}" 
-                                                       Aspect="Fill" 
-                                                       
-                                                       ErrorPlaceholder="Crawl_white_blue"  
-                                                       FadeAnimationForCachedImages="true" 
-                                                       FadeAnimationEnabled="true"   />
-                                        
-                                    
-                                    <Image Source="ic_favorite_border.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Grid.RowSpan="3"
+                                        Aspect="Fill"
+                                        CacheDuration="1000"
+                                        DownsampleToViewSize="True"
+                                        ErrorPlaceholder="Crawl_white_blue"
+                                        FadeAnimationEnabled="true"
+                                        FadeAnimationForCachedImages="true"
+                                        HeightRequest="300"
+                                        Source="{Binding ImagePath}" />
+
+
+                                    <Image
+                                        Grid.Row="0"
+                                        HeightRequest="50"
+                                        HorizontalOptions="End"
+                                        Source="ic_favorite_border.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="50">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1"/>
+                                            <TapGestureRecognizer
+                                                x:Name="TapPlus"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="TapPlus_Tapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
 
-                                    <StackLayout Spacing="0" Grid.Row="2"  VerticalOptions="EndAndExpand">
-                                         <Label Text="{Binding Name}" FontAttributes="Bold"  TextColor="White" FontSize="30" />
-                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" TextColor="White" />
-                               
-                                    </StackLayout>
-                                    </Grid>
+                                    <!--<StackLayout
+                                        Grid.Row="2"
+                                        Spacing="0"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="30"
+                                            Text="{Binding Name}"
+                                            TextColor="White" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            Text="{Binding Owner_Location}"
+                                            TextColor="White" />
+
+                                    </StackLayout>-->
+                                </Grid>
 
 
                             </Frame>

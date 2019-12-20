@@ -14,6 +14,7 @@ using Microsoft.AppCenter.Push;
 using Plugin.Connectivity;
 using Plugin.Badge;
 using HappeningsApp.Custom;
+using HappeningsApp.Pages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HappeningsApp
@@ -27,15 +28,15 @@ namespace HappeningsApp
         public App()
         {
             InitializeComponent();
+            // Enable your flags here!
+            Xamarin.Forms.Device.SetFlags(new[] {
+                "CarouselView_Experimental",
+                "IndicatorView_Experimental"
+            });
+            //GetAppInstallID();
 
-
-#if DEBUG
-            HotReloader.Current.Start(this);
-#endif
-
-            GetAppInstallID();
-
-            //MainPage = new NavigationPage(new Pages.ProfileData.QuestionsAboutYou());
+            //MainPage = new NavigationPage(new Pages.Home.Categories());
+            //MainPage = new AppShell();
 
             //return;
             if (IsUserLoggedOn())
@@ -51,8 +52,10 @@ namespace HappeningsApp
 
 
                     //MainPage = new CustomNavigationPage(new Pages.AppLanding());
-                    MainPage = new NavigationPage(new Pages.AppLanding());
+                    //MainPage = new NavigationPage(new Pages.AppLanding());
                     //MainPage = new NavigationPage(new Views.AppLanding());
+                    MainPage = new AppShell();
+
                 }
                 catch (Exception ex)
                 {
@@ -192,5 +195,20 @@ namespace HappeningsApp
             // Handle when your app resumes
             var log = 1;
         }
+        void Search_Tapped(object sender, System.EventArgs e)
+        {
+            MainPage = new Views.Search.SearchPage();
+
+            //Navigation.PushAsync(new SearchPage(), true);
+        }
+
+        void Profiles_Tapped(object sender, System.EventArgs e)
+        {
+            MainPage = new Pages.Home.Profile();
+            //await Navigation.PushAsync(new Notification.Notifications());
+            //await Navigation.PushAsync(new Profile());
+
+        }
+
     }
 }

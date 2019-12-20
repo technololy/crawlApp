@@ -8,11 +8,32 @@ namespace HappeningsApp.Pages.Home
 {
     public partial class Categories : ContentPage
     {
+        IntroPageViewModel _ivm = new IntroPageViewModel();
         public Categories()
         {
             InitializeComponent();
+            _ivm.PageTitle = "Categories";
             RefreshCategoryListView();
+            //_ivm = new IntroPageViewModel();
+           // _ivm.InitializeFromAPI();
+            BindingContext = _ivm;
 
+
+        }
+
+        public Categories(IntroPageViewModel ivm)
+        {
+            InitializeComponent();
+            RefreshCategoryListView();
+            BindingContext = ivm;
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            await _ivm.InitializeFromAPI();
+
+            base.OnAppearing();
         }
 
         private void RefreshCategoryListView()

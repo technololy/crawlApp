@@ -27,16 +27,14 @@ namespace HappeningsApp.Pages.Home
             var selected = dealsListview.SelectedItem as NewCategoryDetailModel.Deal;
             if (selected != null)
             {
-                //CustomNavigationPage(new DetailPage(selected));
-                Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
-               //Application.Current.MainPage.Navigation.PushAsync(new AllInnerDetail(selected),true);
+                Navigation.PushAsync(new DetailPage(selected));
 
             }
             else
             {
-                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                //var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
 
-                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
+                // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
 
             }
 
@@ -45,6 +43,8 @@ namespace HappeningsApp.Pages.Home
         public ListPage(Category cat)
         {
             InitializeComponent();
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+
             try
             {
 

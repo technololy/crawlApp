@@ -1,21 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Pages.Notification.Notifications" 
-             BackgroundColor="#000015" Padding="10,20,10,10" 
-             xmlns:c="clr-namespace:HappeningsApp.Custom" Title="Notifications" 
-              xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" 
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Notification.Notifications"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Title="Notifications"
+    Padding="10,20,10,10"
+    BackgroundColor="#000015">
     <Grid>
-        <ListView ItemsSource="{Binding Notif}" x:Name="msgListView" 
-                  SeparatorColor="White" SeparatorVisibility="None" 
-                  ItemTapped="Notif_ItemTapped"
-                  IsPullToRefreshEnabled="True" BackgroundColor="Black" 
-                  HasUnevenRows="true">
+        <ListView
+            x:Name="msgListView"
+            BackgroundColor="Black"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="True"
+            ItemTapped="Notif_ItemTapped"
+            ItemsSource="{Binding Notif}"
+            SeparatorColor="White"
+            SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid RowSpacing="2" >
+                        <Grid RowSpacing="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
@@ -26,36 +33,58 @@
                                     <ColumnDefinition Width="7*" />
                                     <ColumnDefinition Width="2*" />
                                 </Grid.ColumnDefinitions>
-                            <InputKit:RadioButton TextColor="White" Grid.Column="0"
-                                                  Orientation="Vertical" 
-                                                  TextFontSize="12" Color="{x:StaticResource CrawlColor}" 
-                                                  CircleColor="White" 
-                                                  IsChecked="true" />
-                                
+                                <InputKit:RadioButton
+                                    Grid.Column="0"
+                                    CircleColor="White"
+                                    CircleSize="3"
+                                    IsChecked="False"
+                                    Orientation="Vertical"
+                                    TextColor="White"
+                                    TextFontSize="12"
+                                    Color="{x:StaticResource CrawlColor}" />
+
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding Title}" Grid.Row="0" LineBreakMode="TailTruncation" FontSize="23" TextColor="White" FontAttributes="Bold" />
-                                    <ff:CachedImage 
-                                    Source="{Binding Picture}" 
-                                    Grid.Row="1" 
-                                            
-                                            Aspect="AspectFill" 
-                                         HorizontalOptions="FillAndExpand" 
-                                            VerticalOptions="FillAndExpand"
-                                    />
-                                    <Label Text="{Binding Message}" LineBreakMode="TailTruncation" Grid.Row="2" FontSize="13" TextColor="White"  />
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="23"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Title}"
+                                        TextColor="White" />
+                                    <ff:CachedImage
+                                        Grid.Row="1"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="FillAndExpand"
+                                        Source="{Binding Picture}"
+                                        VerticalOptions="FillAndExpand" />
+                                    <Label
+                                        Grid.Row="2"
+                                        FontSize="13"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Message}"
+                                        TextColor="White" />
                                 </Grid>
-                                <StackLayout Grid.Column="2" HorizontalOptions="EndAndExpand" 
-                                             VerticalOptions="Center">
-                                    <Label Text="8 hrs ago" HorizontalOptions="End" HorizontalTextAlignment="End" 
-                                           VerticalOptions="Center" FontSize="8" />
+                                <StackLayout
+                                    Grid.Column="2"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="8"
+                                        HorizontalOptions="End"
+                                        HorizontalTextAlignment="End"
+                                        Text="-"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                             </Grid>
-                            <BoxView Grid.Row="1" HeightRequest="0.8" Color="#C7C7CC" />
+                            <BoxView
+                                Grid.Row="1"
+                                HeightRequest="0.8"
+                                Color="#C7C7CC" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

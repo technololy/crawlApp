@@ -79,6 +79,7 @@ namespace HappeningsApp.ViewModels
                     ActivityRunning = false;
                     ShowTips = true;
                     OnPropertyChanged();
+                    GlobalStaticFields.CollectionList = CollectionsList;
                 }
             }
         }
@@ -111,6 +112,7 @@ namespace HappeningsApp.ViewModels
         //    UpdateCollections(ctl);
 
         //}
+        public string PageTitle { get; set; }
 
         public MyCreatedCollectionViewModel()
         {
@@ -269,7 +271,7 @@ namespace HappeningsApp.ViewModels
             ActivityRunning = false;
 
 
-            GlobalStaticFields.CollectionList = CollectionsList;
+            //GlobalStaticFields.CollectionList = CollectionsList;
 
         }
 

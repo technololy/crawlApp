@@ -16,7 +16,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
           <c:SegmentedBarControl Grid.Row="0" SelectedItemChanged="Handle_SelectedItemChanged" 
-                             x:Name="segment" 
+                             x:Name="segment_" 
                              AutoScroll="true"
                              TextColor="White" 
                              SelectedTextColor="{StaticResource CrawlColor}"

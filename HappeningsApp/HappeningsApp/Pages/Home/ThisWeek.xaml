@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Pages.Home.ThisWeek"
-                    BackgroundColor="#000015"
-             Padding="10,40,10,10"
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             
-             >
-    
-    
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.ThisWeek"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Padding="5"
+    BackgroundColor="#000015"
+    ControlTemplate="{StaticResource MasterTemplate}"
+    Shell.NavBarIsVisible="False">
+
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,46 +19,49 @@
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="9.5*" />
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" >
-                <Label Text="Please select a day" HorizontalTextAlignment="Center" FontSize="10" TextColor="{x:StaticResource CrawlRedColor}" />
+            <StackLayout Grid.Row="0">
+                <!--<Label Text="Please select a day" HorizontalTextAlignment="Center" FontSize="10" TextColor="{x:StaticResource CrawlRedColor}" />-->
             </StackLayout>
-            
-          <c:SegmentedBarControl Grid.Row="1" 
-                                 SelectedItemChanged="Handle_SelectedItemChanged" 
-                             x:Name="segment"
-                                 Margin="0,5,0,0"
-                                 BackgroundColor="{StaticResource CrawlColor}"
-                             AutoScroll="true"
-                             TextColor="Black" 
-                             SelectedTextColor="{StaticResource crawlWhiteColor}"
-                             SelectedLineColor="Transparent"/>
 
-            <ListView ItemsSource="{Binding .}"
-                      Grid.Row="2"
-                         x:Name="dealsListview" 
-                      IsGroupingEnabled="True"
-                      SeparatorColor="Black"
-                      VerticalScrollBarVisibility="Never"
-                      CachingStrategy="RecycleElement"
-                      GroupDisplayBinding="{Binding Key}"
-                         SeparatorVisibility="None" 
-                         IsPullToRefreshEnabled="True"  
-                         ItemTapped="dealsListview_ItemTapped" 
-                         BackgroundColor="Black" 
-                         HasUnevenRows="true">
+            <c:SegmentedBarControl
+                x:Name="segment"
+                Grid.Row="1"
+                Margin="0,5,0,0"
+                AutoScroll="true"
+                BackgroundColor="{StaticResource CrawlColor}"
+                SelectedItemChanged="Handle_SelectedItemChanged"
+                SelectedLineColor="Transparent"
+                SelectedTextColor="{StaticResource crawlWhiteColor}"
+                TextColor="Black" />
+
+            <ListView
+                x:Name="dealsListview"
+                Grid.Row="2"
+                BackgroundColor="Black"
+                CachingStrategy="RecycleElement"
+                GroupDisplayBinding="{Binding Key}"
+                HasUnevenRows="true"
+                IsGroupingEnabled="True"
+                IsPullToRefreshEnabled="True"
+                ItemTapped="dealsListview_ItemTapped"
+                ItemsSource="{Binding GetEveryThingGrouped}"
+                SeparatorColor="Black"
+                SeparatorVisibility="None"
+                VerticalScrollBarVisibility="Never">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell Height="25">
-                            <StackLayout VerticalOptions="FillAndExpand"
-                       Padding="5"
-                       BackgroundColor="Black">
-                                <Label Text="{Binding Key}" 
-                                       TextColor="{StaticResource CrawlColor}" 
-                                       VerticalOptions="Center"
-                                       FontAttributes="Bold"
-                                       FontSize="15"
-                                       HorizontalOptions="CenterAndExpand"
-                                       />
+                            <StackLayout
+                                Padding="5"
+                                BackgroundColor="Black"
+                                VerticalOptions="FillAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding Key}"
+                                    TextColor="{StaticResource CrawlColor}"
+                                    VerticalOptions="Center" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -65,23 +69,45 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                         <Frame Padding="0" Margin="10,0,10,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="200" CornerRadius="0">
+                            <Frame
+                                Margin="10,0,10,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="0"
+                                HeightRequest="200"
+                                IsClippedToBounds="true">
                                 <Grid HeightRequest="150">
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
                                         <RowDefinition Height="*" />
-                                      
+
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250"  HorizontalOptions="Fill" Source="{Binding ImagePath}" Aspect="Fill" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true"  ErrorPlaceholder="ic_clear_blue" />
-                                  <!--  <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Aspect="Fill"
+                                        ErrorPlaceholder="ic_clear_blue"
+                                        FadeAnimationEnabled="true"
+                                        FadeAnimationForCachedImages="true"
+                                        HeightRequest="250"
+                                        HorizontalOptions="Fill"
+                                        Source="{Binding ImagePath}" />
+                                    <!--  <Image IsVisible="False" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="TapPlus" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
                                     </Image>-->
-                                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" >
-                                        <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="Large" />
-                                        <Label IsVisible="false" Text="{Binding Owner_Location}" FontSize="12" FontAttributes="Bold" TextColor="White" />
+                                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Large"
+                                            Text="{Binding Name}"
+                                            TextColor="White" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            IsVisible="false"
+                                            Text="{Binding Owner_Location}"
+                                            TextColor="White" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>
