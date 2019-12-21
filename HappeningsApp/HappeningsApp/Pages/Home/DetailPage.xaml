@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Home.DetailPage" xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" NavigationPage.HasNavigationBar="false" BackgroundColor="#000015" xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.DetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    BackgroundColor="#000015"
+    NavigationPage.HasNavigationBar="false"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
@@ -8,42 +20,106 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Frame Grid.Row="0" x:Name="SinglePicture" BackgroundColor="Transparent" Padding="0" HeightRequest="350" IsClippedToBounds="True">
-                    <!--  <Image  Aspect="Fill"  
-                      NavigationPage.HasNavigationBar="False" 
+                <Frame
+                    x:Name="SinglePicture"
+                    Grid.Row="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    HeightRequest="350"
+                    IsClippedToBounds="True">
+                    <!--  <Image  Aspect="Fill"
+                      NavigationPage.HasNavigationBar="False"
                             Source="{Binding ImagePath}" />-->
-                    <forms:CachedImage RetryCount="3" RetryDelay="1000" Source="{Binding ImagePath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <forms:CachedImage
+                        Aspect="AspectFill"
+                        HorizontalOptions="FillAndExpand"
+                        RetryCount="3"
+                        RetryDelay="1000"
+                        Source="{Binding ImagePath}"
+                        VerticalOptions="FillAndExpand" />
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Row="0" x:Name="Carousel" BackgroundColor="Transparent" Padding="0" HeightRequest="350" IsClippedToBounds="True">
-                    <!--  <Image  Aspect="Fill"  
+                <Frame
+                    x:Name="Carousel"
+                    Grid.Row="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    HeightRequest="350"
+                    IsClippedToBounds="True">
+                    <!--  <Image  Aspect="Fill"
                             Source="{Binding ImagePath}" />-->
-                    <carousel:CarouselViewControl x:Name="cv" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="{x:StaticResource CrawlColor}" CurrentPageIndicatorTintColor="White" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
+                    <Grid>
+                        <CarouselView
+                            x:Name="cv"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding Pictures}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <forms:CachedImage
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="FillAndExpand"
+                                        Source="{Binding picture}"
+                                        VerticalOptions="FillAndExpand" />
+
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <IndicatorView
+                            HorizontalOptions="CenterAndExpand"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="10"
+                            IndicatorView.ItemsSourceBy="cv"
+                            SelectedIndicatorColor="Black"
+                            VerticalOptions="EndAndExpand" />
+                    </Grid>
+
+                    <!--<carousel:CarouselViewControl x:Name="cv" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="{x:StaticResource CrawlColor}" CurrentPageIndicatorTintColor="White" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
                         <carousel:CarouselViewControl.ItemTemplate>
                             <DataTemplate>
                                 <forms:CachedImage Source="{Binding picture}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                             </DataTemplate>
                         </carousel:CarouselViewControl.ItemTemplate>
-                    </carousel:CarouselViewControl>
+                    </carousel:CarouselViewControl>-->
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <StackLayout Margin="10,0,0,10" Spacing="0" Grid.Row="0" VerticalOptions="EndAndExpand">
-                    <Label x:Name="OwnerName" Text="{Binding Name}" FontAttributes="Bold" TextColor="White" FontSize="36" />
-                    <Label x:Name="OwnerAddress" Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" TextColor="White" />
-                </StackLayout>
-                <Grid IsVisible="true" Margin="15,15,20,0" Grid.Row="0">
+                <!--<StackLayout
+                    Grid.Row="0"
+                    Margin="10,0,0,10"
+                    Spacing="0"
+                    VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="OwnerName"
+                        FontAttributes="Bold"
+                        FontSize="36"
+                        Text="{Binding Name}"
+                        TextColor="White" />
+                    <Label
+                        x:Name="OwnerAddress"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{Binding Owner_Location}"
+                        TextColor="White" />
+                </StackLayout>-->
+                <Grid
+                    Grid.Row="0"
+                    Margin="15,15,20,0"
+                    IsVisible="true">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*" />
                         <ColumnDefinition Width="4*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout Orientation="Horizontal" Grid.Column="0">
-                        <Image VerticalOptions="Start" HeightRequest="22" WidthRequest="22" Scale="1.5">
+                    <StackLayout Grid.Column="0" Orientation="Horizontal">
+                        <Image
+                            HeightRequest="22"
+                            Scale="1.5"
+                            VerticalOptions="Start"
+                            WidthRequest="22">
                             <Image.Source>
                                 <OnPlatform x:TypeArguments="FileImageSource">
                                     <On Platform="Android" Value="ic_action_arrow_back" />
@@ -51,29 +127,47 @@
                                 </OnPlatform>
                             </Image.Source>
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Go_Back_Tapped" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    
-                    <Label Text="Back" FontAttributes="Bold" Grid.Column="1" FontSize="18" HorizontalOptions="Start">
-                        
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
-                            </Label.GestureRecognizers>
-                        
+
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Text="Back">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Go_Back_Tapped" />
+                        </Label.GestureRecognizers>
+
                     </Label>
-                    <StackLayout HorizontalOptions="End" Grid.Column="2">
-                        <Image VerticalOptions="Start" Source="sharewhite" Scale="1" WidthRequest="22" HeightRequest="22">
+                    <StackLayout Grid.Column="2" HorizontalOptions="End">
+                        <Image
+                            HeightRequest="22"
+                            Scale="1"
+                            Source="sharewhite"
+                            VerticalOptions="Start"
+                            WidthRequest="22">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Go_Back_Tapped" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Column="3">
-                        <Image VerticalOptions="Start" Source="ic_favorite_border" Scale="1.5" WidthRequest="22" HeightRequest="22">
+                    <StackLayout
+                        Grid.Column="3"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal">
+                        <Image
+                            HeightRequest="22"
+                            Scale="1.5"
+                            Source="ic_favorite_border"
+                            VerticalOptions="Start"
+                            WidthRequest="22">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Go_Back_Tapped" NumberOfTapsRequired="1" />
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Go_Back_Tapped" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
@@ -81,71 +175,127 @@
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+
                     </Grid.RowDefinitions>
-                    <Frame BackgroundColor="Transparent" Grid.Row="0">
-                        <Grid ColumnSpacing="0" >
+                    <Frame Grid.Row="3" BackgroundColor="Transparent">
+                        <Grid ColumnSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button Text="About" BorderWidth="1" BorderColor="{x:StaticResource CrawlColor}" BorderRadius="0" Grid.Column="0" />
-                            <Button Text="Maps" TextColor="Black" BackgroundColor="{x:StaticResource crawlWhiteColor}" Clicked="Maps_Clicked" BorderWidth="1" BorderColor="{x:StaticResource crawlWhiteColor}" BorderRadius="0" Grid.Column="1" />
+                            <Button
+                                Grid.Column="0"
+                                BorderColor="{x:StaticResource CrawlColor}"
+                                BorderRadius="0"
+                                BorderWidth="1"
+                                Clicked="Uber_tapped"
+                                Text="Uber" />
+                            <Button
+                                Grid.Column="1"
+                                BackgroundColor="{x:StaticResource crawlWhiteColor}"
+                                BorderColor="{x:StaticResource crawlWhiteColor}"
+                                BorderRadius="0"
+                                BorderWidth="1"
+                                Clicked="Maps_Clicked"
+                                Text="Maps"
+                                TextColor="Black" />
                         </Grid>
                     </Frame>
-                    <Frame Grid.Row="1" CornerRadius="0" BackgroundColor="White">
+                    <!--<Frame
+                        Grid.Row="4"
+                        BackgroundColor="White"
+                        CornerRadius="0">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Uber_tapped"/>
+                            <TapGestureRecognizer Tapped="Uber_tapped" />
                         </Frame.GestureRecognizers>
-                        <StackLayout Orientation="Horizontal" BackgroundColor="White">
-                            <Label Text="Request an Uber" TextColor="Black" FontSize="25" HorizontalOptions="StartAndExpand" />
-                            <Label Text="Uber" TextColor="Black" FontSize="25" HorizontalOptions="EndAndExpand" />
+                        <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                            <Label
+                                FontSize="25"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Request an Uber"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="25"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Uber"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </Frame>-->
+                    <Frame Grid.Row="0" BackgroundColor="Transparent">
+                        <Label Text="{Binding Details}" />
+                    </Frame>
+                    <Frame Grid.Row="1" BackgroundColor="Transparent">
+                        <StackLayout>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Opening Days"
+                                TextColor="White" />
+                            <BoxView HeightRequest="0.3" Color="Gray" />
+                            <StackLayout
+                                BindableLayout.ItemsSource="{Binding DaysOpen}"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="30*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="15"
+                                                Text="{Binding Day}"
+                                                TextColor="White" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                FontSize="15"
+                                                Text="{Binding Time}"
+                                                TextColor="White" />
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Row="2" BackgroundColor="Transparent">
-                        <Label Text="{Binding Details}" />
-                    </Frame>
-                 <Frame Grid.Row="3" BackgroundColor="Transparent" >
-                        <StackLayout>
-                            
-                              <Label Text="Opening Days" HorizontalTextAlignment="Center" 
-                                     HorizontalOptions="CenterAndExpand" FontAttributes="Bold" 
-                                     TextColor="White" FontSize="15" />
-                                        <BoxView Color="Gray" HeightRequest="0.3" />
-                               <StackLayout BindableLayout.ItemsSource="{Binding DaysOpen}"
-                                 HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand" >
-                       <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                
-                                      <Grid>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                            </Grid.RowDefinitions>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="auto" />
-                                                                <ColumnDefinition Width="30*" />
-                                                                <ColumnDefinition Width="auto" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <Label Text="{Binding Day}" TextColor="White" Grid.Row="0" Grid.Column="0"  FontSize="15" />
-                                                            <Label Text="{Binding Time}" TextColor="White" Grid.Row="0" Grid.Column="2" FontSize="15" />
-                                                              </Grid>
-                             
-                                </DataTemplate>
-                                </BindableLayout.ItemTemplate> 
-                    </StackLayout>
-                            
+                        <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                            <!--<Label
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            Text="{Binding Name}"
+                            TextColor="White" />-->
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Owner_Location}"
+                                TextColor="White" />
+
                         </StackLayout>
                     </Frame>
-                    
-       
-                    
+
+
                 </Grid>
-          
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -12,6 +12,8 @@ namespace HappeningsApp.ViewModels
 {
     public class MessagesViewModel: INotifyPropertyChanged
     {
+        public string PageTitle { get; set; }
+
         public bool IsImageEnabled { get; set; }
         public ObservableCollection<Pushresp> myMessages { get;set;}
         private ObservableCollection<Pushresp> _Notif;
@@ -38,6 +40,7 @@ namespace HappeningsApp.ViewModels
         {
             GetMessages();
         }
+
 
     
 

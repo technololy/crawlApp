@@ -49,18 +49,19 @@ namespace HappeningsApp.Pages.Onboarding
                 }
                 using (UserDialogs.Instance.Loading(""))
                 {
-                    Analytics.TrackEvent("logging on", new Dictionary<string, string> {
-                        { "User", GlobalStaticFields.Username},
-                        { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                    //Analytics.TrackEvent("logging on", new Dictionary<string, string> {
+                    //    { "User", GlobalStaticFields.Username},
+                    //    { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
 
-                       });
+                    //   });
                     GlobalStaticFields.Username = lvm.User.Username;
                     var resp = await lvm.GetTokenFromAPI();
                     if (resp)
                     {
 
                         lvm.PersistUserDetails();
-                        await Navigation.PushAsync(new AppLanding());
+                        //await Navigation.PushAsync(new AppLanding());
+                        Application.Current.MainPage = new AppShell();
 
                     }
                     else
@@ -74,12 +75,12 @@ namespace HappeningsApp.Pages.Onboarding
                 await DisplayAlert("", "Error Navigating", "OK");
                 var log = ex;
                 LogService.LogErrors("Error Navigating" + ex.ToString());
-                Crashes.TrackError(ex, new Dictionary<string, string> {
-                            { "User", GlobalStaticFields.Username },
-                            { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
-                            { "AppID", "no idea" },
-                             { "someMeaningfulID", "id" }
-                         });
+                //Crashes.TrackError(ex, new Dictionary<string, string> {
+                //            { "User", GlobalStaticFields.Username },
+                //            { "Date", DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm tt")},
+                //            { "AppID", "no idea" },
+                //             { "someMeaningfulID", "id" }
+                //         });
                 //test
             }
 

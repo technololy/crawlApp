@@ -1,42 +1,94 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Pages.Home.Favorites"
-             x:Name="myFavPageNewUI"
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             >
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.Favorites"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Name="myFavPageNewUI"
+    BackgroundColor="Black"
+    ControlTemplate="{StaticResource MasterTemplate}"
+    Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-           <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="80*" />
-            <RowDefinition Height="15*" />
-        </Grid.RowDefinitions>
-        <ActivityIndicator Grid.Row="0" Color="White" x:Name="activityIndicator" IsRunning="{Binding ActivityRunning}" />
-        <ListView BackgroundColor="Black" SeparatorVisibility="None" CachingStrategy="RecycleElement" Grid.Row="1" ItemsSource="{Binding .}" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" ScrollToRequested="Handle_ScrollToRequested" x:Name="MyFavList" Footer="">
-            <ListView.ItemTemplate>
-                   <DataTemplate>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <ActivityIndicator
+                x:Name="activityIndicator"
+                Grid.Row="0"
+                IsRunning="{Binding ActivityRunning}"
+                Color="White" />
+            <ListView
+                x:Name="MyFavList"
+                Grid.Row="1"
+                BackgroundColor="Black"
+                CachingStrategy="RecycleElement"
+                Footer=""
+                HasUnevenRows="true"
+                ItemTapped="Handle_ItemTapped"
+                ItemsSource="{Binding CollectionsList}"
+                ScrollToRequested="Handle_ScrollToRequested"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="10,0,10,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="300" CornerRadius="0">
-                                <Grid HeightRequest="350">
+                            <Frame
+                                Margin="10,0,10,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="0"
+                                HeightRequest="250"
+                                IsClippedToBounds="true">
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
-                                      <RowDefinition Height="0.6*" />
+                                        <RowDefinition Height="0.6*" />
                                         <RowDefinition Height="0.1*" />
                                         <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImageURL}" Aspect="Fill" ErrorPlaceholder="Crawl_white_blue" FadeAnimationForCachedImages="true" FadeAnimationEnabled="true" />
-                                    <Image Source="ic_fav_blue.png" HeightRequest="50" WidthRequest="50" Opacity="2" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Grid.RowSpan="3"
+                                        Aspect="Fill"
+                                        ErrorPlaceholder="Crawl_white_blue"
+                                        FadeAnimationEnabled="true"
+                                        FadeAnimationForCachedImages="true"
+                                        HeightRequest="250"
+                                        Source="{Binding ImageURL}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        HeightRequest="50"
+                                        HorizontalOptions="End"
+                                        Opacity="2"
+                                        Source="ic_fav_blue.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="50">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="Delete_Tapped" NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer
+                                                x:Name="TapPlus"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="Delete_Tapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <StackLayout Spacing="0" Grid.Row="2"  VerticalOptions="EndAndExpand">
-                                        <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="36" />
-                                         <Label Text="{Binding Address}" FontAttributes="Bold" FontSize="11" TextColor="White" />
+                                    <StackLayout
+                                        Grid.Row="2"
+                                        Spacing="0"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="36"
+                                            Text="{Binding Name}"
+                                            TextColor="White" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            Text="{Binding Address}"
+                                            TextColor="White" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>
@@ -45,8 +97,8 @@
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
-                                        <Label Text="{Binding Description}" 
-                                               LineBreakMode="TailTruncation" 
+                                        <Label Text="{Binding Description}"
+                                               LineBreakMode="TailTruncation"
                                                Opacity="0.7" TextColor="Black" />
                                     </StackLayout>
                                    <StackLayout>
@@ -56,22 +108,22 @@
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer
                                                         Tapped="Delete_Clicked"
-                                                        
+
                                                         CommandParameter="{Binding .}"
                                                         x:Name="DeleteFav"/>
                                                 </Label.GestureRecognizers>
                                                 </Label>
-                                         
-                                        </StackLayout>   
+
+                                        </StackLayout>
                                 </StackLayout>
-                                
+
                             </Frame>
                         </StackLayout>-->
                         </c:ExtendedViewCell>
                     </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-   
-    </Grid>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

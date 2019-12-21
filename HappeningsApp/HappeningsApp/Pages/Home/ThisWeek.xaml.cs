@@ -18,14 +18,28 @@ namespace HappeningsApp.Pages.Home
         public ObservableCollection<Grouping<string, GetAll2.Deal>> GetAllGrouped = new ObservableCollection<Grouping<string, GetAll2.Deal>>();
         public ObservableCollection<Grouping<string, NewDealsModel.Deal>> GetEveryThingGrouped = new ObservableCollection<Grouping<string, NewDealsModel.Deal>>();
 
-        IntroPageViewModel ivm;
+        IntroPageViewModel ivm = new IntroPageViewModel();
         public ThisWeek()
         {
             InitializeComponent();
             RefreshListView();
-            ivm = new IntroPageViewModel();
+           
             days = new List<string>() { "ALL", "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN" };
             segment.Children = days;
+            ivm.PageTitle = "This Week";
+
+            //var groupEveryByDate = GroupListByDate();
+            //GlobalStaticFields.GetEveryGrouping = groupEveryByDate;
+            //if (GlobalStaticFields.GetEveryGrouping!=null)
+            //{
+            //    BindingContext = GlobalStaticFields.GetEveryGrouping;
+
+            //}
+            //else
+            //{
+
+                BindingContext = ivm;
+           // }
         }
 
         void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
@@ -50,6 +64,12 @@ namespace HappeningsApp.Pages.Home
         }
         void Handle_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
+
+            if (e.SelectedItem==null)
+            {
+                return;
+            }
+
             try
             {
                 var select = e.SelectedItem as string;

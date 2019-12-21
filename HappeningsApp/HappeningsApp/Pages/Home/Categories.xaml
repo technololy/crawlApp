@@ -1,57 +1,69 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               NavigationPage.HasNavigationBar="False"
-             BackgroundColor="Red"
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="HappeningsApp.Pages.Home.Categories">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.Categories"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Padding="5"
+    BackgroundColor="Black"
+    ControlTemplate="{StaticResource MasterTemplate}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        
-          <ListView x:Name="ListCategories"
-                  HasUnevenRows="True"
-                  ItemsSource="{Binding CategfromAPI}"
-                  BackgroundColor="Black"
-                    SeparatorVisibility="None"
-                    VerticalScrollBarVisibility="Never"
-                  CachingStrategy="RecycleElement"
-                  RefreshCommand="{Binding RefreshCategoryListView}"
-                  IsPullToRefreshEnabled="true"
-                  ItemTapped="Handle_ItemTapped"
-                  Footer=""
-                  >
+
+        <ListView
+            x:Name="ListCategories"
+            BackgroundColor="Black"
+            CachingStrategy="RecycleElement"
+            Footer=""
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="true"
+            ItemTapped="Handle_ItemTapped"
+            ItemsSource="{Binding CategfromAPI}"
+            RefreshCommand="{Binding RefreshCategoryListView}"
+            SeparatorVisibility="None"
+            VerticalScrollBarVisibility="Never">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <ff:CachedImage Grid.Row="0" 
-                                            HeightRequest="200"  
-                                            Aspect="Fill" 
-                                            Source="{Binding ImagePath}" 
-                                            Margin="10,0,10,5"
-                                            HorizontalOptions="FillAndExpand" 
-                                            VerticalOptions="FillAndExpand" />
+                        <Frame
+                            Margin="5"
+                            Padding="0"
+                            BackgroundColor="Black"
+                            CornerRadius="5"
+                            IsClippedToBounds="True">
+                            <!--<Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>-->
+                            <ff:CachedImage
+                                Grid.Row="0"
+                                Aspect="Fill"
+                                HeightRequest="350"
+                                HorizontalOptions="FillAndExpand"
+                                Source="{Binding ImagePath}"
+                                VerticalOptions="FillAndExpand" />
                             <!--<Image Grid.Row="0" Aspect="AspectFill"  Source="{Binding ImagePath}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
-                            <Label Grid.Row="0" Margin="15,0,0,20"
-                                   VerticalTextAlignment="Center" 
-                                   FontAttributes="Bold" 
-                                  IsVisible="false"
-                                   HorizontalTextAlignment="Center" 
-                                   FontSize="36" TextColor="White"  
-                                   Text="{Binding CategoryName}" 
-                                   HorizontalOptions="StartAndExpand" 
-                                   VerticalOptions="EndAndExpand"/>
+                            <!--<Label
+                                Grid.Row="0"
+                                Margin="15,0,0,20"
+                                FontAttributes="Bold"
+                                FontSize="36"
+                                HorizontalOptions="StartAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="false"
+                                Text="{Binding CategoryName}"
+                                TextColor="White"
+                                VerticalOptions="EndAndExpand"
+                                VerticalTextAlignment="Center" />-->
 
-                        </Grid>
-                       
-                     </c:ExtendedViewCell>
+                        </Frame>
+
+                    </c:ExtendedViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        
+
+
     </ContentPage.Content>
 </ContentPage>

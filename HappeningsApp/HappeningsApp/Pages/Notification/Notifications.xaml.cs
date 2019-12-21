@@ -8,10 +8,14 @@ namespace HappeningsApp.Pages.Notification
 {
     public partial class Notifications : ContentPage
     {
+        MessagesViewModel mvm;
         public Notifications()
         {
             InitializeComponent();
-            //BindingContext = new MessagesViewModel();
+
+            mvm = new MessagesViewModel();
+            mvm.PageTitle = "Messages";
+            BindingContext = mvm;
             RefreshMessage();
         }
 

@@ -29,7 +29,7 @@ namespace HappeningsApp.Views.AppViews
             RefreshListView();
             ivm = new IntroPageViewModel();
              days = new List<string>() { "ALL", "MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN" };
-            segment.Children = days;
+            segment_.Children = days;
         }
 
         private void TapPlus_Tapped(object sender, EventArgs e)

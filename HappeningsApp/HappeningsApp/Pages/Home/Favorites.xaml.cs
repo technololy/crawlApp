@@ -12,7 +12,7 @@ namespace HappeningsApp.Pages.Home
 {
     public partial class Favorites : ContentPage
     {
-        MyCreatedCollectionViewModel mcvm;
+        MyCreatedCollectionViewModel mcvm = new MyCreatedCollectionViewModel();
         public CollectionsResp Collectz
         {
             get;
@@ -21,6 +21,18 @@ namespace HappeningsApp.Pages.Home
         public Favorites()
         {
             InitializeComponent();
+            //if (GlobalStaticFields.CollectionList !=null)
+            //{
+
+            //    BindingContext = GlobalStaticFields.CollectionList;
+            //}
+            //else
+            //{
+                mcvm = new MyCreatedCollectionViewModel();
+            mcvm.InitializeFavListNewUI();
+                mcvm.PageTitle = "Favorites";
+                BindingContext = mcvm;
+            //}
         }
 
 
@@ -119,7 +131,7 @@ namespace HappeningsApp.Pages.Home
         protected async override void OnAppearing()
         {
             //MyCreatedCollectionViewModel mcvmm = new MyCreatedCollectionViewModel();
-            await mcvm.GetListCollection();
+            //await mcvm.GetListCollection();
 
             //if (GlobalStaticFields.CollectionList == null || GlobalStaticFields.CollectionList.Count == 0)
             //    await mcvm.GetListCollection();

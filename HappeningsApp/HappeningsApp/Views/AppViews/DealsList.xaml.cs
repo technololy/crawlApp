@@ -38,7 +38,7 @@ namespace HappeningsApp.Views.AppViews
 
         private void RefreshListView()
         {
-            dealsListview.RefreshCommand = new Command(() =>
+            dealsListview_.RefreshCommand = new Command(() =>
 
             {
                 IntroPageViewModel vm = new IntroPageViewModel();
@@ -46,7 +46,7 @@ namespace HappeningsApp.Views.AppViews
                 vm.GetCategories();
                 vm.GetAll();
                 this.BindingContext = vm;
-                dealsListview.IsRefreshing = false;
+                dealsListview_.IsRefreshing = false;
             });
         }
 
@@ -133,11 +133,11 @@ namespace HappeningsApp.Views.AppViews
 
         private void dealsListview_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            if (dealsListview.SelectedItem == null)
+            if (dealsListview_.SelectedItem == null)
             {
                 return;
             }
-            if (dealsListview.SelectedItem is NewDealsModel.Deal selected)
+            if (dealsListview_.SelectedItem is NewDealsModel.Deal selected)
             {
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected));
                 //Application.Current.MainPage.Navigation.PushAsync(new test.MyPage(selected));
@@ -146,7 +146,7 @@ namespace HappeningsApp.Views.AppViews
             }
             else
             {
-                var selected2 = dealsListview.SelectedItem as HappeningsApp.Models.Activity;
+                var selected2 = dealsListview_.SelectedItem as HappeningsApp.Models.Activity;
                 Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
                 //Navigation.PushAsync(new DetailPage(selected2));
 
