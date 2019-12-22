@@ -34,7 +34,7 @@
                     x:Name="searchImg"
                     Grid.Column="0"
                     Aspect="AspectFit"
-                    HeightRequest="12"
+                    HeightRequest="22"
                     HorizontalOptions="Center"
                     Source="ic_search_white"
                     VerticalOptions="Center"
@@ -93,19 +93,18 @@
             </Grid>
             <Grid
                 Grid.Column="2"
-                Padding="7,0,20,0"
+                Padding="7,0,0,0"
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center">
 
                 <Image
                     x:Name="imgNotif"
-                    Grid.Column="0"
                     Aspect="AspectFit"
-                    HeightRequest="20.25"
+                    HeightRequest="25.25"
                     HorizontalOptions="Center"
                     Scale="1.5"
                     Source="ic_user_white"
-                    WidthRequest="18" />
+                    WidthRequest="38" />
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Profiles_Tapped" />
                 </Grid.GestureRecognizers>
