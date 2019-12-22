@@ -25,6 +25,7 @@
                 <Setter Property="Shell.TabBarTitleColor" Value="#3498db" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
             </Style>
+            
             <ControlTemplate x:Key="MasterTemplate">
                 <Grid
                     HorizontalOptions="FillAndExpand"

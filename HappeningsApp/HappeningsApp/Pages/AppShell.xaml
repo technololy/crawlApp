@@ -13,6 +13,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:HappeningsApp.Pages.Home"
     xmlns:pages1="clr-namespace:HappeningsApp.Pages.Notification"
+
     Title="MyApp"
     NavigationPage.HasNavigationBar="False">
 
@@ -20,7 +21,7 @@
         <Tab Title="Categories" Icon="ic_sort_with_three_lines_white">
             <ShellContent ContentTemplate="{DataTemplate pages:Categories}" />
         </Tab>
-        <Tab Title="This Week" Icon="ic_small_calendar">
+        <Tab Title="This Week" Icon="ic_small_calendar_white">
             <ShellContent ContentTemplate="{DataTemplate pages:ThisWeek}" />
         </Tab>
 
