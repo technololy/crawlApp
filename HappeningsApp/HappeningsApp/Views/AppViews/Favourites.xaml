@@ -4,9 +4,15 @@
              BackgroundColor="Black"
              xmlns:c="clr-namespace:HappeningsApp.Custom"
              x:Name="myPage"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:cc="clr-namespace:QuickPolicy.Controls"
+             Shell.NavBarIsVisible="True"
              x:Class="HappeningsApp.Views.AppViews.Favourites">
+       <Shell.TitleView>
+          <cc:CustomNav NavTitle="Favourites" NavTitleVisibility="True" />
+                
+    </Shell.TitleView>
     <ContentPage.Content>
+
         <Grid>
            <Grid.RowDefinitions>
                 <RowDefinition Height="85*"/>

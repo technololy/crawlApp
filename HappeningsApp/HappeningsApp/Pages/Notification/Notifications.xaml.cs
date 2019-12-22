@@ -15,6 +15,7 @@ namespace HappeningsApp.Pages.Notification
 
             mvm = new MessagesViewModel();
             mvm.PageTitle = "Messages";
+            
             BindingContext = mvm;
             RefreshMessage();
         }

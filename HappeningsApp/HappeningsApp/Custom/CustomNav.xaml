@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentView
+    
+    x:Class="QuickPolicy.Controls.CustomNav"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout
+        
+        x:Name="nav"
+        Padding="0,8,0,0"
+        BackgroundColor="White"
+        HeightRequest="50"
+        HorizontalOptions="FillAndExpand"
+        Spacing="0"
+        >
+        <Grid
+            Padding="0,0,0,5"
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*" />
+                <ColumnDefinition Width="0.8*" />
+                <ColumnDefinition Width="0.1*" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                x:Name="menuGrid"
+                Grid.Column="0"
+                Padding="5,10,10,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+      
+                <Image
+                    x:Name="searchImg"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="12"
+                    HorizontalOptions="Center"
+                    Source="ic_search_white"
+                    VerticalOptions="Center"
+                    WidthRequest="22" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Search_Tapped" />
+                </Grid.GestureRecognizers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+            </Grid>
+            <!--<Grid
+                x:Name="backGrid"
+                Grid.Column="0"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <Image
+                    x:Name="backButtomImg"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="93"
+                    HorizontalOptions="Center"
+                    Scale="1.5"
+                    Source="back_button"
+                    WidthRequest="93" />
+                <Label  FontAttributes="Bold" Grid.Column="1" HorizontalOptions="Center"  TextColor="White" Text="Back"></Label> 
+                <Image Grid.Column="0" Aspect="AspectFit" Scale="1.5"   HorizontalOptions="Center" Source="Ic_Back" HeightRequest="28" WidthRequest="45"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Image
+                    x:Name="groupLogo"
+                    Aspect="AspectFit"
+                    HeightRequest="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="GroupLogo" />
+
+
+            </Grid>-->
+            <Grid Grid.Column="1">
+                <Label
+                    x:Name="navTitle"
+                    FontAttributes="Bold"
+                    FontFamily="{DynamicResource EffraBold}"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Start"
+                    IsVisible="false"
+                    Text="QuickPolicy"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <Grid
+                Grid.Column="2"
+                Padding="7,0,20,0"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center">
+
+                <Image
+                    x:Name="imgNotif"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="20.25"
+                    HorizontalOptions="Center"
+                    Scale="1.5"
+                    Source="ic_user_white"
+                    WidthRequest="18" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Profiles_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <!--<Grid
+                x:Name="profile"
+                Grid.Column="4"
+                Padding="0,0,0,0"
+                HorizontalOptions="StartAndExpand"
+                IsVisible="true"
+                VerticalOptions="Center">
+                <Image
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="28"
+                    HorizontalOptions="Center"
+                    Source="profile.png"
+                    WidthRequest="22" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Profile_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>-->
+        </Grid>
+        <StackLayout x:Name="boxView" VerticalOptions="End">
+            <BoxView
+                BackgroundColor="{DynamicResource PrimaryColorAccessOrange}"
+                HeightRequest="3"
+                HorizontalOptions="Fill" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentView>
+
+
+
+

@@ -4,16 +4,21 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:cc="clr-namespace:QuickPolicy.Controls"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     Padding="5"
     
     BackgroundColor="Black"
     
-    ControlTemplate="{StaticResource MasterTemplate}"
     NavigationPage.HasNavigationBar="False"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="True">
+      <Shell.TitleView>
+          <cc:CustomNav NavTitle="Categories" NavTitleVisibility="True" />
+                
+    </Shell.TitleView>
     <ContentPage.Content>
 
+<StackLayout>
         <ListView
             x:Name="ListCategories"
             BackgroundColor="Black"
@@ -39,7 +44,6 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>-->
                             <ff:CachedImage
-                                Grid.Row="0"
                                 Aspect="Fill"
                                 HeightRequest="350"
                                 HorizontalOptions="FillAndExpand"
@@ -66,6 +70,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
+</StackLayout>
 
     </ContentPage.Content>
 </ContentPage>
