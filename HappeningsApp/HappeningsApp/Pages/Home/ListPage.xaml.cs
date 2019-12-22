@@ -37,6 +37,8 @@ namespace HappeningsApp.Pages.Home
                 // Application.Current.MainPage.Navigation.PushAsync(new DetailPage(selected2));
 
             }
+            ((ListView)sender).SelectedItem = null;
+
 
         }
 
