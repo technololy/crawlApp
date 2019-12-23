@@ -1,39 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappeningsApp.Pages.Intro"
-             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="Black"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true"
-             >
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Intro"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="Black"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.9*"  />
-                <RowDefinition Height="0.1*"  />
-                </Grid.RowDefinitions>
-                 <carousel:CarouselViewControl x:Name="cv" Grid.Row="0" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="Silver" CurrentPageIndicatorTintColor="{x:StaticResource CrawlColor}" AnimateTransition="True" HorizontalOptions="FillAndExpand" InterPageSpacing="10" ItemsSource="{Binding Pictures}">
-                        <carousel:CarouselViewControl.ItemTemplate>
-                            <DataTemplate>
-                                <ff:CachedImage Source="{Binding .}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                            </DataTemplate>
-                        </carousel:CarouselViewControl.ItemTemplate>
-                    </carousel:CarouselViewControl>
-               <StackLayout  Grid.Row="1">
-                    <Button Text="Start" WidthRequest="300" 
-                          
-                           x:Name="start"   
-                        BorderWidth="1"   
-                        Clicked="start_tapped"
-                           FontSize="20"
-                           BorderColor="{x:StaticResource CrawlColor}"
-                        TextColor="{x:StaticResource crawlWhiteColor}" />
+                <RowDefinition Height="0.9*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <carousel:CarouselViewControl
+                x:Name="cv"
+                Grid.Row="0"
+                AnimateTransition="True"
+                CurrentPageIndicatorTintColor="{x:StaticResource CrawlColor}"
+                HorizontalOptions="FillAndExpand"
+                IndicatorsShape="Circle"
+                IndicatorsTintColor="Silver"
+                InterPageSpacing="10"
+                ItemsSource="{Binding Pictures}"
+                ShowIndicators="true">
+                <carousel:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <ff:CachedImage
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand"
+                            Source="{Binding .}"
+                            VerticalOptions="FillAndExpand" />
+                    </DataTemplate>
+                </carousel:CarouselViewControl.ItemTemplate>
+            </carousel:CarouselViewControl>
+            <StackLayout Grid.Row="1">
+                <Button
+                    x:Name="start"
+                    BorderColor="{x:StaticResource CrawlColor}"
+                    BorderWidth="1"
+                    Clicked="start_tapped"
+                    FontSize="20"
+                    Text="Start"
+                    TextColor="{x:StaticResource crawlWhiteColor}"
+                    WidthRequest="300" />
             </StackLayout>
-            
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -29,7 +29,7 @@ namespace HappeningsApp.Pages.Home
             //else
             //{
                 mcvm = new MyCreatedCollectionViewModel();
-            mcvm.InitializeFavListNewUI();
+                mcvm.InitializeFavListNewUI();
                 mcvm.PageTitle = "Favorites";
                 BindingContext = mcvm;
             //}

@@ -1,34 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="HappeningsApp.Pages.AppShell">-->
 <Shell
     x:Class="HappeningsApp.Pages.AppShell"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:home="clr-namespace:HappeningsApp.Pages.Home"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:HappeningsApp.Pages.Home"
-    xmlns:pages1="clr-namespace:HappeningsApp.Pages.Notification"
+    xmlns:pagesNotification="clr-namespace:HappeningsApp.Pages.Notification"
+    xmlns:pagesRoot="clr-namespace:HappeningsApp.Pages"
     Title="MyApp"
     NavigationPage.HasNavigationBar="False">
 
-    <TabBar Style="{StaticResource BaseStyle}">
+
+
+
+    <!--<ShellItem Route="intro">
+        <ShellContent ContentTemplate="{DataTemplate pagesRoot:Intro}" />
+    </ShellItem>-->
+
+    <TabBar Route="main" Style="{StaticResource BaseStyle}">
         <Tab Title="Categories" Icon="ic_sort_with_three_lines_white">
-            <ShellContent ContentTemplate="{DataTemplate pages:Categories}" />
+            <ShellContent ContentTemplate="{DataTemplate home:Categories}" />
         </Tab>
         <Tab Title="This Week" Icon="ic_small_calendar">
-            <ShellContent ContentTemplate="{DataTemplate pages:ThisWeek}" />
+            <ShellContent ContentTemplate="{DataTemplate home:ThisWeek}" />
         </Tab>
 
         <Tab Title="Favorites" Icon="ic_favorite_border">
-            <ShellContent ContentTemplate="{DataTemplate pages:Favorites}" />
+            <ShellContent ContentTemplate="{DataTemplate home:Favorites}" />
         </Tab>
         <Tab Title="Messages" Icon="ic_mail_outline">
-            <ShellContent ContentTemplate="{DataTemplate pages1:Notifications}" />
+            <ShellContent ContentTemplate="{DataTemplate pagesNotification:Notifications}" />
         </Tab>
     </TabBar>
 </Shell>

@@ -1,43 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-      x:Class="HappeningsApp.Pages.Onboarding.LoginEmail" 
-      xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" 
-             xmlns:c="clr-namespace:HappeningsApp.Custom"
-             >
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Onboarding.LoginEmail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <Grid>
-            <Image Source="splash_background2" Aspect="Fill" />
-            
-                <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Grid.Row="0" Padding="40,0,40,0">
-            <StackLayout Spacing="5" x:Name="emailStack">
-                <c:BorderlessEntry 
-                Placeholder="Email address" x:Name="txtUsername" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" Completed="Handle_Completed" TextColor="White" ReturnType="Next" Text="{Binding User.Username}" PlaceholderColor="White" />
-                <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}" />
-            </StackLayout>
-            <StackLayout Spacing="0">
-                <StackLayout Spacing="5" x:Name="passwordStack">
-                    <c:BorderlessEntry Placeholder="Password" x:Name="txtPassword" IsPassword="True" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" TextColor="White" Completed="Handle_Completed_1" ReturnType="Send" PlaceholderColor="White" Text="{Binding User.Password}" />
-                    <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}" />
+            <Image Aspect="Fill" Source="splash_background2" />
+
+            <StackLayout
+                Grid.Row="0"
+                Padding="40,0,40,0"
+                Spacing="50"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout x:Name="emailStack" Spacing="5">
+                    <c:BorderlessEntry
+                        x:Name="txtUsername"
+                        Completed="Handle_Completed"
+                        HorizontalTextAlignment="Start"
+                        IsSpellCheckEnabled="false"
+                        Placeholder="Email address"
+                        PlaceholderColor="White"
+                        ReturnType="Next"
+                        Text="{Binding User.Username}"
+                        TextColor="White" />
+                    <BoxView BackgroundColor="{x:StaticResource CrawlColor}" HeightRequest="2" />
                 </StackLayout>
-                <StackLayout Margin="0,15,0,0" Orientation="Horizontal">
-                    <Label Text="Forgot Password?" TextColor="{x:StaticResource CrawlRedColor}" HorizontalOptions="EndAndExpand" x:Name="labelForgotPassword">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
+                <StackLayout Spacing="0">
+                    <StackLayout x:Name="passwordStack" Spacing="5">
+                        <c:BorderlessEntry
+                            x:Name="txtPassword"
+                            Completed="Handle_Completed_1"
+                            HorizontalTextAlignment="Start"
+                            IsPassword="True"
+                            IsSpellCheckEnabled="false"
+                            Placeholder="Password"
+                            PlaceholderColor="White"
+                            ReturnType="Send"
+                            Text="{Binding User.Password}"
+                            TextColor="White" />
+                        <BoxView BackgroundColor="{x:StaticResource CrawlColor}" HeightRequest="2" />
+                    </StackLayout>
+                    <StackLayout Margin="0,15,0,0" Orientation="Horizontal">
+                        <Label
+                            x:Name="labelForgotPassword"
+                            HorizontalOptions="EndAndExpand"
+                            Text="Forgot Password?"
+                            TextColor="{x:StaticResource CrawlRedColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
                 </StackLayout>
+                <Button
+                    x:Name="login"
+                    BackgroundColor="Transparent"
+                    BorderColor="{x:StaticResource CrawlColor}"
+                    BorderWidth="1"
+                    Clicked="Logon_Tapped"
+                    FontSize="20"
+                    Text="Log in"
+                    TextColor="{x:StaticResource crawlWhiteColor}"
+                    WidthRequest="300" />
             </StackLayout>
-                   <Button Text="Log in" WidthRequest="300" 
-                           x:Name="login" Clicked="Logon_Tapped"  
-                        BorderWidth="1"   
-                        BackgroundColor="Transparent"
-                           FontSize="20"
-                           BorderColor="{x:StaticResource CrawlColor}"
-                        TextColor="{x:StaticResource crawlWhiteColor}" />
-        </StackLayout>
-            
+
         </Grid>
-    
+
     </ContentPage.Content>
 </ContentPage>

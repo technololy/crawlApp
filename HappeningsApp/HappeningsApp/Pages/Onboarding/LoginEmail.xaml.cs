@@ -61,7 +61,7 @@ namespace HappeningsApp.Pages.Onboarding
 
                         lvm.PersistUserDetails();
                         //await Navigation.PushAsync(new AppLanding());
-                        Application.Current.MainPage = new AppShell();
+                        await Shell.Current.GoToAsync("//main");
 
                     }
                     else

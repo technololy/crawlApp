@@ -1,31 +1,78 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.SignInUp" NavigationPage.HasNavigationBar="False" xmlns:bdEntry="clr-namespace:HappeningsApp.Custom" xmlns:c="clr-namespace:HappeningsApp.Custom">
-  <ScrollView>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.SignInUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bdEntry="clr-namespace:HappeningsApp.Custom"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
+    <ScrollView>
 
-                    <Grid>
-            <Image Source="splash_background2" Aspect="Fill" />
-            <Grid RowSpacing="60" ColumnSpacing="0">
+        <Grid>
+            <Image Aspect="Fill" Source="splash_background2" />
+            <Grid ColumnSpacing="0" RowSpacing="60">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
-                 
+
                 </Grid.RowDefinitions>
-                <StackLayout x:Name="crawlImageStack"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0">
-                    <Image Source="Crawl_logo_header.png" Scale="0.5" />
+                <StackLayout
+                    x:Name="crawlImageStack"
+                    Grid.Row="0"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Image Scale="0.5" Source="Crawl_logo_header.png" />
                 </StackLayout>
-                <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="40,0,40,0">
-                    <Label Text="Explore your city like never before" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="36" />
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="40,0,40,0"
+                    Spacing="50"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontSize="36"
+                        HorizontalTextAlignment="Center"
+                        Text="Explore your city like never before"
+                        VerticalTextAlignment="Center" />
                 </StackLayout>
-                <StackLayout Grid.Row="2" Spacing="30" Margin="0,0,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
-                    <Button Text="Log in with email" WidthRequest="300" x:Name="login" Clicked="Logon_Tapped" BorderWidth="1" BackgroundColor="{x:StaticResource crawlWhiteColor}" TextColor="Black" />
-                    <Button x:Name="loginFB" TextColor="White" WidthRequest="300" Text="Log in with Facebook" BackgroundColor="{x:StaticResource CrawlColor}" Clicked="OAuth_Clicked" />
-                    <Button TextColor="White" Text="Log in with Google" x:Name="googleSignIn" Clicked="OAuth_Clicked" WidthRequest="300" BackgroundColor="#c0392b" />
-               
+                <StackLayout
+                    Grid.Row="2"
+                    Margin="0,0,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="30"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        x:Name="login"
+                        BackgroundColor="{x:StaticResource crawlWhiteColor}"
+                        BorderWidth="1"
+                        Clicked="Logon_Tapped"
+                        Text="Log in with email"
+                        TextColor="Black"
+                        WidthRequest="300" />
+                    <Button
+                        x:Name="loginFB"
+                        BackgroundColor="{x:StaticResource CrawlColor}"
+                        Clicked="OAuth_Clicked"
+                        Text="Log in with Facebook"
+                        TextColor="White"
+                        WidthRequest="300" />
+                    <Button
+                        x:Name="googleSignIn"
+                        BackgroundColor="#c0392b"
+                        Clicked="OAuth_Clicked"
+                        Text="Log in with Google"
+                        TextColor="White"
+                        WidthRequest="300" />
+
                 </StackLayout>
                 <StackLayout Grid.Row="3" VerticalOptions="EndAndExpand">
-                    <Label Text="Don't have an account? Sign Up" TextColor="{x:StaticResource CrawlRedColor}" HorizontalTextAlignment="Center">
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        Text="Don't have an account? Sign Up"
+                        TextColor="{x:StaticResource CrawlRedColor}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SignUp_Tapped" />
                         </Label.GestureRecognizers>
@@ -33,6 +80,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-  
-   </ScrollView>
+
+    </ScrollView>
 </ContentPage>

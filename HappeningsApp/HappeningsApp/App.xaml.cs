@@ -36,44 +36,44 @@ namespace HappeningsApp
             //GetAppInstallID();
 
             //MainPage = new NavigationPage(new Pages.Home.Categories());
-            //MainPage = new AppShell();
+            MainPage = new AppShell();
 
             //return;
-            if (IsUserLoggedOn())
-            {
-                try
-                {
-                    LoginViewModel lvmm = new LoginViewModel();
-                    lvmm.User.Username = Current.Properties["username"].ToString();
-                    lvmm.User.EmailAddress = lvmm.User.Username;
-                    lvmm.User.Password = Current.Properties["password"].ToString();
-                    GlobalStaticFields.Username = lvmm.User.EmailAddress;
-                    lvmm.GetTokenFromAPI();
+            //if (IsUserLoggedOn())
+            //{
+            //    try
+            //    {
+            //        LoginViewModel lvmm = new LoginViewModel();
+            //        lvmm.User.Username = Current.Properties["username"].ToString();
+            //        lvmm.User.EmailAddress = lvmm.User.Username;
+            //        lvmm.User.Password = Current.Properties["password"].ToString();
+            //        GlobalStaticFields.Username = lvmm.User.EmailAddress;
+            //        lvmm.GetTokenFromAPI();
 
 
-                    //MainPage = new CustomNavigationPage(new Pages.AppLanding());
-                    //MainPage = new NavigationPage(new Pages.AppLanding());
-                    //MainPage = new NavigationPage(new Views.AppLanding());
-                    MainPage = new AppShell();
+            //        //MainPage = new CustomNavigationPage(new Pages.AppLanding());
+            //        //MainPage = new NavigationPage(new Pages.AppLanding());
+            //        //MainPage = new NavigationPage(new Views.AppLanding());
+            //        MainPage = new AppShell();
 
-                }
-                catch (Exception ex)
-                {
-                    //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                    //MainPage = new CustomNavigationPage(new Pages.SignInUp());
-                    MainPage = new NavigationPage(new Pages.Intro());
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+            //        //MainPage = new CustomNavigationPage(new Pages.SignInUp());
+            //        MainPage = new NavigationPage(new Pages.Intro());
 
 
-                }
+            //    }
 
-            }
-            else
-            {
-                //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
-                //MainPage = new CustomNavigationPage(new Pages.SignInUp());
-                MainPage = new NavigationPage(new Pages.Intro());
+            //}
+            //else
+            //{
+            //    //MainPage = new NavigationPage(new Views.LoginSignUp.LoginOrSignUp());
+            //    //MainPage = new CustomNavigationPage(new Pages.SignInUp());
+            //    MainPage = new NavigationPage(new Pages.Intro());
 
-            }
+            //}
             #region comment
             //MainPage = new NavigationPage(new MainPage())
 

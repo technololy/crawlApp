@@ -115,5 +115,19 @@ namespace HappeningsApp.Services
             return result;
         }
 
+
+        public static string GetFromAppSettings(string key)
+        {
+            try
+            {
+              return Application.Current.Properties[key].ToString();
+            }
+            catch (Exception)
+            {
+
+                return string.Empty;
+            }
+        }
+
     }
 }
