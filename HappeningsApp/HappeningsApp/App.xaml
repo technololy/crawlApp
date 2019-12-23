@@ -23,8 +23,10 @@
                 <!--For the header-->
                 <Setter Property="Shell.BackgroundColor" Value="Black" />
                 <Setter Property="Shell.TabBarTitleColor" Value="#3498db" />
+                <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
             </Style>
+            
             <ControlTemplate x:Key="MasterTemplate">
                 <Grid
                     HorizontalOptions="FillAndExpand"

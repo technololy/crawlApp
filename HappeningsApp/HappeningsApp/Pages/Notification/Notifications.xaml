@@ -5,10 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:InputKit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:c="clr-namespace:HappeningsApp.Custom"
-    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    Title="Notifications"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:cc="clr-namespace:QuickPolicy.Controls"
+    
     Padding="10,20,10,10"
     BackgroundColor="#000015">
+       <Shell.TitleView>
+          <cc:CustomNav NavTitle="Messages" NavTitleVisibility="True" />
+                
+    </Shell.TitleView>
     <Grid>
         <ListView
             x:Name="msgListView"
@@ -24,19 +28,19 @@
                     <ViewCell>
                         <Grid RowSpacing="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="0.5*" />
                                     <ColumnDefinition Width="7*" />
                                     <ColumnDefinition Width="2*" />
                                 </Grid.ColumnDefinitions>
                                 <InputKit:RadioButton
                                     Grid.Column="0"
                                     CircleColor="White"
-                                    CircleSize="3"
+                                    
                                     IsChecked="False"
                                     Orientation="Vertical"
                                     TextColor="White"
@@ -45,9 +49,9 @@
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Label
                                         Grid.Row="0"
@@ -58,6 +62,8 @@
                                         TextColor="White" />
                                     <ff:CachedImage
                                         Grid.Row="1"
+                                        HeightRequest="200"
+                                        WidthRequest="150"
                                         Aspect="AspectFit"
                                         HorizontalOptions="FillAndExpand"
                                         Source="{Binding Picture}"

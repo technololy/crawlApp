@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Distribution: Crawl limited (7U99K493K2)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -203,6 +203,15 @@
     <BundleResource Include="Resources\ic_fav_blue.png" />
     <BundleResource Include="Resources\importantmailwhite.png" />
     <BundleResource Include="Resources\importantmailblue.png" />
+    <BundleResource Include="Resources\ic_small_calendar_white%403x.png" />
+    <BundleResource Include="Resources\ic_small_calendar_white%402x.png" />
+    <BundleResource Include="Resources\ic_mail_outline%403x.png" />
+    <BundleResource Include="Resources\ic_mail_outline%402x.png" />
+    <BundleResource Include="Resources\ic_mail_outline.png" />
+    <BundleResource Include="Resources\ic_sort_with_three_lines_white%403x.png" />
+    <BundleResource Include="Resources\ic_sort_with_three_lines_white%402x.png" />
+    <BundleResource Include="Resources\ic_favorite_border%403x.png" />
+    <BundleResource Include="Resources\ic_favorite_border%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

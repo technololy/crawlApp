@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HappeningsApp.Models;
 using HappeningsApp.ViewModels;
+using HappeningsApp.Views.Search;
 using Xamarin.Forms;
 
 namespace HappeningsApp.Pages.Home
@@ -74,5 +75,21 @@ namespace HappeningsApp.Pages.Home
             }
 
         }
+
+
+
+        void Search_Tapped(object sender, System.EventArgs e)
+        {
+
+            Navigation.PushAsync(new SearchPage(), true);
+        }
+
+        void Profiles_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new Profile());
+
+        }
+
+
     }
 }

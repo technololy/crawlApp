@@ -5,15 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:HappeningsApp.Custom"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:cc="clr-namespace:QuickPolicy.Controls"
     x:Name="myFavPageNewUI"
     BackgroundColor="Black"
-    ControlTemplate="{StaticResource MasterTemplate}"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="True">
+           <Shell.TitleView>
+          <cc:CustomNav NavTitle="Favourites" NavTitleVisibility="True" />
+                
+    </Shell.TitleView>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
 
             </Grid.RowDefinitions>
