@@ -1,19 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <ContentView
-    
     x:Class="QuickPolicy.Controls.CustomNav"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <StackLayout
-        
         x:Name="nav"
         Padding="0,8,0,0"
         BackgroundColor="White"
         HeightRequest="50"
         HorizontalOptions="FillAndExpand"
-        Spacing="0"
-        >
+        Spacing="0">
         <Grid
             Padding="0,0,0,5"
             BackgroundColor="Transparent"
@@ -29,7 +26,7 @@
                 Padding="5,10,10,10"
                 HorizontalOptions="StartAndExpand"
                 VerticalOptions="Center">
-      
+
                 <Image
                     x:Name="searchImg"
                     Grid.Column="0"
@@ -60,7 +57,7 @@
                     Scale="1.5"
                     Source="back_button"
                     WidthRequest="93" />
-                <Label  FontAttributes="Bold" Grid.Column="1" HorizontalOptions="Center"  TextColor="White" Text="Back"></Label> 
+                <Label  FontAttributes="Bold" Grid.Column="1" HorizontalOptions="Center"  TextColor="White" Text="Back"></Label>
                 <Image Grid.Column="0" Aspect="AspectFit" Scale="1.5"   HorizontalOptions="Center" Source="Ic_Back" HeightRequest="28" WidthRequest="45"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Back_Tapped" />
@@ -93,18 +90,18 @@
             </Grid>
             <Grid
                 Grid.Column="2"
-                Padding="7,0,0,0"
+                Padding="7,0,0,10"
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center">
 
                 <Image
                     x:Name="imgNotif"
                     Aspect="AspectFit"
-                    HeightRequest="25.25"
+                    HeightRequest="22.25"
                     HorizontalOptions="Center"
                     Scale="1.5"
                     Source="ic_user_white"
-                    WidthRequest="38" />
+                    WidthRequest="28" />
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Profiles_Tapped" />
                 </Grid.GestureRecognizers>

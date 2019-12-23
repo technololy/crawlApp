@@ -7,7 +7,8 @@
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     Padding="10,40,10,10"
-    BackgroundColor="#000015">
+    BackgroundColor="#000015"
+    Shell.TabBarIsVisible="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />

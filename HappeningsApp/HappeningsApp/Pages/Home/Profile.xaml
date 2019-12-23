@@ -6,7 +6,9 @@
     xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
     xmlns:c="clr-namespace:HappeningsApp.Custom"
     Title="Profiles"
-    Padding="10,0,10,0"
+    Shell.TabBarIsVisible="False"
+    Shell.NavBarIsVisible="True"
+    Padding="5,0,5,0"
     BackgroundColor="Black">
     <ContentPage.Content>
         <ScrollView Margin="10,10,10,50">
