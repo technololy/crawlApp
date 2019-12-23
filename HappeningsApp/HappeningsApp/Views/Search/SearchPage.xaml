@@ -1,20 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Views.Search.SearchPage" BackgroundColor="#000015" Padding="10,40,10,10" xmlns:c="clr-namespace:HappeningsApp.Custom" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Views.Search.SearchPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Padding="10,40,10,10"
+    BackgroundColor="#000015">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />
             <RowDefinition Height="90*" />
         </Grid.RowDefinitions>
-        <StackLayout Spacing="5" Grid.Row="0">
-            <c:BorderlessEntry Placeholder="Type to search" x:Name="txtsearch" IsSpellCheckEnabled="false" HorizontalTextAlignment="Start" TextChanged="Search_TextChanged" TextColor="White" PlaceholderColor="White" />
-            <BoxView HeightRequest="2" BackgroundColor="{x:StaticResource CrawlColor}" />
+        <StackLayout Grid.Row="0" Spacing="5">
+            <c:BorderlessEntry
+                x:Name="txtsearch"
+                HorizontalTextAlignment="Start"
+                IsSpellCheckEnabled="false"
+                Placeholder="Type to search"
+                PlaceholderColor="White"
+                TextChanged="Search_TextChanged"
+                TextColor="White" />
+            <BoxView BackgroundColor="{x:StaticResource CrawlColor}" HeightRequest="2" />
         </StackLayout>
         <StackLayout Grid.Row="1">
-            <ListView ItemsSource="{Binding .}" x:Name="dealsListview" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+            <ListView
+                x:Name="dealsListview"
+                BackgroundColor="Black"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="True"
+                IsVisible="false"
+                ItemTapped="dealsListview_ItemTapped"
+                ItemsSource="{Binding .}"
+                SeparatorColor="Black"
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                            <Frame
+                                Margin="5,0,5,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="0"
+                                HeightRequest="250"
+                                IsClippedToBounds="true">
                                 <Grid HeightRequest="250">
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
@@ -23,15 +53,44 @@
                                         <RowDefinition Height="0.3*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
-                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Grid.RowSpan="3"
+                                        Aspect="AspectFill"
+                                        HeightRequest="250"
+                                        Source="{Binding ImagePath}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        HeightRequest="40"
+                                        HorizontalOptions="End"
+                                        IsVisible="true"
+                                        Opacity="0.6"
+                                        Source="ic_add_circle_outline_white.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="40">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer
+                                                x:Name="TapPlus"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="TapPlus_Tapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <StackLayout Spacing="0" Grid.Row="2" VerticalOptions="EndAndExpand">
-                                        <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                        <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="12" Grid.Row="2" TextColor="White" />
+                                    <StackLayout
+                                        Grid.Row="2"
+                                        Spacing="0"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label
+                                            Grid.Row="1"
+                                            FontAttributes="Bold"
+                                            FontSize="Large"
+                                            Text="{Binding Name}"
+                                            TextColor="White" />
+                                        <Label
+                                            Grid.Row="2"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            Text="{Binding Owner_Location}"
+                                            TextColor="White" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>
@@ -39,11 +98,26 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView ItemsSource="{Binding .}" x:Name="EveryListview" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+            <ListView
+                x:Name="EveryListview"
+                BackgroundColor="Black"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="True"
+                IsVisible="false"
+                ItemTapped="dealsListview_ItemTapped"
+                ItemsSource="{Binding .}"
+                SeparatorColor="Black"
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                            <Frame
+                                Margin="5,0,5,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="0"
+                                HeightRequest="250"
+                                IsClippedToBounds="true">
                                 <Grid HeightRequest="250">
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
@@ -52,25 +126,66 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
-                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Grid.RowSpan="3"
+                                        Aspect="AspectFill"
+                                        HeightRequest="250"
+                                        Source="{Binding ImagePath}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        HeightRequest="40"
+                                        HorizontalOptions="End"
+                                        IsVisible="true"
+                                        Opacity="0.6"
+                                        Source="ic_add_circle_outline_white.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="40">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer
+                                                x:Name="TapPlus"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="TapPlus_Tapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" Grid.Row="2" TextColor="White" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        Text="{Binding Name}"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="2"
+                                        FontAttributes="Bold"
+                                        FontSize="8"
+                                        Text="{Binding Owner_Location}"
+                                        TextColor="White" />
                                 </Grid>
                             </Frame>
                         </c:ExtendedViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView ItemsSource="{Binding .}" x:Name="categoryListView" IsVisible="false" SeparatorColor="Black" SeparatorVisibility="None" IsPullToRefreshEnabled="True" ItemTapped="dealsListview_ItemTapped" BackgroundColor="Black" HasUnevenRows="true">
+            <ListView
+                x:Name="categoryListView"
+                BackgroundColor="Black"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="True"
+                IsVisible="false"
+                ItemTapped="dealsListview_ItemTapped"
+                ItemsSource="{Binding .}"
+                SeparatorColor="Black"
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <c:ExtendedViewCell SelectedBackgroundColor="Black">
-                            <Frame Padding="0" Margin="5,0,5,5" IsClippedToBounds="true" BackgroundColor="Black" HeightRequest="250" CornerRadius="0">
+                            <Frame
+                                Margin="5,0,5,5"
+                                Padding="0"
+                                BackgroundColor="Black"
+                                CornerRadius="0"
+                                HeightRequest="250"
+                                IsClippedToBounds="true">
                                 <Grid HeightRequest="250">
                                     <Grid.RowDefinitions>
                                         <!--<RowDefinition Height="10*" />-->
@@ -79,14 +194,40 @@
                                         <RowDefinition Height="10*" />
                                     </Grid.RowDefinitions>
                                     <!--<Image HeightRequest="500" Grid.RowSpan="3"  Source="{Binding ImagePath}" Aspect="Fill" />-->
-                                    <forms:CachedImage HeightRequest="250" Grid.RowSpan="3" Source="{Binding ImagePath}" Aspect="AspectFill" />
-                                    <Image IsVisible="true" Source="ic_add_circle_outline_white.png" HeightRequest="40" WidthRequest="40" Opacity="0.6" HorizontalOptions="End" VerticalOptions="Start" Grid.Row="0">
+                                    <forms:CachedImage
+                                        Grid.RowSpan="3"
+                                        Aspect="AspectFill"
+                                        HeightRequest="250"
+                                        Source="{Binding ImagePath}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        HeightRequest="40"
+                                        HorizontalOptions="End"
+                                        IsVisible="true"
+                                        Opacity="0.6"
+                                        Source="ic_add_circle_outline_white.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="40">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapPlus" CommandParameter="{Binding .}" Tapped="TapPlus_Tapped" NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer
+                                                x:Name="TapPlus"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="TapPlus_Tapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Row="1" TextColor="White" FontSize="Large" />
-                                    <Label Text="{Binding Owner_Location}" FontAttributes="Bold" FontSize="8" Grid.Row="2" TextColor="White" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        Text="{Binding Name}"
+                                        TextColor="White" />
+                                    <Label
+                                        Grid.Row="2"
+                                        FontAttributes="Bold"
+                                        FontSize="8"
+                                        Text="{Binding Owner_Location}"
+                                        TextColor="White" />
                                 </Grid>
                             </Frame>
                         </c:ExtendedViewCell>

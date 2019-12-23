@@ -1,9 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HappeningsApp.Pages.Home.Profile" BackgroundColor="Black" xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" Title="Profiles" Padding="10,0,10,0" xmlns:c="clr-namespace:HappeningsApp.Custom">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="HappeningsApp.Pages.Home.Profile"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:c="clr-namespace:HappeningsApp.Custom"
+    Title="Profiles"
+    Padding="10,0,10,0"
+    BackgroundColor="Black">
     <ContentPage.Content>
-        <ScrollView Margin="30,10,30,50">
+        <ScrollView Margin="10,10,10,50">
             <StackLayout>
-                <Grid RowSpacing="-10" Margin="0,10,0,0">
+                <Grid Margin="0,10,0,0" RowSpacing="-10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.9*" />
                         <ColumnDefinition Width="auto" />
@@ -13,27 +21,66 @@
                             <ColumnDefinition Width="0.5*" />
                             <ColumnDefinition Width="0.5*" />
                         </Grid.ColumnDefinitions>
-                        <Image:CircleImage Aspect="Fill" Scale="2" Grid.Column="0" BorderColor="White" BorderThickness="2" Margin="40,40,0,0" BackgroundColor="White" Source="usero.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-                        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" Grid.Column="1" HorizontalOptions="StartAndExpand">
-                                   <Label IsVisible="false" Text="Crawl" TextColor="White" FontSize="Small" />
-                            <Label IsVisible="false" Text="0945834848444" TextColor="White" FontSize="Small" />
-                            <Label x:Name="lblUsername" TextColor="White" FontSize="Small" HorizontalOptions="StartAndExpand" />
+                        <Image:CircleImage
+                            Grid.Column="0"
+                            Margin="40,40,0,0"
+                            Aspect="Fill"
+                            BackgroundColor="White"
+                            BorderColor="White"
+                            BorderThickness="2"
+                            HorizontalOptions="StartAndExpand"
+                            Scale="2"
+                            Source="usero.png"
+                            VerticalOptions="CenterAndExpand" />
+                        <StackLayout
+                            Grid.Column="1"
+                            Padding="5"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Small"
+                                IsVisible="false"
+                                Text="Crawl"
+                                TextColor="White" />
+                            <Label
+                                FontSize="Small"
+                                IsVisible="false"
+                                Text="0945834848444"
+                                TextColor="White" />
+                            <Label
+                                x:Name="lblUsername"
+                                FontSize="Small"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="White" />
                         </StackLayout>
                     </Grid>
-                    <c:ExtendedLabel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-40,0,0" ItemTapped="ExtendedLabel_ItemTapped" />
+                    <c:ExtendedLabel
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,-40,0,0"
+                        ItemTapped="ExtendedLabel_ItemTapped" />
                 </Grid>
                 <StackLayout>
-             
-                <c:ExtendedLabel Text="About Crawl" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Found a bug or Suggestions?" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Recommend a place" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Change Password" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Like us on Twitter!" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Follow us on instagram!" ItemTapped="ExtendedLabel_ItemTapped" />
-                <c:ExtendedLabel Text="Like us on the Appstore" ItemTapped="ExtendedLabel_ItemTapped" />
-              
+
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="About Crawl" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Found a bug or Suggestions?" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Recommend a place" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Change Password" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Like us on Twitter!" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Follow us on instagram!" />
+                    <c:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Like us on the Appstore" />
+
                 </StackLayout>
-                 <Button Text="LOG OUT" Clicked="LogOut_Clicked" HorizontalOptions="Fill" Margin="70,30,70,0" x:Name="logout" BorderColor="{x:StaticResource crawlWhiteColor}" BorderWidth="1" BackgroundColor="Transparent" TextColor="White" />
+                <Button
+                    x:Name="logout"
+                    Margin="70,30,70,0"
+                    BackgroundColor="Transparent"
+                    BorderColor="{x:StaticResource crawlWhiteColor}"
+                    BorderWidth="1"
+                    Clicked="LogOut_Clicked"
+                    HorizontalOptions="Fill"
+                    Text="LOG OUT"
+                    TextColor="White" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

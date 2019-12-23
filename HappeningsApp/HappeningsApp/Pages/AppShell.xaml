@@ -3,7 +3,6 @@
     x:Class="HappeningsApp.Pages.AppShell"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:home="clr-namespace:HappeningsApp.Pages.Home"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -23,7 +22,7 @@
         <Tab Title="Categories" Icon="ic_sort_with_three_lines_white">
             <ShellContent ContentTemplate="{DataTemplate home:Categories}" />
         </Tab>
-        <Tab Title="This Week" Icon="ic_small_calendar">
+        <Tab Title="This Week" Icon="ic_small_calendar_white">
             <ShellContent ContentTemplate="{DataTemplate home:ThisWeek}" />
         </Tab>
 
