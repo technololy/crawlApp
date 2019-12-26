@@ -26,9 +26,13 @@ namespace HappeningsApp.Services
             using (var client = new HttpClient())
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            
+
                 json = JsonConvert.SerializeObject(model);
                 var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 var message = await client.PostAsync(url, stringContent);
                 var resultt = await message.Content.ReadAsStringAsync();
                 //LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
@@ -87,7 +91,10 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
                 // LogService.LogErrors($"Endpoint is {url}. Request json:\n{json}, Response json\n{resultt}");
@@ -112,6 +119,10 @@ namespace HappeningsApp.Services
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
                     //method address would be like api/callUber:SomePort for example
+                    if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                    {
+                        return default;
+                    }
                     var result = await client.PutAsync(endpoint, content);
                     var response = await result.Content.ReadAsStringAsync();
                     try
@@ -156,7 +167,10 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 res = await client.PostAsync(url, content);
                 var resultt = await res.Content.ReadAsStringAsync();
                 // LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
@@ -181,7 +195,10 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 res = await client.GetAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
 
@@ -212,7 +229,10 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 res = await client.DeleteAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
 
@@ -250,7 +270,10 @@ namespace HappeningsApp.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
                                                         ("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + GlobalStaticFields.Token);
-
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 res = await client.SendAsync(request);
                 var content = await res.Content.ReadAsStringAsync();
 
@@ -276,6 +299,10 @@ namespace HappeningsApp.Services
                 json = JsonConvert.SerializeObject(reg);
                 var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 var message = await client.PostAsync(url, stringContent).ConfigureAwait(true);
                 var resultt = await message.Content.ReadAsStringAsync();
                 await LogService.LogErrorsNew(url: url, request: json, response: resultt, activity: "REGISTER LOCAL Async");
@@ -306,6 +333,10 @@ namespace HappeningsApp.Services
                     client2.MaxResponseContentBufferSize = 256000;
 
                     client2.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                    {
+                        return default;
+                    }
                     responseMessage = await client2.PostAsync(url, stringContent).ConfigureAwait(true);
                     var resultt = await responseMessage.Content.ReadAsStringAsync();
                     //LogService.LogErrors($"End point: {url}. Request json:\n{json}, Response json\n{resultt}");
@@ -360,6 +391,10 @@ namespace HappeningsApp.Services
                 //serialize your json using newtonsoft json serializer then add it to the StringContent
                 var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
                 //method address would be like api/callUber:SomePort for example
+                if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
+                {
+                    return default;
+                }
                 var result = await client.PostAsync("/api/Error", content);
                 string resultContent = await result.Content.ReadAsStringAsync();
                 return result;

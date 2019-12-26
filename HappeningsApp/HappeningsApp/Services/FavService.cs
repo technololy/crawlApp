@@ -20,27 +20,36 @@ namespace HappeningsApp.Services
             ObservableCollection<FavoriteModel> listofFavs = new ObservableCollection<FavoriteModel>();
             ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
 
-            var respo = await APIService.Get("api/Favs");
-            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await respo.Content.ReadAsStringAsync();
-
-                fav = JsonConvert.DeserializeObject<FavRootObject>(content);
-                if (fav.Message.ToLower().Contains("success"))
+                /**/
+                var respo = await APIService.Get("api/Favs");
+                if (respo.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    listofFavs = fav.FavoriteList;
+                    var content = await respo.Content.ReadAsStringAsync();
+
+                    fav = JsonConvert.DeserializeObject<FavRootObject>(content);
+                    if (fav.Message.ToLower().Contains("success"))
+                    {
+                        listofFavs = fav.FavoriteList;
+                    }
+                    else
+                    {
+
+                    }
+
+
+
                 }
                 else
                 {
+                    var content = await respo.Content.ReadAsStringAsync();
 
                 }
-
-
-
             }
-            else
+            catch (Exception ex)
             {
-                var content = await respo.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine(ex.Message);
 
             }
             return listofFavs;
@@ -53,27 +62,36 @@ namespace HappeningsApp.Services
             ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
             ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
 
-            var respo = await APIService.Get("GetFavouritesbyUserId?UserId="+GlobalStaticFields.Username);
-            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await respo.Content.ReadAsStringAsync();
-
-                listofFavs = JsonConvert.DeserializeObject<ObservableCollection<Favourite>>(content);
-                if (listofFavs.Any())
+                /**/
+                var respo = await APIService.Get("GetFavouritesbyUserId?UserId=" + GlobalStaticFields.Username);
+                if (respo.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                   return listofFavs;
+                    var content = await respo.Content.ReadAsStringAsync();
+
+                    listofFavs = JsonConvert.DeserializeObject<ObservableCollection<Favourite>>(content);
+                    if (listofFavs.Any())
+                    {
+                        return listofFavs;
+                    }
+                    else
+                    {
+                        listofFavs = null;
+                    }
+
+
+
                 }
                 else
                 {
-                    listofFavs = null;
+                    var content = await respo.Content.ReadAsStringAsync();
+
                 }
-
-
-
             }
-            else
+            catch (Exception ex)
             {
-                var content = await respo.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine(ex.Message);
 
             }
             return listofFavs;
@@ -85,32 +103,41 @@ namespace HappeningsApp.Services
             ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
             ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
 
-            var respo = await APIService.PostNew(favourite, "api/UserFavourites/");
-            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await respo.Content.ReadAsStringAsync();
-
-
-                if (content.ToLower().Contains("success"))
+                /**/
+                var respo = await APIService.PostNew(favourite, "api/UserFavourites/");
+                if (respo.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    return true;
+                    var content = await respo.Content.ReadAsStringAsync();
+
+
+                    if (content.ToLower().Contains("success"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+
+
+
                 }
                 else
                 {
                     return false;
 
+
                 }
-
-
-
             }
-            else
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
 
-
             }
-            return false;
         }
 
         internal async Task<bool> DeleteFavorite(Favourite favourite)
@@ -118,35 +145,44 @@ namespace HappeningsApp.Services
             FavoritesModelAPIResponse fav = new FavoritesModelAPIResponse();
             ObservableCollection<Favourite> listofFavs = new ObservableCollection<Favourite>();
             ObservableCollection<FavRootObject> Favlist = new ObservableCollection<FavRootObject>();
-
-            var respo = await APIService.Delete("api/UserFavourites?id="+favourite.Id);
-            if (respo.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                return true;// will remove this when niyi corrects it
-
-                var content = await respo.Content.ReadAsStringAsync();
-
-
-                if (content.ToLower().Contains("success"))
+                /**/
+                var respo = await APIService.Delete("api/UserFavourites?id=" + favourite.Id);
+                if (respo.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    return true;
+                    return true;// will remove this when niyi corrects it
+
+                    var content = await respo.Content.ReadAsStringAsync();
+
+
+                    if (content.ToLower().Contains("success"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+
+
+
                 }
                 else
                 {
                     return false;
 
+
                 }
-
-
-
             }
-            else
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
 
-
             }
-            
+
         }
     }
 }

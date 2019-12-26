@@ -12,70 +12,99 @@ namespace HappeningsApp.Services
     {
         public async Task<ObservableCollection<Models.FavoriteModel>> GetUserFavs()
         {
-            string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
-            //string endpoint = "api/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            string endpoint = "GetByUserID?User_id=" + testuser;
-            var response = await APIService.Get(endpoint);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var model1 = JsonConvert.DeserializeObject<Models.CollectionsModelResp>(content);
-                var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
-                return model;
+                /**/
+                string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+                //string endpoint = "api/GetByUserID?User_id=" + GlobalStaticFields.Username;
+                string endpoint = "GetByUserID?User_id=" + testuser;
+                var response = await APIService.Get(endpoint);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var model1 = JsonConvert.DeserializeObject<Models.CollectionsModelResp>(content);
+                    var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
+                    return model;
+                }
+
+                else
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    var empty = new ObservableCollection<Models.FavoriteModel>();
+                    return empty;
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                var content = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return new ObservableCollection<FavoriteModel>();
 
-                var empty = new ObservableCollection<Models.FavoriteModel>();
-                return empty;
             }
         }
 
 
         public async Task<Models.CollectionsModelResp> GetUserFavsNew()
         {
-            //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
-            string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            //string endpoint = "GetByUserID?User_id=" + testuser;
-            var response = await APIService.Get(endpoint);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<Models.CollectionsModelResp>(content);
-                //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
-                return model;
+                /**/        //string testuser = "07d1b055-ae7a-43aa-b7a7-f44fb84ede02";
+                string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
+                //string endpoint = "GetByUserID?User_id=" + testuser;
+                var response = await APIService.Get(endpoint);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<Models.CollectionsModelResp>(content);
+                    //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
+                    return model;
+                }
+
+                else
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    var empty = new Models.CollectionsModelResp();
+                    return empty;
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                var content = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return new CollectionsModelResp();
 
-                var empty = new Models.CollectionsModelResp();
-                return empty;
             }
         }
 
         internal async Task<bool> CreateNewCollection(string newCollectionName, string newCollectionNick)
         {
-            var newCollection = new Collections
+            try
             {
-                User_id=GlobalStaticFields.Username,
-                Name = newCollectionName,
-                NickName = newCollectionNick
-            };
-          var resp =await  APIService.PostNew<Collections>(newCollection, "api/Collections");
-            if (resp.StatusCode== System.Net.HttpStatusCode.OK)
-            {
-                var cont =await resp.Content.ReadAsStringAsync();
-                if (cont.Contains("Record Added Successfully"))
-                    return true;
+                /**/
+                var newCollection = new Collections
+                {
+                    User_id = GlobalStaticFields.Username,
+                    Name = newCollectionName,
+                    NickName = newCollectionNick
+                };
+                var resp = await APIService.PostNew<Collections>(newCollection, "api/Collections");
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var cont = await resp.Content.ReadAsStringAsync();
+                    if (cont.Contains("Record Added Successfully"))
+                        return true;
+                    else
+                        return false;
+                }
                 else
+                {
                     return false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
 
             }
@@ -87,19 +116,29 @@ namespace HappeningsApp.Services
 
         internal async Task<bool> DeleteCollection(CollectionsResp coll)
         {
-            string endpoint = "api/Collections?id="+coll.Id;
+            try
+            {
 
-            var resp = await APIService.Delete(endpoint);
-            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var cont = await resp.Content.ReadAsStringAsync();
-                if (cont.ToLower().Contains("success"))
-                    return true;
+                string endpoint = "api/Collections?id=" + coll.Id;
+
+                var resp = await APIService.Delete(endpoint);
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var cont = await resp.Content.ReadAsStringAsync();
+                    if (cont.ToLower().Contains("success"))
+                        return true;
+                    else
+                        return false;
+                }
                 else
+                {
                     return false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
 
             }
@@ -112,26 +151,35 @@ namespace HappeningsApp.Services
         internal async Task<ObservableCollection<CollectionsResp>> GetUserListCollection()
         {
             ObservableCollection<CollectionsResp> Col = new ObservableCollection<CollectionsResp>();
-            string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
-            var response = await APIService.Get(endpoint,"Get Users Collection List");
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<CollectionsModelResp>(content);
-               if (model.Message.ToLower().Contains("success"))
+                /**/
+                string endpoint = "/GetByUserID?User_id=" + GlobalStaticFields.Username;
+                var response = await APIService.Get(endpoint, "Get Users Collection List");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    Col = model.Collections;
+                    var content = await response.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<CollectionsModelResp>(content);
+                    if (model.Message.ToLower().Contains("success"))
+                    {
+                        Col = model.Collections;
+                    }
+                    //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
+                    return Col;
                 }
-                //var model = JsonConvert.DeserializeObject<ObservableCollection<Models.FavoriteModel>>(content);
-                return Col;
+
+                else
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    var empty = new ObservableCollection<CollectionsResp>();
+                    return empty;
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                var content = await response.Content.ReadAsStringAsync();
-
-                var empty = new ObservableCollection<CollectionsResp>();
-                return empty;
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return new ObservableCollection<CollectionsResp>();
             }
         }
 
@@ -202,5 +250,5 @@ namespace HappeningsApp.Services
 
     }
 
- 
+
 }

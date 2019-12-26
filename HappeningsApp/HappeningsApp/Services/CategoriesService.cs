@@ -12,26 +12,34 @@ namespace HappeningsApp.Services
         {
             Category c = new Category();
             ObservableCollection<Category> ct = new ObservableCollection<Category>();
-            var resp =await APIService.Get("api/category");
-            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var cont =await resp.Content.ReadAsStringAsync();
-                var catObj = JsonConvert.DeserializeObject<CategoryRootobject>(cont);
-                if (catObj.Message.ToLower().Contains("success"))
+                var resp = await APIService.Get("api/category");
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    ct = catObj.categories;
+                    var cont = await resp.Content.ReadAsStringAsync();
+                    var catObj = JsonConvert.DeserializeObject<CategoryRootobject>(cont);
+                    if (catObj.Message.ToLower().Contains("success"))
+                    {
+                        ct = catObj.categories;
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
                 {
+                    var cont = await resp.Content.ReadAsStringAsync();
 
                 }
             }
-            else
+            catch (Exception ex)
             {
-                var cont = await resp.Content.ReadAsStringAsync();
-
+                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
             return ct;
+
         }
     }
 }
