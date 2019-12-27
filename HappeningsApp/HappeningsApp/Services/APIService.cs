@@ -35,7 +35,6 @@ namespace HappeningsApp.Services
                 }
                 var message = await client.PostAsync(url, stringContent);
                 var resultt = await message.Content.ReadAsStringAsync();
-                //LogService.LogErrors($"Request json:\n{json}, Response json\n{resultt}");
                 await LogService.LogErrorsNew(url: method, request: json, response: resultt, activity: "put Async");
 
                 return resultt;
