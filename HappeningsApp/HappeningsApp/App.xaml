@@ -22,7 +22,7 @@
                 <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
                 <!--For the header-->
                 <Setter Property="Shell.BackgroundColor" Value="Black" />
-                <Setter Property="Shell.TabBarTitleColor" Value="#3498db" />
+                <Setter Property="Shell.TabBarTitleColor" Value="Red" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
             </Style>
@@ -111,7 +111,7 @@
 
             <!--  Global Styles  -->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Color x:Key="CrawlColor">#3498db</Color>
+            <Color x:Key="CrawlColor">Red</Color>
             <Color x:Key="crawlWhiteColor">#FFFFFF</Color>
             <Color x:Key="CrawlRedColor">#c0392b</Color>
             <!--  Copied from another project  -->
