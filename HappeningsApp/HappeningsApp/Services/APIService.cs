@@ -46,7 +46,7 @@ namespace HappeningsApp.Services
 
         internal async static Task<HttpResponseMessage> GetToken(UserInfo user)
         {
-            //string response = "";
+            
             HttpResponseMessage res = new HttpResponseMessage();
             string url = "";
             url = Constants.CrawlAPI + "token";
